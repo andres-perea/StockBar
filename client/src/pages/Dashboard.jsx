@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Bebidas from "./Bebidas";
 
 function Dashboard() {
   const handleLogout = () => {
@@ -8,8 +9,9 @@ function Dashboard() {
   };
   return (
     <div className="">
-      <h1 className="">Dashboard</h1>;
-      <button onClick={handleLogout}>Cerrar sesion</button>;
+      <h1 className="">Dashboard</h1>
+      <Bebidas />
+      <button onClick={handleLogout}>Cerrar sesion</button>
     </div>
   );
 }
