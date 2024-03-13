@@ -35,4 +35,15 @@ exports.actualizarBebida = (req, res) => {
         .send({ message: err.message || "Error al actualizar la bebida." });
     else res.send({ message: "Bebida Actualizada" });
   });
+
+  exports.eliminarBebida = (req, res) => {
+    const bebidaId = req.params.id;
+    Bebidas.delete(bebidaId, (err, data) => {
+      if (err)
+        res
+          .status(500)
+          .send({ message: err.message || "Error al eliminar la bebida." });
+      else res.send({ message: "Bebida eliminada" });
+    });
+  };
 };

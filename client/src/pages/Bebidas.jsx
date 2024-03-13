@@ -10,6 +10,15 @@ function Bebidas() {
       setBebidas(response.data);
     });
   }, []);
+
+  const handleDelete = async (bebidaId) => {
+    try {
+      await axios.delete("http://localhost:3000/bebidas/eliminar/" + bebidaId);
+      alert("Bebida eliminada correctamente");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="">
@@ -17,6 +26,7 @@ function Bebidas() {
           <div className="bebidas" key={bebidas.id}>
             <h2> {bebidas.nombre} </h2>
             <p> {bebidas.precio} </p>
+            <button onClick={() => handleDelete(bebidas.id)}>Eliminar</button>
             <button>
               <Link to={`/actualizarBebida/${bebidas.id}`}>Actualizar</Link>
             </button>
