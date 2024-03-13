@@ -26,9 +26,13 @@ exports.crearBebidas = (req, res) => {
 };
 
 exports.actualizarBebida = (req, res) => {
-  const { id } = req.params;
-  const actualizarBebida = req.body;
-  Bebidas.actualizarBebida(id, actualizarBebida, (affectedRows) => {
-    res.send("Bebida actualizada conrrectamente");
+  const bebidaId = req.params.id;
+  const bebidaActualizada = req.body;
+  Bebidas.actualizarBebida(bebidaId, bebidaActualizada, (err, data) => {
+    if (err)
+      res
+        .status(500)
+        .send({ message: err.message || "Error al actualizar la bebida." });
+    else res.send({ message: "Bebida Actualizada" });
   });
 };

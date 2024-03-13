@@ -13,20 +13,15 @@ function Bebidas() {
   return (
     <>
       <div className="">
-        {bebidas.map((value, key) => {
-          return (
-            <>
-              <div className="">
-                {value.id}
-                <div className=""> {value.nombre}</div>
-                <div className=""> {value.precio} </div>
-                <Link to={`/actualizarBebida`}>
-                  <a href="">Actualizar</a>
-                </Link>
-              </div>
-            </>
-          );
-        })}
+        {bebidas.map((bebidas) => (
+          <div className="bebidas" key={bebidas.id}>
+            <h2> {bebidas.nombre} </h2>
+            <p> {bebidas.precio} </p>
+            <button>
+              <Link to={`/actualizarBebida/${bebidas.id}`}>Actualizar</Link>
+            </button>
+          </div>
+        ))}
         <Link to="/agregarBebida">
           <button>Agregar bebida</button>
         </Link>

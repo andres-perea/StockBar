@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function ActualizarBebidas({ id }) {
   const [bebidas, setBebidas] = useState({});
@@ -8,7 +9,7 @@ function ActualizarBebidas({ id }) {
     precio: "",
   });
 
-  useEffect(() => {
+  /*useEffect(() => {
     axios
       .get(`http://localhost:3000/bebidas`)
       .then((response) => {
@@ -21,7 +22,7 @@ function ActualizarBebidas({ id }) {
       .catch((error) => {
         console.error("Error al actualizar la bebida", error);
       });
-  }, [id]);
+  }, [id]);*/
 
   const handleChange = (e) => {
     setFormData({
@@ -30,10 +31,13 @@ function ActualizarBebidas({ id }) {
     });
   };
 
+  const location = useLocation();
+  const bebidaId = location.pathname.split("/")[2];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/bebida/editar/: ${ id }`, formData)
+      .put("http://localhost:3000/bebidas/editar/" + bebidaId, formData)
       .then((response) => {
         console.log("Bebida actualizada correctamente", response.data);
       })

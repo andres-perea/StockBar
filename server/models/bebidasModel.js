@@ -28,17 +28,13 @@ class Bebidas {
     });
   }
 
-  static actualizarBebida(id, bebida, callback) {
+  static actualizarBebida(id, bebidaActualizada, result) {
     db.query(
       "UPDATE bebidas SET ? WHERE id = ?",
-      [bebida, id],
-      (error, results) => {
-        if (error) {
-          console.log("Error:", error);
-          results(error, null);
-        } else {
-          callback(results.changedRows);
-        }
+      [bebidaActualizada, id],
+      (err, res) => {
+        if (err) throw err;
+        result(null, res);
       }
     );
   }

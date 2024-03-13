@@ -15,7 +15,7 @@ function App() {
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/agregarBebida" element={<AgregarBebidas />} />
-        <Route path="/actualizarBebida" element={<ActualizarBebidas />}/>
+        <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
       </Routes>
     </BrowserRouter>
   );
