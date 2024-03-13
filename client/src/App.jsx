@@ -15,7 +15,12 @@ function App() {
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/agregarBebida" element={<AgregarBebidas />} />
-        <Route path="/actualizarBebidas/:id" render={(props) => <ActualizarBebidas id={props.match.params.id}/>}/>
+        <Route
+          path={`/bebida:id`}
+          render={(props) => (
+            <ActualizarBebidas element={<ActualizarBebidas />} />
+          )}
+        />
       </Routes>
     </BrowserRouter>
   );

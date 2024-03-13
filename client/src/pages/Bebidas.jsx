@@ -6,7 +6,7 @@ function Bebidas() {
   const [bebidas, setBebidas] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/bebidas").then((response) => {
+    axios.get("http://localhost:3000/bebidas/").then((response) => {
       setBebidas(response.data);
     });
   }, []);
@@ -20,7 +20,7 @@ function Bebidas() {
                 {value.id}
                 <div className=""> {value.nombre}</div>
                 <div className=""> {value.precio} </div>
-                <Link to="/actualizarBebidas:">
+                <Link to={`/bebida:${value.id}`}>
                   <a href="">Actualizar</a>
                 </Link>
               </div>

@@ -2,49 +2,44 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function ActualizarBebidas({ id }) {
-  const [datos, setDatos] = useState({
+  const [bebidas, setBebidas] = useState({});
+  const [formData, setFormData] = useState({
     nombre: "",
     precio: "",
   });
 
   useEffect(() => {
-    const solicitarProducto = async () => {
-      try {
-        const response = await fetch(`/bebidas/actualizarBebidas/${id}`);
-        const data = await response.json();
-        setDatos(data);
-      } catch (error) {
-        console.error("Error al obtener los datos del producto:", error);
-      }
-    };
-
-    solicitarProducto();
+    axios
+      .get(`http://localhost:3000/bebida:id`)
+      .then((response) => {
+        setBebidas(response.data);
+        setFormData({
+          nombre: response.data.nombre,
+          precio: response.data.precio,
+        });
+      })
+      .catch((error) => {
+        console.error("Error al actualizar la bebida", error);
+      });
   }, [id]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDatos({ ...datos, [name]: value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(`/bebidas/actualizarBebidas/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(datos),
+    axios
+      .put(`http://localhost:3000/bebida:${id}`, formData)
+      .then((response) => {
+        console.log("Bebida actualizada correctamente", response.data);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar la bebida seleccionada", error);
       });
-
-      if (response.ok) {
-        console.log("Producto actualizado exitosamente");
-      } else {
-        console.error("Error al actualizar el producto");
-      }
-    } catch (error) {
-      console.error("Error al actualizar el producto:", error);
-    }
   };
 
   return (
@@ -57,7 +52,7 @@ function ActualizarBebidas({ id }) {
             <input
               type="text"
               name="nombre"
-              value={bebidas.nombre}
+              value={formData.nombre}
               onChange={handleChange}
             />
           </div>
@@ -66,7 +61,7 @@ function ActualizarBebidas({ id }) {
             <input
               type="text"
               name="precio"
-              value={bebidas.precio}
+              value={formData.precio}
               onChange={handleChange}
             />
           </div>

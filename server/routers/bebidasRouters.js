@@ -3,8 +3,8 @@ const router = express.Router();
 const bebidasController = require("../controllers/bebidasController");
 
 router.get("/", bebidasController.mostrarBebidas);
-router.post("/agregarBebidas", bebidasController.crearBebidas)
-router.put('/actualizarProducto:id', bebidasController.actualizarBebida)
-
+router.get("/bebida:id", bebidasController.bebidaPorId);
+router.post("/agregarBebidas", bebidasController.crearBebidas);
+router.put("/bebida:id", bebidasController.actualizarBebida);
 
 module.exports = router;

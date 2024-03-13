@@ -7,6 +7,16 @@ exports.mostrarBebidas = (req, res) => {
   });
 };
 
+exports.bebidaPorId = (req, res) => {
+  const id = req.params.id;
+  Bebidas.bebidaPorId(
+    (id,
+    (bebida) => {
+      res.json(bebida);
+    })
+  );
+};
+
 exports.crearBebidas = (req, res) => {
   const bebida = req.body;
   Bebidas.crearBebidas(bebida, (err, bebidas) => {
@@ -17,9 +27,8 @@ exports.crearBebidas = (req, res) => {
 
 exports.actualizarBebida = (req, res) => {
   const id = req.params.id;
-  const bebida = req.body;
-  Bebidas.actualizarBebidas(id, bebida, (err, bebidas) => {
-    if (err) res.status(500).send({ message: err });
-    else res.send({ message: "Bebida actualizada correctamente" });
-  })
-}
+  const actualizarBebida = req.body;
+  Bebidas.actualizarBebida(id, actualizarBebida, (affectedRows) => {
+    res.send("Bebida actualizada conrrectamente");
+  });
+};
