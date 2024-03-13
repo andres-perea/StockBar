@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ActualizarBebidas({ id }) {
   const [bebidas, setBebidas] = useState({});
@@ -8,21 +8,6 @@ function ActualizarBebidas({ id }) {
     nombre: "",
     precio: "",
   });
-
-  /*useEffect(() => {
-    axios
-      .get(`http://localhost:3000/bebidas`)
-      .then((response) => {
-        setBebidas(response.data);
-        setFormData({
-          nombre: response.data.nombre,
-          precio: response.data.precio,
-        });
-      })
-      .catch((error) => {
-        console.error("Error al actualizar la bebida", error);
-      });
-  }, [id]);*/
 
   const handleChange = (e) => {
     setFormData({
@@ -34,12 +19,16 @@ function ActualizarBebidas({ id }) {
   const location = useLocation();
   const bebidaId = location.pathname.split("/")[2];
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put("http://localhost:3000/bebidas/editar/" + bebidaId, formData)
       .then((response) => {
         console.log("Bebida actualizada correctamente", response.data);
+        alert("Bebida actualizada correctamente");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error("Error al actualizar la bebida seleccionada", error);
