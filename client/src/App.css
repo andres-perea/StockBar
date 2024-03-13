@@ -4,3 +4,64 @@
   padding: 2rem;
   text-align: center;
 }
+
+/*color de login*/
+body {
+  background-color: #026873;
+}
+.container {
+  max-width: 300px;
+  align-items: 0;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #024059;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container h2 {
+ color: white;
+ font-size: 30px;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+}
+
+.inputContainer {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: white;
+}
+
+input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  width: 100%;
+  padding: 5px;
+  background-color: #026873;
+  color: white;
+  border: radius 0 0 0;
+  border-radius: 0 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/*fin login*/
+
+/* color de registro*/

@@ -26,7 +26,7 @@ function Login() {
   };
 
   return (
-    <div className="">
+    <div className="container">
       <h2>Iniciar Sesión</h2>
       <form action="" onSubmit={handleSubmit}>
         <div className="">
