@@ -26,7 +26,7 @@ exports.crearBebidas = (req, res) => {
 };
 
 exports.actualizarBebida = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   const actualizarBebida = req.body;
   Bebidas.actualizarBebida(id, actualizarBebida, (affectedRows) => {
     res.send("Bebida actualizada conrrectamente");

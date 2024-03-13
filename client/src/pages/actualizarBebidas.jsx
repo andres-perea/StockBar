@@ -10,7 +10,7 @@ function ActualizarBebidas({ id }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/bebida:id`)
+      .get(`http://localhost:3000/bebidas`)
       .then((response) => {
         setBebidas(response.data);
         setFormData({
@@ -33,7 +33,7 @@ function ActualizarBebidas({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/bebida:${id}`, formData)
+      .put(`http://localhost:3000/bebida/editar/: ${ id }`, formData)
       .then((response) => {
         console.log("Bebida actualizada correctamente", response.data);
       })

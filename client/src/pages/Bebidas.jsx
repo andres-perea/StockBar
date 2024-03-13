@@ -20,7 +20,7 @@ function Bebidas() {
                 {value.id}
                 <div className=""> {value.nombre}</div>
                 <div className=""> {value.precio} </div>
-                <Link to={`/bebida:${value.id}`}>
+                <Link to={`/actualizarBebida`}>
                   <a href="">Actualizar</a>
                 </Link>
               </div>
