@@ -1,32 +1,47 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+
 
 /*color de login*/
 body {
   background-color: #026873;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 .container {
   max-width: 300px;
   align-items: 0;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  padding: 60px;
+  border: 2px solid #ccc;
   border-radius: 5px;
   background-color: #024059;
   background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
+    position: relative;
+
 }
 
 .container h2 {
  color: white;
  font-size: 30px;
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ text-align: center;
+}
+
+.container label{
+  color: white;
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.container input{
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.container input:hover{
+  background: transparent;
 }
 
 .title {

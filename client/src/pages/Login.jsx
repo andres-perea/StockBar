@@ -30,7 +30,9 @@ function Login() {
       <h2>Iniciar Sesión</h2>
       <form action="" onSubmit={handleSubmit}>
         <div className="">
+          
           <label htmlFor="nombreUsuario">Nombre de usuario: </label>
+          <div id="input-box">
           <input
             type="text"
             placeholder="Ingrese su nombre de usuario"
@@ -40,9 +42,11 @@ function Login() {
             }
             //required
           />
+          </div>
         </div>
         <div className="">
           <label htmlFor="contrasena">Contraseña: </label>
+          <div id="input-box">
           <input
             type="password"
             placeholder="Ingrese su contraseña"
@@ -52,6 +56,7 @@ function Login() {
             }
             //required
           />
+          </div>
         </div>
         <button type="submit">Iniciar Sesion</button>
 
