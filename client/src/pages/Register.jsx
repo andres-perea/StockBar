@@ -61,7 +61,7 @@ function Register() {
         <button type="submit">Crear cuenta</button>
 
         <Link to="/login">
-          <button>Iniciar sesion</button>
+          <button id="inicioSesion">Iniciar sesion</button>
         </Link>
       </form>
     </div>

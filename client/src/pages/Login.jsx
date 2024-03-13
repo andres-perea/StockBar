@@ -9,7 +9,7 @@ function Login() {
   });
 
   const navigate = useNavigate();
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -32,6 +32,7 @@ function Login() {
         <div className="">
           <label htmlFor="nombreUsuario">Nombre de usuario: </label>
           <input
+            id="nombreUsuario"
             type="text"
             placeholder="Ingrese su nombre de usuario"
             name="nombreUsuario"
@@ -44,6 +45,7 @@ function Login() {
         <div className="">
           <label htmlFor="contrasena">Contraseña: </label>
           <input
+            id="contrasena"
             type="password"
             placeholder="Ingrese su contraseña"
             name="contrasena"
