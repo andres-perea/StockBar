@@ -2,7 +2,7 @@
 
 /*color de login*/
 body {
-  background-color: #026873;
+  background-color: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ body {
   padding: 60px;
   border: 2px solid #ccc;
   border-radius: 5px;
-  background-color: #024059;
+  background-color: #ccc;
   background-size: cover;
     position: relative;
 

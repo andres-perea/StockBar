@@ -38,17 +38,16 @@ class Bebidas {
       }
     );
   }
-}
 
-Bebidas.delete = function (id, callback) {
-  db.query("DELETE FROM bebidas WHERE id = ?", [id], function (err, result) {
-    if (err) {
-      return callback(err, null);
-    } else {
-      console.log("Bebida registrada correctamente");
-    }
-    callback(null, result);
-  });
-};
+  static eliminarBebida(bebidaId, callback) {
+    db.query("DELETE FROM bebidas WHERE id = ?", bebidaId, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
+}
 
 module.exports = Bebidas;
