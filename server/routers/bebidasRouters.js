@@ -6,7 +6,7 @@ router.get("/", bebidasController.mostrarBebidas);
 router.post("/agregarBebidas", bebidasController.crearBebidas);
 router.get("/:id", bebidasController.bebidaPorId);
 
-router.get("/eliminar/:id", function(req, res){
+router.delete("/eliminar/:id", function(req, res){
     bebidasController.eliminarBebida
 })
 router.put("/editar/:id", bebidasController.actualizarBebida);

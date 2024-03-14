@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Bebidas() {
   const [bebidas, setBebidas] = useState([]);
@@ -11,14 +11,17 @@ function Bebidas() {
     });
   }, []);
 
-  const handleDelete = async (id) => {
+
+  async function handleDelete(id) {
     try {
-      await axios.get("http://localhost:3000/bebidas/eliminar/" + id);
-      alert("Bebida eliminada correctamente");
+      await axios.delete("http://localhost:3000/bebidas/eliminar/" + id)
+      alert("Bebida eliminada correctamente")
+      //window.location.reload()
     } catch (error) {
-      console.error(error);
+      console.error("Error al eliminar la bebida", error)
     }
   };
+  
   return (
     <>
       <div className="">
