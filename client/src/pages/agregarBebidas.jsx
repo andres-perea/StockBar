@@ -4,6 +4,7 @@ import React, { useState } from "react";
 function AgregarBebidas() {
   const [values, setValues] = useState({
     nombre: "",
+    cantidad: "",
     precio: "",
   });
 
@@ -31,6 +32,17 @@ function AgregarBebidas() {
               type="text"
               placeholder="Ingrese nombre de la bebida"
               onChange={(e) => setValues({ ...values, nombre: e.target.value })}
+              required
+            />
+          </div>
+          <div className="">
+            <label htmlFor="cantidad">cantidad: </label>
+            <input
+              type="text"
+              placeholder="Ingrese cantidad de la bebida"
+              onChange={(e) =>
+                setValues({ ...values, cantidad: e.target.value })
+              }
               required
             />
           </div>
