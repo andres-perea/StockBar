@@ -22,7 +22,7 @@ function Register() {
       });
   };
   return (
-    <div className="">
+    <div className="container">
       <h2>Crear Cuenta</h2>
       <form action="" onSubmit={handleSubmit}>
         <div className="">
