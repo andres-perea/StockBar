@@ -11,17 +11,21 @@ function Bebidas() {
     });
   }, []);
 
-
   async function handleDelete(id) {
-    try {
-      await axios.delete("http://localhost:3000/bebidas/eliminar/" + id)
-      alert("Bebida eliminada correctamente")
-      //window.location.reload()
-    } catch (error) {
-      console.error("Error al eliminar la bebida", error)
+    if (typeof id !== "number" || isNaN(id)) {
+      console.error("ID de bebida inválido");
+      return;
     }
-  };
-  
+
+    try {
+      await axios.delete(`http://localhost:3000/bebidas/eliminar/${id}`);
+      alert("Bebida eliminada correctamente");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error al eliminar la bebida", error);
+    }
+  }
+
   return (
     <>
       <div className="">

@@ -39,10 +39,15 @@ class Bebidas {
     );
   }
 
-  static eliminarBebida(id, result) {
+  static eliminarBebida(id, callback) {
     db.query("DELETE FROM bebidas WHERE id = ?", id, (err, res) => {
-      if (err) throw err;
-        result(null, res);
+      if (err) {
+        console.error("Error al eliminar la bebida:", err);
+        callback(err, null);
+        return;
+      }
+      console.log("Bebida eliminada correctamente:", res);
+      callback(null, res);
     });
   }
 }

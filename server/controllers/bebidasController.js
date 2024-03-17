@@ -7,16 +7,6 @@ exports.mostrarBebidas = (req, res) => {
   });
 };
 
-exports.bebidaPorId = (req, res) => {
-  const id = req.params.id;
-  Bebidas.bebidaPorId(
-    (id,
-    (bebida) => {
-      res.json(bebida);
-    })
-  );
-};
-
 exports.crearBebidas = (req, res) => {
   const bebida = req.body;
   Bebidas.crearBebidas(bebida, (err, bebidas) => {
@@ -35,15 +25,13 @@ exports.actualizarBebida = (req, res) => {
         .send({ message: err.message || "Error al actualizar la bebida." });
     else res.send({ message: "Bebida Actualizada" });
   });
-
-  exports.eliminarBebida = (req, res) => {
-    const bebidaId = req.params.id;
-    Bebidas.eliminarBebida(bebidaId, (err, data) => {
-      if (err)
-      res
-        .status(500)
-        .send({ message: err.message || "Error al actualizar la bebida." });
-    else res.send({ message: "Bebida Actualizada" });
-    });
-  };  
+};
+exports.eliminarBebida = (id, callback) => {
+  Bebidas.eliminarBebida(id, (err, data) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, data);
+    }
+  });
 };

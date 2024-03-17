@@ -4,11 +4,18 @@ const bebidasController = require("../controllers/bebidasController");
 
 router.get("/", bebidasController.mostrarBebidas);
 router.post("/agregarBebidas", bebidasController.crearBebidas);
-router.get("/:id", bebidasController.bebidaPorId);
-
-router.delete("/eliminar/:id", function(req, res){
-    bebidasController.eliminarBebida
-})
+router.delete("/eliminar/:id", (req, res) => {
+  const id = req.params.id;
+  bebidasController.eliminarBebida(id, (err, data) => {
+    if (err) {
+      res
+        .status(500)
+        .send({ message: err.message || "Error al eliminar la bebida." });
+    } else {
+      res.send({ message: "Bebida eliminada correctamente" });
+    }
+  });
+});
 router.put("/editar/:id", bebidasController.actualizarBebida);
 
 module.exports = router;
