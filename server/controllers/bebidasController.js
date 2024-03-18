@@ -36,3 +36,16 @@ exports.eliminarBebida = (id, callback) => {
     }
   });
 };
+
+exports.agregarImagenBebida = (req, res) => {
+  const bebidaId = req.params.id;
+  const imagenUrl = req.body.imagenUrl; 
+  Bebidas.agregarImagenBebida(bebidaId, imagenUrl, (err, data) => {
+    if (err) {
+      res.status(500).send({ message: err.message || "Error al agregar la imagen a la bebida." });
+    } else {
+      res.send({ message: "Imagen agregada a la bebida correctamente" });
+    }
+  });
+};
+
