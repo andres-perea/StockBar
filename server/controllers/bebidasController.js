@@ -26,6 +26,7 @@ exports.actualizarBebida = (req, res) => {
     else res.send({ message: "Bebida Actualizada" });
   });
 };
+
 exports.eliminarBebida = (id, callback) => {
   Bebidas.eliminarBebida(id, (err, data) => {
     if (err) {

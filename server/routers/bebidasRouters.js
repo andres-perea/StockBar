@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 const bebidasController = require("../controllers/bebidasController");
 
 router.get("/", bebidasController.mostrarBebidas);
-router.post("/agregarBebidas", bebidasController.crearBebidas);
+
+router.post(
+  "/agregarBebidas",
+  bebidasController.crearBebidas
+);
+
 router.delete("/eliminar/:id", (req, res) => {
   const id = req.params.id;
   bebidasController.eliminarBebida(id, (err, data) => {
