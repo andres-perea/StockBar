@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "./login.css";
 
 function Register() {
   const [values, setValues] = useState({
@@ -23,7 +23,7 @@ function Register() {
       });
   };
   return (
-    <main>
+    <main className="loginMain">
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">

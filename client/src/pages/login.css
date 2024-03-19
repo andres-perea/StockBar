@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 /*color de login*/
-main{
+main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
@@ -64,7 +64,7 @@ main{
   flex-direction: column;
   justify-content: center;
 }
-h2{
+.titulo h2{
   margin: 0;
   text-align: center;
   height: 40px;
