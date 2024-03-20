@@ -1,23 +1,16 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Register from "./pages/Register";
-import AgregarBebidas from "./pages/agregarBebidas";
-import ActualizarBebidas from "./pages/actualizarBebidas";
+import "bootstrap-icons"
+import "remixicon"
+
+import "bootstrap"
+import "./index.css"
+
+import React from 'react'
+import Header from './components/Header'
 
 function App() {
   return (
-    <BrowserRouter basename="/">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/agregarBebida" element={<AgregarBebidas />} />
-        <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    <Header />
+  )
 }
 
-export default App;
+export default App

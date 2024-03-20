@@ -1,7 +1,3 @@
-import "bootstrap-icons";
-import "remixicon";
-import "bootstrap";
-
 import React from "react";
 import Bebidas from "./Bebidas";
 
@@ -12,9 +8,8 @@ function Dashboard() {
   };
 
   return (
-    <div className="a">
-      <h1 className={style.a}>Dashboard</h1>
-      /*
+    <div className="">
+      <h1 className=''>Dashboard</h1>
       <div>
         <Bebidas />
         <button className="boton" onClick={handleLogout}>
