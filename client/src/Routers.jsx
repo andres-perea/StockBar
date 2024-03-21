@@ -5,11 +5,13 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import AgregarBebidas from "./pages/agregarBebidas";
 import ActualizarBebidas from "./pages/actualizarBebidas";
+import App from "./App";
 
 function Routers() {
   return (
     <BrowserRouter basename="/">
       <Routes>
+        <Route path="/app" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />

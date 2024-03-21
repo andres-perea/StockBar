@@ -1,16 +1,24 @@
-import "bootstrap-icons"
-import "remixicon"
-
-import "bootstrap"
-import "./index.css"
-
-import React from 'react'
-import Header from './components/Header'
+import React from "react";
+import "./index.css";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <Header />
-  )
+    <>
+      <div className=" h-[10vh] grid">
+        <div className="col-span-1">
+          <Header />
+        </div>
+      </div>
+      <div className="min-h-screen grid grid-cols-6">
+        <div className="col-span-1">
+          <Sidebar />
+        </div>
+        <div className="col-span-5"></div>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;

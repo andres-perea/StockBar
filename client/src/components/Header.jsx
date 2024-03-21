@@ -1,15 +1,11 @@
 import React from "react";
-import Logo from "./Logo";
-
-import "./header.css"
 
 function Header() {
   return (
-    <header id="header" className="header fixed-top d-flex align-items-center">
-      {/* === LOGO === */}
-      <Logo />
-      {/* === SEARCH BAR === */}
-      {/* === NAV === */}
+    <header className="bg-gray-800 text-white shadow-md">
+      <div className="container mx-auto px-4 py-2">
+        <h1 className="text-xl font-semibold">Dashboard</h1>
+      </div>
     </header>
   );
 }

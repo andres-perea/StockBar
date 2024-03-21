@@ -9,7 +9,7 @@ function Dashboard() {
 
   return (
     <div className="">
-      <h1 className=''>Dashboard</h1>
+      <h1 className="">Dashboard</h1>
       <div>
         <Bebidas />
         <button className="boton" onClick={handleLogout}>

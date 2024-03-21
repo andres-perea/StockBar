@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
   padding: 0;
@@ -7,7 +7,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/*color de login*/
+color de login
 main {
   width: 100%;
   min-height: 100vh;
@@ -83,7 +83,7 @@ input[type="email"] {
   font-size: 14px;
   font-weight: bold;
 }
-button:last-of-type {
+button {
 width: 101%;
 height: 40px;
 background: #ff8c6b;
@@ -91,4 +91,4 @@ border: none;
 color: white;
 margin-bottom: 16px;
 cursor: pointer;
-}
+}*/
