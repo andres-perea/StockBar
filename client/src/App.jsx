@@ -1,24 +1,23 @@
 import React from "react";
-import "./index.css";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Register from "./pages/Register";
+import AgregarBebidas from "./pages/agregarBebidas";
+import ActualizarBebidas from "./pages/actualizarBebidas";
 
-function App() {
+function Routers() {
   return (
-    <>
-      <div className=" h-[10vh] grid">
-        <div className="col-span-1">
-          <Header />
-        </div>
-      </div>
-      <div className="min-h-screen grid grid-cols-6">
-        <div className="col-span-1">
-          <Sidebar />
-        </div>
-        <div className="col-span-5"></div>
-      </div>
-    </>
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/agregarBebida" element={<AgregarBebidas />} />
+        <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default Routers;
