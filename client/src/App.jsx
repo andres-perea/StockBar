@@ -5,14 +5,16 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import AgregarBebidas from "./pages/agregarBebidas";
 import ActualizarBebidas from "./pages/actualizarBebidas";
+import Bebidas from "./pages/Bebidas";
 
 function Routers() {
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/bebidas" element={<Bebidas />} />
         <Route path="/agregarBebida" element={<AgregarBebidas />} />
         <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
       </Routes>

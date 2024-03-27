@@ -9,9 +9,8 @@ import {
   MdClose,
 } from "react-icons/md";
 import "../index.css";
-import axios from "axios";
-import { Chart } from "chart.js/auto";
 import { Link } from "react-router-dom";
+import { Saldo } from "../components/Saldo";
 
 function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
@@ -60,7 +59,7 @@ function Dashboard() {
                     Dashboard
                   </a>
                 </li>
-                <Link to="/agregarBebida">
+                <Link to="/bebidas">
                   <li>
                     <a
                       href=""
@@ -151,6 +150,9 @@ function Dashboard() {
           <div className="p-4 bg-gray-200">
             <div className="">
               <h1 className="text-3x1 font-semibold">Dashboard</h1>
+            </div>
+            <div className="">
+              <Saldo />
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ function AgregarBebidas() {
       .then(function (response) {
         console.log(response);
         alert("Bebida registrada correctamente");
+        window.location.href = "/bebidas";
       })
       .catch(function (error) {
         console.log(error);
