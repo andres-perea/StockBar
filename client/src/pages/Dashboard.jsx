@@ -10,7 +10,7 @@ import {
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
-import { Saldo } from "../components/Saldo";
+import GraficoBebidas from "../components/Saldo";
 
 function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
@@ -147,12 +147,12 @@ function Dashboard() {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 bg-gray-200">
+          <div className="p-4 h-full bg-gray-200">
             <div className="">
-              <h1 className="text-3x1 font-semibold">Dashboard</h1>
+              <h1 className="text-5xl font-semibold">Dashboard</h1>
             </div>
-            <div className="">
-              <Saldo />
+            <div className="flex flex-row jutify-center bg-white p-2 rounded-lg mt-2">
+              <GraficoBebidas />
             </div>
           </div>
         </div>

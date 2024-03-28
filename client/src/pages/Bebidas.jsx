@@ -13,11 +13,16 @@ import {
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 
 function Bebidas() {
   const [bebidas, setBebidas] = useState([]);
   const [sidebar, setSidebar] = useState(false);
+  const [formAgregar, setFormAgregar] = useState(false);
+  const [values, setValues] = useState({
+    nombre: "",
+    cantidad: "",
+    precio: "",
+  });
 
   useEffect(() => {
     axios.get("http://localhost:3000/bebidas/").then((response) => {
@@ -44,9 +49,26 @@ function Bebidas() {
     setSidebar(!sidebar);
   };
 
+  const handleFormAgregar = () => {
+    setFormAgregar(!formAgregar);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/login";
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3000/bebidas/agregarBebidas", values)
+      .then(function (response) {
+        console.log(response);
+        window.location.href = "/bebidas";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -66,15 +88,17 @@ function Bebidas() {
             {/* MENU */}
             <nav>
               <ul>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
-                  >
-                    <MdOutlineDashboard />
-                    Dashboard
-                  </a>
-                </li>
+                <Link to="/dashboard">
+                  <li>
+                    <a
+                      href=""
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    >
+                      <MdOutlineDashboard />
+                      Dashboard
+                    </a>
+                  </li>
+                </Link>
                 <Link to="/bebidas">
                   <li>
                     <a
@@ -127,9 +151,9 @@ function Bebidas() {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 bg-gray-100">
+          <div className="p-4 h-full bg-gray-200">
             <div className="">
-              <h1 className="text-5xl p-2 font-extrabold">Bebidas</h1>
+              <h1 className="text-5xl p-2 font-semibold">Bebidas</h1>
             </div>
             <div className="p-8 flex justify-center">
               <table className="border-collapse border border-slate-400 w-full text-center">
@@ -182,11 +206,68 @@ function Bebidas() {
               </table>
             </div>
             <div className="absolute top-4 right-4 p-4">
-              <Link to="/agregarBebida">
-                <button className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg">
-                  Agregar bebida
-                </button>
-              </Link>
+              <button
+                onClick={handleFormAgregar}
+                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg"
+              >
+                Agregar bebida
+              </button>
+              <div
+                className={`fixed transition-all duration-700 bg-white p-6 mt-8 rounded-lg ${
+                  formAgregar ? "-right-0" : "-right-full"
+                }`}
+              >
+                <h2 className="text-2xl p-2 font-bold">Agregar bebidas</h2>
+                <form action="" onSubmit={handleSubmit}>
+                  <div className="p-2">
+                    <label className="font-bold" htmlFor="nombre">
+                      Nombre:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ingrese nombre de la bebida"
+                      onChange={(e) =>
+                        setValues({ ...values, nombre: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="p-2">
+                    <label className="font-bold" htmlFor="cantidad">
+                      cantidad:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ingrese cantidad de la bebida"
+                      onChange={(e) =>
+                        setValues({ ...values, cantidad: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="p-2">
+                    <label className="font-bold" htmlFor="precio">
+                      Precio:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ingrese el precio de la bebida"
+                      onChange={(e) =>
+                        setValues({ ...values, precio: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-row justify-center">
+                    <button
+                      className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg"
+                      type="submit"
+                    >
+                      Agregar Producto
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
-import AgregarBebidas from "./pages/agregarBebidas";
 import ActualizarBebidas from "./pages/actualizarBebidas";
 import Bebidas from "./pages/Bebidas";
 
@@ -15,7 +14,6 @@ function Routers() {
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/bebidas" element={<Bebidas />} />
-        <Route path="/agregarBebida" element={<AgregarBebidas />} />
         <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
       </Routes>
     </BrowserRouter>

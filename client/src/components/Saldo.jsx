@@ -1,17 +1,48 @@
-import React from "react";
-import { Card, Metric, Text } from "@tremor/react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+} from "recharts";
 
-export function Saldo() {
+export default function GraficoBebidas() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/bebidas");
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-      <Card className="mx-auto max-w-xs" decoration="top" decorationColor="red">
-        <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">
-          Saldo
-        </p>
-        <p className="text-3xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-          $35,500
-        </p>
-      </Card>
+      <div className="">
+        <BarChart
+          width={1000}
+          height={300}
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <XAxis dataKey="nombre" />
+          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Legend />
+          <Bar type="monotone" dataKey="cantidad" fill="#ef4444" />
+        </BarChart>
+      </div>
     </>
   );
 }
