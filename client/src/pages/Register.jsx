@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./login.css";
+import "../index.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const [values, setValues] = useState({
@@ -16,88 +18,96 @@ function Register() {
       .post("http://localhost:3000/api/auth/registro", values)
       .then(function (response) {
         console.log(response);
-        alert("Usuario registrado correcamente");
+        toast.success("Usuario registrado correctamente");
       })
       .catch(function (error) {
         console.log(error);
+        toast.error("Error al registrar al usuario");
       });
   };
   return (
-    <main className="loginMain">
-      <div class="box">
-        <div class="inner-box">
-          <div class="forms-wrap">
-            <div className="container">
-              <h2 className="titulo">Iniciar Sesión</h2>
-              <form action="" onSubmit={handleSubmit} className="formulario">
-                <div className="campo">
-                  <label htmlFor="nombreUsuario" className="etiqueta">
-                    Nombre de usuario:
-                  </label>
-                  <div className="input-box">
-                    <input
-                      type="text"
-                      placeholder="Ingrese su nombre de usuario"
-                      name="nombreUsuario"
-                      onChange={(e) =>
-                        setValues({ ...values, nombreUsuario: e.target.value })
-                      }
-                      className="input"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="campo">
-                  <label htmlFor="correoElectronico" className="etiqueta">
-                    Correo Electronico:
-                  </label>
-                  <div className="input-box">
-                    <input
-                      type="email"
-                      placeholder="Ingrese su nombre de usuario"
-                      name="nombreUsuario"
-                      onChange={(e) =>
-                        setValues({
-                          ...values,
-                          correoElectronico: e.target.value,
-                        })
-                      }
-                      className="input"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="campo">
-                  <label htmlFor="contrasena" className="etiqueta">
-                    Contraseña:
-                  </label>
-                  <div className="input-box">
-                    <input
-                      type="password"
-                      placeholder="Ingrese su contraseña"
-                      name="contrasena"
-                      onChange={(e) =>
-                        setValues({ ...values, contrasena: e.target.value })
-                      }
-                      className="input"
-                      required
-                    />
-                  </div>
-                </div>
-                <button type="submit" className="boton">
-                  Crear cuenta
-                </button>
-
-                <Link to="/login" className="enlace">
-                  <button className="boton">Iniciar sesion</button>
-                </Link>
-              </form>
+    <div class="flex items-center justify-center h-screen bg-gray-200">
+      <div class="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="max-w-xs mx-auto">
+          <h2 className="text-3xl font-bold p-8 items-center">Registrarse</h2>
+          <form action="" onSubmit={handleSubmit} className="formulario">
+            <div className="mb-4">
+              <label
+                htmlFor="nombreUsuario"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Nombre de usuario:
+              </label>
+              <input
+                type="text"
+                name="nombreUsuario"
+                onChange={(e) =>
+                  setValues({ ...values, nombreUsuario: e.target.value })
+                }
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
             </div>
-          </div>
-          <div class="carousel"></div>
+            <div className="mb-4">
+              <label
+                htmlFor="correoElectronico"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Correo Electronico:
+              </label>
+              <input
+                type="email"
+                name="nombreUsuario"
+                onChange={(e) =>
+                  setValues({
+                    ...values,
+                    correoElectronico: e.target.value,
+                  })
+                }
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="contrasena"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Contraseña:
+              </label>
+              <input
+                type="password"
+                name="contrasena"
+                onChange={(e) =>
+                  setValues({ ...values, contrasena: e.target.value })
+                }
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+            <div className="flex items-center justify-center pt-4">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Crear cuenta
+              </button>
+            </div>
+            <div className="mt-4">
+              <p class="text-center text-gray-500 text-xs">
+                ¿Ya estas registrado?
+                <Link to="/">
+                  <a class="text-blue-500 hover:text-blue-800" href="#">
+                    Inicia Sesion
+                  </a>
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-    </main>
+      <ToastContainer />
+    </div>
   );
 }
 

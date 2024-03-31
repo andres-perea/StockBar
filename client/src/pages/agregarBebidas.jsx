@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
@@ -10,10 +11,27 @@ import {
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
-import GraficoBebidas from "../components/Graficos";
 
-function Dashboard() {
+function AgregarBebidas() {
   const [sidebar, setSidebar] = useState(false);
+  const [values, setValues] = useState({
+    nombre: "",
+    cantidad: "",
+    precio: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3000/bebidas/agregarBebidas", values)
+      .then(function (response) {
+        console.log(response);
+        alert("Bebida registrada correctamente");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
@@ -35,16 +53,17 @@ function Dashboard() {
         >
           {/* LOGO */}
           <div className="text-center p-8">
-            <h1 className="font-bold tracking-[4px]">StockBar</h1>
+            <h1 className=" uppercase font-bold tracking-[4px]">StockBar</h1>
           </div>
           <div className="flex flex-col justify-between h-[500px]">
             {/* MENU */}
             <nav>
               <ul>
-                <li>
-                  <a
-                    href=""
-                    className="flex 
+                <Link to="/dashboard">
+                  <li>
+                    <a
+                      href=""
+                      className="flex 
                   items-center 
                   gap-4 
                   hover:bg-red-600 
@@ -54,11 +73,12 @@ function Dashboard() {
                   rounded-lg 
                   transition-colors 
                   font-semibold"
-                  >
-                    <MdOutlineDashboard />
-                    Dashboard
-                  </a>
-                </li>
+                    >
+                      <MdOutlineDashboard />
+                      Dashboard
+                    </a>
+                  </li>
+                </Link>
                 <Link to="/bebidas">
                   <li>
                     <a
@@ -149,10 +169,68 @@ function Dashboard() {
         <div className="col-span-5">
           <div className="p-4 h-full bg-gray-200">
             <div className="">
-              <h1 className="text-5xl font-semibold">Dashboard</h1>
+              <h1 className="text-5xl font-semibold">Bebidas</h1>
             </div>
             <div className="flex flex-row jutify-center bg-white p-2 rounded-lg mt-2">
-              <GraficoBebidas />
+              <div className="w-full max-w-md">
+                <h2 className="text-2xl font-bold mb-4">Agregar bebidas</h2>
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="nombre"
+                      className="block text-sm font-bold mb-2"
+                    >
+                      Nombre:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e) =>
+                        setValues({ ...values, nombre: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="cantidad"
+                      className="block text-sm font-bold mb-2"
+                    >
+                      cantidad:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e) =>
+                        setValues({ ...values, cantidad: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="precio"
+                      className="block text-sm font-bold mb-2"
+                    >
+                      Precio:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e) =>
+                        setValues({ ...values, precio: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-green-600 hover:bg-green-700 transition duration-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  >
+                    Agregar Producto
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -161,4 +239,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default AgregarBebidas;
