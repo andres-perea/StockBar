@@ -151,7 +151,7 @@ function Dashboard() {
             <div className="">
               <h1 className="text-5xl font-semibold">Dashboard</h1>
             </div>
-            <div className="flex flex-row jutify-center bg-white p-2 rounded-lg mt-2">
+            <div className="flex flex-row jutify-center bg-white p-2 rounded-lg mt-4">
               <GraficoBebidas />
             </div>
           </div>
