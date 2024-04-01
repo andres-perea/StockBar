@@ -99,15 +99,17 @@ function Bebidas() {
                     Pedidos
                   </a>
                 </li>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
-                  >
-                    <MdOutlineCategory />
-                    Categorias
-                  </a>
-                </li>
+                <Link to="/categorias">
+                  <li>
+                    <a
+                      href=""
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    >
+                      <MdOutlineCategory />
+                      Categorias
+                    </a>
+                  </li>
+                </Link>
               </ul>
             </nav>
             {/* Cerrar sesion */}

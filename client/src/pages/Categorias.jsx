@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
@@ -10,9 +10,8 @@ import {
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
-import GraficoBebidas from "../components/Graficos";
 
-function Dashboard() {
+function Categorias() {
   const [sidebar, setSidebar] = useState(false);
 
   const handleSidebar = () => {
@@ -23,7 +22,6 @@ function Dashboard() {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
-
   return (
     <>
       <div className="min-h-screen grid grid-col-1 lg:grid-cols-6">
@@ -41,7 +39,7 @@ function Dashboard() {
             {/* MENU */}
             <nav>
               <ul>
-                <Link>
+                <Link to="/dashboard">
                   <li>
                     <a
                       href=""
@@ -100,10 +98,10 @@ function Dashboard() {
                   </a>
                 </li>
                 <Link to="/categorias">
-                <li>
-                  <a
-                    href=""
-                    className="flex 
+                  <li>
+                    <a
+                      href=""
+                      className="flex 
                   items-center 
                   gap-4 
                   hover:bg-red-600 
@@ -113,11 +111,11 @@ function Dashboard() {
                   rounded-lg 
                   transition-colors 
                   font-semibold"
-                  >
-                    <MdOutlineCategory />
-                    Categorias
-                  </a>
-                </li>
+                    >
+                      <MdOutlineCategory />
+                      Categorias
+                    </a>
+                  </li>
                 </Link>
               </ul>
             </nav>
@@ -153,10 +151,16 @@ function Dashboard() {
         <div className="col-span-5">
           <div className="p-4 lg:min-h-screen bg-gray-200">
             <div className="">
-              <h1 className="text-5xl font-semibold">Dashboard</h1>
+              <h1 className="text-5xl font-semibold">Categorias</h1>
             </div>
             <div className="flex flex-row jutify-center bg-white p-2 rounded-lg mt-4">
-              <GraficoBebidas />
+              <div className="absolute top-4 right-4 p-4">
+                <Link to="/agregarCategoria">
+                  <button className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg">
+                    Agregar categoria
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -165,4 +169,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Categorias;
