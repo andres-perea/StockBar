@@ -16,11 +16,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ActualizarBebidas({ id }) {
-  const [bebidas, setBebidas] = useState({});
   const [sidebar, setSidebar] = useState(false);
+  const [categorias, setCategorias] = useState([]);
   const [formData, setFormData] = useState({
     nombre: "",
+    cantidad: "",
     precio: "",
+    categoria_id: "",
   });
 
   const handleChange = (e) => {
@@ -46,14 +48,19 @@ function ActualizarBebidas({ id }) {
     e.preventDefault();
     axios
       .put("http://localhost:3000/bebidas/editar/" + bebidaId, formData)
-      .then((response) => {
-        console.log("Bebida actualizada correctamente", response.data);
+      .then(() => {
         toast.success("Bebida actualizada correctamente");
       })
       .catch((error) => {
         console.error("Error al actualizar la bebida seleccionada", error);
       });
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/categorias/").then((response) => {
+      setCategorias(response.data);
+    });
+  });
 
   return (
     <>
@@ -205,6 +212,21 @@ function ActualizarBebidas({ id }) {
                   </div>
                   <div className="mb-4">
                     <label
+                      htmlFor="cantidad"
+                      className="block text-sm font-bold mb-2"
+                    >
+                      Cantidad:{" "}
+                    </label>
+                    <input
+                      type="text"
+                      name="cantidad"
+                      value={formData.cantidad}
+                      onChange={handleChange}
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
                       htmlFor="precio"
                       className="block text-sm font-bold mb-2"
                     >
@@ -217,6 +239,25 @@ function ActualizarBebidas({ id }) {
                       onChange={handleChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="precio"
+                      className="block text-sm font-bold mb-2"
+                    >
+                      Categoria:{" "}
+                    </label>
+                    <select
+                      name="categoria_id"
+                      value={formData.categoria_id}
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={handleChange}
+                    >
+                      <option value="0">. . .</option>
+                      {categorias.map((categoria) => (
+                        <option value={categoria.id}>{categoria.nombre}</option>
+                      ))}
+                    </select>
                   </div>
                   <button className="bg-amber-300 hover:bg-amber-500 transition duration-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Actualizar Datos

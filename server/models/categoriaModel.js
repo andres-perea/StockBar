@@ -19,6 +19,18 @@ class Categorias {
       }
     });
   }
+
+  static eliminarCategoria(id, callback) {
+    db.query("DELETE FROM categorias WHERE id = ?", id, (err, res) => {
+      if (err) {
+        console.error("Error al eliminar la categoria:", err);
+        callback(err, null);
+        return;
+      }
+      console.log("Categoria eliminada correctamente:", res);
+      callback(null, res);
+    });
+  }
 }
 
-module.exports = Categorias
+module.exports = Categorias;

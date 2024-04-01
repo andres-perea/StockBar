@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const authRouters = require("./routers/authRoutes");
 const bebidasRouters = require("./routers/bebidasRouters");
+const categoriasRouters = require("./routers/categoriasRouters");
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -16,6 +17,9 @@ app.use("/api/auth", authRouters);
 
 //Ruta de productos
 app.use("/bebidas", bebidasRouters);
+
+//Ruta de categorias
+app.use("/categorias", categoriasRouters);
 
 app.listen(3000, () => {
   console.log("el servidor esta funcionando en el puerto 3000");
