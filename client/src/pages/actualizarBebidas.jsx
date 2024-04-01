@@ -68,7 +68,7 @@ function ActualizarBebidas({ id }) {
           <div className="text-center p-8">
             <h1 className="font-bold tracking-[4px]">StockBar</h1>
           </div>
-          <div className="flex flex-col justify-between h-[500px]">
+          <div className="flex flex-col justify-between h-[650px]">
             {/* MENU */}
             <nav>
               <ul>

@@ -11,6 +11,8 @@ import {
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AgregarBebidas() {
   const [sidebar, setSidebar] = useState(false);
@@ -26,7 +28,7 @@ function AgregarBebidas() {
       .post("http://localhost:3000/bebidas/agregarBebidas", values)
       .then(function (response) {
         console.log(response);
-        alert("Bebida registrada correctamente");
+        toast.success("Bebida registrada correctamente")
       })
       .catch(function (error) {
         console.log(error);
@@ -47,17 +49,17 @@ function AgregarBebidas() {
       <div className="min-h-screen grid grid-col-1 lg:grid-cols-6">
         {/* Sidebar */}
         <div
-          className={`fixed lg:static w-[80%] md:w-[40%] lg:w-full top-0 z-50 bg-white transition-all ${
+          className={`fixed lg:static inset-y-0 left-0 w-[80%] md:w-[40%] lg:w-full top-0 z-50 bg-white transition-all ${
             sidebar ? "-left-0" : "-left-full"
-          } w-full h-full col-span-1 p-8 border-r`}
+          } h-full col-span-1 p-8 border-r`}
         >
           {/* LOGO */}
           <div className="text-center p-8">
             <h1 className=" uppercase font-bold tracking-[4px]">StockBar</h1>
           </div>
-          <div className="flex flex-col justify-between h-[500px]">
+          <div className="flex flex-col justify-between h-[650px]">
             {/* MENU */}
-            <nav>
+            <nav className="flex-1">
               <ul>
                 <Link to="/dashboard">
                   <li>
@@ -167,7 +169,7 @@ function AgregarBebidas() {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 h-full bg-gray-200">
+          <div className="p-4 h-screen bg-gray-200">
             <div className="">
               <h1 className="text-5xl font-semibold">Bebidas</h1>
             </div>
@@ -234,6 +236,7 @@ function AgregarBebidas() {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

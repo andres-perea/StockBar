@@ -48,7 +48,7 @@ function Bebidas() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   return (
@@ -64,7 +64,7 @@ function Bebidas() {
           <div className="text-center p-8">
             <h1 className="uppercase font-bold tracking-[4px]">StockBar</h1>
           </div>
-          <div className="flex flex-col justify-between h-[500px]">
+          <div className="flex flex-col justify-between h-[650px]">
             {/* MENU */}
             <nav>
               <ul>
@@ -131,7 +131,7 @@ function Bebidas() {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 h-full bg-gray-200">
+          <div className="p-4 lg:min-h-screen bg-gray-200">
             <div className="">
               <h1 className="text-5xl p-2 font-semibold">Bebidas</h1>
             </div>

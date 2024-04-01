@@ -35,9 +35,9 @@ function Dashboard() {
         >
           {/* LOGO */}
           <div className="text-center p-8">
-            <h1 className="font-bold tracking-[4px]">StockBar</h1>
+            <h1 className="font-bold uppercase tracking-[4px]">StockBar</h1>
           </div>
-          <div className="flex flex-col justify-between h-[500px]">
+          <div className="flex flex-col justify-between h-[650px]">
             {/* MENU */}
             <nav>
               <ul>
@@ -147,7 +147,7 @@ function Dashboard() {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 h-full bg-gray-200">
+          <div className="p-4 lg:min-h-screen bg-gray-200">
             <div className="">
               <h1 className="text-5xl font-semibold">Dashboard</h1>
             </div>
