@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2024 a las 01:56:07
+-- Tiempo de generación: 11-04-2024 a las 21:27:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -41,8 +41,12 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`id`, `nombre`, `precio`, `cantidad`, `fecha_creacion`, `categoria_id`) VALUES
-(31, 'Whisky Norteño', 65500, 20, '2024-04-01 20:12:55', 4),
-(32, 'Cerveza Aguila', 4500, 30, '2024-04-01 22:50:47', 1);
+(31, 'Whisky Norteño', 65500, 10, '2024-04-01 20:12:55', 4),
+(32, 'Cerveza Aguila', 4500, 25, '2024-04-01 22:50:47', 1),
+(34, 'Vodka', 72500, 15, '2024-04-08 17:41:34', 5),
+(35, 'Ron Caldas', 26550, 20, '2024-04-08 18:07:33', 4),
+(36, 'Cerveza Corona', 4600, 40, '2024-04-08 18:09:14', 5),
+(37, 'Ron de Medellin', 45750, 30, '2024-04-08 18:10:47', 7);
 
 --
 -- Disparadores `bebidas`
@@ -78,7 +82,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
-(4, 'Picantico');
+(4, 'Picantico'),
+(5, 'Fuertesss'),
+(7, 'Lo Mejorcito');
 
 --
 -- Disparadores `categorias`
@@ -137,7 +143,12 @@ INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entreda`, `fecha_entrad
 (23, 15, '2024-04-01 19:57:08', 65500, NULL, 28),
 (24, 30, '2024-04-01 19:59:57', 75500, NULL, 29),
 (25, 60, '2024-04-01 20:12:55', 16500, NULL, 31),
-(26, 30, '2024-04-01 22:50:47', 4500, NULL, 32);
+(26, 30, '2024-04-01 22:50:47', 4500, NULL, 32),
+(27, 10, '2024-04-08 17:40:32', 73, NULL, 33),
+(28, 15, '2024-04-08 17:41:34', 72500, NULL, 34),
+(29, 20, '2024-04-08 18:07:33', 26550, NULL, 35),
+(30, 40, '2024-04-08 18:09:14', 4600, NULL, 36),
+(31, 30, '2024-04-08 18:10:47', 45750, NULL, 37);
 
 --
 -- Disparadores `entrada_productos`
@@ -210,7 +221,14 @@ INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad
 (39, 'Salida', '30', '2024-04-01', '15:26:15', 26),
 (40, 'Salida', '15', '2024-04-01', '15:26:16', 28),
 (41, 'Salida', '30', '2024-04-01', '15:26:20', 29),
-(42, 'Entrada', '30', '2024-04-01', '17:50:47', 32);
+(42, 'Entrada', '30', '2024-04-01', '17:50:47', 32),
+(43, 'Entrada', '10', '2024-04-08', '12:40:32', 33),
+(44, 'Salida', '10', '2024-04-08', '12:41:10', 33),
+(45, 'Entrada', '15', '2024-04-08', '12:41:34', 34),
+(46, 'Entrada', '20', '2024-04-08', '13:07:33', 35),
+(47, 'Entrada', '40', '2024-04-08', '13:09:14', 36),
+(48, 'Entrada', '30', '2024-04-08', '13:10:47', 37),
+(49, 'Salida', '5', '2024-04-11', '14:25:25', 32);
 
 -- --------------------------------------------------------
 
@@ -220,10 +238,45 @@ INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad
 
 CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL,
-  `fecha_pedido` date DEFAULT NULL,
-  `cantidad_pedido` date DEFAULT NULL,
-  `producto_id` int(11) DEFAULT NULL
+  `cantidad` int(11) NOT NULL,
+  `bebida_id` int(11) DEFAULT NULL,
+  `fecha_pedido` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `bebida_id`, `fecha_pedido`) VALUES
+(15, 10, 31, '2024-04-11 19:04:31'),
+(17, 5, 32, '2024-04-11 19:25:25');
+
+--
+-- Disparadores `pedidos`
+--
+DELIMITER $$
+CREATE TRIGGER `after_pedido_insert` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
+    DECLARE bebida_id INT;
+    DECLARE cantidad INT;
+
+    -- Obtener el id de la bebida y la cantidad del nuevo pedido
+    SELECT NEW.bebida_id, NEW.cantidad INTO bebida_id, cantidad;
+
+    -- Insertar un registro en la tabla de salida_productos
+    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_id)
+    VALUES (NOW(), cantidad, 'Venta realizada', bebida_id);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `restar_cantidad_bebida` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
+    -- Actualizar la cantidad en la tabla de bebidas
+    UPDATE bebidas
+    SET cantidad = cantidad - NEW.cantidad
+    WHERE id = NEW.bebida_id;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -264,7 +317,9 @@ INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, 
 (26, '15:26:14', 20, 'salida', 25, NULL),
 (27, '15:26:15', 30, 'salida', 26, NULL),
 (28, '15:26:16', 15, 'salida', 28, NULL),
-(29, '15:26:20', 30, 'salida', 29, NULL);
+(29, '15:26:20', 30, 'salida', 29, NULL),
+(30, '12:41:10', 10, 'salida', 33, NULL),
+(31, '14:25:25', 5, 'Venta realizada', 32, NULL);
 
 --
 -- Disparadores `salida_productos`
@@ -334,7 +389,7 @@ ALTER TABLE `historial_movimiento`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedido`),
-  ADD KEY `producto_id` (`producto_id`);
+  ADD KEY `producto_id` (`bebida_id`);
 
 --
 -- Indices de la tabla `salida_productos`
@@ -358,37 +413,37 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `bebidas`
 --
 ALTER TABLE `bebidas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada_productos`
 --
 ALTER TABLE `entrada_productos`
-  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_movimiento`
 --
 ALTER TABLE `historial_movimiento`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -404,7 +459,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `bebidas` (`id`);
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`bebida_id`) REFERENCES `bebidas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -66,6 +66,42 @@ function Menu() {
     setShowCart(!showCart);
   };
 
+  const realizarPedido = () => {
+    if (carrito.length === 0) {
+      console.error(
+        "No se puede realizar un pedido sin elementos en el carrito."
+      );
+      return;
+    }
+
+    // Calcular el total antes de realizar el pedido
+    const pedidoTotal = carrito.reduce(
+      (accumulator, item) => accumulator + item.precio * item.cantidad,
+      0
+    );
+
+    // Crear un objeto con los detalles del pedido
+    const pedido = {
+      detalles: carrito.map((item) => ({
+        bebida_id: item.id,
+        cantidad: item.cantidad,
+      })),
+      total: pedidoTotal,
+    };
+
+    // Aquí enviarías una solicitud HTTP al backend para insertar el pedido en la base de datos
+    axios
+      .post("http://localhost:3000/pedidos", pedido)
+      .then((response) => {
+        console.log("Pedido realizado con éxito:", response.data);
+        setCarrito([]); // Limpiar carrito después de realizar el pedido
+        setShowCart(false); // Cerrar el carrito después de realizar el pedido
+      })
+      .catch((error) => {
+        console.error("Error al realizar el pedido:", error);
+      });
+  };
+
   return (
     <>
       <div className="">
@@ -175,7 +211,10 @@ function Menu() {
               <p className="font-bold">Total a Pagar: ${total}</p>
             </div>
             <div className="flex justify-center">
-              <button className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 mt-2">
+              <button
+                onClick={realizarPedido}
+                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 mt-2"
+              >
                 Realizar Pedido
               </button>
             </div>

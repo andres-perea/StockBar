@@ -8,15 +8,21 @@ class Pedidos {
     });
   }
 
-  static CrearPedido(bebida_id, cantidad, callback) {
-    db.query(
-      "INSERT INTO pedidos (cantidad_pedido, bebida_id) VALUES (?, ?, ?)",
-      [cantidad, bebida_id],
-      (err, result) => {
-        if (err) return callback(err, null);
-        callback(null, { id: result.id, bebida_id, cantidad });
-      }
-    );
+  static CrearPedido(detalles, callback) {
+    const detalle = detalles[0];
+    const sql = "INSERT INTO pedidos SET ?";
+
+    db.query(sql, detalle, (err, result) => {
+      if (err) return callback(err, null);
+      const id = result.insertId;
+      const pedido = {
+        id: id,
+        cantidad: detalle.cantidad,
+        bebida_id: detalle.bebida_id,
+      };
+
+      callback(null, pedido);
+    });
   }
 }
 

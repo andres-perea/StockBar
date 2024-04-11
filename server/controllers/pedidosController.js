@@ -9,9 +9,12 @@ exports.obtenerPedidos = (req, res) => {
 };
 
 exports.crearPedido = (req, res) => {
-  const { bebida_id, cantidad } = req.body;
-  Pedidos.CrearPedido(bebida_id, cantidad, (err, nuevoPedido) => {
-    if (err) throw err;
-    res.json(nuevoPedido);
+  const detalles = req.body.detalles;
+  Pedidos.CrearPedido(detalles, (err, nuevosPedidos) => {
+    if (err) {
+      console.error("Error al crear el pedido:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
+    }
+    res.json(nuevosPedidos);
   });
 };
