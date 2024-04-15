@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
@@ -8,12 +9,21 @@ import {
   MdOutlineMenu,
   MdClose,
 } from "react-icons/md";
-import { Link } from "react-router-dom";
-import GraficoBebidas from "../components/Graficos";
 import "../index.css";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function Dashboard() {
+function Pedidos() {
+  const [pedidos, setPedidos] = useState([]);
   const [sidebar, setSidebar] = useState(false);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/pedidos/").then((response) => {
+      setPedidos(response.data);
+    });
+  });
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
@@ -40,7 +50,7 @@ function Dashboard() {
           {/* MENU */}
           <nav>
             <ul>
-              <Link>
+              <Link to="/dashboard">
                 <li>
                   <a
                     href=""
@@ -63,15 +73,15 @@ function Dashboard() {
                 </li>
               </Link>
               <Link to="/pedidos">
-              <li>
-                <a
-                  href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
-                >
-                  <MdInbox />
-                  Pedidos
-                </a>
-              </li>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                  >
+                    <MdInbox />
+                    Pedidos
+                  </a>
+                </li>
               </Link>
               <Link to="/categorias">
                 <li>
@@ -109,10 +119,47 @@ function Dashboard() {
       <div className="col-span-5">
         <div className="p-4 lg:min-h-screen bg-gray-200">
           <div className="">
-            <h1 className="text-4xl lg:text-5xl font-semibold">Dashboard</h1>
+            <h1 className="text-4xl lg:text-5xl font-semibold">Pedidos</h1>
           </div>
           <div className="flex justify-center bg-white p-2 rounded-lg mt-4">
-            <GraficoBebidas />
+            <table className="border-collapse border border-slate-400 w-full text-center">
+              <thead>
+                <tr>
+                  <th className="border border-slate-600 text-lg text-gray-600">
+                    Nombre del Producto
+                  </th>
+                  <th className="border border-slate-600 text-lg text-gray-600">
+                    Cantidad Vendida
+                  </th>
+                  <th className="border border-slate-600 text-lg text-gray-600">
+                    Precio de Venta
+                  </th>
+                  <th className="border border-slate-600 text-lg text-gray-600">
+                    Acción
+                  </th>
+                </tr>
+                {pedidos.map((pedido) => (
+                  <tr key={pedido.id}>
+                    <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
+                      {pedido.nombre}
+                    </td>
+                    <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
+                      {pedido.cantidad}
+                    </td>
+                    <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
+                      {pedido.precio}
+                    </td>
+                    <td className="border border-slate-600 p-2 font-bold bg-gray-100 text-gray-600">
+                      <div className="flex flex-row justify-center">
+                        <button className="bg-green-600 p-2 hover:bg-green-700 transition-all text-white p-1 text-sm m-1">
+                          Entrega Realizada
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </thead>
+            </table>
           </div>
         </div>
       </div>
@@ -120,4 +167,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Pedidos;

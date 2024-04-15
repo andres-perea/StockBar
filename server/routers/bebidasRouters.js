@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const upload = multer();
 const bebidasController = require("../controllers/bebidasController");
 
 router.get("/", bebidasController.mostrarBebidas);
 
 router.post(
   "/agregarBebidas",
+  upload.single("imagen"),
   bebidasController.crearBebidas
 );
 

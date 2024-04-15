@@ -89,13 +89,12 @@ function Menu() {
       total: pedidoTotal,
     };
 
-    // Aquí enviarías una solicitud HTTP al backend para insertar el pedido en la base de datos
     axios
       .post("http://localhost:3000/pedidos", pedido)
       .then((response) => {
         console.log("Pedido realizado con éxito:", response.data);
-        setCarrito([]); // Limpiar carrito después de realizar el pedido
-        setShowCart(false); // Cerrar el carrito después de realizar el pedido
+        setCarrito([]);
+        setShowCart(false);
       })
       .catch((error) => {
         console.error("Error al realizar el pedido:", error);
@@ -144,8 +143,11 @@ function Menu() {
                 src="https://via.placeholder.com/350x150"
                 alt="Placeholder"
               />
-              <div className="px-6 py-4">
+              <div className="px-6 py-2">
                 <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
+              </div>
+              <div className="px-6 py-2">
+                <div className="font-bold text-base mb-2">"{bebida.descripcion}"</div>
               </div>
               <div className="px-6">
                 <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-700 mr-2">

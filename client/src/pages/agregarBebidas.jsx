@@ -20,6 +20,8 @@ function AgregarBebidas() {
     nombre: "",
     cantidad: "",
     precio: "",
+    descripcion: "",
+    imagen: "",
     categoria_id: "",
   });
 
@@ -139,7 +141,7 @@ function AgregarBebidas() {
           <div className="flex justify-center bg-white p-2 rounded-lg mt-2">
             <div className="w-full max-w-md">
               <h2 className="text-2xl font-bold mb-4">Agregar bebidas</h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <div className="mb-4">
                   <label
                     htmlFor="nombre"
@@ -186,6 +188,35 @@ function AgregarBebidas() {
                       setValues({ ...values, precio: e.target.value })
                     }
                     required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="descripcion"
+                    className="block text-sm font-bold mb-2"
+                  >
+                    Descripción:
+                  </label>
+                  <input
+                    type="text"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    onChange={(e) =>
+                      setValues({ ...values, descripcion: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="imagen"
+                    className="block text-sm font-bold mb-2"
+                  >
+                    Imagen:
+                  </label>
+                  <input
+                    type="file"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="imagen"
                   />
                 </div>
                 <div className="mb-4">
