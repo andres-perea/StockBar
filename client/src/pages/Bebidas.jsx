@@ -61,10 +61,10 @@ function Bebidas() {
       <div
         className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
           sidebar ? "w-80" : "w-0"
-        } lg:w-full h-full transition-all border-r p-8`}
+        } lg:w-full h-full transition-all border-r p-4`}
       >
         {/* LOGO */}
-        <div className="text-center p-8">
+        <div className="text-center pt-4 pb-4 focus:outline-none overflow-y-auto">
           <h1 className="uppercase font-bold tracking-[4px]">StockBar</h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
@@ -75,7 +75,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -86,7 +86,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -96,7 +96,7 @@ function Bebidas() {
               <li>
                 <a
                   href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                 >
                   <MdInbox />
                   Pedidos
@@ -106,7 +106,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -119,7 +119,7 @@ function Bebidas() {
           <div className="flex flex-col pt-36 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
             >
               <MdOutlineLogout />
               Cerrar Sesión
@@ -136,7 +136,7 @@ function Bebidas() {
       </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-gray-200">
+        <div className="p-4 lg:min-h-screen bg-gray-200 pl-10">
           <div className="">
             <h1 className="text-4xl lg:text-5xl p-2 font-semibold">Bebidas</h1>
           </div>

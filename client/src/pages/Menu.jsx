@@ -155,10 +155,10 @@ function Menu() {
                 </div>
               </div>
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">${bebida.precio}</div>
+                <div className="font-bold text-green-800 text-xl mb-2">${bebida.precio}</div>
                 <button
                   onClick={() => agregarAlCarrito(bebida)}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
                 >
                   Agregar al carrito
                 </button>
