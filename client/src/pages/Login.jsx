@@ -31,7 +31,7 @@ function Login() {
     <div class="flex items-center justify-center h-screen bg-gray-200">
       <div className="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="max-w-xs mx-auto">
-          <h2 className="text-3xl font-bold p-8 items-center">
+          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">
             Iniciar Sesión
           </h2>
           <form action="" onSubmit={handleSubmit}>

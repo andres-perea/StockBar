@@ -27,9 +27,9 @@ function Register() {
   };
   return (
     <div class="flex items-center justify-center h-screen bg-gray-200">
-      <div class="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-16 pt-6 pb-8 mb-4">
         <div class="max-w-xs mx-auto">
-          <h2 className="text-3xl font-bold p-8 items-center">Registrarse</h2>
+          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">Registrarse</h2>
           <form action="" onSubmit={handleSubmit} className="formulario">
             <div className="mb-4">
               <label
@@ -88,7 +88,7 @@ function Register() {
             <div className="flex items-center justify-center pt-4">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Crear cuenta
               </button>
@@ -97,7 +97,7 @@ function Register() {
               <p class="text-center text-gray-500 text-xs">
                 ¿Ya estas registrado?
                 <Link to="/">
-                  <a class="text-blue-500 hover:text-blue-800" href="#">
+                  <a class="text-blue-400 hover:text-blue-800" href="#">
                     Inicia Sesion
                   </a>
                 </Link>

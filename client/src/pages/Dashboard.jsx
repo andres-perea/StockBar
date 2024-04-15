@@ -25,16 +25,16 @@ function Dashboard() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen">
+    <div className=" flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
       {/* Sidebar */}
       <div
         className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
-          sidebar ? "w-80" : "w-0"
-        } lg:w-full h-full transition-all border-r p-8`}
+          sidebar ? "w-64" : "w-0"
+        } lg:w-full h-full transition-all border-r p-4`}
       >
         {/* LOGO */}
         <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px]">StockBar</h1>
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">StockBar</h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
@@ -44,7 +44,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -55,7 +55,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -65,7 +65,7 @@ function Dashboard() {
               <li>
                 <a
                   href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                 >
                   <MdInbox />
                   Pedidos
@@ -75,7 +75,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -88,7 +88,7 @@ function Dashboard() {
           <div className="flex flex-col pt-36 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
             >
               <MdOutlineLogout />
               Cerrar Sesión
@@ -105,11 +105,11 @@ function Dashboard() {
       </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-gray-200">
+        <div className="p-8 lg:min-h-screen bg-gray-200 pl-10">
           <div className="">
-            <h1 className="text-4xl lg:text-5xl font-semibold">Dashboard</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold">Dashboard</h1>
           </div>
-          <div className="flex justify-center bg-white p-2 rounded-lg mt-4">
+          <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
             <GraficoBebidas />
           </div>
         </div>
