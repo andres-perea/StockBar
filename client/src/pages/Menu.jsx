@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MdOutlineSearch, MdShoppingCart, MdClose } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
   const [bebidas, setBebidas] = useState([]);
@@ -40,7 +41,9 @@ function Menu() {
     const existentItem = carrito.find((item) => item.codigo === bebida.codigo);
     if (existentItem) {
       const updatedCarrito = carrito.map((item) =>
-        item.codigo === bebida.codigo ? { ...item, cantidad: item.cantidad + 1 } : item
+        item.codigo === bebida.codigo
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item
       );
       setCarrito(updatedCarrito);
     } else {
@@ -101,6 +104,11 @@ function Menu() {
       });
   };
 
+  const navegation = useNavigate();
+  const checkout = () => {
+    navegation("/checkout");
+  }
+
   return (
     <>
       <div className="">
@@ -147,7 +155,9 @@ function Menu() {
                 <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
               </div>
               <div className="px-6 py-2">
-                <div className="font-semibold text-gray-500 text-base mb-2">"{bebida.descripcion}"</div>
+                <div className="font-semibold text-gray-500 text-base mb-2">
+                  "{bebida.descripcion}"
+                </div>
               </div>
               <div className="px-6">
                 <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
@@ -157,7 +167,9 @@ function Menu() {
                 </div>
               </div>
               <div className="px-6 py-4">
-                <div className="font-bold text-green-800 text-xl mb-2">${bebida.precio}</div>
+                <div className="font-bold text-green-800 text-xl mb-2">
+                  ${bebida.precio}
+                </div>
                 <button
                   onClick={() => agregarAlCarrito(bebida)}
                   className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
@@ -218,6 +230,12 @@ function Menu() {
                 className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 mt-2"
               >
                 Realizar Pedido
+              </button>
+              <button
+                onClick={checkout}
+                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 m-2 mt-2"
+              >
+                Ver Carrito
               </button>
             </div>
           </div>

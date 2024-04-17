@@ -10,6 +10,7 @@ import Categorias from "./pages/Categorias";
 import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
+import Checkout from "./pages/Checkout";
 
 function Routers() {
   return (
@@ -25,6 +26,7 @@ function Routers() {
         <Route path="/agregarCategoria" element={<AgregarCategorias />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </BrowserRouter>
   );
