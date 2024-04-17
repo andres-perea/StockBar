@@ -93,17 +93,6 @@ function Bebidas() {
                   </a>
                 </li>
               </Link>
-              <Link to="/pedidos">
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
-                  >
-                    <MdInbox />
-                    Pedidos
-                  </a>
-                </li>
-</Link>
               <Link to ="/pedidos">
               <li>
                 <a
