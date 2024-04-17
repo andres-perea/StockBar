@@ -32,14 +32,14 @@ function Bebidas() {
     });
   }, []);
 
-  async function handleDelete(id) {
-    if (typeof id !== "number" || isNaN(id)) {
+  async function handleDelete(codigo) {
+    if (typeof codigo !== "number" || isNaN(codigo)) {
       console.error("ID de bebida inválido");
       return;
     }
 
     try {
-      await axios.delete(`http://localhost:3000/bebidas/eliminar/${id}`);
+      await axios.delete(`http://localhost:3000/bebidas/eliminar/${codigo}`);
       toast.success("Bebida eliminada correctamente");
     } catch (error) {
       console.error("Error al eliminar la bebida", error);
@@ -93,15 +93,6 @@ function Bebidas() {
                   </a>
                 </li>
               </Link>
-              <li>
-                <a
-                  href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                >
-                  <MdInbox />
-                  Pedidos
-                </a>
-              </li>
               <Link to="/pedidos">
                 <li>
                   <a
@@ -180,7 +171,7 @@ function Bebidas() {
               </thead>
               <tbody>
                 {bebidas.map((bebida) => (
-                  <tr key={bebida.id}>
+                  <tr key={bebida.codigo}>
                     <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
                       {bebida.codigo}
                     </td>
@@ -205,12 +196,12 @@ function Bebidas() {
                       <div className="flex flex-row justify-center">
                         <button
                           className="bg-red-500 hover:bg-red-600 transition-all text-white p-1 text-2xl m-1"
-                          onClick={() => handleDelete(bebida.id)}
+                          onClick={() => handleDelete(bebida.codigo)}
                         >
                           <MdDelete />
                         </button>
                         <button className="bg-amber-300 hover:bg-amber-400 transition-all text-white p-1 text-2xl m-1">
-                          <Link to={`/actualizarBebida/${bebida.id}`}>
+                          <Link to={`/actualizarBebida/${bebida.codigo}`}>
                             <MdOutlineUpdate />
                           </Link>
                         </button>

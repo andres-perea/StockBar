@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2024 a las 14:24:13
+-- Tiempo de generación: 17-04-2024 a las 15:36:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -61,15 +61,23 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(613512, 'Cerveza Corona', 6350, 5, 'Cerveza de 750ml', '', '2024-04-15 13:56:49', 7),
-(861677, 'Cerverza Club Colombia', 16500, 65, 'Pack de 6 cervezas en lata de 300ml ', '', '2024-04-15 14:45:51', 8);
+(613512, 'Cerveza Corona', 6350, 0, 'Cerveza de 750ml', '', '2024-04-15 13:56:49', 7),
+(814428, 'Cerveza Aguila', 4250, 5, 'Cerveza de 50ml', '', '2024-04-17 12:30:41', 7);
 
 --
 -- Disparadores `bebidas`
 --
 DELIMITER $$
+CREATE TRIGGER `eliminar_producto_cantidad_cero` AFTER UPDATE ON `bebidas` FOR EACH ROW BEGIN
+    IF NEW.cantidad = 0 THEN
+        DELETE FROM bebidas WHERE codigo = NEW.codigo;
+    END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `entrada` AFTER INSERT ON `bebidas` FOR EACH ROW BEGIN
-    INSERT INTO entrada_productos (cantidad_entreda, fecha_entrada, precio_compra, producto_id)
+    INSERT INTO entrada_productos (cantidad_entreda, fecha_entrada, precio_compra, producto_codigo)
     VALUES (NEW.cantidad, CURRENT_TIMESTAMP(), NEW.precio, NEW.codigo);
 END
 $$
@@ -91,7 +99,7 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `salida` AFTER DELETE ON `bebidas` FOR EACH ROW BEGIN
-    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_id)
+    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_codigo)
     VALUES (CURRENT_TIMESTAMP(), OLD.cantidad, 'salida', OLD.codigo);
 END
 $$
@@ -138,64 +146,12 @@ DELIMITER ;
 
 CREATE TABLE `entrada_productos` (
   `id_entrada` int(11) NOT NULL,
-  `cantidad_entreda` int(11) DEFAULT NULL,
-  `fecha_entrada` timestamp NOT NULL DEFAULT current_timestamp(),
+  `cantidad_entrada` int(11) DEFAULT NULL,
+  `fecha_entrada` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `precio_compra` int(11) DEFAULT NULL,
-  `historial_id` int(11) DEFAULT NULL,
-  `producto_id` int(11) DEFAULT NULL
+  `producto_codigo` int(11) DEFAULT NULL,
+  `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `entrada_productos`
---
-
-INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entreda`, `fecha_entrada`, `precio_compra`, `historial_id`, `producto_id`) VALUES
-(1, 20, '2024-03-18 16:22:30', 15500, NULL, 6),
-(2, 40, '2024-03-18 16:25:05', 20000, NULL, 7),
-(3, 20, '2024-03-18 20:14:01', 14500, NULL, 8),
-(4, 30, '2024-03-18 20:24:46', 20000, NULL, 9),
-(5, 30, '2024-03-18 20:28:13', 21000, NULL, 10),
-(6, 10, '2024-03-18 20:33:00', 15000, NULL, 11),
-(7, 16, '2024-03-26 21:43:22', 15000, NULL, 12),
-(8, 30, '2024-03-27 16:51:59', 14500, NULL, 13),
-(9, 20, '2024-03-27 17:28:54', 32000, NULL, 14),
-(10, 5, '2024-03-27 17:56:37', 3200, NULL, 15),
-(11, 10, '2024-03-27 18:22:59', 4200, NULL, 16),
-(12, 30, '2024-03-27 19:38:59', 3200, NULL, 17),
-(13, 40, '2024-03-27 19:41:07', 2900, NULL, 18),
-(14, 45, '2024-03-27 19:42:25', 3200, NULL, 19),
-(15, 90, '2024-03-27 19:43:35', 12500, NULL, 20),
-(16, 30, '2024-03-28 19:19:49', 21000, NULL, 21),
-(17, 45, '2024-03-28 19:32:50', 4200, NULL, 22),
-(18, 30, '2024-03-28 20:00:18', 6000, NULL, 23),
-(19, 120, '2024-03-28 21:06:16', 19500, NULL, 24),
-(20, 20, '2024-04-01 12:09:15', 45000, NULL, 25),
-(21, 30, '2024-04-01 12:10:36', 75000, NULL, 26),
-(22, 30, '2024-04-01 19:48:39', 15600, NULL, 27),
-(23, 15, '2024-04-01 19:57:08', 65500, NULL, 28),
-(24, 30, '2024-04-01 19:59:57', 75500, NULL, 29),
-(25, 60, '2024-04-01 20:12:55', 16500, NULL, 31),
-(26, 30, '2024-04-01 22:50:47', 4500, NULL, 32),
-(27, 10, '2024-04-08 17:40:32', 73, NULL, 33),
-(28, 15, '2024-04-08 17:41:34', 72500, NULL, 34),
-(29, 20, '2024-04-08 18:07:33', 26550, NULL, 35),
-(30, 40, '2024-04-08 18:09:14', 4600, NULL, 36),
-(31, 30, '2024-04-08 18:10:47', 45750, NULL, 37),
-(32, 20, '2024-04-15 13:43:28', 16500, NULL, 38),
-(33, 30, '2024-04-15 13:48:34', 18500, NULL, 39),
-(34, 10, '2024-04-15 13:56:49', 6350, NULL, 40),
-(35, 65, '2024-04-15 14:45:51', 16500, NULL, 41);
-
---
--- Disparadores `entrada_productos`
---
-DELIMITER $$
-CREATE TRIGGER `historial_entrada` AFTER INSERT ON `entrada_productos` FOR EACH ROW BEGIN
-    INSERT INTO historial_movimiento (tipo_movimiento, cantidad_movimiento, fecha_movimiento, hora_movimiento, producto_id)
-    VALUES ('Entrada', NEW.cantidad_entreda, CURRENT_DATE(), CURRENT_TIME(), NEW.producto_id);
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -209,14 +165,14 @@ CREATE TABLE `historial_movimiento` (
   `cantidad_movimiento` varchar(255) DEFAULT NULL,
   `fecha_movimiento` date NOT NULL,
   `hora_movimiento` time DEFAULT NULL,
-  `producto_id` int(11) DEFAULT NULL
+  `producto_codigo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `historial_movimiento`
 --
 
-INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad_movimiento`, `fecha_movimiento`, `hora_movimiento`, `producto_id`) VALUES
+INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad_movimiento`, `fecha_movimiento`, `hora_movimiento`, `producto_codigo`) VALUES
 (1, 'entrada', '40', '2024-03-18', '11:25:05', 7),
 (3, 'Entrada', '30', '2024-03-18', '15:24:46', 9),
 (4, 'Entrada', '30', '2024-03-18', '15:28:13', 10),
@@ -278,7 +234,10 @@ INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad
 (60, 'Salida', '20', '2024-04-15', '09:02:08', 38),
 (61, 'Salida', '30', '2024-04-15', '09:02:11', 39),
 (62, 'Salida', '5', '2024-04-15', '09:41:02', 40),
-(63, 'Entrada', '65', '2024-04-15', '09:45:51', 41);
+(63, 'Entrada', '65', '2024-04-15', '09:45:51', 41),
+(65, 'Entrada', '10', '2024-04-17', '07:30:41', 814428),
+(66, 'Salida', '5', '2024-04-17', '07:40:45', 814428),
+(67, 'Salida', '15', '2024-04-17', '07:42:00', 861677);
 
 -- --------------------------------------------------------
 
@@ -298,7 +257,40 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto`) VALUES
-(0, 1, '2024-04-17 12:18:42', 861677);
+(1, 1, '2024-04-17 12:18:42', 861677),
+(2, 5, '2024-04-17 12:33:33', 613512),
+(3, 5, '2024-04-17 12:36:05', 613512),
+(4, 5, '2024-04-17 12:40:45', 814428),
+(5, 15, '2024-04-17 12:42:00', 861677),
+(10, 5, '2024-04-17 13:19:00', 861677),
+(11, 5, '2024-04-17 13:22:31', 861677);
+
+--
+-- Disparadores `pedidos`
+--
+DELIMITER $$
+CREATE TRIGGER `after_pedido_insert` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
+    DECLARE codigo_producto INT;
+    DECLARE cantidad INT;
+
+    -- Obtener el id de la bebida y la cantidad del nuevo pedido
+    SELECT NEW.codigo_producto, NEW.cantidad INTO codigo_producto, cantidad;
+
+    -- Insertar un registro en la tabla de salida_productos
+    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_codigo)
+    VALUES (NOW(), cantidad, 'Venta realizada', codigo_producto);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `restar_cantidad_bebida` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
+    -- Actualizar la cantidad en la tabla de bebidas
+    UPDATE bebidas
+    SET cantidad = cantidad - NEW.cantidad
+    WHERE codigo = NEW.codigo_producto;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -310,8 +302,8 @@ CREATE TABLE `salida_productos` (
   `id_salida` int(11) NOT NULL,
   `fecha_salida` time DEFAULT NULL,
   `cantidad_salida` int(11) DEFAULT NULL,
-  `motivo_salida` varchar(255) NOT NULL,
-  `producto_id` int(11) DEFAULT NULL,
+  `motivo_salida` varchar(255) DEFAULT NULL,
+  `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -319,50 +311,10 @@ CREATE TABLE `salida_productos` (
 -- Volcado de datos para la tabla `salida_productos`
 --
 
-INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `producto_id`, `historial_id`) VALUES
-(10, '15:29:06', 0, '', 10, NULL),
-(11, '15:33:52', 10, 'salida', 11, NULL),
-(12, '11:47:52', 16, 'salida', 12, NULL),
-(13, '11:52:53', 30, 'salida', 13, NULL),
-(14, '12:51:19', 20, 'salida', 14, NULL),
-(15, '14:37:07', 5, 'salida', 15, NULL),
-(16, '14:38:13', 10, 'salida', 16, NULL),
-(17, '14:40:14', 30, 'salida', 17, NULL),
-(18, '16:06:48', 30, 'salida', 21, NULL),
-(19, '15:53:20', 120, 'salida', 24, NULL),
-(20, '16:13:10', 40, 'salida', 18, NULL),
-(21, '15:06:50', 30, 'salida', 27, NULL),
-(22, '15:26:09', 45, 'salida', 19, NULL),
-(23, '15:26:10', 90, 'salida', 20, NULL),
-(24, '15:26:11', 45, 'salida', 22, NULL),
-(25, '15:26:13', 30, 'salida', 23, NULL),
-(26, '15:26:14', 20, 'salida', 25, NULL),
-(27, '15:26:15', 30, 'salida', 26, NULL),
-(28, '15:26:16', 15, 'salida', 28, NULL),
-(29, '15:26:20', 30, 'salida', 29, NULL),
-(30, '12:41:10', 10, 'salida', 33, NULL),
-(31, '14:25:25', 5, 'Venta realizada', 32, NULL),
-(32, '07:46:47', 5, 'Venta realizada', 31, NULL),
-(33, '09:01:28', 5, 'salida', 31, NULL),
-(34, '09:01:52', 25, 'salida', 32, NULL),
-(35, '09:01:55', 15, 'salida', 34, NULL),
-(36, '09:01:59', 20, 'salida', 35, NULL),
-(37, '09:02:02', 40, 'salida', 36, NULL),
-(38, '09:02:05', 30, 'salida', 37, NULL),
-(39, '09:02:08', 20, 'salida', 38, NULL),
-(40, '09:02:11', 30, 'salida', 39, NULL),
-(41, '09:41:02', 5, 'Venta realizada', 40, NULL);
-
---
--- Disparadores `salida_productos`
---
-DELIMITER $$
-CREATE TRIGGER `historial_salida` AFTER INSERT ON `salida_productos` FOR EACH ROW BEGIN
-    INSERT INTO historial_movimiento (tipo_movimiento, cantidad_movimiento, fecha_movimiento, hora_movimiento, producto_id)
-    VALUES ('Salida', NEW.cantidad_salida, CURRENT_DATE(), CURRENT_TIME(), NEW.producto_id);
-END
-$$
-DELIMITER ;
+INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `producto_codigo`, `historial_id`) VALUES
+(1, '08:19:00', 5, 'Venta realizada', 861677, NULL),
+(2, '08:22:31', 5, 'Venta realizada', 861677, NULL),
+(5, '08:33:13', 40, 'salida', 861677, NULL);
 
 -- --------------------------------------------------------
 
@@ -406,20 +358,21 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `entrada_productos`
   ADD PRIMARY KEY (`id_entrada`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `historial_id` (`historial_id`);
+  ADD KEY `producto_codigo` (`producto_codigo`),
+  ADD KEY `fk_nombre_historial_entrada` (`historial_id`);
 
 --
 -- Indices de la tabla `historial_movimiento`
 --
 ALTER TABLE `historial_movimiento`
   ADD PRIMARY KEY (`id_historial`),
-  ADD KEY `producto_id` (`producto_id`);
+  ADD KEY `producto_id` (`producto_codigo`);
 
 --
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `codigo_producto` (`codigo_producto`);
 
 --
@@ -427,8 +380,8 @@ ALTER TABLE `pedidos`
 --
 ALTER TABLE `salida_productos`
   ADD PRIMARY KEY (`id_salida`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `historial_id` (`historial_id`);
+  ADD KEY `fk_nombre_historial` (`historial_id`),
+  ADD KEY `salida_productos_ibfk_1` (`producto_codigo`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -450,19 +403,25 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `entrada_productos`
 --
 ALTER TABLE `entrada_productos`
-  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_movimiento`
 --
 ALTER TABLE `historial_movimiento`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -475,10 +434,23 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Filtros para la tabla `pedidos`
+-- Filtros para la tabla `bebidas`
 --
-ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`codigo_producto`) REFERENCES `bebidas` (`codigo`);
+ALTER TABLE `bebidas`
+  ADD CONSTRAINT `fk_nombre_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`);
+
+--
+-- Filtros para la tabla `entrada_productos`
+--
+ALTER TABLE `entrada_productos`
+  ADD CONSTRAINT `entrada_productos_ibfk_1` FOREIGN KEY (`producto_codigo`) REFERENCES `bebidas` (`codigo`),
+  ADD CONSTRAINT `fk_nombre_historial_entrada` FOREIGN KEY (`historial_id`) REFERENCES `historial_movimiento` (`id_historial`);
+
+--
+-- Filtros para la tabla `salida_productos`
+--
+ALTER TABLE `salida_productos`
+  ADD CONSTRAINT `fk_nombre_historial` FOREIGN KEY (`historial_id`) REFERENCES `historial_movimiento` (`id_historial`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

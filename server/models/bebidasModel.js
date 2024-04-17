@@ -28,10 +28,10 @@ class Bebidas {
     });
   }
 
-  static actualizarBebida(id, bebidaActualizada, result) {
+  static actualizarBebida(codigo, bebidaActualizada, result) {
     db.query(
-      "UPDATE bebidas SET ? WHERE id = ?",
-      [bebidaActualizada, id],
+      "UPDATE bebidas SET ? WHERE codigo = ?",
+      [bebidaActualizada, codigo],
       (err, res) => {
         if (err) throw err;
         result(null, res);
@@ -39,8 +39,8 @@ class Bebidas {
     );
   }
 
-  static eliminarBebida(id, callback) {
-    db.query("DELETE FROM bebidas WHERE id = ?", id, (err, res) => {
+  static eliminarBebida(codigo, callback) {
+    db.query("DELETE FROM bebidas WHERE codigo = ?", codigo, (err, res) => {
       if (err) {
         console.error("Error al eliminar la bebida:", err);
         callback(err, null);
