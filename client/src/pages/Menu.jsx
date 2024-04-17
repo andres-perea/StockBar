@@ -147,10 +147,10 @@ function Menu() {
                 <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
               </div>
               <div className="px-6 py-2">
-                <div className="font-bold text-base mb-2">"{bebida.descripcion}"</div>
+                <div className="font-semibold text-gray-500 text-base mb-2">"{bebida.descripcion}"</div>
               </div>
               <div className="px-6">
-                <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-700 mr-2">
+                <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
                   {categorias.find(
                     (categoria) => categoria.id === bebida.categoria_id
                   )?.nombre || "Sin categoria"}
@@ -160,7 +160,7 @@ function Menu() {
                 <div className="font-bold text-green-800 text-xl mb-2">${bebida.precio}</div>
                 <button
                   onClick={() => agregarAlCarrito(bebida)}
-                  className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
                 >
                   Agregar al carrito
                 </button>

@@ -60,12 +60,12 @@ function Bebidas() {
       {/* Sidebar */}
       <div
         className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
-          sidebar ? "w-80" : "w-0"
+          sidebar ? "w-64" : "w-0"
         } lg:w-full h-full transition-all border-r p-4`}
       >
         {/* LOGO */}
         <div className="text-center pt-4 pb-4 focus:outline-none overflow-y-auto">
-          <h1 className="uppercase font-bold tracking-[4px]">StockBar</h1>
+          <h1 className="uppercase font-bold tracking-[4px] focus:outline-none overflow-y-auto">StockBar</h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
@@ -103,6 +103,17 @@ function Bebidas() {
                     Pedidos
                   </a>
                 </li>
+</Link>
+              <Link to ="/pedidos">
+              <li>
+                <a
+                  href=""
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                >
+                  <MdInbox />
+                  Pedidos
+                </a>
+              </li>
               </Link>
               <Link to="/categorias">
                 <li>
