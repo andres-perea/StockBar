@@ -37,10 +37,10 @@ function Menu() {
   }, [carrito]);
 
   const agregarAlCarrito = (bebida) => {
-    const existentItem = carrito.find((item) => item.id === bebida.id);
+    const existentItem = carrito.find((item) => item.codigo === bebida.codigo);
     if (existentItem) {
       const updatedCarrito = carrito.map((item) =>
-        item.id === bebida.id ? { ...item, cantidad: item.cantidad + 1 } : item
+        item.codigo === bebida.codigo ? { ...item, cantidad: item.cantidad + 1 } : item
       );
       setCarrito(updatedCarrito);
     } else {
@@ -55,11 +55,11 @@ function Menu() {
 
   const eliminarDelCarrito = (bebida) => {
     const updatedCarrito = carrito.map((item) =>
-      item.id === bebida.id && item.cantidad > 1
+      item.codigo === bebida.codigo && item.cantidad > 1
         ? { ...item, cantidad: item.cantidad - 1 }
         : item
     );
-    setCarrito(updatedCarrito.filter((item) => item.id !== bebida.id));
+    setCarrito(updatedCarrito.filter((item) => item.codigo !== bebida.codigo));
   };
 
   const toggleCarrito = () => {
@@ -83,7 +83,7 @@ function Menu() {
     // Crear un objeto con los detalles del pedido
     const pedido = {
       detalles: carrito.map((item) => ({
-        bebida_id: item.id,
+        codigo_producto: item.codigo,
         cantidad: item.cantidad,
       })),
       total: pedidoTotal,
@@ -134,7 +134,7 @@ function Menu() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {bebidas.map((bebida) => (
             <div
-              key={bebida.id}
+              key={bebida.codigo}
               className="max-w-sm rounded overflow-hidden shadow-lg m-2"
             >
               {/* Imagen producto */}

@@ -3,7 +3,7 @@ const db = require("../db");
 class Pedidos {
   static ObtenerPedidos(callback) {
     db.query(
-      "SELECT bebidas.nombre, pedidos.cantidad, bebidas.precio FROM pedidos INNER JOIN bebidas ON pedidos.bebida_id = bebidas.codigo",
+      "SELECT bebidas.nombre, pedidos.cantidad, bebidas.precio FROM pedidos INNER JOIN bebidas ON pedidos.codigo_producto = bebidas.codigo",
       (err, results) => {
         if (err) return callback(err, null);
         callback(null, results);
@@ -21,7 +21,7 @@ class Pedidos {
       const pedido = {
         id: id,
         cantidad: detalle.cantidad,
-        bebida_id: detalle.bebida_id,
+        codigo_producto: detalle.codigo_producto,
       };
 
       callback(null, pedido);
