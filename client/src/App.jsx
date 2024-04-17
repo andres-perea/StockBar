@@ -9,6 +9,7 @@ import AgregarBebidas from "./pages/agregarBebidas";
 import Categorias from "./pages/Categorias";
 import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
+import Pedidos from "./pages/Pedidos";
 
 function Routers() {
   return (
@@ -22,6 +23,7 @@ function Routers() {
         <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
         <Route path="/categorias" element={<Categorias />} />
         <Route path="/agregarCategoria" element={<AgregarCategorias />} />
+        <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
       </Routes>
     </BrowserRouter>

@@ -102,6 +102,17 @@ function Bebidas() {
                   Pedidos
                 </a>
               </li>
+              <Link to="/pedidos">
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold"
+                  >
+                    <MdInbox />
+                    Pedidos
+                  </a>
+                </li>
+              </Link>
               <Link to="/categorias">
                 <li>
                   <a
@@ -145,6 +156,9 @@ function Bebidas() {
               <thead>
                 <tr>
                   <th className="border border-slate-600 text-lg text-gray-600">
+                    Codigo
+                  </th>
+                  <th className="border border-slate-600 text-lg text-gray-600">
                     Nombre
                   </th>
                   <th className="border border-slate-600 text-lg text-gray-600">
@@ -152,6 +166,9 @@ function Bebidas() {
                   </th>
                   <th className="border border-slate-600 text-lg text-gray-600">
                     Precio
+                  </th>
+                  <th className="border border-slate-600 text-lg text-gray-600">
+                    Descripción
                   </th>
                   <th className="border border-slate-600 text-lg text-gray-600">
                     Categoria
@@ -165,6 +182,9 @@ function Bebidas() {
                 {bebidas.map((bebida) => (
                   <tr key={bebida.id}>
                     <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
+                      {bebida.codigo}
+                    </td>
+                    <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
                       {bebida.nombre}
                     </td>
                     <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
@@ -172,6 +192,9 @@ function Bebidas() {
                     </td>
                     <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
                       {bebida.precio}
+                    </td>
+                    <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
+                      {bebida.descripcion}
                     </td>
                     <td className="border border-slate-600 font-bold bg-gray-100 text-gray-600">
                       {categorias.find(

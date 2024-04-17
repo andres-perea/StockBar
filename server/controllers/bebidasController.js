@@ -9,6 +9,9 @@ exports.mostrarBebidas = (req, res) => {
 
 exports.crearBebidas = (req, res) => {
   const bebida = req.body;
+  const rutaImagen = req.file.path;
+
+  bebida.imagen_ruta = rutaImagen;
   Bebidas.crearBebidas(bebida, (err, bebidas) => {
     if (err) res.status(500).send({ message: err });
     else res.send({ message: "Bebida registrada correctamente" });

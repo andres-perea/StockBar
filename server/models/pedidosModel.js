@@ -2,10 +2,13 @@ const db = require("../db");
 
 class Pedidos {
   static ObtenerPedidos(callback) {
-    db.query("SELECT * FROM pedidos", (err, results) => {
-      if (err) return callback(err, null);
-      callback(null, results);
-    });
+    db.query(
+      "SELECT bebidas.nombre, pedidos.cantidad, bebidas.precio FROM pedidos INNER JOIN bebidas ON pedidos.bebida_id = bebidas.codigo",
+      (err, results) => {
+        if (err) return callback(err, null);
+        callback(null, results);
+      }
+    );
   }
 
   static CrearPedido(detalles, callback) {
