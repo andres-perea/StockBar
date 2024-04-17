@@ -122,9 +122,11 @@ function Menu() {
             </div>
             {/* Botón de búsqueda y carrito */}
             <div className="flex space-x-4">
-              <button className="text-black hover:scale-110 transition duration-400">
-                <MdOutlineSearch className="h-7 w-7" />
-              </button>
+            <div className="relative">
+            <input type="text" placeholder="Buscar" className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"  />
+            <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none" />
+            </div>
+
               <button
                 onClick={toggleCarrito}
                 className="text-black hover:scale-110 transition duration-400"
@@ -139,6 +141,21 @@ function Menu() {
             </div>
           </div>
         </header>
+        <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+        <div className="flex grid w-64 flex flex-col h-full">
+          <div className="p-4">
+          <h1 className="text-3xl lg:text-3xl text-black text-center font-bold">Categorías</h1>
+          </div>
+            <ul className="flex-1 overflow-y-auto">
+            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 1</li>
+            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 2</li>
+            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 3</li>
+            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 4</li>
+            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 5</li>
+
+            </ul>
+          </div>
+          <div className="col-span-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {bebidas.map((bebida) => (
             <div
@@ -179,6 +196,8 @@ function Menu() {
               </div>
             </div>
           ))}
+        </div>
+        </div>
         </div>
       </div>
       {/* Contenedor flotante del carrito */}

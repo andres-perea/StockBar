@@ -25,7 +25,7 @@ function Dashboard() {
   };
 
   return (
-    <div className=" flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+    <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
       {/* Sidebar */}
       <div
         className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
