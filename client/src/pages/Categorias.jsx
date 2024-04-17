@@ -86,6 +86,7 @@ function Categorias() {
                   </a>
                 </li>
               </Link>
+              <Link to="/pedidos">
               <li>
                 <a
                   href=""
@@ -95,6 +96,7 @@ function Categorias() {
                   Pedidos
                 </a>
               </li>
+              </Link>
               <Link to="/categorias">
                 <li>
                   <a
