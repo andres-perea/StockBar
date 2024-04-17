@@ -8,23 +8,10 @@ exports.mostrarBebidas = (req, res) => {
 };
 
 exports.crearBebidas = (req, res) => {
-  // Verificar si se subió un archivo
-  if (!req.file) {
-    return res.status(400).send({ message: "Debe subir una imagen" });
-  }
-
   const bebida = req.body;
-  const rutaImagen = req.file.path;
-
-  bebida.imagen_ruta = rutaImagen;
-
   Bebidas.crearBebidas(bebida, (err, bebidas) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send({ message: "Error al guardar la bebida" });
-    } else {
-      res.send({ message: "Bebida registrada correctamente" });
-    }
+    if (err) res.status(500).send({ message: err });
+    else res.send({ message: "Bebida registrada correctamente" });
   });
 };
 
