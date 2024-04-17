@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2024 a las 15:36:28
+-- Tiempo de generación: 17-04-2024 a las 18:22:46
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -61,7 +61,7 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(613512, 'Cerveza Corona', 6350, 0, 'Cerveza de 750ml', '', '2024-04-15 13:56:49', 7),
+(613512, 'Cerveza Corona', 2500, 25, 'Cerveza de 750ml', '', '2024-04-15 13:56:49', 5),
 (814428, 'Cerveza Aguila', 4250, 5, 'Cerveza de 50ml', '', '2024-04-17 12:30:41', 7);
 
 --
@@ -77,7 +77,7 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `entrada` AFTER INSERT ON `bebidas` FOR EACH ROW BEGIN
-    INSERT INTO entrada_productos (cantidad_entreda, fecha_entrada, precio_compra, producto_codigo)
+    INSERT INTO entrada_productos (cantidad_entrada, fecha_entrada, precio_compra, producto_codigo)
     VALUES (NEW.cantidad, CURRENT_TIMESTAMP(), NEW.precio, NEW.codigo);
 END
 $$
@@ -152,6 +152,13 @@ CREATE TABLE `entrada_productos` (
   `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `entrada_productos`
+--
+
+INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entrada`, `fecha_entrada`, `precio_compra`, `producto_codigo`, `historial_id`) VALUES
+(1, 30, '2024-04-17 15:06:20', 60000, 748955, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,7 +321,8 @@ CREATE TABLE `salida_productos` (
 INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `producto_codigo`, `historial_id`) VALUES
 (1, '08:19:00', 5, 'Venta realizada', 861677, NULL),
 (2, '08:22:31', 5, 'Venta realizada', 861677, NULL),
-(5, '08:33:13', 40, 'salida', 861677, NULL);
+(5, '08:33:13', 40, 'salida', 861677, NULL),
+(6, '10:34:39', 30, 'salida', 748955, NULL);
 
 -- --------------------------------------------------------
 
@@ -403,7 +411,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `entrada_productos`
 --
 ALTER TABLE `entrada_productos`
-  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_movimiento`
@@ -421,7 +429,7 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -438,13 +446,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `bebidas`
   ADD CONSTRAINT `fk_nombre_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`);
-
---
--- Filtros para la tabla `entrada_productos`
---
-ALTER TABLE `entrada_productos`
-  ADD CONSTRAINT `entrada_productos_ibfk_1` FOREIGN KEY (`producto_codigo`) REFERENCES `bebidas` (`codigo`),
-  ADD CONSTRAINT `fk_nombre_historial_entrada` FOREIGN KEY (`historial_id`) REFERENCES `historial_movimiento` (`id_historial`);
 
 --
 -- Filtros para la tabla `salida_productos`

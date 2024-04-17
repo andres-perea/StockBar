@@ -141,6 +141,7 @@ function Menu() {
             </div>
           </div>
         </header>
+
         <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
         <div className="flex grid w-64 flex flex-col h-full">
           <div className="p-4">
@@ -157,10 +158,13 @@ function Menu() {
           </div>
           <div className="col-span-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+
           {bebidas.map((bebida) => (
             <div
               key={bebida.codigo}
-              className="max-w-sm rounded overflow-hidden shadow-lg m-2"
+              className="max-w-sm rounded overflow-hidden shadow-lg m-1"
             >
               {/* Imagen producto */}
               <img
