@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-04-2024 a las 18:25:56
+-- Tiempo de generación: 17-04-2024 a las 14:24:13
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -70,7 +70,7 @@ INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, 
 DELIMITER $$
 CREATE TRIGGER `entrada` AFTER INSERT ON `bebidas` FOR EACH ROW BEGIN
     INSERT INTO entrada_productos (cantidad_entreda, fecha_entrada, precio_compra, producto_id)
-    VALUES (NEW.cantidad, CURRENT_TIMESTAMP(), NEW.precio, NEW.id);
+    VALUES (NEW.cantidad, CURRENT_TIMESTAMP(), NEW.precio, NEW.codigo);
 END
 $$
 DELIMITER ;
@@ -92,7 +92,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `salida` AFTER DELETE ON `bebidas` FOR EACH ROW BEGIN
     INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_id)
-    VALUES (CURRENT_TIMESTAMP(), OLD.cantidad, 'salida', OLD.id);
+    VALUES (CURRENT_TIMESTAMP(), OLD.cantidad, 'salida', OLD.codigo);
 END
 $$
 DELIMITER ;
@@ -292,6 +292,13 @@ CREATE TABLE `pedidos` (
   `fecha_pedido` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `codigo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto`) VALUES
+(0, 1, '2024-04-17 12:18:42', 861677);
 
 -- --------------------------------------------------------
 
