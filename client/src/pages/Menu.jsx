@@ -107,7 +107,7 @@ function Menu() {
   const navegation = useNavigate();
   const checkout = () => {
     navegation("/checkout");
-  }
+  };
 
   return (
     <>
@@ -122,10 +122,14 @@ function Menu() {
             </div>
             {/* Botón de búsqueda y carrito */}
             <div className="flex space-x-4">
-            <div className="relative">
-            <input type="text" placeholder="Buscar" className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"  />
-            <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none" />
-            </div>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Buscar"
+                  className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"
+                />
+                <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none" />
+              </div>
 
               <button
                 onClick={toggleCarrito}
@@ -143,127 +147,139 @@ function Menu() {
         </header>
 
         <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
-        <div className="flex grid w-64 flex flex-col h-full">
-          <div className="p-4">
-          <h1 className="text-3xl lg:text-3xl text-black text-center font-bold">Categorías</h1>
-          </div>
+          <div className="flex grid w-64 flex flex-col h-full">
+            <div className="p-4">
+              <h1 className="text-3xl lg:text-3xl text-black text-center font-bold">
+                Categorías
+              </h1>
+            </div>
             <ul className="flex-1 overflow-y-auto">
-            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 1</li>
-            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 2</li>
-            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 3</li>
-            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 4</li>
-            <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">Categoría 5</li>
-
+              <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">
+                Categoría 1
+              </li>
+              <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">
+                Categoría 2
+              </li>
+              <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">
+                Categoría 3
+              </li>
+              <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">
+                Categoría 4
+              </li>
+              <li className="p-4 text-center cursor-pointer hover:bg-gray-700 text-black font-bold">
+                Categoría 5
+              </li>
             </ul>
           </div>
           <div className="col-span-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-
-          {bebidas.map((bebida) => (
-            <div
-              key={bebida.codigo}
-              className="max-w-sm rounded overflow-hidden shadow-lg m-1"
-            >
-              {/* Imagen producto */}
-              <img
-                className="w-full"
-                src="https://via.placeholder.com/350x150"
-                alt="Placeholder"
-              />
-              <div className="px-6 py-2">
-                <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                {bebidas.map((bebida) => (
+                  <div
+                    key={bebida.codigo}
+                    className="max-w-sm rounded overflow-hidden shadow-lg m-1"
+                  >
+                    {/* Imagen producto */}
+                    <img
+                      className="w-full"
+                      src="https://via.placeholder.com/350x150"
+                      alt="Placeholder"
+                    />
+                    <div className="px-6 py-2">
+                      <div className="font-bold text-xl mb-2">
+                        {bebida.nombre}
+                      </div>
+                    </div>
+                    <div className="px-6 py-2">
+                      <div className="font-semibold text-gray-500 text-base mb-2">
+                        "{bebida.descripcion}"
+                      </div>
+                    </div>
+                    <div className="px-6">
+                      <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
+                        {categorias.find(
+                          (categoria) => categoria.id === bebida.categoria_id
+                        )?.nombre || "Sin categoria"}
+                      </div>
+                    </div>
+                    <div className="px-6 py-4">
+                      <div className="font-bold text-green-800 text-xl mb-2">
+                        ${bebida.precio}
+                      </div>
+                      <button
+                        onClick={() => agregarAlCarrito(bebida)}
+                        className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
+                      >
+                        Agregar al carrito
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="px-6 py-2">
-                <div className="font-semibold text-gray-500 text-base mb-2">
-                  "{bebida.descripcion}"
-                </div>
-              </div>
-              <div className="px-6">
-                <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
-                  {categorias.find(
-                    (categoria) => categoria.id === bebida.categoria_id
-                  )?.nombre || "Sin categoria"}
-                </div>
-              </div>
-              <div className="px-6 py-4">
-                <div className="font-bold text-green-800 text-xl mb-2">
-                  ${bebida.precio}
-                </div>
-                <button
-                  onClick={() => agregarAlCarrito(bebida)}
-                  className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
+            </div>
+          </div>
+        </div>
+        {/* Contenedor flotante del carrito */}
+        {showCart && (
+          <div className="fixed right-0 top-0 bg-white shadow-lg w-80 mt-16 p-4">
+            <div className="flex justify-between items-center">
+              <h2 className="text-lg font-bold">Carrito de Compras</h2>
+              <button
+                onClick={toggleCarrito}
+                className="text-red-600 hover:text-red-800"
+              >
+                <MdClose />
+              </button>
+            </div>
+            <div className="mt-4">
+              {carrito.map((item, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-3 gap-4 max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2"
                 >
-                  Agregar al carrito
+                  <div className="col-span-2 p-2">
+                    <p className="font-bold">{item.nombre}</p>
+                    <p>${item.precio}</p>
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <button
+                      onClick={() => agregarAlCarrito(item)}
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+                    >
+                      +
+                    </button>
+                    <span className="mx-2">{item.cantidad}</span>
+                    <button
+                      onClick={() => eliminarDelCarrito(item)}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              ))}
+              <div className="border-b border-gray-900"></div>
+              <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2">
+                <p className="font-bold">Total a Pagar: ${total}</p>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  onClick={realizarPedido}
+                  className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 mt-2"
+                >
+                  Realizar Pedido
+                </button>
+                <button
+                  onClick={checkout}
+                  className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 m-2 mt-2"
+                >
+                  Ver Carrito
                 </button>
               </div>
             </div>
-          ))}
-        </div>
-        </div>
-        </div>
+          </div>
+        )}
       </div>
-      {/* Contenedor flotante del carrito */}
-      {showCart && (
-        <div className="fixed right-0 top-0 bg-white shadow-lg w-80 mt-16 p-4">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-bold">Carrito de Compras</h2>
-            <button
-              onClick={toggleCarrito}
-              className="text-red-600 hover:text-red-800"
-            >
-              <MdClose />
-            </button>
-          </div>
-          <div className="mt-4">
-            {carrito.map((item, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-3 gap-4 max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2"
-              >
-                <div className="col-span-2 p-2">
-                  <p className="font-bold">{item.nombre}</p>
-                  <p>${item.precio}</p>
-                </div>
-                <div className="flex items-center mt-2">
-                  <button
-                    onClick={() => agregarAlCarrito(item)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
-                  >
-                    +
-                  </button>
-                  <span className="mx-2">{item.cantidad}</span>
-                  <button
-                    onClick={() => eliminarDelCarrito(item)}
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                  >
-                    -
-                  </button>
-                </div>
-              </div>
-            ))}
-            <div className="border-b border-gray-900"></div>
-            <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2">
-              <p className="font-bold">Total a Pagar: ${total}</p>
-            </div>
-            <div className="flex justify-center">
-              <button
-                onClick={realizarPedido}
-                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 mt-2"
-              >
-                Realizar Pedido
-              </button>
-              <button
-                onClick={checkout}
-                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 m-2 mt-2"
-              >
-                Ver Carrito
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

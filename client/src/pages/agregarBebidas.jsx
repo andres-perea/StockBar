@@ -16,26 +16,45 @@ import "react-toastify/dist/ReactToastify.css";
 function AgregarBebidas() {
   const [sidebar, setSidebar] = useState(false);
   const [categorias, setCategorias] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [values, setValues] = useState({
     nombre: "",
     cantidad: "",
     precio: "",
     descripcion: "",
-    imagen: "",
     categoria_id: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3000/bebidas/agregarBebidas", values)
-      .then(function (response) {
-        console.log(response);
-        toast.success("Bebida registrada correctamente");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    try {
+      const formData = new FormData();
+      formData.append("archivo", selectedFile);
+      formData.append("nombre", values.nombre);
+      formData.append("cantidad", values.cantidad);
+      formData.append("precio", values.precio);
+      formData.append("descripcion", values.descripcion);
+      formData.append("categoria_id", values.categoria_id);
+
+      const response = await axios.post(
+        "http://localhost:3000/bebidas/agregarBebidas",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response);
+      toast.success("Bebida registrada correctamente");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al registrar la bebida");
+    }
   };
 
   useEffect(() => {
@@ -63,7 +82,9 @@ function AgregarBebidas() {
       >
         {/* LOGO */}
         <div className="text-center p-8">
-          <h1 className="uppercase font-bold tracking-[4px] focus:outline-none overflow-y-auto">StockBar</h1>
+          <h1 className="uppercase font-bold tracking-[4px] focus:outline-none overflow-y-auto">
+            StockBar
+          </h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
@@ -216,7 +237,8 @@ function AgregarBebidas() {
                   <input
                     type="file"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    name="imagen"
+                    onChange={handleFileChange}
+                    name="archivo"
                   />
                 </div>
                 <div className="mb-4">

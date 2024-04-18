@@ -9,16 +9,20 @@ exports.mostrarBebidas = (req, res) => {
 };
 
 exports.crearBebidas = (req, res) => {
-  const uploadDir = path.join(__dirname, "img");
+  if (!req.file) {
+    return res.status(400).send('No se ha seleccionado ningún archivo.');
+  }
+  const uploadDir = path.join(__dirname, "img/");
   if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
+    fs.mkdirSync(uploadDir, { recursive: true });
   }
 
   const filename = req.file.filename;
   const filePath = path.join(uploadDir, filename);
+
   fs.renameSync(req.file.path, filePath);
 
-  const imagePathInDB = `./client/src/img/${filename}`;
+  const imagePathInDB = `img/${filename}`;
 
   const bebida = {
     nombre: req.body.nombre,
@@ -28,9 +32,18 @@ exports.crearBebidas = (req, res) => {
     categoria_id: req.body.categoria_id,
     imagen: imagePathInDB,
   };
-  Bebidas.crearBebidas(bebida, (err, bebidas) => {
-    if (err) res.status(500).send({ message: err });
-    else res.send({ message: "Bebida registrada correctamente" });
+
+  Bebidas.crearBebidas(bebida, (err, bebidaGuardada) => {
+    if (err) {
+      res.status(500).send({ message: err });
+    } else {
+      res
+        .status(201)
+        .send({
+          message: "Bebida registrada correctamente",
+          bebida: bebidaGuardada,
+        });
+    }
   });
 };
 
