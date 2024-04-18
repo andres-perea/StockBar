@@ -39,6 +39,7 @@ function Dashboard() {
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
+          <div className="border-b border-gray-300"></div>
             <ul>
               <Link>
                 <li>
@@ -52,6 +53,7 @@ function Dashboard() {
                 </li>
               </Link>
               <Link to="/bebidas">
+              <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
@@ -63,6 +65,7 @@ function Dashboard() {
                 </li>
               </Link>
               <Link to="/pedidos">
+              <div className="border-b border-gray-300"></div>
               <li>
                 <a
                   href=""
@@ -74,6 +77,7 @@ function Dashboard() {
               </li>
               </Link>
               <Link to="/categorias">
+              <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
