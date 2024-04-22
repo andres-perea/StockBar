@@ -140,8 +140,8 @@ function Menu() {
                 <MdShoppingCart className="h-7 w-7" />
               </button>
               {showCartNotification && (
-                <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded ">
-                    <MdCheck className="text-green-500" />
+                <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded flex items-center">
+                    <MdCheck className="text-green-500 mr-2" />
                   Producto agregado al carrito
                 </div>
               )}
@@ -256,12 +256,7 @@ function Menu() {
               >
                 Realizar Pedido
               </button>
-              <button
-                onClick={checkout}
-                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 m-2 mt-2"
-              >
-                Ver Carrito
-              </button>
+             
             </div>
           </div>
           <ToastContainer />
