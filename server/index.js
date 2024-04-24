@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
 const cors = require("cors");
 
 const authRouters = require("./routers/authRoutes");
@@ -18,6 +19,8 @@ app.use("/bebidas", bebidasRouters);
 app.use("/categorias", categoriasRouters);
 app.use("/pedidos", pedidosRouters);
 app.use("/saldo", saldoRouters);
+
+app.use("controllers/img", express.static(path.join(__dirname, "controllers/img")))
 
 app.listen(3000, () => {
   console.log("el servidor esta funcionando en el puerto 3000");

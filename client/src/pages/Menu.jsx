@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { MdOutlineSearch, MdShoppingCart, MdClose, MdCheck } from "react-icons/md";
+import {
+  MdOutlineSearch,
+  MdShoppingCart,
+  MdClose,
+  MdCheck,
+} from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -104,7 +109,6 @@ function Menu() {
       })
       .catch((error) => {
         console.error("Error al realizar el pedido:", error);
-
       });
   };
 
@@ -128,7 +132,11 @@ function Menu() {
             <div className="flex space-x-4">
               <div className="relative">
                 <div className="relative">
-                  <input type="text" placeholder="Buscar" className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold" />
+                  <input
+                    type="text"
+                    placeholder="Buscar"
+                    className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"
+                  />
                   <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none justify-center" />
                 </div>
               </div>
@@ -141,7 +149,7 @@ function Menu() {
               </button>
               {showCartNotification && (
                 <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded flex items-center">
-                    <MdCheck className="text-green-500 mr-2" />
+                  <MdCheck className="text-green-500 mr-2" />
                   Producto agregado al carrito
                 </div>
               )}
@@ -152,7 +160,6 @@ function Menu() {
           <div className="col-span-1">
             <div className="flex grid flex flex-col h-full">
               <ul className="flex-1 overflow-y-auto ">
-
                 {categorias.map((categoria, index) => (
                   <li className=" p-2 mt-2 text-center cursor-pointer odd:bg-white even:bg-slate-50 font-bold table-auto p-6 pb-4 transition duration-500 ease-in-out justify-center ">
                     {categoria.nombre}
@@ -172,11 +179,13 @@ function Menu() {
                   {/* Imagen producto */}
                   <img
                     className="w-full"
-                    src="https://via.placeholder.com/350x150"
-                    alt="Placeholder"
+                    src={`http://localhost:3000/${bebida.imagen}`}
+                    alt={bebida.nombre}
                   />
                   <div className="px-6 py-2">
-                    <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
+                    <div className="font-bold text-xl mb-2">
+                      {bebida.nombre}
+                    </div>
                   </div>
                   <div className="px-6 py-2">
                     <div className="font-semibold text-gray-500 text-base mb-2">
@@ -205,7 +214,8 @@ function Menu() {
               ))}
             </div>
           </div>
-        </div></div>
+        </div>
+      </div>
       {/* Contenedor flotante del carrito */}
       {showCart && (
         <div className="fixed right-0 top-0 bg-white shadow-lg w-80 mt-16 p-4">
@@ -256,7 +266,6 @@ function Menu() {
               >
                 Realizar Pedido
               </button>
-             
             </div>
           </div>
           <ToastContainer />
