@@ -1,18 +1,27 @@
-import React from "react";
-import { Card, Metric, Text } from "@tremor/react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-export default function CardUsageExample() {
+function Saldo() {
+  const [historialMovimiento, setHistorialMovimiento] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/saldo/").then((response) => {
+      setHistorialMovimiento(response.data);
+    });
+  }, []);
+
   return (
-    <Card
-      className="mx-auto max-w-xs"
-      decorationColor="red"
-    >
-      <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">
-        Saldo
-      </p>
-      <p className="text-3xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-        $34,743
-      </p>
-    </Card>
+    <>
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold mb-2">Saldo</h2>
+          {historialMovimiento.map((historial_movimiento, index) => (
+            <p key={index}> {historial_movimiento.saldo} </p>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
+
+export default Saldo;
