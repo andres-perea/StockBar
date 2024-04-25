@@ -5,12 +5,9 @@ function LandingPage() {
     const [count, setCount] = useState(0)
     return (
         <>
-        <div className="">
-            <Header />
-        {/* Navbar*/}
         <div className="bg-gray-300 w-full h-screen">
-        
-        </div>
+           {/* Navbar*/}
+           <Header />
         </div>
         </>
     )
