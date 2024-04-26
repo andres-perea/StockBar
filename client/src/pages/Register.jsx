@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../index.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const [values, setValues] = useState({
@@ -15,10 +18,11 @@ function Register() {
       .post("http://localhost:3000/api/auth/registro", values)
       .then(function (response) {
         console.log(response);
-        alert("Usuario registrado correcamente");
+        toast.success("Usuario registrado correctamente");
       })
       .catch(function (error) {
         console.log(error);
+        toast.error("Error al registrar al usuario");
       });
   };
   return (
@@ -61,7 +65,7 @@ function Register() {
         <button type="submit">Crear cuenta</button>
 
         <Link to="/login">
-          <button id="inicioSesion">Iniciar sesion</button>
+          <button>Iniciar sesion</button>
         </Link>
       </form>
     </div>
