@@ -10,7 +10,7 @@ import Categorias from "./pages/Categorias";
 import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
-import LandingPage from "./pages/LandingPage";
+import LandingPage from ".../LandingPage";
 
 
 function Routers() {
