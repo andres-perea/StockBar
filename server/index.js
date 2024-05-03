@@ -20,7 +20,7 @@ app.use("/categorias", categoriasRouters);
 app.use("/pedidos", pedidosRouters);
 app.use("/saldo", saldoRouters);
 
-app.use("controllers/img", express.static(path.join(__dirname, "controllers/img")))
+app.use("/img", express.static(path.join(__dirname, "img/")))
 
 app.listen(3000, () => {
   console.log("el servidor esta funcionando en el puerto 3000");
