@@ -173,6 +173,7 @@ function AgregarBebidas() {
                   <input
                     type="text"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="bebidaNombre"
                     onChange={(e) =>
                       setValues({ ...values, nombre: e.target.value })
                     }
@@ -189,6 +190,7 @@ function AgregarBebidas() {
                   <input
                     type="text"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="bebidaCantidad"
                     onChange={(e) =>
                       setValues({ ...values, cantidad: e.target.value })
                     }
@@ -205,6 +207,7 @@ function AgregarBebidas() {
                   <input
                     type="text"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="bebidaPrecio"
                     onChange={(e) =>
                       setValues({ ...values, precio: e.target.value })
                     }
@@ -221,13 +224,14 @@ function AgregarBebidas() {
                   <input
                     type="text"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="bebidaDescripcion"
                     onChange={(e) =>
                       setValues({ ...values, descripcion: e.target.value })
                     }
                     required
                   />
                 </div>
-                <div className="mb-4">
+                {/*<div className="mb-4">
                   <label
                     htmlFor="imagen"
                     className="block text-sm font-bold mb-2"
@@ -239,8 +243,9 @@ function AgregarBebidas() {
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFileChange}
                     name="archivo"
+                    id="bebidaImagen"
                   />
-                </div>
+                  </div>*/}
                 <div className="mb-4">
                   <label
                     htmlFor="categorias"
@@ -250,7 +255,7 @@ function AgregarBebidas() {
                   </label>
                   <select
                     name=""
-                    id=""
+                    id="bebidaCategoria"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={(e) =>
                       setValues({ ...values, categoria_id: e.target.value })
@@ -265,6 +270,7 @@ function AgregarBebidas() {
                 <button
                   type="submit"
                   className="bg-green-600 hover:bg-green-700 transition duration-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  id="btnAgregar"
                 >
                   Agregar Producto
                 </button>

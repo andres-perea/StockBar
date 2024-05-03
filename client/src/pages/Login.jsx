@@ -30,40 +30,6 @@ function Login() {
   return (
     <>
       <div className="">
-        <h2>Iniciar Sesión</h2>
-        <form action="" onSubmit={handleSubmit}>
-          <div className="">
-            <label htmlFor="nombreUsuario">Nombre de usuario: </label>
-            <input
-              id="nombreUsuario"
-              type="text"
-              placeholder="Ingrese su nombre de usuario"
-              name="nombreUsuario"
-              onChange={(e) =>
-                setValues({ ...values, nombreUsuario: e.target.value })
-              }
-              //required
-            />
-          </div>
-          <div className="">
-            <label htmlFor="contrasena">Contraseña: </label>
-            <input
-              id="contrasena"
-              type="password"
-              placeholder="Ingrese su contraseña"
-              name="contrasena"
-              onChange={(e) =>
-                setValues({ ...values, contrasena: e.target.value })
-              }
-              //required
-            />
-          </div>
-          <button type="submit">Iniciar Sesion</button>
-
-          <Link to="/registro">
-            <button>Crear cuenta</button>
-          </Link>
-        </form>
         <div class="flex items-center justify-center h-screen bg-gray-200">
           <div className="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="max-w-xs mx-auto">
@@ -81,6 +47,7 @@ function Login() {
                   <input
                     type="text"
                     name="nombreUsuario"
+                    id="nombreUsuario"
                     onChange={(e) =>
                       setValues({ ...values, nombreUsuario: e.target.value })
                     }
@@ -98,6 +65,7 @@ function Login() {
                   <div className="input-box">
                     <input
                       type="password"
+                      id="contrasena"
                       name="contrasena"
                       onChange={(e) =>
                         setValues({ ...values, contrasena: e.target.value })
@@ -111,6 +79,7 @@ function Login() {
                   <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    id="btnIngresar"
                   >
                     Iniciar Sesión
                   </button>

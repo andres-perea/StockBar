@@ -1,14 +1,27 @@
 describe("Testing del sistema de inventario", () => {
-  beforeEach("Poner a prueba el sistema de inventario hecho con javaScript", () => {
+  beforeEach(() => {
+    cy.viewport(1280, 720);
     cy.visit("http://localhost:5173");
-    cy.url();
+    cy.url().should("include", "localhost:5173");
   });
-  it("Mostrar haga CRUD correctamente", () => {
-    cy.clock(Date.now(), ['Date']);
-    cy.viewport(1024, 768)
-    cy.get("[id='nombreUsuario']").type("andresPerea");
-    cy.get("[id='contrasena']").type("123789");
-    cy.get("[id='btnIngresar']").click();
-    cy.get("[id='btnBebidas']").click();
-  })
+
+  it("Debe realizar CRUD correctamente", () => {
+    cy.get("#nombreUsuario").type("andresPerea").wait(500);
+    cy.get("#contrasena").type("123789").wait(500);
+    cy.get("#btnIngresar").click().wait(1000);
+    cy.get("#btnBebidas").click();
+
+    cy.visit("http://localhost:5173/agregarBebida").wait(1000);
+    cy.get("#bebidaNombre").type("Ron de Caldas").wait(1000);
+    cy.get("#bebidaCantidad").type("20").wait(1000);
+    cy.get("#bebidaPrecio").type("3500").wait(1000);
+    cy.get("#bebidaDescripcion")
+      .type(
+        "La fórmula del Ron Viejo fue creación del cubano de origen catalán, Ramón Badía"
+      )
+      .wait(1000);
+
+    cy.get("#bebidaCategoria").select("Picantico").wait(1000);
+    cy.get("#btnAgregar").click();
+  });
 });

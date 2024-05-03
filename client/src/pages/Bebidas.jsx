@@ -214,7 +214,7 @@ function Bebidas() {
           </div>
           <div className="absolute top-4 right-4 p-4">
             <Link to="/agregarBebida">
-              <button className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg">
+              <button className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 rounded-lg" id="btnBebidas">
                 Agregar bebida
               </button>
             </Link>
