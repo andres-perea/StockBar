@@ -13,11 +13,15 @@ import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
 
 
+
+
+
 function Routers() {
   return (
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<LandingPage   />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/bebidas" element={<Bebidas />} />
@@ -27,7 +31,6 @@ function Routers() {
         <Route path="/agregarCategoria" element={<AgregarCategorias />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );
