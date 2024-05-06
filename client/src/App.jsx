@@ -10,14 +10,14 @@ import Categorias from "./pages/Categorias";
 import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
-import LandingPage from ".../LandingPage";
+import LandingPage from "./pages/LandingPage";
 
 
 function Routers() {
   return (
     <BrowserRouter basename="/">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/bebidas" element={<Bebidas />} />
@@ -27,7 +27,7 @@ function Routers() {
         <Route path="/agregarCategoria" element={<AgregarCategorias />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/landingpage" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );
