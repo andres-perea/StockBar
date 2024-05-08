@@ -16,7 +16,8 @@ import {
   FaColumns,
   FaArrowRightArrowLeft,
   FaArrowRight,
-  FaRegPlayCircle
+  FaRegPlayCircle,
+  FaLinkedin,
 } from "react-icons/fa";
 import { BsArchive, BsFileCheck, BsShieldCheck, BsTools } from "react-icons/bs";
 import AOS from "aos";
@@ -477,10 +478,10 @@ function LandingPage() {
       <section id="portafolio" className="bg-gray-100 py-16">
         <div className="container mx-auto" data-aos="fade-up">
 
-<div className="section-header text-center">
-  <h2 className="text-3xl font-semibold">Portafolio</h2>
-  <p>Encontramos algunos productos y/o marcas que estos distribuyen, para brindar una mejor asesoría al momento de mostrar sus productos</p>
-</div>
+      <div className="section-header text-center">
+      <h2 className="text-3xl font-semibold">Portafolio</h2>
+        <p>Encontramos algunos productos y/o marcas que estos distribuyen, para brindar una mejor asesoría al momento de mostrar sus productos</p>
+      </div>
 
 <div className="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
 
@@ -574,6 +575,82 @@ function LandingPage() {
       </section>
       {/* End Portafolio Section */}
       {/* End Main */}
+      {/* Footer */}
+      <footer id="footer" className="bg-neutral-600 text-white">
+        <div className="container mx-auto py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="col-span-1">
+              <div>
+                <Link to="/" className="flex items-center">
+                  <span className="text-3xl font-bold">ZonaBAR</span>
+                </Link>
+                <p className="text-sm">Síguenos en nuestras redes</p>
+                <div className="flex mt-4">
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                  >
+                    <FaTwitter />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                  >
+                    <FaFacebook />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                  >
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="#"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                  >
+                    <FaLinkedin />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <div>
+                <h4 className="font-bold pb-2">Redirígete donde desees</h4>
+                <ul>
+                  <li>
+                    <a href="#">Inicio</a>
+                  </li>
+                  <li>
+                    <a href="#">Sobre nosotros</a>
+                  </li>
+                  <li>
+                    <a href="#">Servicios</a>
+                  </li>
+                  <li>
+                    <a href="#">Términos de servicios</a>
+                  </li>
+                  <li>
+                    <a href="#">Política de privacidad</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <div className="text-left">
+                <h4 className="font-bold">Contactanos</h4>
+                <p>
+                  Complejo paloquemao <br />
+                  SENA <br />
+                  Bogotá - Colombia <br />
+                  <br />
+                  <strong>Teléfono:</strong> +1 5589 55488 55 <br />
+                  <strong>Correo:</strong> stocksmart.2023@outlook.com <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };
