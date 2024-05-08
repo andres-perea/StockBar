@@ -9,6 +9,13 @@ import {
   FaInstagram,
   FaTelegram,
   FaCheckCircle,
+  FaDatabase,
+  FaLaptopCode,
+  FaLaptop,
+  FaUserFriends,
+  FaColumns,
+  FaArrowRightArrowLeft,
+  FaArrowRight,
 } from "react-icons/fa";
 
 function LandingPage() {
@@ -150,7 +157,7 @@ function LandingPage() {
       </section>
       {/* End Clients Section */}
       {/* Counter Section*/}
-        <section id="stats-counter" className="bg-gray-100 py-16">
+      <section id="stats-counter" className="bg-gray-100 py-16">
           <div className="container mx-auto" data-aos="fade-up">
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -175,8 +182,190 @@ function LandingPage() {
             </div>
           </div>
 
-        </section>
+      </section>
       {/* End Counter Section */}
+      {/* Our Services Section */}
+      <section id="services" className=" bg-gray-100 py-16">
+      <div className="container mx-auto" data-aos="fade-up">
+
+        <div className="section-header text-center">
+          <h2 className="text-3xl font-semibold">Servicios</h2>
+          <p>Nos enfocamos en mejorar el servicio hacia nuestros clientes, demostrando que se está capacitado para ejercer todo tipo de software que sea solicitado</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+
+        <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-blue-800">
+                <i className="text-3xl"><FaDatabase /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Optimizacion del espacio de almacenamiento</h3>
+              <p className="mt-2">Herramientas y algoritmos especializados para maximizar el uso del espacio de almacenamiento, reduciendo costos y mejorando la eficiencia logística.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-xl"><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+          <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-blue-800">
+                <i className="text-3xl"><FaUserFriends /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Integracion de proveedores y clientes</h3>
+              <p className="mt-2">Desarrollo de funcionalidades que faciliten la comunicación y colaboración entre la empresa, sus proveedores y clientes, optimizando la cadena de suministro.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-xl"><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+          <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-blue-800">
+                <i className="text-3xl"><FaColumns /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Desarrollo de dashboards personalizados</h3>
+              <p className="mt-2">Creación de paneles de control personalizados que permitan a los usuarios visualizar de manera clara y concisa los indicadores clave de rendimiento relacionados con el inventario.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-xl"><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+          <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-blue-800">
+                <i className="text-3xl"><FaLaptopCode /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Desarrollo de Plataforma de Gestión de Inventario</h3>
+              <p className="mt-2">Creación y mantenimiento de una plataforma integral para la gestión eficiente de inventarios, desde la entrada de productos hasta la venta final.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-xl"><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+          <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-blue-800">
+                <i className="text-3xl"><FaLaptop /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Integración con Tecnologías Emergentes</h3>
+              <p className="mt-2">Exploración y desarrollo de capacidades de integración con tecnologías emergentes, como IoT y realidad aumentada, para mejorar la monitorización y la eficiencia.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-1xl "><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+          <div className="col-span-1 lg:col-span-1">
+            <div className="service-item relative bg-white p-6 rounded-lg shadow-lg">
+              <div className=" text-blue-800">
+                <i className="text-3xl"><FaArrowRightArrowLeft /></i>
+              </div>
+              <h3 className="text-xl font-semibold mt-4">Gestión de Devoluciones Automatizada</h3>
+              <p className="mt-2">Desarrollo de funciones específicas para gestionar eficientemente el proceso de devoluciones, minimizando el impacto en el inventario y mejorando la experiencia del cliente.</p>
+              <a href="#" className="readmore mt-4 inline-block">Leer más.. <i className="text-xl"><FaArrowRight /></i></a>
+            </div>
+          </div>
+
+        </div>
+ 
+      </div>
+      </section>
+      {/* End Our Services Section */}
+      {/* Portafolio Section */}
+      <section id="portafolio" className="bg-gray-100 py-16">
+        <div className="container mx-auto" data-aos="fade-up">
+
+<div className="section-header text-center">
+  <h2 className="text-3xl font-semibold">Portafolio</h2>
+  <p>Encontramos algunos productos y/o marcas que estos distribuyen, para brindar una mejor asesoría al momento de mostrar sus productos</p>
+</div>
+
+<div className="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
+
+  <div>
+    <ul className="portfolio-flters flex justify-center mb-8">
+      <li data-filter="*" className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300">Todo</li>
+      <li data-filter=".filter-app" className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300">Aplicaciones</li>
+      <li data-filter=".filter-product" className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300">Productos</li>
+      <li data-filter=".filter-branding" className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300">Marcas</li>
+      <li data-filter=".filter-books" className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300">Librería</li>
+    </ul>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 portfolio-container">
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="portfolio-item filter-app">
+      <div className="portfolio-wrap">
+        <a href="./src/img/portfolio/app-1 (2).jpg" className="glightbox"><img src="./img/portfolio/app-1.jpg" className="img-fluid" alt="" /></a>
+        <div className="portfolio-info">
+          <h4><a href="#" className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300" title="More Details">Dashboards StockApp</a></h4>
+          <p className="text-gray-600">Diseño para ser utilizado en dispositivos móviles</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+      </section>
+      {/* End Portafolio Section */}
       {/* End Main */}
     </>
   );
