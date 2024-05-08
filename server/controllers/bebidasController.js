@@ -8,6 +8,12 @@ exports.mostrarBebidas = (req, res) => {
   });
 };
 
+exports.cantidadBebidas = (req, res) => {
+  Bebidas.cantidadBebidas((cantidad) => {
+    res.json(cantidad);
+  })
+}
+
 exports.crearBebidas = (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha seleccionado ningún archivo.');

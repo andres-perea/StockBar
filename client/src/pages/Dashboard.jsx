@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import GraficoBebidas from "../components/Graficos";
 import Saldo from "../components/Saldo";
+import CantidadBebidas from "../components/CantidadBebidas";
 import "../index.css";
 
 function Dashboard() {
@@ -35,12 +36,14 @@ function Dashboard() {
       >
         {/* LOGO */}
         <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">StockBar</h1>
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
+            StockBar
+          </h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
-          <div className="border-b border-gray-300"></div>
+            <div className="border-b border-gray-300"></div>
             <ul>
               <Link>
                 <li>
@@ -54,7 +57,7 @@ function Dashboard() {
                 </li>
               </Link>
               <Link to="/bebidas">
-              <div className="border-b border-gray-300"></div>
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
@@ -66,19 +69,19 @@ function Dashboard() {
                 </li>
               </Link>
               <Link to="/pedidos">
-              <div className="border-b border-gray-300"></div>
-              <li>
-                <a
-                  href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
-                >
-                  <MdInbox />
-                  Pedidos
-                </a>
-              </li>
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                  >
+                    <MdInbox />
+                    Pedidos
+                  </a>
+                </li>
               </Link>
               <Link to="/categorias">
-              <div className="border-b border-gray-300"></div>
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
@@ -116,11 +119,16 @@ function Dashboard() {
           <div className="">
             <h1 className="text-4xl lg:text-5xl font-bold">Dashboard</h1>
           </div>
+          <div className="grid grid-cols-4 gap-4">
+            <div className="flex flex-col left-0 mt-4">
+              <Saldo />
+            </div>
+            <div className="flex flex-col left-0 mt-4">
+              <CantidadBebidas />
+            </div>
+          </div>
           <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
             <GraficoBebidas />
-          </div>
-          <div className="flex flex-col left-0 mt-4">
-            <Saldo />
           </div>
         </div>
       </div>

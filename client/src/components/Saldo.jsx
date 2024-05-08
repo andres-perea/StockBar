@@ -12,11 +12,11 @@ function Saldo() {
 
   return (
     <>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
-        <div className="mb-4">
+      <div className="bg-white shadow-md rounded px-4 pt-6 pb-6 mb-4 flex flex-col my-2">
+        <div className="mb-2">
           <h2 className="text-2xl font-bold mb-2">Saldo</h2>
           {historialMovimiento.map((historial_movimiento, index) => (
-            <p key={index}> {historial_movimiento.saldo} </p>
+            <p key={index} className="text-slate-600 text-4xl mt-4 font-bold"> {historial_movimiento.saldo} </p>
           ))}
         </div>
       </div>

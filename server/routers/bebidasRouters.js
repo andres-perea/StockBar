@@ -6,6 +6,8 @@ const bebidasController = require("../controllers/bebidasController");
 
 router.get("/", bebidasController.mostrarBebidas);
 
+router.get("/cantidadBebidas", bebidasController.cantidadBebidas);
+
 router.post(
   "/agregarBebidas",
   upload.single("archivo"),
