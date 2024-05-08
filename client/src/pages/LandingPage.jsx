@@ -9,7 +9,6 @@ import {
   FaInstagram,
   FaTelegram,
   FaCheckCircle,
-  FaDatabase,
   FaLaptopCode,
   FaLaptop,
   FaUserFriends,
@@ -18,7 +17,14 @@ import {
   FaRegPlayCircle,
   FaLinkedin,
 } from "react-icons/fa";
-import { BsArchive, BsArrowDownLeftCircle, BsDatabaseUp, BsFileCheck, BsShieldCheck, BsTools } from "react-icons/bs";
+import {
+  BsArchive,
+  BsArrowDownLeftCircle,
+  BsDatabaseUp,
+  BsFileCheck,
+  BsShieldCheck,
+  BsTools,
+} from "react-icons/bs";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -27,71 +33,96 @@ function LandingPage() {
     AOS.init();
   }, []);
 
-  const TeamMember =({ name, role}) =>{
-    return(
+  const TeamMember = ({ name, role }) => {
+    return (
       <div className="bg-white rounded-lg shadow-lg overflow-hiden">
-          <div className="p-4">
-            <div className="text-center">
+        <div className="p-4">
+          <div className="text-center">
             <h4 className="text-x1 font-semibold mb-4">{name}</h4>
             <span className="text-sm text-gray-600">{role}</span>
-            </div>
-            <div className="flex justify-center mt-5">
-              <a href="" className=" text-stone-500 rounded mr-4 ">
-                <i> <FaTwitter/></i>
-              </a>
-              <a href="" className=" text-stone-500 rounded mr-4">
-                <i> <FaFacebook/></i>
-              </a>
-              <a href="" className="text-stone-500 rounded mr-4">
-                <i> <FaInstagram/></i>
-              </a>
-              <a href="" className="text-stone-500 rounded mr-4">
-                <i> <FaTelegram/></i>
-              </a>
-            </div>
           </div>
-      </div>
-    );
-  };
-
-  const FaqItem =({ num, question, answer}) => {
-    return(
-      <div className="accordion-item">
-        <h3 className="accordion-header">
-          <button className="accordion-button" type="button" data-toggle="collapse" data-target={'#faq-content-${num}'}>
-            <span className="text-black-500 mr-2"> {num}.</span> {question}
-          </button>
-        </h3>
-        <div id={'faq-content-${num}'} className="accordion-collapse collapse">
-          <div className="accordion-body">
-            {answer}
+          <div className="flex justify-center mt-5">
+            <a href="" className=" text-stone-500 rounded mr-4 ">
+              <i>
+                {" "}
+                <FaTwitter />
+              </i>
+            </a>
+            <a href="" className=" text-stone-500 rounded mr-4">
+              <i>
+                {" "}
+                <FaFacebook />
+              </i>
+            </a>
+            <a href="" className="text-stone-500 rounded mr-4">
+              <i>
+                {" "}
+                <FaInstagram />
+              </i>
+            </a>
+            <a href="" className="text-stone-500 rounded mr-4">
+              <i>
+                {" "}
+                <FaTelegram />
+              </i>
+            </a>
           </div>
         </div>
       </div>
     );
   };
-  
-  const faqData =[
+
+  const FaqItem = ({ num, question, answer }) => {
+    return (
+      <div className="accordion-item">
+        <h3 className="accordion-header">
+          <button
+            className="accordion-button"
+            type="button"
+            data-toggle="collapse"
+            data-target={"#faq-content-${num}"}
+          >
+            <span className="text-black-500 mr-2"> {num}.</span> {question}
+          </button>
+        </h3>
+        <div id={"faq-content-${num}"} className="accordion-collapse collapse">
+          <div className="accordion-body">{answer}</div>
+        </div>
+      </div>
+    );
+  };
+
+  const faqData = [
     {
-      question: "¿Qué características clave ofrece ZonaBAR en su software de gestión de inventarios?",
-      answer: "ZonaBAR ofrece características avanzadas como análisis predictivo, integración con sistemas empresariales, personalización, y seguimiento de activos en tiempo real."
+      question:
+        "¿Qué características clave ofrece ZonaBAR en su software de gestión de inventarios?",
+      answer:
+        "ZonaBAR ofrece características avanzadas como análisis predictivo, integración con sistemas empresariales, personalización, y seguimiento de activos en tiempo real.",
     },
     {
-      question: "¿Cómo se adapta ZonaBAR a las necesidades específicas de diferentes tipos de empresas?",
-      answer: "ZonaBAR se destaca por su capacidad de personalización, permitiendo a las empresas adaptar la plataforma a sus flujos de trabajo únicos, ya sea una pequeña tienda boutique o una cadena internacional de suministro."
+      question:
+        "¿Cómo se adapta ZonaBAR a las necesidades específicas de diferentes tipos de empresas?",
+      answer:
+        "ZonaBAR se destaca por su capacidad de personalización, permitiendo a las empresas adaptar la plataforma a sus flujos de trabajo únicos, ya sea una pequeña tienda boutique o una cadena internacional de suministro.",
     },
     {
-      question: "¿Cómo garantiza ZonaBAR la seguridad de los datos de sus clientes?",
-      answer: "ZonaBAR implementa medidas de seguridad robustas, incluyendo cifrado avanzado y autenticación, para garantizar la confidencialidad e integridad de la información almacenada en la plataforma."
+      question:
+        "¿Cómo garantiza ZonaBAR la seguridad de los datos de sus clientes?",
+      answer:
+        "ZonaBAR implementa medidas de seguridad robustas, incluyendo cifrado avanzado y autenticación, para garantizar la confidencialidad e integridad de la información almacenada en la plataforma.",
     },
     {
-      question: "¿Cuáles son las capacidades de StockSmart para adaptarse a los cambios en las demandas del mercado?",
-      answer: "ZonaBAR utiliza análisis predictivo para anticipar las tendencias del mercado, ayudando a las empresas a ajustar sus estrategias de inventario de manera proactiva y mantenerse ágiles frente a cambios en la demanda."
+      question:
+        "¿Cuáles son las capacidades de StockSmart para adaptarse a los cambios en las demandas del mercado?",
+      answer:
+        "ZonaBAR utiliza análisis predictivo para anticipar las tendencias del mercado, ayudando a las empresas a ajustar sus estrategias de inventario de manera proactiva y mantenerse ágiles frente a cambios en la demanda.",
     },
     {
-      question: "¿Cómo ZonaBAR garantiza la continuidad del negocio durante la implementación del software?",
-      answer: "ZonaBAR ofrece servicios de consultoría en gestión de inventario durante la implementación para asegurar una transición sin problemas, junto con programas de capacitación y soporte técnico para garantizar una adopción exitosa."
-    }
+      question:
+        "¿Cómo ZonaBAR garantiza la continuidad del negocio durante la implementación del software?",
+      answer:
+        "ZonaBAR ofrece servicios de consultoría en gestión de inventario durante la implementación para asegurar una transición sin problemas, junto con programas de capacitación y soporte técnico para garantizar una adopción exitosa.",
+    },
   ];
 
   return (
@@ -1148,6 +1179,6 @@ function LandingPage() {
       {/* End Footer */}
     </>
   );
-};
+}
 
 export default LandingPage;
