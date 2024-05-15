@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2024 a las 16:08:39
+-- Tiempo de generación: 15-05-2024 a las 17:59:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -61,9 +61,8 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(521981, 'vodka', 50000.00, 4, 'litro', 'server/controllers/img/vodka.png', '2024-04-25 13:20:37', 4),
-(579560, 'Cerveza Aguila', 5650.00, 15, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
-(625627, 'smirnoff ', 60000.00, 80, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4);
+(579560, 'Cerveza Aguila', 5650.00, 9, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
+(625627, 'smirnoff ', 60000.00, 74, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4);
 
 --
 -- Disparadores `bebidas`
@@ -262,7 +261,13 @@ INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto
 (5, 15, '2024-04-17 12:42:00', 861677),
 (10, 5, '2024-04-17 13:19:00', 861677),
 (11, 5, '2024-04-17 13:22:31', 861677),
-(12, 5, '2024-04-24 12:40:23', 149642);
+(12, 5, '2024-04-24 12:40:23', 149642),
+(13, 5, '2024-05-15 12:43:53', 625627),
+(14, 5, '2024-05-15 12:45:04', 579560),
+(15, 1, '2024-05-15 12:58:20', 521981),
+(16, 1, '2024-05-15 13:03:42', 521981),
+(17, 1, '2024-05-15 13:03:42', 579560),
+(18, 1, '2024-05-15 13:03:42', 625627);
 
 --
 -- Disparadores `pedidos`
@@ -310,7 +315,7 @@ CREATE TABLE `saldo_producto` (
 
 CREATE TABLE `salida_productos` (
   `id_salida` int(11) NOT NULL,
-  `fecha_salida` time DEFAULT NULL,
+  `fecha_salida` datetime DEFAULT NULL,
   `cantidad_salida` int(11) DEFAULT NULL,
   `motivo_salida` varchar(255) DEFAULT NULL,
   `precio_venta` int(11) NOT NULL,
@@ -323,25 +328,32 @@ CREATE TABLE `salida_productos` (
 --
 
 INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `precio_venta`, `producto_codigo`, `historial_id`) VALUES
-(1, '08:19:00', 5, 'Venta realizada', 0, 861677, NULL),
-(2, '08:22:31', 5, 'Venta realizada', 0, 861677, NULL),
-(5, '08:33:13', 40, 'salida', 0, 861677, NULL),
-(6, '10:34:39', 30, 'salida', 0, 748955, NULL),
-(7, '08:43:32', 20, 'salida', 0, 303065, NULL),
-(8, '11:22:34', 25, 'salida', 0, 264698, NULL),
-(9, '07:40:23', 5, 'Venta realizada', 0, 149642, NULL),
-(10, '07:54:58', 30, 'salida', 0, 413326, NULL),
-(11, '08:18:24', 30, 'salida', 0, 843861, NULL),
-(12, '08:18:31', 30, 'salida', 0, 253023, NULL),
-(13, '08:18:33', 35, 'salida', 0, 149642, NULL),
-(14, '08:25:04', 30, 'salida', 0, 564123, NULL),
-(15, '08:54:19', 30, 'salida', 0, 867306, NULL),
-(16, '08:00:06', 20, 'salida', 0, 29536, NULL),
-(17, '08:00:15', 30, 'salida', 0, 179716, NULL),
-(18, '08:00:18', 30, 'salida', 0, 401946, NULL),
-(19, '08:00:21', 25, 'salida', 0, 613512, NULL),
-(20, '08:00:24', 5, 'salida', 0, 814428, NULL),
-(21, '08:00:27', 30, 'salida', 0, 924569, NULL);
+(1, '2024-05-15 08:19:00', 5, 'Venta realizada', 0, 861677, NULL),
+(2, '2024-05-15 08:22:31', 5, 'Venta realizada', 0, 861677, NULL),
+(5, '2024-05-15 08:33:13', 40, 'salida', 0, 861677, NULL),
+(6, '2024-05-15 10:34:39', 30, 'salida', 0, 748955, NULL),
+(7, '2024-05-15 08:43:32', 20, 'salida', 0, 303065, NULL),
+(8, '2024-05-15 11:22:34', 25, 'salida', 0, 264698, NULL),
+(9, '2024-05-15 07:40:23', 5, 'Venta realizada', 0, 149642, NULL),
+(10, '2024-05-15 07:54:58', 30, 'salida', 0, 413326, NULL),
+(11, '2024-05-15 08:18:24', 30, 'salida', 0, 843861, NULL),
+(12, '2024-05-15 08:18:31', 30, 'salida', 0, 253023, NULL),
+(13, '2024-05-15 08:18:33', 35, 'salida', 0, 149642, NULL),
+(14, '2024-05-15 08:25:04', 30, 'salida', 0, 564123, NULL),
+(15, '2024-05-15 08:54:19', 30, 'salida', 0, 867306, NULL),
+(16, '2024-05-15 08:00:06', 20, 'salida', 0, 29536, NULL),
+(17, '2024-05-15 08:00:15', 30, 'salida', 0, 179716, NULL),
+(18, '2024-05-15 08:00:18', 30, 'salida', 0, 401946, NULL),
+(19, '2024-05-15 08:00:21', 25, 'salida', 0, 613512, NULL),
+(20, '2024-05-15 08:00:24', 5, 'salida', 0, 814428, NULL),
+(21, '2024-05-15 08:00:27', 30, 'salida', 0, 924569, NULL),
+(22, '2024-05-15 07:43:53', 5, 'Venta realizada', 0, 625627, NULL),
+(23, '2024-05-15 07:45:04', 5, 'Venta realizada', 0, 579560, NULL),
+(24, '2024-05-15 07:58:20', 1, 'Venta realizada', 0, 521981, NULL),
+(25, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 521981, NULL),
+(26, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 579560, NULL),
+(27, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 625627, NULL),
+(28, '2024-05-15 08:29:56', 2, 'salida', 0, 521981, NULL);
 
 -- --------------------------------------------------------
 
@@ -448,13 +460,13 @@ ALTER TABLE `historial_movimiento`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
