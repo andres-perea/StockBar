@@ -12,21 +12,18 @@ class Pedidos {
   }
 
   static CrearPedido(detalles, callback) {
-    const detalle = detalles[0];
-    const sql = "INSERT INTO pedidos SET ?";
-
-    db.query(sql, detalle, (err, result) => {
+    const sql = "INSERT INTO pedidos (codigo_producto, cantidad) VALUES ?";
+    const values = detalles.map(detalle => [detalle.codigo_producto, detalle.cantidad]);  
+    db.query(sql, [values], (err, result) => {
       if (err) return callback(err, null);
       const id = result.insertId;
       const pedido = {
         id: id,
-        cantidad: detalle.cantidad,
-        codigo_producto: detalle.codigo_producto,
-      };
-
+        detalles: detalles,
+      };  
       callback(null, pedido);
     });
-  }
+  }  
 }
 
 module.exports = Pedidos;
