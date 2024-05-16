@@ -169,22 +169,22 @@ function LandingPage() {
             <nav className="fle items-center">
               <ul className="flex space-x-4 text-stone-300 font-bold text-sm mx-6">
                 <li>
-                  <a href="" className="mx-2">
-                    Incio
+                  <a href="" className="mx-4">
+                    Inicio
                   </a>
                 </li>
                 <li>
-                  <a href="" className="mx-2">
+                  <a href="" className="mx-4">
                     Sobre Nosotros
                   </a>
                 </li>
                 <li>
-                  <a href="" className="mx-2">
+                  <a href="" className="mx-4">
                     Servicios
                   </a>
                 </li>
                 <li>
-                  <a href="" className="mx-2">
+                  <a href="" className="mx-4">
                     Portafolio
                   </a>
                 </li>
@@ -210,7 +210,7 @@ function LandingPage() {
       {/* Section hero */}
       <section id="hero" className="bg-neutral-600 py-16">
         <div className="container mx-auto relative">
-          <div className="row gy-5" data-aos="fade-in">
+          <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
             <div className="grid grid-cols-2 gap-2">
               <div className=" order-2 lg:order-1 flex flex-col justify-center text- left lg:px-12">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
@@ -221,12 +221,13 @@ function LandingPage() {
                   comprometidos está siempre listo para brindar asistencia y
                   orientación en cada paso del proceso de inventario.
                 </p>
-                <div className="flex justify-center lg:justify-start mt-8">
+                <div className="flex justify-center lg:justify-start mt-8" data-aos="fade-up" data-aos-delay="300">
                   <a
                     href="/register"
                     className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold py-2 px-4 rounded-full mr-4 py-4 px-10"
                   >
-                    Empezar
+                    <Link to="/register">Empezar</Link>
+                   
                   </a>
                   <a
                     href="https://www.youtube.com/watch?v=n1oUspMuUgk"
@@ -242,25 +243,25 @@ function LandingPage() {
         </div>
         <div className="container mx-auto relative py-8">
           <div className="grid grid-cols-4 gap-6 justify-center">
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200">
+            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
               <div className="flex flex-col items-center justify-center">
                 <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
                 <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
               </div>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200">
+            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
               <div className="flex flex-col items-center justify-center">
                 <BsArchive className="mb-5 pt-2 text-5xl text-stone-300" />
                 <h4 className="mb-4 text-2xl">Gestion de stock</h4>
               </div>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200">
+            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"data-aos="fade-up" data-aos-delay="300">
               <div className="flex flex-col items-center justify-center">
                 <BsShieldCheck className="mb-5 pt-2 text-5xl text-stone-300" />
                 <h4 className="mb-4 text-2xl">Seguridad de la informacion</h4>
               </div>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200">
+            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
               <div className="flex flex-col items-center justify-center">
                 <BsTools className="mb-5 pt-2 text-5xl text-stone-300" />
                 <h4 className="mb-4 text-2xl">Mantenimiento de stock</h4>
@@ -274,9 +275,9 @@ function LandingPage() {
       {/* Main */}
       {/* About Us Section */}
       <section id="about" className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4" data-aos="fade-up">
+        <div className="container mx-auto px-4" data-aos="fade-up" data-aos-delay="300">
           <div className="text-center mb-12">
-            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Sobre Nosotros
             </h2>
             <p className="text-base text-gray-500">
@@ -394,7 +395,7 @@ function LandingPage() {
       {/* End About Us Section */}
       {/* Clients Section*/}
       <section id="clients" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="zoom-out">
+        <div className="container mx-auto" data-aos="zoom-out" data-aos-delay="300">
           <div className="flex justify-center">
             <div className="swiper-container">
               <div className="swiper-wrapper flex items-center">
@@ -430,7 +431,7 @@ function LandingPage() {
       {/* End Clients Section */}
       {/* Counter Section*/}
       <section id="stats-counter" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up">
+        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="col-span-1 lg:col-span-1">
               <img src="" className="img-fluid" alt="" />
@@ -484,10 +485,10 @@ function LandingPage() {
       {/* End Counter Section */}
       {/* Our Services Section */}
       <section id="services" className=" bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up">
+        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
           <div className="section-header text-center pb-14">
-            <h2 className="text-3xl font-semibold">Servicios</h2>
-            <p>
+            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">Servicios</h2>
+            <p className="text-base text-gray-500">
               Nos enfocamos en mejorar el servicio hacia nuestros clientes,
               demostrando que se está capacitado para ejercer todo tipo de
               software que sea solicitado
@@ -654,7 +655,7 @@ function LandingPage() {
             <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Nuestro Equipo
             </h2>
-            <p className="text-lg text-gray-500">
+            <p className="text-base text-gray-500">
               Nos complace presentar a los que están detrás de este gran
               proceso, dando apoyo óptimo a nuestros clientes y siendo los que
               mantienen a flote esta idea de aportar con nuestro software!
@@ -674,10 +675,10 @@ function LandingPage() {
       {/* End team section */}
       {/* Portafolio Section */}
       <section id="portafolio" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up">
+        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
           <div className="section-header text-center">
-            <h2 className="text-3xl font-semibold">Portafolio</h2>
-            <p>
+            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">Portafolio</h2>
+            <p className="text-base text-gray-500">
               Encontramos algunos productos y/o marcas que estos distribuyen,
               para brindar una mejor asesoría al momento de mostrar sus
               productos
@@ -971,7 +972,7 @@ function LandingPage() {
       {/* End faQ section */}
       {/*  contact Section */}
       <section id="contact" className="contact bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up">
+        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
           <div className="section-header text-center mb-10">
             <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Contacto

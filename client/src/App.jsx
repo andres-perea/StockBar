@@ -11,10 +11,7 @@ import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
-
-
-
-
+import Inventario from "./pages/inventario";
 
 function Routers() {
   return (
@@ -31,6 +28,7 @@ function Routers() {
         <Route path="/agregarCategoria" element={<AgregarCategorias />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/inventario" element={<Inventario />} />
       </Routes>
     </BrowserRouter>
   );
