@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import GraficoBebidas from "../components/Graficos";
-import Saldo from "../components/Saldo";
+import Saldos from "../components/Saldos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import "../index.css";
 
@@ -131,10 +131,10 @@ function Dashboard() {
           </div>
           <div className="grid grid-cols-4 gap-4">
             <div className="flex flex-col left-0 mt-4">
-              <Saldo />
+              <CantidadBebidas />
             </div>
             <div className="flex flex-col left-0 mt-4">
-              <CantidadBebidas />
+              <Saldos />
             </div>
           </div>
           <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">

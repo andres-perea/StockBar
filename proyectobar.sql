@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2024 a las 17:59:17
+-- Tiempo de generación: 20-05-2024 a las 18:07:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -51,7 +51,7 @@ CREATE TABLE `bebidas` (
   `precio` decimal(10,2) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `descripcion` varchar(255) NOT NULL,
-  `imagen` varchar(255) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `categoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,8 +61,15 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(579560, 'Cerveza Aguila', 5650.00, 9, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
-(625627, 'smirnoff ', 60000.00, 74, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4);
+(396201, 'Cerveza Red', 4550.00, 24, 'a', 'img/Desarrollo web.jpg', '2024-05-02 12:26:35', 4),
+(521981, 'vodka', 50000.00, 4, 'litro', 'server/controllers/img/vodka.png', '2024-04-25 13:20:37', 4),
+(528745, 'Cerveza Club Colombia', 6050.00, 29, 'Cerveza en lata hecha en colombia', 'img/Desarrollo de software de gestiÃ³n empresarial.jpg', '2024-05-20 15:19:23', 7),
+(579560, 'Cerveza Aguila', 5650.00, 14, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
+(625627, 'smirnoff ', 60000.00, 77, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4),
+(664371, 'Cerveza Corona', 3650.00, 9, 'Ñ', 'img/aguardiente.png', '2024-05-02 12:19:55', 7),
+(696013, 'Aguardiente Antioqueño', 12500.00, 9, 'Aguardiente creado en las altas montañas de medellin', 'img/aguardiente.png', '2024-05-20 15:26:48', 4),
+(893832, 'Whisky norteño', 21000.00, 20, 'ñl', 'img/aguardiente.png', '2024-05-20 16:03:43', 5),
+(987891, 'Cerveza Poker', 4550.00, 24, 'a', 'img/Desarrollo web.jpg', '2024-05-02 12:42:23', 4);
 
 --
 -- Disparadores `bebidas`
@@ -173,7 +180,36 @@ INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entrada`, `fecha_entrad
 (26, 30, '2024-04-25 12:21:27', 3650.00, 924569, NULL),
 (27, 15, '2024-04-25 13:01:09', 5650.00, 579560, NULL),
 (28, 80, '2024-04-25 13:17:12', 60000.00, 625627, NULL),
-(29, 4, '2024-04-25 13:20:37', 50000.00, 521981, NULL);
+(29, 4, '2024-04-25 13:20:37', 50000.00, 521981, NULL),
+(30, 10, '2024-05-02 12:19:55', 3650.00, 664371, NULL),
+(31, 25, '2024-05-02 12:26:35', 4550.00, 396201, NULL),
+(32, 25, '2024-05-02 12:42:23', 4550.00, 987891, NULL),
+(33, 30, '2024-05-20 15:19:23', 6050.00, 528745, NULL),
+(34, 10, '2024-05-20 15:26:48', 12500.00, 696013, NULL),
+(35, 30, '2024-05-20 16:03:43', 21000.00, 893832, NULL);
+
+--
+-- Disparadores `entrada_productos`
+--
+DELIMITER $$
+CREATE TRIGGER `after_insert_entrada_productos` AFTER INSERT ON `entrada_productos` FOR EACH ROW BEGIN
+    INSERT INTO historial_movimiento (
+        tipo_movimiento, 
+        cantidad_movimiento, 
+        saldo, 
+        fecha_movimiento, 
+        producto_codigo
+    ) 
+    VALUES (
+        'Entrada al inventario', 
+        NEW.cantidad_entrada, 
+        NEW.cantidad_entrada, 
+        NEW.fecha_entrada, 
+        NEW.producto_codigo
+    );
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -186,8 +222,7 @@ CREATE TABLE `historial_movimiento` (
   `tipo_movimiento` varchar(255) DEFAULT NULL,
   `cantidad_movimiento` varchar(255) DEFAULT NULL,
   `saldo` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `fecha_movimiento` date NOT NULL,
-  `hora_movimiento` time DEFAULT NULL,
+  `fecha_movimiento` datetime NOT NULL,
   `producto_codigo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -195,46 +230,26 @@ CREATE TABLE `historial_movimiento` (
 -- Volcado de datos para la tabla `historial_movimiento`
 --
 
-INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad_movimiento`, `saldo`, `fecha_movimiento`, `hora_movimiento`, `producto_codigo`) VALUES
-(69, 'entrada', '40', 0.00, '2024-04-24', '07:39:19', 149642),
-(70, 'entrada', '30', 0.00, '2024-04-24', '07:53:51', 413326),
-(71, 'entrada', '30', 0.00, '2024-04-24', '08:14:06', 253023),
-(72, 'entrada', '30', 0.00, '2024-04-24', '08:17:06', 843861),
-(73, 'entrada', '30', 0.00, '2024-04-24', '08:18:38', 564123),
-(74, 'entrada', '30', 0.00, '2024-04-24', '08:25:07', 867306),
-(75, 'entrada', '20', 0.00, '2024-04-24', '08:49:43', 29536),
-(76, 'entrada', '30', 0.00, '2024-04-25', '07:11:46', 401946),
-(77, 'entrada', '30', 0.00, '2024-04-25', '07:16:09', 179716),
-(78, 'entrada', '30', 109500.00, '2024-04-25', '07:21:27', 924569);
-
---
--- Disparadores `historial_movimiento`
---
-DELIMITER $$
-CREATE TRIGGER `actualizar_saldo_despues_insert` AFTER INSERT ON `historial_movimiento` FOR EACH ROW BEGIN
-    DECLARE nuevo_saldo DECIMAL(10, 2);
-    
-    -- Obtener el saldo actual del producto
-    SELECT saldo INTO nuevo_saldo
-    FROM saldo_producto
-    WHERE producto_codigo = NEW.producto_codigo
-    ORDER BY id_historial DESC
-    LIMIT 1;
-    
-    -- Actualizar el saldo
-    IF nuevo_saldo IS NOT NULL THEN
-        SET nuevo_saldo = nuevo_saldo + (NEW.cantidad_movimiento * (CASE WHEN NEW.tipo_movimiento = 'entrada' THEN 1 ELSE -1 END));
-    ELSE
-        SET nuevo_saldo = NEW.cantidad_movimiento * (CASE WHEN NEW.tipo_movimiento = 'entrada' THEN 1 ELSE -1 END);
-    END IF;
-    
-    -- Actualizar la tabla de saldo
-    INSERT INTO saldo_producto (producto_codigo, saldo)
-    VALUES (NEW.producto_codigo, nuevo_saldo)
-    ON DUPLICATE KEY UPDATE saldo = nuevo_saldo;
-END
-$$
-DELIMITER ;
+INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad_movimiento`, `saldo`, `fecha_movimiento`, `producto_codigo`) VALUES
+(69, 'entrada', '40', 0.00, '2024-04-24 00:00:00', 149642),
+(70, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 413326),
+(71, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 253023),
+(72, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 843861),
+(73, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 564123),
+(74, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 867306),
+(75, 'entrada', '20', 0.00, '2024-04-24 00:00:00', 29536),
+(76, 'entrada', '30', 0.00, '2024-04-25 00:00:00', 401946),
+(77, 'entrada', '30', 0.00, '2024-04-25 00:00:00', 179716),
+(78, 'entrada', '30', 109500.00, '2024-04-25 00:00:00', 924569),
+(79, 'Entrada', '10', 0.00, '2024-05-20 10:26:48', 696013),
+(80, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 396201),
+(82, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 528745),
+(84, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 579560),
+(86, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 664371),
+(88, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 696013),
+(90, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 987891),
+(92, 'Entrada al inventario', '30', 30.00, '2024-05-20 11:03:43', 893832),
+(93, 'Salida del inventario', '10', 20.00, '2024-05-20 11:04:02', 893832);
 
 -- --------------------------------------------------------
 
@@ -262,12 +277,14 @@ INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto
 (10, 5, '2024-04-17 13:19:00', 861677),
 (11, 5, '2024-04-17 13:22:31', 861677),
 (12, 5, '2024-04-24 12:40:23', 149642),
-(13, 5, '2024-05-15 12:43:53', 625627),
-(14, 5, '2024-05-15 12:45:04', 579560),
-(15, 1, '2024-05-15 12:58:20', 521981),
-(16, 1, '2024-05-15 13:03:42', 521981),
-(17, 1, '2024-05-15 13:03:42', 579560),
-(18, 1, '2024-05-15 13:03:42', 625627);
+(13, 3, '2024-05-02 12:01:50', 625627),
+(14, 1, '2024-05-20 15:36:37', 396201),
+(15, 1, '2024-05-20 15:36:37', 528745),
+(16, 1, '2024-05-20 15:36:37', 579560),
+(17, 1, '2024-05-20 15:36:37', 664371),
+(18, 1, '2024-05-20 15:36:37', 696013),
+(19, 1, '2024-05-20 15:36:37', 987891),
+(20, 10, '2024-05-20 16:04:02', 893832);
 
 --
 -- Disparadores `pedidos`
@@ -299,23 +316,12 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `saldo_producto`
---
-
-CREATE TABLE `saldo_producto` (
-  `producto_codigo` int(11) NOT NULL,
-  `saldo` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `salida_productos`
 --
 
 CREATE TABLE `salida_productos` (
   `id_salida` int(11) NOT NULL,
-  `fecha_salida` datetime DEFAULT NULL,
+  `fecha_salida` time DEFAULT NULL,
   `cantidad_salida` int(11) DEFAULT NULL,
   `motivo_salida` varchar(255) DEFAULT NULL,
   `precio_venta` int(11) NOT NULL,
@@ -328,32 +334,68 @@ CREATE TABLE `salida_productos` (
 --
 
 INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `precio_venta`, `producto_codigo`, `historial_id`) VALUES
-(1, '2024-05-15 08:19:00', 5, 'Venta realizada', 0, 861677, NULL),
-(2, '2024-05-15 08:22:31', 5, 'Venta realizada', 0, 861677, NULL),
-(5, '2024-05-15 08:33:13', 40, 'salida', 0, 861677, NULL),
-(6, '2024-05-15 10:34:39', 30, 'salida', 0, 748955, NULL),
-(7, '2024-05-15 08:43:32', 20, 'salida', 0, 303065, NULL),
-(8, '2024-05-15 11:22:34', 25, 'salida', 0, 264698, NULL),
-(9, '2024-05-15 07:40:23', 5, 'Venta realizada', 0, 149642, NULL),
-(10, '2024-05-15 07:54:58', 30, 'salida', 0, 413326, NULL),
-(11, '2024-05-15 08:18:24', 30, 'salida', 0, 843861, NULL),
-(12, '2024-05-15 08:18:31', 30, 'salida', 0, 253023, NULL),
-(13, '2024-05-15 08:18:33', 35, 'salida', 0, 149642, NULL),
-(14, '2024-05-15 08:25:04', 30, 'salida', 0, 564123, NULL),
-(15, '2024-05-15 08:54:19', 30, 'salida', 0, 867306, NULL),
-(16, '2024-05-15 08:00:06', 20, 'salida', 0, 29536, NULL),
-(17, '2024-05-15 08:00:15', 30, 'salida', 0, 179716, NULL),
-(18, '2024-05-15 08:00:18', 30, 'salida', 0, 401946, NULL),
-(19, '2024-05-15 08:00:21', 25, 'salida', 0, 613512, NULL),
-(20, '2024-05-15 08:00:24', 5, 'salida', 0, 814428, NULL),
-(21, '2024-05-15 08:00:27', 30, 'salida', 0, 924569, NULL),
-(22, '2024-05-15 07:43:53', 5, 'Venta realizada', 0, 625627, NULL),
-(23, '2024-05-15 07:45:04', 5, 'Venta realizada', 0, 579560, NULL),
-(24, '2024-05-15 07:58:20', 1, 'Venta realizada', 0, 521981, NULL),
-(25, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 521981, NULL),
-(26, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 579560, NULL),
-(27, '2024-05-15 08:03:42', 1, 'Venta realizada', 0, 625627, NULL),
-(28, '2024-05-15 08:29:56', 2, 'salida', 0, 521981, NULL);
+(1, '08:19:00', 5, 'Venta realizada', 0, 861677, NULL),
+(2, '08:22:31', 5, 'Venta realizada', 0, 861677, NULL),
+(5, '08:33:13', 40, 'salida', 0, 861677, NULL),
+(6, '10:34:39', 30, 'salida', 0, 748955, NULL),
+(7, '08:43:32', 20, 'salida', 0, 303065, NULL),
+(8, '11:22:34', 25, 'salida', 0, 264698, NULL),
+(9, '07:40:23', 5, 'Venta realizada', 0, 149642, NULL),
+(10, '07:54:58', 30, 'salida', 0, 413326, NULL),
+(11, '08:18:24', 30, 'salida', 0, 843861, NULL),
+(12, '08:18:31', 30, 'salida', 0, 253023, NULL),
+(13, '08:18:33', 35, 'salida', 0, 149642, NULL),
+(14, '08:25:04', 30, 'salida', 0, 564123, NULL),
+(15, '08:54:19', 30, 'salida', 0, 867306, NULL),
+(16, '08:00:06', 20, 'salida', 0, 29536, NULL),
+(17, '08:00:15', 30, 'salida', 0, 179716, NULL),
+(18, '08:00:18', 30, 'salida', 0, 401946, NULL),
+(19, '08:00:21', 25, 'salida', 0, 613512, NULL),
+(20, '08:00:24', 5, 'salida', 0, 814428, NULL),
+(21, '08:00:27', 30, 'salida', 0, 924569, NULL),
+(22, '07:01:50', 3, 'Venta realizada', 0, 625627, NULL),
+(23, '10:36:37', 1, 'Venta realizada', 0, 396201, NULL),
+(24, '10:36:37', 1, 'Venta realizada', 0, 528745, NULL),
+(25, '10:36:37', 1, 'Venta realizada', 0, 579560, NULL),
+(26, '10:36:37', 1, 'Venta realizada', 0, 664371, NULL),
+(27, '10:36:37', 1, 'Venta realizada', 0, 696013, NULL),
+(28, '10:36:37', 1, 'Venta realizada', 0, 987891, NULL),
+(29, '11:04:02', 10, 'Venta realizada', 0, 893832, NULL);
+
+--
+-- Disparadores `salida_productos`
+--
+DELIMITER $$
+CREATE TRIGGER `after_salida_productos_insert` AFTER INSERT ON `salida_productos` FOR EACH ROW BEGIN
+    DECLARE new_saldo DECIMAL(10,2);
+
+    -- Obtener el saldo actual del producto
+    SELECT saldo INTO new_saldo
+    FROM historial_movimiento
+    WHERE producto_codigo = NEW.producto_codigo
+    ORDER BY fecha_movimiento DESC
+    LIMIT 1;
+
+    -- Calcular el nuevo saldo después de la salida
+    SET new_saldo = new_saldo - NEW.cantidad_salida;
+
+    -- Insertar el registro en la tabla historial_movimiento
+    INSERT INTO historial_movimiento (
+        tipo_movimiento,
+        cantidad_movimiento,
+        saldo,
+        fecha_movimiento,
+        producto_codigo
+    ) VALUES (
+        'Salida del inventario',
+        NEW.cantidad_salida,
+        new_saldo,
+        NOW(),
+        NEW.producto_codigo
+    );
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -373,7 +415,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombreUsuario`, `correoElectronico`, `contrasena`) VALUES
-(1, 'andresPerea', 'andres@gmail.com', '$2a$10$nyd1wkn56vXGkCGia4/2tOV6XikrcpXjmHVsq6zlbr7Pje99EFpBy');
+(1, 'andresPerea', 'andres@gmail.com', '$2a$10$nyd1wkn56vXGkCGia4/2tOV6XikrcpXjmHVsq6zlbr7Pje99EFpBy'),
+(8, 'andresSanchez', 'andres@gmail.com', '$2a$10$rupwnL1lVHESpW/CHpRLNuwOQ94Aqk4YrrZleWfgTXsQJlgXg10cm'),
+(9, 'andresSanchez', 'andres@gmail.com', '$2a$10$gOH6jX/JQb.GcHu27e7xiubIb3YWdzldyntzKoISSxEU7T7GxoKVK'),
+(10, 'andresSanchez', 'andres@gmail.com', '$2a$10$K3a1on2tSQ05VHPMeoaC0u8Q9FguOfsS5vztSaYK8PiCnm3sAZ52u'),
+(11, 'andresSanchez', 'andres@gmail.com', '$2a$10$kFfRLw13CuufxOyObnEjxuhBehkoISvzVOkaVY3PSkpTaMGD5R0qG'),
+(12, 'andres villa', 'villa@gmail.com', '$2a$10$3nlCP6FdWO4H3IGTPYalJ.v.pIQ8Zg6BlX1t15Nwj5pDXid8TYqJq');
 
 --
 -- Índices para tablas volcadas
@@ -415,12 +462,6 @@ ALTER TABLE `pedidos`
   ADD KEY `codigo_producto` (`codigo_producto`);
 
 --
--- Indices de la tabla `saldo_producto`
---
-ALTER TABLE `saldo_producto`
-  ADD PRIMARY KEY (`producto_codigo`);
-
---
 -- Indices de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
@@ -448,31 +489,31 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `entrada_productos`
 --
 ALTER TABLE `entrada_productos`
-  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_movimiento`
 --
 ALTER TABLE `historial_movimiento`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
@@ -489,12 +530,6 @@ ALTER TABLE `bebidas`
 --
 ALTER TABLE `entrada_productos`
   ADD CONSTRAINT `fk_historial_id` FOREIGN KEY (`historial_id`) REFERENCES `historial_movimiento` (`id_historial`);
-
---
--- Filtros para la tabla `saldo_producto`
---
-ALTER TABLE `saldo_producto`
-  ADD CONSTRAINT `saldo_producto_ibfk_1` FOREIGN KEY (`producto_codigo`) REFERENCES `bebidas` (`codigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

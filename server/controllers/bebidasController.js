@@ -8,8 +8,8 @@ exports.mostrarBebidas = (req, res) => {
   });
 };
 
-exports.cantidadBebidas = (req, res) => {
-  Bebidas.cantidadBebidas((cantidad) => {
+exports.cantidadBebidasVendidas = (req, res) => {
+  Bebidas.cantidadBebidasVendidas((cantidad) => {
     res.json(cantidad);
   })
 }

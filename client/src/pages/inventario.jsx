@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
@@ -11,6 +11,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "../index.css";
+import axios from "axios";
 
 function Inventario() {
   const [sidebar, setSidebar] = useState(false);
@@ -43,7 +44,7 @@ function Inventario() {
             <nav>
               <div className="border-b border-gray-300"></div>
               <ul>
-                <Link>
+                <Link to="/dashboard">
                   <li>
                     <a
                       href=""
@@ -127,10 +128,13 @@ function Inventario() {
         <div className="col-span-5">
           <div className="p-8 lg:min-h-screen bg-gray-200 pl-10">
             <div className="">
-              <h1 className="text-4xl lg:text-5xl font-bold">Historial inventario</h1>
-              <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
-                
+              <div className="flex justify-between items-center">
+                <h1 className="text-4xl lg:text-5xl font-bold">
+                  Historial inventario
+                </h1>
               </div>
+            </div>
+            <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
             </div>
           </div>
         </div>
