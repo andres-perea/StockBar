@@ -50,6 +50,13 @@ class Bebidas {
       callback(null, res);
     });
   }
+
+  static cantidadBebidas(callback) {
+    db.query("SELECT SUM(cantidad) AS total_bebidas FROM bebidas", (error, results) => {
+      if (error) throw error;
+      callback(results);
+    })
+  }
 }
 
 module.exports = Bebidas;

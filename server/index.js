@@ -9,6 +9,7 @@ const bebidasRouters = require("./routers/bebidasRouters");
 const categoriasRouters = require("./routers/categoriasRouters");
 const pedidosRouters = require("./routers/pedidosRouters");
 const saldoRouters = require("./routers/saldoRouters");
+const filtroRouters = require("./routers/filtroRouters");
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use("/bebidas", bebidasRouters);
 app.use("/categorias", categoriasRouters);
 app.use("/pedidos", pedidosRouters);
 app.use("/saldo", saldoRouters);
+app.use("/filtro", filtroRouters);
 
 app.use("/img", express.static(path.join(__dirname, "img/")))
 

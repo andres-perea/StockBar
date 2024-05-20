@@ -44,6 +44,13 @@ function Menu() {
     calculateTotal();
   }, [carrito]);
 
+  const showNotification = () => {
+    setShowCartNotification(true);
+    setTimeout(() => {
+      setShowCartNotification(false);
+    }, 3000);
+  };
+  
   const agregarAlCarrito = (bebida) => {
     const existentItem = carrito.find((item) => item.codigo === bebida.codigo);
     if (existentItem) {
@@ -56,13 +63,9 @@ function Menu() {
     } else {
       setCarrito([...carrito, { ...bebida, cantidad: 1 }]);
     }
-    setShowCartNotification(true);
-
-    setTimeout(() => {
-      setShowCartNotification(false);
-    }, 3000);
+    showNotification();
   };
-
+  
   const eliminarDelCarrito = (bebida) => {
     const updatedCarrito = carrito.map((item) =>
       item.codigo === bebida.codigo && item.cantidad > 1
