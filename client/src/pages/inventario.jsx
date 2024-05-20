@@ -25,7 +25,7 @@ function Inventario() {
   };
   return (
     <>
-      <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+      <div className="flex grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
         {/* Sidebar */}
         <div
           className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
@@ -47,7 +47,7 @@ function Inventario() {
                   <li>
                     <a
                       href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                     >
                       <MdOutlineDashboard />
                       Dashboard
@@ -59,7 +59,7 @@ function Inventario() {
                   <li>
                     <a
                       href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                     >
                       <MdLocalDrink />
                       Bebidas
@@ -71,7 +71,7 @@ function Inventario() {
                   <li>
                     <a
                       href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                     >
                       <MdInventory2 />
                       Historial inventario
@@ -83,7 +83,7 @@ function Inventario() {
                   <li>
                     <a
                       href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                     >
                       <MdInbox />
                       Pedidos
@@ -95,7 +95,7 @@ function Inventario() {
                   <li>
                     <a
                       href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                     >
                       <MdOutlineCategory />
                       Categorías
@@ -108,7 +108,7 @@ function Inventario() {
             <div className="flex flex-col pt-36 gap-4">
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
               >
                 <MdOutlineLogout />
                 Cerrar Sesión

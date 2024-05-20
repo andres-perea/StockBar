@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
 import {
@@ -16,6 +16,8 @@ import {
   FaArrowRight,
   FaRegPlayCircle,
   FaLinkedin,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import {
   BsArchive,
@@ -124,154 +126,170 @@ function LandingPage() {
         "ZonaBAR ofrece servicios de consultoría en gestión de inventario durante la implementación para asegurar una transición sin problemas, junto con programas de capacitación y soporte técnico para garantizar una adopción exitosa.",
     },
   ];
-
+   let [isOpen,setIsOpen]=useState(false);
   return (
     <>
-      {/* TopBar */}
-      <div className="bg-zinc-800 py-2">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center text-stone-300">
-            <div className="mr-4 flex items-center">
-              <FaEnvelope className="mr-1" />
-              <a href="">zonabar.2024@gmail.com</a>
-            </div>
-            <div className="flex items-center">
-              <FaPhone className="mr-1" />
-              <span>310 3892876</span>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center">
-            <a href="#" className="text-stone-300 mr-2">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaFacebook />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaInstagram />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaTelegram />
-            </a>
-          </div>
-        </div>
+    {/* TopBar */}
+  <div className="bg-zinc-800 py-2">
+  <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div className="flex flex-col sm:flex-row items-center font-sans text-stone-300 mb-2 md:mb-0">
+      <div className="mr-4 flex items-center mb-2 sm:mb-0">
+        <FaEnvelope className="mr-1" />
+        <a href="">zonabar.2024@gmail.com</a>
       </div>
-      {/* End TopBar */}
-      {/* Header */}
-      <header id="header">
-        <div className="bg-neutral-600 py-6 px-16">
-          <div className="container mx-auto flex justify-between items-center">
-            <Link to="/" className="flex items-center text-white">
-              <h1 className="text-2xl font-bold">
-                Zona<span className=" text-zinc-400">BAR.</span>
-              </h1>
-            </Link>
-            <nav className="fle items-center">
-              <ul className="flex space-x-4 text-stone-300 font-bold text-sm mx-6">
-                <li>
-                  <a href="" className="mx-4">
-                    Inicio
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="mx-4">
-                    Sobre Nosotros
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="mx-4">
-                    Servicios
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="mx-4">
-                    Portafolio
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="mx-2">
-                    Equipo
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="mx-2">
-                    Contactanos
-                  </a>
-                </li>
-                <li>
-                  <Link to="/login">Iniciar Sesion</Link>
-                </li>
-              </ul>
-            </nav>
+      <div className="flex items-center">
+        <FaPhone className="mr-1" />
+        <span>310 3892876</span>
+      </div>
+    </div>
+    <div className="flex items-center">
+      <a href="#" className="text-stone-300 mr-2">
+        <FaTwitter />
+      </a>
+      <a href="#" className="text-stone-300 mr-2">
+        <FaFacebook />
+      </a>
+      <a href="#" className="text-stone-300 mr-2">
+        <FaInstagram />
+      </a>
+      <a href="#" className="text-stone-300 mr-2">
+        <FaTelegram />
+      </a>
+    </div>
+  </div>
+</div>
+    {/* End TopBar */}
+    {/* Header */}
+    <header id="header">
+      <nav className="bg-neutral-600 py-6 px-4 md:px-16">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center text-white">
+            <h1 className="text-2xl font-bold font-sans">
+              Zona<span className=" text-zinc-400">BAR.</span>
+            </h1>
           </div>
+          {/* Menú desplegable */}
+          <div className="relative md:hidden md:items-center md:static">
+            <FaBars
+              className="cursor-pointer text-white"
+              size={24}
+              onClick={() => setIsOpen(!isOpen)} // Cambia el estado de isOpen al hacer clic en el icono
+            />
+            {isOpen && (
+              <div className="md:ml-8 text-xl md:my-0 my-7">
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Inicio</a>
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Sobre Nosotros</a>
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Servicios</a>
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Portafolio</a>
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Equipo</a>
+                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Contactanos</a>
+                <Link to="/login" className="text-gray-800 hover:text-gray-400 duration-500">Iniciar Sesion</Link>
+              </div>
+            )}
+          </div>
+          {/* Fin del menú desplegable */}
+          <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-bold text-sm">
+            <li>
+              <a href="" className="mx-4">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a href="" className="mx-4">
+                Sobre Nosotros
+              </a>
+            </li>
+            <li>
+              <a href="" className="mx-4">
+                Servicios
+              </a>
+            </li>
+            <li>
+              <a href="" className="mx-4">
+                Portafolio
+              </a>
+            </li>
+            <li>
+              <a href="" className="mx-2">
+                Equipo
+              </a>
+            </li>
+            <li>
+              <a href="" className="mx-2">
+                Contactanos
+              </a>
+            </li>
+            <li>
+              <Link to="/login">Iniciar Sesion</Link>
+            </li>
+          </ul>
         </div>
-      </header>
+      </nav>
+    </header>
       {/* End Header */}
       {/* Section hero */}
       <section id="hero" className="bg-neutral-600 py-16">
-        <div className="container mx-auto relative">
-          <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
-            <div className="grid grid-cols-2 gap-2">
-              <div className=" order-2 lg:order-1 flex flex-col justify-center text- left lg:px-12">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
-                  Bienvenido a ZonaBAR
-                </h2>
-                <p className="text-base text-stone-300">
-                  Nuestro equipo de profesionales altamente capacitados y
-                  comprometidos está siempre listo para brindar asistencia y
-                  orientación en cada paso del proceso de inventario.
-                </p>
-                <div className="flex justify-center lg:justify-start mt-8" data-aos="fade-up" data-aos-delay="300">
-                  <a
-                    href="/register"
-                    className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold py-2 px-4 rounded-full mr-4 py-4 px-10"
-                  >
-                    <Link to="/register">Empezar</Link>
-                   
-                  </a>
-                  <a
-                    href="https://www.youtube.com/watch?v=n1oUspMuUgk"
-                    className="flex items-center text-white font-bold hover:text-white duration-200 py-2 px-4"
-                  >
-                    <FaRegPlayCircle className="text-stone-300 text-3xl pr-2" />
-                    <span>Ver video</span>
-                  </a>
-                </div>
+      <div className="container mx-auto relative px-4">
+        <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-white pb-8">
+                Bienvenido a ZonaBAR
+              </h2>
+              <p className="text-base text-stone-300 font-sans">
+                Nuestro equipo de profesionales altamente capacitados y
+                comprometidos está siempre listo para brindar asistencia y
+                orientación en cada paso del proceso de inventario.
+              </p>
+              <div className="flex flex-col lg:flex-row justify-center lg:justify-start mt-8" data-aos="fade-up" data-aos-delay="300">
+                <a
+                  href="/register"
+                  className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-10 text-center"
+                >
+                  <Link to="/register">Empezar</Link>
+                </a>
+                <a
+                  href="https://www.youtube.com/watch?v=n1oUspMuUgk"
+                  className="flex items-center justify-center lg:justify-start text-white font-bold hover:text-white duration-200 py-2 px-4"
+                >
+                  <FaRegPlayCircle className="text-stone-300 text-3xl pr-2" />
+                  <span>Ver video</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
-        <div className="container mx-auto relative py-8">
-          <div className="grid grid-cols-4 gap-6 justify-center">
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-              <div className="flex flex-col items-center justify-center">
-                <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
-                <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
-              </div>
+      </div>
+      <div className="container mx-auto relative py-8 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
+            <div className="flex flex-col items-center justify-center">
+              <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
+              <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-              <div className="flex flex-col items-center justify-center">
-                <BsArchive className="mb-5 pt-2 text-5xl text-stone-300" />
-                <h4 className="mb-4 text-2xl">Gestion de stock</h4>
-              </div>
+          </div>
+          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
+            <div className="flex flex-col items-center justify-center">
+              <BsArchive className="mb-5 pt-2 text-5xl text-stone-300" />
+              <h4 className="mb-4 text-2xl">Gestion de stock</h4>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"data-aos="fade-up" data-aos-delay="300">
-              <div className="flex flex-col items-center justify-center">
-                <BsShieldCheck className="mb-5 pt-2 text-5xl text-stone-300" />
-                <h4 className="mb-4 text-2xl">Seguridad de la informacion</h4>
-              </div>
+          </div>
+          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
+            <div className="flex flex-col items-center justify-center">
+              <BsShieldCheck className="mb-5 pt-2 text-5xl text-stone-300" />
+              <h4 className="mb-4 text-2xl">Seguridad de la informacion</h4>
             </div>
-            <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-              <div className="flex flex-col items-center justify-center">
-                <BsTools className="mb-5 pt-2 text-5xl text-stone-300" />
-                <h4 className="mb-4 text-2xl">Mantenimiento de stock</h4>
-              </div>
+          </div>
+          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
+            <div className="flex flex-col items-center justify-center">
+              <BsTools className="mb-5 pt-2 text-5xl text-stone-300" />
+              <h4 className="mb-4 text-2xl">Mantenimiento de stock</h4>
             </div>
           </div>
         </div>
+      </div>
       </section>
       {/* End section Hero */}
-
       {/* Main */}
       {/* About Us Section */}
       <section id="about" className="bg-gray-100 py-16">
@@ -988,7 +1006,7 @@ function LandingPage() {
               <div className="info-container flex flex-col items-center justify-center bg-zinc-500 rounded-lg p-6 shadow-md ">
                 <div className="info-item flex mb-4">
                   <i className="bi bi-geo-alt text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4 text-center">
+                  <div className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Ubicación:
                     </h4>
@@ -1000,7 +1018,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-envelope text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4 text-center">
+                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Correo:
                     </h4>
@@ -1010,7 +1028,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-phone text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4 text-center">
+                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">Llama:</h4>
                     <p className="text-white">+1 5589 55488 55</p>
                   </div>
@@ -1018,7 +1036,7 @@ function LandingPage() {
 
                 <div className="info-item flex">
                   <i className="bi bi-clock text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-20 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4 text-center">
+                  <div className="form-control border border-gray-300 rounded-lg px-20 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Horario abierto
                     </h4>
