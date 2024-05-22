@@ -1,7 +1,7 @@
 const Saldo = require("../models/saldoModel");
 
-exports.MostrarSaldo = (req, res) => {
-  Saldo.mostrarSaldo((Saldo) => {
+exports.obtenerSaldo = (req, res) => {
+  Saldo.obtenerSaldo((Saldo) => {
     res.json(Saldo);
   });
 };

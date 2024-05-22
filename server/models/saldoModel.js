@@ -1,8 +1,8 @@
 const db = require("../db");
 
 class Saldo {
-  static mostrarSaldo(callback) {
-    db.query("SELECT * FROM historial_movimiento ORDER BY fecha_movimiento DESC LIMIT 1", (error, results) => {
+  static obtenerSaldo(callback) {
+    db.query("SELECT producto_codigo, saldo FROM historial_movimiento", (error, results) => {
       if (error) throw error;
       callback(results);
     });

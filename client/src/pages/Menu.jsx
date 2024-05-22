@@ -154,17 +154,18 @@ function Menu() {
                 <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded flex items-center">
                   <MdCheck className="text-green-500 mr-2" />
                   Producto agregado al carrito
+
                 </div>
               )}
             </div>
           </div>
         </header>
-        <div className="flex grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+        <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
           <div className="col-span-1">
-            <div className="flex grid flex flex-col h-full">
+            <div className="flex flex-col h-full">
               <ul className="flex-1 overflow-y-auto ">
                 {categorias.map((categoria, index) => (
-                  <li className=" p-2 mt-2 text-center cursor-pointer odd:bg-white even:bg-slate-50 font-bold table-auto p-6 pb-4 transition duration-500 ease-in-out justify-center ">
+                  <li className=" p-2 mt-2 text-center cursor-pointer odd:bg-white even:bg-slate-50 font-bold table-auto pb-4 transition duration-500 ease-in-out justify-center ">
                     {categoria.nombre}
                     <div className="border-b border-gray-300"></div>
                   </li>

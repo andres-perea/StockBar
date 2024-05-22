@@ -11,6 +11,8 @@ router.get(
   bebidasController.cantidadBebidasVendidas
 );
 
+router.get("/cantidadBebidas", bebidasController.cantidadBebidas);
+
 router.post(
   "/agregarBebidas",
   upload.single("archivo"),
@@ -29,6 +31,7 @@ router.delete("/eliminar/:id", (req, res) => {
     }
   });
 });
+
 router.put("/editar/:id", bebidasController.actualizarBebida);
 
 module.exports = router;
