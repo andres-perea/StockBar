@@ -22,7 +22,7 @@ import {
   FaRegPlayCircle,
   FaLinkedin,
   FaBars,
-  FaTimes,
+  FaCommentAlt,
 } from "react-icons/fa";
 import {
   BsArchive,
@@ -48,26 +48,38 @@ function LandingPage() {
             <h4 className="text-x1 font-semibold mb-4">{name}</h4>
             <span className="text-sm text-gray-600">{role}</span>
           </div>
-          <div className="flex justify-center mt-5">
-            <a href="" className=" text-stone-500 rounded mr-4 ">
+          <div className="flex justify-center mt-4">
+            <a
+              href=""
+              className=" text-gray-500 rounded-lg place-content-center hover:text-gray-800 mr-4"
+            >
               <i>
                 {" "}
                 <FaTwitter />
               </i>
             </a>
-            <a href="" className=" text-stone-500 rounded mr-4">
+            <a
+              href=""
+              className=" text-gray-500 rounded hover:text-gray-800 mr-4"
+            >
               <i>
                 {" "}
                 <FaFacebook />
               </i>
             </a>
-            <a href="" className="text-stone-500 rounded mr-4">
+            <a
+              href=""
+              className="text-gray-500 rounded  hover:text-gray-800 mr-4"
+            >
               <i>
                 {" "}
                 <FaInstagram />
               </i>
             </a>
-            <a href="" className="text-stone-500 rounded mr-4">
+            <a
+              href=""
+              className="text-gray-500 rounded hover:text-gray-800 mr-4"
+            >
               <i>
                 {" "}
                 <FaTelegram />
@@ -79,226 +91,233 @@ function LandingPage() {
     );
   };
 
-  const FaqItem = ({ num, question, answer }) => {
-    return (
-      <div className="accordion-item">
-        <h3 className="accordion-header">
-          <button
-            className="accordion-button"
-            type="button"
-            data-toggle="collapse"
-            data-target={"#faq-content-${num}"}
-          >
-            <span className="text-black-500 mr-2"> {num}.</span> {question}
-          </button>
-        </h3>
-        <div id={"faq-content-${num}"} className="accordion-collapse collapse">
-          <div className="accordion-body">{answer}</div>
-        </div>
-      </div>
-    );
-  };
-
-  const faqData = [
-    {
-      question:
-        "¿Qué características clave ofrece ZonaBAR en su software de gestión de inventarios?",
-      answer:
-        "ZonaBAR ofrece características avanzadas como análisis predictivo, integración con sistemas empresariales, personalización, y seguimiento de activos en tiempo real.",
-    },
-    {
-      question:
-        "¿Cómo se adapta ZonaBAR a las necesidades específicas de diferentes tipos de empresas?",
-      answer:
-        "ZonaBAR se destaca por su capacidad de personalización, permitiendo a las empresas adaptar la plataforma a sus flujos de trabajo únicos, ya sea una pequeña tienda boutique o una cadena internacional de suministro.",
-    },
-    {
-      question:
-        "¿Cómo garantiza ZonaBAR la seguridad de los datos de sus clientes?",
-      answer:
-        "ZonaBAR implementa medidas de seguridad robustas, incluyendo cifrado avanzado y autenticación, para garantizar la confidencialidad e integridad de la información almacenada en la plataforma.",
-    },
-    {
-      question:
-        "¿Cuáles son las capacidades de StockSmart para adaptarse a los cambios en las demandas del mercado?",
-      answer:
-        "ZonaBAR utiliza análisis predictivo para anticipar las tendencias del mercado, ayudando a las empresas a ajustar sus estrategias de inventario de manera proactiva y mantenerse ágiles frente a cambios en la demanda.",
-    },
-    {
-      question:
-        "¿Cómo ZonaBAR garantiza la continuidad del negocio durante la implementación del software?",
-      answer:
-        "ZonaBAR ofrece servicios de consultoría en gestión de inventario durante la implementación para asegurar una transición sin problemas, junto con programas de capacitación y soporte técnico para garantizar una adopción exitosa.",
-    },
-  ];
-   let [isOpen,setIsOpen]=useState(false);
+  let [isOpen, setIsOpen] = useState(false);
   return (
     <>
-    {/* TopBar */}
-  <div className="bg-zinc-800 py-2">
-  <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-    <div className="flex flex-col sm:flex-row items-center font-sans text-stone-300 mb-2 md:mb-0">
-      <div className="mr-4 flex items-center mb-2 sm:mb-0">
-        <FaEnvelope className="mr-1" />
-        <a href="">zonabar.2024@gmail.com</a>
-      </div>
-      <div className="flex items-center">
-        <FaPhone className="mr-1" />
-        <span>310 3892876</span>
-      </div>
-    </div>
-    <div className="flex items-center">
-      <a href="#" className="text-stone-300 mr-2">
-        <FaTwitter />
-      </a>
-      <a href="#" className="text-stone-300 mr-2">
-        <FaFacebook />
-      </a>
-      <a href="#" className="text-stone-300 mr-2">
-        <FaInstagram />
-      </a>
-      <a href="#" className="text-stone-300 mr-2">
-        <FaTelegram />
-      </a>
-    </div>
-  </div>
-</div>
-    {/* End TopBar */}
-    {/* Header */}
-    <header id="header">
-      <nav className="bg-neutral-600 py-6 px-4 md:px-16">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center text-white">
-            <h1 className="text-2xl font-bold font-sans">
-              Zona<span className=" text-zinc-400">BAR.</span>
-            </h1>
+      {/* TopBar */}
+      <div className="bg-zinc-800 py-2">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col sm:flex-row items-center font-sans text-stone-300 mb-2 md:mb-0">
+            <div className="mr-4 flex items-center mb-2 sm:mb-0">
+              <FaEnvelope className="mr-1" />
+              <a href="">zonabar.2024@gmail.com</a>
+            </div>
+            <div className="flex items-center">
+              <FaPhone className="mr-1" />
+              <span>310 3892876</span>
+            </div>
           </div>
-          {/* Menú desplegable */}
-          <div className="relative md:hidden md:items-center md:static">
-            <FaBars
-              className="cursor-pointer text-white"
-              size={24}
-              onClick={() => setIsOpen(!isOpen)} // Cambia el estado de isOpen al hacer clic en el icono
-            />
-            {isOpen && (
-              <div className="md:ml-8 text-xl md:my-0 my-7">
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Inicio</a>
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Sobre Nosotros</a>
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Servicios</a>
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Portafolio</a>
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Equipo</a>
-                <a href="" className="text-gray-800 hover:text-gray-400 duration-500">Contactanos</a>
-                <Link to="/login" className="text-gray-800 hover:text-gray-400 duration-500">Iniciar Sesion</Link>
-              </div>
-            )}
+          <div className="flex items-center">
+            <a href="#" className="text-stone-300 mr-2">
+              <FaTwitter />
+            </a>
+            <a href="#" className="text-stone-300 mr-2">
+              <FaFacebook />
+            </a>
+            <a href="#" className="text-stone-300 mr-2">
+              <FaInstagram />
+            </a>
+            <a href="#" className="text-stone-300 mr-2">
+              <FaTelegram />
+            </a>
           </div>
-          {/* Fin del menú desplegable */}
-          <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-bold text-sm">
-            <li>
-              <a href="" className="mx-4">
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a href="" className="mx-4">
-                Sobre Nosotros
-              </a>
-            </li>
-            <li>
-              <a href="" className="mx-4">
-                Servicios
-              </a>
-            </li>
-            <li>
-              <a href="" className="mx-4">
-                Portafolio
-              </a>
-            </li>
-            <li>
-              <a href="" className="mx-2">
-                Equipo
-              </a>
-            </li>
-            <li>
-              <a href="" className="mx-2">
-                Contactanos
-              </a>
-            </li>
-            <li>
-              <Link to="/login">Iniciar Sesion</Link>
-            </li>
-          </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+      {/* End TopBar */}
+      {/* Header */}
+      <header id="header">
+        <nav className="bg-neutral-600 py-6 px-4 md:px-16">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex items-center text-white">
+              <h1 className="text-2xl font-bold font-sans">
+                Zona<span className=" text-zinc-400">BAR.</span>
+              </h1>
+            </div>
+            {/* Menú desplegable */}
+            <div className="relative md:hidden md:items-center md:static">
+              <FaBars
+                className="cursor-pointer text-white"
+                size={24}
+                onClick={() => setIsOpen(!isOpen)} // Cambia el estado de isOpen al hacer clic en el icono
+              />
+              {isOpen && (
+                <div className="md:ml-8 text-xl md:my-0 my-7">
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Inicio
+                  </a>
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Sobre Nosotros
+                  </a>
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Servicios
+                  </a>
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Portafolio
+                  </a>
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Equipo
+                  </a>
+                  <a
+                    href=""
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Contactanos
+                  </a>
+                  <Link
+                    to="/login"
+                    className="text-gray-800 hover:text-gray-400 duration-500"
+                  >
+                    Iniciar Sesion
+                  </Link>
+                </div>
+              )}
+            </div>
+            {/* Fin del menú desplegable */}
+            <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-bold text-sm">
+              <li>
+                <a href="" className="mx-4">
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-4">
+                  Sobre Nosotros
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-4">
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-4">
+                  Portafolio
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-2">
+                  Equipo
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-2">
+                  Contactanos
+                </a>
+              </li>
+              <li>
+                <Link to="/login">Iniciar Sesion</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
       {/* End Header */}
       {/* Section hero */}
       <section id="hero" className="bg-neutral-600 py-16">
-      <div className="container mx-auto relative px-4">
-        <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-white pb-8">
-                Bienvenido a ZonaBAR
-              </h2>
-              <p className="text-base text-stone-300 font-sans">
-                Nuestro equipo de profesionales altamente capacitados y
-                comprometidos está siempre listo para brindar asistencia y
-                orientación en cada paso del proceso de inventario.
-              </p>
-              <div className="flex flex-col lg:flex-row justify-center lg:justify-start mt-8" data-aos="fade-up" data-aos-delay="300">
-                <a
-                  href="/register"
-                  className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-10 text-center"
+        <div className="container mx-auto relative px-4">
+          <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+              <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-white pb-8">
+                  Bienvenido a ZonaBAR
+                </h2>
+                <p className="text-base text-stone-300 font-sans">
+                  Nuestro equipo de profesionales altamente capacitados y
+                  comprometidos está siempre listo para brindar asistencia y
+                  orientación en cada paso del proceso de inventario.
+                </p>
+                <div
+                  className="flex flex-col lg:flex-row justify-center lg:justify-start mt-8"
+                  data-aos="fade-up"
+                  data-aos-delay="600"
                 >
-                  <Link to="/register">Empezar</Link>
-                </a>
-                <a
-                  href="https://www.youtube.com/watch?v=n1oUspMuUgk"
-                  className="flex items-center justify-center lg:justify-start text-white font-bold hover:text-white duration-200 py-2 px-4"
-                >
-                  <FaRegPlayCircle className="text-stone-300 text-3xl pr-2" />
-                  <span>Ver video</span>
-                </a>
+                  <a
+                    href="/register"
+                    className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-10 text-center"
+                  >
+                    <Link to="/register">Empezar</Link>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/watch?v=n1oUspMuUgk"
+                    className="flex items-center justify-center lg:justify-start text-white font-bold hover:text-white duration-200 py-2 px-4"
+                  >
+                    <FaRegPlayCircle className="text-stone-300 text-3xl pr-2" />
+                    <span>Ver video</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="container mx-auto relative py-8 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
-          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-            <div className="flex flex-col items-center justify-center">
-              <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
-              <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
+        <div className="container mx-auto relative py-8 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
+            <div
+              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
+                <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
+              </div>
             </div>
-          </div>
-          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-            <div className="flex flex-col items-center justify-center">
-              <BsArchive className="mb-5 pt-2 text-5xl text-stone-300" />
-              <h4 className="mb-4 text-2xl">Gestion de stock</h4>
+            <div
+              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <BsArchive className="mb-5 pt-2 text-5xl text-stone-300" />
+                <h4 className="mb-4 text-2xl">Gestion de stock</h4>
+              </div>
             </div>
-          </div>
-          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-            <div className="flex flex-col items-center justify-center">
-              <BsShieldCheck className="mb-5 pt-2 text-5xl text-stone-300" />
-              <h4 className="mb-4 text-2xl">Seguridad de la informacion</h4>
+            <div
+              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <BsShieldCheck className="mb-5 pt-2 text-5xl text-stone-300" />
+                <h4 className="mb-4 text-2xl">Seguridad de la informacion</h4>
+              </div>
             </div>
-          </div>
-          <div className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200" data-aos="fade-up" data-aos-delay="300">
-            <div className="flex flex-col items-center justify-center">
-              <BsTools className="mb-5 pt-2 text-5xl text-stone-300" />
-              <h4 className="mb-4 text-2xl">Mantenimiento de stock</h4>
+            <div
+              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <BsTools className="mb-5 pt-2 text-5xl text-stone-300" />
+                <h4 className="mb-4 text-2xl">Mantenimiento de stock</h4>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </section>
       {/* End section Hero */}
       {/* Main */}
       {/* About Us Section */}
       <section id="about" className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4" data-aos="fade-up" data-aos-delay="300">
+        <div
+          className="container mx-auto px-4"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Sobre Nosotros
@@ -418,7 +437,11 @@ function LandingPage() {
       {/* End About Us Section */}
       {/* Clients Section*/}
       <section id="clients" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="zoom-out" data-aos-delay="300">
+        <div
+          className="container mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="flex justify-center">
             <div className="swiper-container">
               <div className="swiper-wrapper flex items-center">
@@ -452,65 +475,17 @@ function LandingPage() {
         </div>
       </section>
       {/* End Clients Section */}
-      {/* Counter Section*/}
-      <section id="stats-counter" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="col-span-1 lg:col-span-1">
-              <img src="" className="img-fluid" alt="" />
-            </div>
-            <div className="col-span-1 lg:col-span-1">
-              <div className="grid grid-rows-3 gap-4">
-                <div className="stats-items flex items-center">
-                  <span
-                    data-purecounter-start="0"
-                    data-purecounter-end="010"
-                    data-purecounter-duration="1"
-                    className="font-bold text-2xl text-gray-500"
-                  >
-                    <p className="ml-2">
-                      <strong>Clientes felices</strong>Lorem ipsum dolor sit
-                      amet consectetur.
-                    </p>
-                  </span>
-                </div>
-                <div className="stats-items flex items-center">
-                  <span
-                    data-purecounter-start="0"
-                    data-purecounter-end="010"
-                    data-purecounter-duration="1"
-                    className="font-bold text-2xl text-gray-500"
-                  >
-                    <p className="ml-2">
-                      <strong>Proyectos</strong>Lorem ipsum dolor sit amet
-                      consectetur.
-                    </p>
-                  </span>
-                </div>
-                <div className="stats-items flex items-center">
-                  <span
-                    data-purecounter-start="0"
-                    data-purecounter-end="010"
-                    data-purecounter-duration="1"
-                    className="font-bold text-2xl text-gray-500"
-                  >
-                    <p>
-                      <strong>Horas de Soporte</strong>Lorem ipsum dolor sit
-                      amet consectetur.
-                    </p>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* End Counter Section */}
       {/* Our Services Section */}
       <section id="services" className=" bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <div
+          className="container mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="section-header text-center pb-14">
-            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">Servicios</h2>
+            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">
+              Servicios
+            </h2>
             <p className="text-base text-gray-500">
               Nos enfocamos en mejorar el servicio hacia nuestros clientes,
               demostrando que se está capacitado para ejercer todo tipo de
@@ -522,14 +497,14 @@ function LandingPage() {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div className="col-span-1 lg:col-span-1">
+            <div className="col-span-1 lg:col-span-1 hover:">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
-                  <i className="text-5xl text-black">
+                <div className="mb-6">
+                  <i className="text-6xl font-bold text-black">
                     <BsDatabaseUp />
                   </i>
                 </div>
-                <h3 className="text-xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold mb-5">
                   Optimizacion del espacio de almacenamiento
                 </h3>
                 <p className="mt-2">
@@ -537,7 +512,10 @@ function LandingPage() {
                   del espacio de almacenamiento, reduciendo costos y mejorando
                   la eficiencia logística.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-xl">
                     <FaArrowRight />
@@ -548,7 +526,7 @@ function LandingPage() {
 
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
+                <div className="mb-6">
                   <i className="text-5xl text-black">
                     <FaUserFriends />
                   </i>
@@ -561,7 +539,10 @@ function LandingPage() {
                   colaboración entre la empresa, sus proveedores y clientes,
                   optimizando la cadena de suministro.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-xl">
                     <FaArrowRight />
@@ -572,7 +553,7 @@ function LandingPage() {
 
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
+                <div className="mb-6">
                   <i className="text-5xl text-black ">
                     <FaColumns />
                   </i>
@@ -586,7 +567,10 @@ function LandingPage() {
                   indicadores clave de rendimiento relacionados con el
                   inventario.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-xl">
                     <FaArrowRight />
@@ -597,7 +581,7 @@ function LandingPage() {
 
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
+                <div className="mb-6">
                   <i className="text-5xl text-black">
                     <FaLaptopCode />
                   </i>
@@ -610,7 +594,10 @@ function LandingPage() {
                   gestión eficiente de inventarios, desde la entrada de
                   productos hasta la venta final.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-xl">
                     <FaArrowRight />
@@ -621,7 +608,7 @@ function LandingPage() {
 
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
+                <div className="mb-6">
                   <i className="text-5xl text-black">
                     <FaLaptop />
                   </i>
@@ -634,7 +621,10 @@ function LandingPage() {
                   tecnologías emergentes, como IoT y realidad aumentada, para
                   mejorar la monitorización y la eficiencia.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4  inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-1xl ">
                     <FaArrowRight />
@@ -645,7 +635,7 @@ function LandingPage() {
 
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-12">
+                <div className="mb-6">
                   <i className="text-5xl text-black">
                     <BsArrowDownLeftCircle />
                   </i>
@@ -659,7 +649,10 @@ function LandingPage() {
                   impacto en el inventario y mejorando la experiencia del
                   cliente.
                 </p>
-                <a href="#" className="readmore mt-4 inline-block">
+                <a
+                  href="#"
+                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                >
                   Leer más..{" "}
                   <i className="text-xl">
                     <FaArrowRight />
@@ -672,8 +665,8 @@ function LandingPage() {
       </section>
       {/* End Our Services Section */}
       {/*  team Section */}
-      <section id="team" className="team bg-gray-100 py-16">
-        <div className="container mx-auto px-8">
+      <section id="team" className=" py-16">
+        <div className="container mx-auto px-8 place-content-center" data-aos="fade-up" data-aos-delay="600">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Nuestro Equipo
@@ -698,10 +691,16 @@ function LandingPage() {
       {/* End team section */}
       {/* Portafolio Section */}
       <section id="portafolio" className="bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <div
+          className="container mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="section-header text-center">
-            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">Portafolio</h2>
-            <p className="text-base text-gray-500">
+            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">
+              Portafolio
+            </h2>
+            <p className="text-base text-gray-500 mb-6">
               Encontramos algunos productos y/o marcas que estos distribuyen,
               para brindar una mejor asesoría al momento de mostrar sus
               productos
@@ -720,31 +719,31 @@ function LandingPage() {
               <ul className="portfolio-flters flex justify-center mb-8">
                 <li
                   data-filter="*"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
                 >
                   Todo
                 </li>
                 <li
                   data-filter=".filter-app"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2 hover:border-orange-500/50  transition duration-300"
                 >
                   Aplicaciones
                 </li>
                 <li
                   data-filter=".filter-product"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
                 >
                   Productos
                 </li>
                 <li
                   data-filter=".filter-branding"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
                 >
                   Marcas
                 </li>
                 <li
                   data-filter=".filter-books"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
                 >
                   Librería
                 </li>
@@ -764,11 +763,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -793,11 +792,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -822,11 +821,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -851,11 +850,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -880,11 +879,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -909,11 +908,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -938,11 +937,11 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="portfolio-info">
+                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-blue-500 transition duration-300"
+                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp
@@ -960,16 +959,16 @@ function LandingPage() {
       </section>
       {/* End Portafolio Section */}
       {/*  faQ Section */}
-      <section id="faq" className="faq bg:gray-100 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-1">
-              <div className="px-4 py-8 lg:px-0">
-                <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
-                  Preguntas mas <br />
-                  <span className="text-black-500">Frecuentes</span>
+      <section id="faq" className=" bg:gray-100 py-16">
+        <div className="container mx-auto px-4" data-aos="fade-up" data-aos-delay="600">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+              <div className="px-2 py-4 lg:px-0">
+                <h2 className="text-5xl font-semibold mb-4">
+                  Preguntas más <br />
+                  <span className="text-black-500 font-bold uppercase text-orange-300">Frecuentes</span>
                 </h2>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-base text-gray-500 mb-6 ">
                   Muchas veces la gente nos pregunta muchas cosas que a veces es
                   complicado responder todas, aquí verán algunas que hemos
                   respondido y han sido relevantes para seguir mejorando como
@@ -977,17 +976,59 @@ function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="lg:col-span-2">
-              <div className="accordion" id="faqlist">
-                {faqData.map((faq, index) => (
-                  <FaqItem
-                    key={index}
-                    num={index + 1}
-                    question={faq.question}
-                    answer={faq.answer}
-                  />
-                ))}
+            <div className="lg:col-span-1 my-4">
+              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+                <div>
+                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                    <FaCommentAlt />
+                  </span>
+                </div>
+                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                  ¿Cómo ZonaBAR garantiza la continuidad del negocio durante la
+                  implementación del software?
+                </h3>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                  ZonaBAR ofrece servicios de consultoría en gestión de
+                  inventario durante la implementación para asegurar una
+                  transición sin problemas, junto con programas de capacitación
+                  y soporte técnico para garantizar una adopción exitosa.
+                </p>
               </div>
+              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+                <div>
+                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                    <FaCommentAlt />
+                  </span>
+                </div>
+                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                  ¿Cómo se adapta ZonaBAR a las necesidades específicas de
+                  diferentes tipos de empresas?
+                </h3>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                  ZonaBAR se destaca por su capacidad de personalización,
+                  permitiendo a las empresas adaptar la plataforma a sus flujos
+                  de trabajo únicos, ya sea una pequeña tienda boutique o una
+                  cadena internacional de suministro.
+                </p>
+              </div>
+              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+                <div>
+                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                    <FaCommentAlt />
+                  </span>
+                </div>
+                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                  ¿Cómo garantiza ZonaBAR la seguridad de los datos de sus
+                  clientes?
+                </h3>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                  ZonaBAR implementa medidas de seguridad robustas, incluyendo
+                  cifrado avanzado y autenticación, para garantizar la
+                  confidencialidad e integridad de la información almacenada en
+                  la plataforma.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -995,7 +1036,11 @@ function LandingPage() {
       {/* End faQ section */}
       {/*  contact Section */}
       <section id="contact" className="contact bg-gray-100 py-16">
-        <div className="container mx-auto" data-aos="fade-up" data-aos-delay="300">
+        <div
+          className="container mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <div className="section-header text-center mb-10">
             <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
               Contacto
@@ -1126,7 +1171,7 @@ function LandingPage() {
       {/* End Main */}
       {/* Footer */}
       <footer id="footer" className="bg-neutral-600 text-white">
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto py-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="col-span-1">
               <div>
