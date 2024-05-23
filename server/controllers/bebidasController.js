@@ -34,7 +34,7 @@ exports.crearBebidas = (req, res) => {
 
   fs.renameSync(req.file.path, filePath);
 
-  const imagePathInDB = `img/${filename}`;
+  const imagePathInDB = `${filename}`;
 
   const bebida = {
     nombre: req.body.nombre,

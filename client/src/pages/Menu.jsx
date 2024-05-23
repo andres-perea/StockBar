@@ -15,6 +15,8 @@ function Menu() {
   const [categorias, setCategorias] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [showCartNotification, setShowCartNotification] = useState(false);
+  const [alertaStock, setAlertaStock] = useState(false);
+  const [saldo, setsaldo] = useState(null);
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
 
@@ -50,7 +52,7 @@ function Menu() {
       setShowCartNotification(false);
     }, 3000);
   };
-  
+
   const agregarAlCarrito = (bebida) => {
     const existentItem = carrito.find((item) => item.codigo === bebida.codigo);
     if (existentItem) {
@@ -65,7 +67,7 @@ function Menu() {
     }
     showNotification();
   };
-  
+
   const eliminarDelCarrito = (bebida) => {
     const updatedCarrito = carrito.map((item) =>
       item.codigo === bebida.codigo && item.cantidad > 1
@@ -115,11 +117,6 @@ function Menu() {
       });
   };
 
-  const navegation = useNavigate();
-  const checkout = () => {
-    navegation("/checkout");
-  };
-
   return (
     <>
       <div className="">
@@ -154,7 +151,6 @@ function Menu() {
                 <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded flex items-center">
                   <MdCheck className="text-green-500 mr-2" />
                   Producto agregado al carrito
-
                 </div>
               )}
             </div>
@@ -181,11 +177,15 @@ function Menu() {
                   className="max-w-sm rounded overflow-hidden shadow-lg m-1"
                 >
                   {/* Imagen producto */}
-                  <img
-                    className="w-full"
-                    src={`http://localhost:3000/${bebida.imagen}`}
-                    alt={bebida.nombre}
-                  />
+                  <div className="flex justify-center items-center">
+                    {bebida && bebida.imagen && bebida.nombre && (
+                      <img
+                        className="w-1/2 h-auto"
+                        src={`http://localhost:3000/img/${bebida.imagen}`}
+                        alt={bebida.nombre}
+                      />
+                    )}
+                  </div>
                   <div className="px-6 py-2">
                     <div className="font-bold text-xl mb-2">
                       {bebida.nombre}
