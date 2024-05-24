@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../index.css";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [values, setValues] = useState({
@@ -29,7 +27,7 @@ function Login() {
 
   return (
     <div class="flex items-center justify-center h-screen bg-gray-200">
-      <div className="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div className="bg-neutral-50 p-2 rounded-lg shadow-md px-8 pt-6 pb-8 mb-4">
         <div className="max-w-xs mx-auto">
           <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">
             Iniciar Sesión
@@ -37,7 +35,7 @@ function Login() {
           <form action="" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
-                htmlFor="nombreUsuario"
+                htmlFor="Nombre de usuario"
                 className="block text-gray-700 text-sm font-bold mb-2"
               >
                 Nombre de usuario:
@@ -45,6 +43,7 @@ function Login() {
               <input
                 type="text"
                 name="nombreUsuario"
+                id="nombreUsuario"
                 onChange={(e) =>
                   setValues({ ...values, nombreUsuario: e.target.value })
                 }
@@ -63,6 +62,7 @@ function Login() {
                 <input
                   type="password"
                   name="contrasena"
+                  id="contrasena"
                   onChange={(e) =>
                     setValues({ ...values, contrasena: e.target.value })
                   }
@@ -75,6 +75,7 @@ function Login() {
               <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                name="Iniciar Sesion"
               >
                 Iniciar Sesión
               </button>
