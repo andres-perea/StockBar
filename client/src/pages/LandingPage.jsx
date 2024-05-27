@@ -233,7 +233,7 @@ function LandingPage() {
           <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-white pb-8">
+                <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
                   Bienvenido a ZonaBAR
                 </h2>
                 <p className="text-base text-stone-300 font-sans">
@@ -319,7 +319,7 @@ function LandingPage() {
           data-aos-delay="600"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className="text-4xl font-serif font-bold mb-4 underline underline-offset-8">
               Sobre Nosotros
             </h2>
             <p className="text-base text-gray-500">
@@ -483,7 +483,7 @@ function LandingPage() {
           data-aos-delay="600"
         >
           <div className="section-header text-center pb-14">
-            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className=" text-4xl font-bold font-serif mb-4 underline underline-offset-8">
               Servicios
             </h2>
             <p className="text-base text-gray-500">
@@ -499,8 +499,8 @@ function LandingPage() {
           >
             <div className="col-span-1 lg:col-span-1 hover:">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-6">
-                  <i className="text-6xl font-bold text-black">
+                <div className="mb-6 ">
+                  <i className="text-6xl font-bold  text-black">
                     <BsDatabaseUp />
                   </i>
                 </div>
@@ -668,7 +668,7 @@ function LandingPage() {
       <section id="team" className=" py-16">
         <div className="container mx-auto px-8 place-content-center" data-aos="fade-up" data-aos-delay="600">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className="text-4xl font-serif font-bold mb-4 underline underline-offset-8">
               Nuestro Equipo
             </h2>
             <p className="text-base text-gray-500">
@@ -697,7 +697,7 @@ function LandingPage() {
           data-aos-delay="600"
         >
           <div className="section-header text-center">
-            <h2 className=" text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className=" text-4xl font-serif font-bold mb-4 underline underline-offset-8">
               Portafolio
             </h2>
             <p className="text-base text-gray-500 mb-6">
@@ -1042,7 +1042,7 @@ function LandingPage() {
           data-aos-delay="300"
         >
           <div className="section-header text-center mb-10">
-            <h2 className="text-3xl font-semibold mb-4 underline underline-offset-8">
+            <h2 className="text-4xl font-bold font-serif mb-4 underline underline-offset-8">
               Contacto
             </h2>
             <p className="text-gray-600">
@@ -1056,7 +1056,7 @@ function LandingPage() {
               <div className="info-container flex flex-col items-center justify-center bg-zinc-500 rounded-lg p-6 shadow-md ">
                 <div className="info-item flex mb-4">
                   <i className="bi bi-geo-alt text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Ubicación:
                     </h4>
@@ -1068,7 +1068,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-envelope text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Correo:
                     </h4>
@@ -1078,7 +1078,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-phone text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-24 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">Llama:</h4>
                     <p className="text-white">+1 5589 55488 55</p>
                   </div>
@@ -1086,7 +1086,7 @@ function LandingPage() {
 
                 <div className="info-item flex">
                   <i className="bi bi-clock text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-gray-300 rounded-lg px-20 py-2 w-full bg-zinc-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Horario abierto
                     </h4>
@@ -1108,7 +1108,7 @@ function LandingPage() {
                     <input
                       type="text"
                       name="name"
-                      className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500 text-center"
+                      className=" border border-gray-300 rounded-lg px-4 py-2 mb-2 w-full focus:outline-none focus:border-blue-500 text-center"
                       id="name"
                       placeholder="Tu nombre"
                       required
@@ -1117,7 +1117,7 @@ function LandingPage() {
                   <div className="form-group">
                     <input
                       type="email"
-                      className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500 text-center"
+                      className=" border border-gray-300 rounded-lg px-4 py-2 mb-2 w-full focus:outline-none focus:border-blue-500 text-center"
                       name="email"
                       id="email"
                       placeholder="Tu email"
@@ -1128,7 +1128,7 @@ function LandingPage() {
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-blue-500 text-center"
+                    className=" border border-gray-300 rounded-lg px-4 py-2 mb-2 w-full focus:outline-none focus:border-blue-500 text-center"
                     name="subject"
                     id="subject"
                     placeholder="Usuario (Opcional / si tienes)"
@@ -1145,14 +1145,17 @@ function LandingPage() {
                   ></textarea>
                 </div>
                 <div className="my-3 text-center">
-                  <div className="loading">Cargando..</div>
-                  <div className="error-message">
-                    No se pudo enviar tu mensaje. Intenta de nuevo
-                  </div>
-                  <div className="sent-message">
-                    Tu mensaje ha sido enviado. ¡Gracias por confiar en
-                    nosotros!
-                  </div>
+                  {status === 'loading' && <div className="loading">Cargando...</div>}
+                  {status === 'error' && (
+                    <div className="error-message">
+                       No se pudo enviar tu mensaje. Intenta de nuevo
+                    </div>
+                  )}
+                  {status === 'sent' && (
+                    <div className="sent-message">
+                      Tu mensaje ha sido enviado. ¡Gracias por confiar en nosotros!
+                    </div>
+                  )}
                 </div>
                 <div className="text-center">
                   <button
