@@ -62,7 +62,7 @@ CREATE TABLE `bebidas` (
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
 (396201, 'Cerveza Red', 4550.00, 24, 'a', 'img/Desarrollo web.jpg', '2024-05-02 12:26:35', 4),
-(521981, 'vodka', 50000.00, 4, 'litro', 'server/controllers/img/vodka.png', '2024-04-25 13:20:37', 4),
+
 (528745, 'Cerveza Club Colombia', 6050.00, 29, 'Cerveza en lata hecha en colombia', 'img/Desarrollo de software de gestiÃ³n empresarial.jpg', '2024-05-20 15:19:23', 7),
 (579560, 'Cerveza Aguila', 5650.00, 14, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
 (625627, 'smirnoff ', 60000.00, 77, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4),

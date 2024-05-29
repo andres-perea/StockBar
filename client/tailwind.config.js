@@ -11,6 +11,15 @@ export default {
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'sm': '500px',
+      'md': [
+        {'min': '688px', 'max': '767px'},
+        {'min': '868px'}
+      ], 
+      'lg': '1100px',
+      'xl': '1400px'
+    },
     transparent: "transparent",
     current: "currentColor",
     extend: {
