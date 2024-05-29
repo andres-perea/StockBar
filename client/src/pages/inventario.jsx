@@ -22,12 +22,15 @@ function Inventario() {
     setSidebar(!sidebar);
   };
 
-  const handleSearch = async () => {
-    const response = await axios.get("http://localhost:3000/api/items", {
-      params: { query },
-    });
-    setItems(response.data);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:3000/api/items', {
+        params: { query }
+      });
+      setItems(response.data);
+    };
+    fetchData();
+  }, [query]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -147,13 +150,10 @@ function Inventario() {
             <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
               <input
                 type="text"
-                value={query}
+                value={ query }
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar..."
               />
-              <button onClick={handleSearch}>
-                Buscar
-              </button>
               <ul>
                 {items.map((item) => (
                   <li key={item.id}> {item.nombre}</li>
