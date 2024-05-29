@@ -54,7 +54,7 @@ function Pedidos() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -65,7 +65,7 @@ function Pedidos() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -76,7 +76,7 @@ function Pedidos() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdInbox />
                     Pedidos
@@ -87,7 +87,7 @@ function Pedidos() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
                   >
                     <MdOutlineCategory />
                     Categorías
