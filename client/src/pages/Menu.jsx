@@ -158,12 +158,12 @@ function Menu() {
           </div>
         </header>
         <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
-          <div className="col-span-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 m-2 rounded-lg">
+          <div className="col-span-6 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-2 rounded-lg place-items-center">
               {bebidas.map((bebida) => (
                 <div
                   key={bebida.codigo}
-                  className="max-w-xs rounded overflow-hidden shadow-lg"
+                  className="max-w-xs rounded overflow-hidden shadow-lg g"
                 >
                   {/* Imagen producto */}
                   <div className="flex justify-center items-center">

@@ -68,7 +68,7 @@ function Categorias() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -79,7 +79,7 @@ function Categorias() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -90,7 +90,7 @@ function Categorias() {
               <li>
                 <a
                   href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
                 >
                   <MdInbox />
                   Pedidos
@@ -101,7 +101,7 @@ function Categorias() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -114,7 +114,7 @@ function Categorias() {
           <div className="flex flex-col pt-36 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-wh ite rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto p-4"
+              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-wh ite  transition-colors font-semibold focus:outline-none overflow-y-auto "
             >
               <MdOutlineLogout />
               Cerrar Sesión
