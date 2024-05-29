@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import io from "socket.io-client";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
@@ -14,11 +15,33 @@ import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 
 function Routers() {
+  const [messageFromServer, setMessageFromServer] = useState("");
+
+  useEffect(() => {
+    const socket = io("http://localhost:3000");
+
+    socket.on("connect", () => {
+      console.log("Conexión establecida con el servidor");
+    });
+
+    socket.on("FromAPI", (data) => {
+      console.log("Mensaje del servidor:", data);
+      setMessageFromServer(data);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Desconectado del servidor");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
   return (
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<LandingPage   />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/bebidas" element={<Bebidas />} />
