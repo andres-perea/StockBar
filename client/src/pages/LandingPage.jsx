@@ -190,7 +190,7 @@ function LandingPage() {
             {/* Fin del menú desplegable */}
             <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-bold text-sm">
               <li>
-                <a href="" className="mx-4">
+                <a href="" className="mx-4  hover:text-white hover:">
                   Inicio
                 </a>
               </li>
@@ -217,6 +217,11 @@ function LandingPage() {
               <li>
                 <a href="" className="mx-2">
                   Contactanos
+                </a>
+              </li>
+              <li>
+                <a href="/Menu" className="mx-2">
+                  Menu
                 </a>
               </li>
               <li>
