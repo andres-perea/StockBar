@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   MdOutlineSearch,
   MdShoppingCart,
+  MdOutlineShoppingCart,
   MdClose,
   MdCheck,
 } from "react-icons/md";
@@ -156,25 +157,13 @@ function Menu() {
             </div>
           </div>
         </header>
-        <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
-          <div className="col-span-1">
-            <div className="flex flex-col h-full">
-              <ul className="flex-1 overflow-y-auto ">
-                {categorias.map((categoria, index) => (
-                  <li className=" p-2 mt-2 text-center cursor-pointer odd:bg-white even:bg-slate-50 font-bold table-auto pb-4 transition duration-500 ease-in-out justify-center ">
-                    {categoria.nombre}
-                    <div className="border-b border-gray-300"></div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="col-span-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
+          <div className="col-span-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 m-2 rounded-lg">
               {bebidas.map((bebida) => (
                 <div
                   key={bebida.codigo}
-                  className="max-w-sm rounded overflow-hidden shadow-lg m-1"
+                  className="max-w-xs rounded overflow-hidden shadow-lg"
                 >
                   {/* Imagen producto */}
                   <div className="flex justify-center items-center">
@@ -186,17 +175,17 @@ function Menu() {
                       />
                     )}
                   </div>
-                  <div className="px-6 py-2">
+                  <div className="px-4 py-1">
                     <div className="font-bold text-xl mb-2">
                       {bebida.nombre}
                     </div>
                   </div>
-                  <div className="px-6 py-2">
+                  <div className="px-4 py-1">
                     <div className="font-semibold text-gray-500 text-base mb-2">
                       "{bebida.descripcion}"
                     </div>
                   </div>
-                  <div className="px-6">
+                  <div className="px-4">
                     <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
                       {categorias.find(
                         (categoria) => categoria.id === bebida.categoria_id
@@ -209,9 +198,9 @@ function Menu() {
                     </div>
                     <button
                       onClick={() => agregarAlCarrito(bebida)}
-                      className="bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
+                      className="w-full bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out flex items-center justify-center space-x-2"
                     >
-                      Agregar al carrito
+                      <span>Agregar</span> <MdOutlineShoppingCart />
                     </button>
                   </div>
                 </div>

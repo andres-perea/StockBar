@@ -59,18 +59,6 @@ CREATE TABLE `bebidas` (
 --
 -- Volcado de datos para la tabla `bebidas`
 --
-
-INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(396201, 'Cerveza Red', 4550.00, 24, 'a', 'img/Desarrollo web.jpg', '2024-05-02 12:26:35', 4),
-(521981, 'vodka', 50000.00, 4, 'litro', 'server/controllers/img/vodka.png', '2024-04-25 13:20:37', 4),
-(528745, 'Cerveza Club Colombia', 6050.00, 29, 'Cerveza en lata hecha en colombia', 'img/Desarrollo de software de gestiÃ³n empresarial.jpg', '2024-05-20 15:19:23', 7),
-(579560, 'Cerveza Aguila', 5650.00, 14, 'añañai', 'img/aguardiente.png', '2024-04-25 13:01:09', 7),
-(625627, 'smirnoff ', 60000.00, 77, 'litro', 'img/aguardiente.png', '2024-04-25 13:17:12', 4),
-(664371, 'Cerveza Corona', 3650.00, 9, 'Ñ', 'img/aguardiente.png', '2024-05-02 12:19:55', 7),
-(696013, 'Aguardiente Antioqueño', 12500.00, 9, 'Aguardiente creado en las altas montañas de medellin', 'img/aguardiente.png', '2024-05-20 15:26:48', 4),
-(893832, 'Whisky norteño', 21000.00, 20, 'ñl', 'img/aguardiente.png', '2024-05-20 16:03:43', 5),
-(987891, 'Cerveza Poker', 4550.00, 24, 'a', 'img/Desarrollo web.jpg', '2024-05-02 12:42:23', 4);
-
 --
 -- Disparadores `bebidas`
 --
@@ -124,16 +112,6 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `categorias`
---
-
-INSERT INTO `categorias` (`id`, `nombre`) VALUES
-(4, 'Picantico'),
-(5, 'Fuertesss'),
-(7, 'Lo Mejorcito'),
-(8, 'Las sixpack');
-
---
 -- Disparadores `categorias`
 --
 DELIMITER $$
@@ -159,34 +137,6 @@ CREATE TABLE `entrada_productos` (
   `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `entrada_productos`
---
-
-INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entrada`, `fecha_entrada`, `precio_compra`, `producto_codigo`, `historial_id`) VALUES
-(1, 30, '2024-04-17 15:06:20', 60000.00, 748955, NULL),
-(2, 20, '2024-04-18 13:36:37', 32000.00, 303065, NULL),
-(14, 50, '2024-04-22 16:20:10', 10.00, 264698, NULL),
-(16, 40, '2024-04-24 12:39:19', 2650.00, 149642, NULL),
-(17, 30, '2024-04-24 12:53:51', 12500.00, 413326, NULL),
-(18, 30, '2024-04-24 13:14:06', 3550.00, 253023, NULL),
-(19, 30, '2024-04-24 13:17:06', 3550.00, 843861, NULL),
-(20, 30, '2024-04-24 13:18:38', 3550.00, 564123, NULL),
-(21, 30, '2024-04-24 13:25:07', 3550.00, 867306, NULL),
-(22, 20, '2024-04-24 13:49:43', 32500.00, 29536, NULL),
-(23, 30, '2024-04-25 12:11:46', 25000.00, 401946, NULL),
-(24, 30, '2024-04-25 12:16:09', 3650.00, 179716, NULL),
-(26, 30, '2024-04-25 12:21:27', 3650.00, 924569, NULL),
-(27, 15, '2024-04-25 13:01:09', 5650.00, 579560, NULL),
-(28, 80, '2024-04-25 13:17:12', 60000.00, 625627, NULL),
-(29, 4, '2024-04-25 13:20:37', 50000.00, 521981, NULL),
-(30, 10, '2024-05-02 12:19:55', 3650.00, 664371, NULL),
-(31, 25, '2024-05-02 12:26:35', 4550.00, 396201, NULL),
-(32, 25, '2024-05-02 12:42:23', 4550.00, 987891, NULL),
-(33, 30, '2024-05-20 15:19:23', 6050.00, 528745, NULL),
-(34, 10, '2024-05-20 15:26:48', 12500.00, 696013, NULL),
-(35, 30, '2024-05-20 16:03:43', 21000.00, 893832, NULL);
 
 --
 -- Disparadores `entrada_productos`
@@ -227,29 +177,6 @@ CREATE TABLE `historial_movimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `historial_movimiento`
---
-
-INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad_movimiento`, `saldo`, `fecha_movimiento`, `producto_codigo`) VALUES
-(69, 'entrada', '40', 0.00, '2024-04-24 00:00:00', 149642),
-(70, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 413326),
-(71, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 253023),
-(72, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 843861),
-(73, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 564123),
-(74, 'entrada', '30', 0.00, '2024-04-24 00:00:00', 867306),
-(75, 'entrada', '20', 0.00, '2024-04-24 00:00:00', 29536),
-(76, 'entrada', '30', 0.00, '2024-04-25 00:00:00', 401946),
-(77, 'entrada', '30', 0.00, '2024-04-25 00:00:00', 179716),
-(78, 'entrada', '30', 109500.00, '2024-04-25 00:00:00', 924569),
-(79, 'Entrada', '10', 0.00, '2024-05-20 10:26:48', 696013),
-(80, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 396201),
-(82, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 528745),
-(84, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 579560),
-(86, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 664371),
-(88, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 696013),
-(90, 'Salida', '1', -1.00, '2024-05-20 10:36:37', 987891),
-(92, 'Entrada al inventario', '30', 30.00, '2024-05-20 11:03:43', 893832),
-(93, 'Salida del inventario', '10', 20.00, '2024-05-20 11:04:02', 893832);
 
 -- --------------------------------------------------------
 
@@ -265,28 +192,7 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `pedidos`
---
 
-INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto`) VALUES
-(1, 1, '2024-04-17 12:18:42', 861677),
-(2, 5, '2024-04-17 12:33:33', 613512),
-(3, 5, '2024-04-17 12:36:05', 613512),
-(4, 5, '2024-04-17 12:40:45', 814428),
-(5, 15, '2024-04-17 12:42:00', 861677),
-(10, 5, '2024-04-17 13:19:00', 861677),
-(11, 5, '2024-04-17 13:22:31', 861677),
-(12, 5, '2024-04-24 12:40:23', 149642),
-(13, 3, '2024-05-02 12:01:50', 625627),
-(14, 1, '2024-05-20 15:36:37', 396201),
-(15, 1, '2024-05-20 15:36:37', 528745),
-(16, 1, '2024-05-20 15:36:37', 579560),
-(17, 1, '2024-05-20 15:36:37', 664371),
-(18, 1, '2024-05-20 15:36:37', 696013),
-(19, 1, '2024-05-20 15:36:37', 987891),
-(20, 10, '2024-05-20 16:04:02', 893832);
-
---
 -- Disparadores `pedidos`
 --
 DELIMITER $$
@@ -328,39 +234,6 @@ CREATE TABLE `salida_productos` (
   `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `salida_productos`
---
-
-INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `precio_venta`, `producto_codigo`, `historial_id`) VALUES
-(1, '08:19:00', 5, 'Venta realizada', 0, 861677, NULL),
-(2, '08:22:31', 5, 'Venta realizada', 0, 861677, NULL),
-(5, '08:33:13', 40, 'salida', 0, 861677, NULL),
-(6, '10:34:39', 30, 'salida', 0, 748955, NULL),
-(7, '08:43:32', 20, 'salida', 0, 303065, NULL),
-(8, '11:22:34', 25, 'salida', 0, 264698, NULL),
-(9, '07:40:23', 5, 'Venta realizada', 0, 149642, NULL),
-(10, '07:54:58', 30, 'salida', 0, 413326, NULL),
-(11, '08:18:24', 30, 'salida', 0, 843861, NULL),
-(12, '08:18:31', 30, 'salida', 0, 253023, NULL),
-(13, '08:18:33', 35, 'salida', 0, 149642, NULL),
-(14, '08:25:04', 30, 'salida', 0, 564123, NULL),
-(15, '08:54:19', 30, 'salida', 0, 867306, NULL),
-(16, '08:00:06', 20, 'salida', 0, 29536, NULL),
-(17, '08:00:15', 30, 'salida', 0, 179716, NULL),
-(18, '08:00:18', 30, 'salida', 0, 401946, NULL),
-(19, '08:00:21', 25, 'salida', 0, 613512, NULL),
-(20, '08:00:24', 5, 'salida', 0, 814428, NULL),
-(21, '08:00:27', 30, 'salida', 0, 924569, NULL),
-(22, '07:01:50', 3, 'Venta realizada', 0, 625627, NULL),
-(23, '10:36:37', 1, 'Venta realizada', 0, 396201, NULL),
-(24, '10:36:37', 1, 'Venta realizada', 0, 528745, NULL),
-(25, '10:36:37', 1, 'Venta realizada', 0, 579560, NULL),
-(26, '10:36:37', 1, 'Venta realizada', 0, 664371, NULL),
-(27, '10:36:37', 1, 'Venta realizada', 0, 696013, NULL),
-(28, '10:36:37', 1, 'Venta realizada', 0, 987891, NULL),
-(29, '11:04:02', 10, 'Venta realizada', 0, 893832, NULL);
 
 --
 -- Disparadores `salida_productos`
