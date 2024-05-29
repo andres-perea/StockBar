@@ -15,18 +15,28 @@ import axios from "axios";
 
 function Inventario() {
   const [sidebar, setSidebar] = useState(false);
+  const [items, setItems] = useState([]);
+  const [query, setQuery] = useState("");
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
+  };
+
+  const handleSearch = async () => {
+    const response = await axios.get("http://localhost:3000/api/items", {
+      params: { query },
+    });
+    setItems(response.data);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
+
   return (
     <>
-      <div className="flex grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+      <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
         {/* Sidebar */}
         <div
           className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
@@ -135,6 +145,20 @@ function Inventario() {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Buscar..."
+              />
+              <button onClick={handleSearch}>
+                Buscar
+              </button>
+              <ul>
+                {items.map((item) => (
+                  <li key={item.id}> {item.nombre}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
