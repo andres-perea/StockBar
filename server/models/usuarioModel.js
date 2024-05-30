@@ -33,4 +33,15 @@ Usuario.obtenerUsuario = (nombreUsuario, result) => {
   );
 };
 
+Usuario.actualizarContraseña = (
+  correoElectronico,
+  nuevaContraseña,
+  callback
+) => {
+  const hashedPassword = bcrypt.hashSync(nuevaContraseña, 10);
+  const query =
+    "UPDATE usuarios SET contrasena = ? WHERE correoElectronico = ?";
+  db.query(query, [hashedPassword, correoElectronico], callback);
+};
+
 module.exports = Usuario;

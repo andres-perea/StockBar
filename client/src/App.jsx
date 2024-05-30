@@ -13,6 +13,7 @@ import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
+import RecuperarContraseña from "./pages/RecuperarContraseña";
 
 function Routers() {
   const [messageFromServer, setMessageFromServer] = useState("");
@@ -51,6 +52,7 @@ function Routers() {
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/inventario" element={<Inventario />} />
+        <Route path="/recuperar-contraseña" element={<RecuperarContraseña />} />
       </Routes>
     </BrowserRouter>
   );

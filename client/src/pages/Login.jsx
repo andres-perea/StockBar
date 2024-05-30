@@ -81,6 +81,16 @@ function Login() {
             </div>
             <div class="mt-4">
               <p class="text-center text-gray-500 text-xs">
+                ¿Olvidaste tu contraseña?
+                <Link to="/recuperar-contraseña">
+                  <a class="text-blue-500 hover:text-blue-800" href="#">
+                    Recuperar contraseña
+                  </a>
+                </Link>
+              </p>
+            </div>
+            <div class="mt-1">
+              <p class="text-center text-gray-500 text-xs">
                 ¿No tienes una cuenta?
                 <Link to="/registro">
                   <a class="text-blue-500 hover:text-blue-800" href="#">
