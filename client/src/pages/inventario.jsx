@@ -8,29 +8,33 @@ import {
   MdOutlineMenu,
   MdClose,
   MdInventory2,
+  MdOutlineSearch,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "../index.css";
-import axios from "axios";
 
 function Inventario() {
   const [sidebar, setSidebar] = useState(false);
-  const [items, setItems] = useState([]);
   const [query, setQuery] = useState("");
+  const [resultados, setResultados] = useState([]);
 
   const handleSidebar = () => {
     setSidebar(!sidebar);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('http://localhost:3000/api/items', {
-        params: { query }
-      });
-      setItems(response.data);
-    };
-    fetchData();
-  }, [query]);
+  const manejarCambio = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const manejarBuscador = async () => {
+    if (query.trim() === "") {
+      return;
+    }
+    const response = await fetch(
+      `http://localhost:3000/api/items?query=${query}`
+    );
+    const data = await response.json();
+    setResultados(data);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -145,18 +149,30 @@ function Inventario() {
                 <h1 className="text-4xl lg:text-5xl font-bold">
                   Historial inventario
                 </h1>
+                <div className="flex space-x-4">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={query}
+                      onChange={manejarCambio}
+                      placeholder="Buscar..."
+                      className="pl-2 pr-4 py-2 border rounded-lg w-full font-bold"
+                    />
+                    <MdOutlineSearch
+                      className="h-7 w-7 absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-800 cursor-pointer justify-center"
+                      onClick={manejarBuscador}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
-              <input
-                type="text"
-                value={ query }
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Buscar..."
-              />
               <ul>
-                {items.map((item) => (
-                  <li key={item.id}> {item.nombre}</li>
+                {resultados.map((bebida) => (
+                  <li key={bebida.id}>
+                    {" "}
+                    {bebida.nombre} <br /> {bebida.precio}{" "}
+                  </li>
                 ))}
               </ul>
             </div>
