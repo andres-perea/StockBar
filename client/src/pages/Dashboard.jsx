@@ -15,7 +15,6 @@ import GraficoBebidas from "../components/Graficos";
 import Saldos from "../components/Saldos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
-import "../index.css";
 import axios from "axios";
 
 function Dashboard() {

@@ -1,35 +1,41 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../index.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
-  const [values, setValues] = useState({
-    nombreUsuario: "",
-    correoElectronico: "",
-    contrasena: "",
-  });
+  const [nombreUsuario, setNombreUsuario] = useState("");
+  const [correoElectronico, setCorreoElectronico] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:3000/api/auth/registro", values)
-      .then(function (response) {
-        console.log(response);
-        toast.success("Usuario registrado correctamente");
-      })
-      .catch(function (error) {
-        console.log(error);
-        toast.error("Error al registrar al usuario");
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/registro",
+        {
+          nombreUsuario,
+          correoElectronico,
+          contrasena,
+        }
+      );
+      console.log(response);
+      console.log(response.data);
+      if (response.status === 200) {
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || "Register failed");
+      console.log(error);
+    }
   };
   return (
     <div class="flex items-center justify-center h-screen bg-gray-200">
-      <div class="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-16 pt-6 pb-8 mb-4">
+      <div class="bg-neutral-50 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
         <div class="max-w-xs mx-auto">
-          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">Registrarse</h2>
+          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">
+            Registrarse
+          </h2>
           <form action="" onSubmit={handleSubmit} className="formulario">
             <div className="mb-4">
               <label
@@ -41,9 +47,9 @@ function Register() {
               <input
                 type="text"
                 name="nombreUsuario"
-                onChange={(e) =>
-                  setValues({ ...values, nombreUsuario: e.target.value })
-                }
+                id="nombreUsuario"
+                value={nombreUsuario}
+                onChange={(e) => setNombreUsuario(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
@@ -58,12 +64,9 @@ function Register() {
               <input
                 type="email"
                 name="nombreUsuario"
-                onChange={(e) =>
-                  setValues({
-                    ...values,
-                    correoElectronico: e.target.value,
-                  })
-                }
+                id="correoElectronico"
+                value={correoElectronico}
+                onChange={(e) => setCorreoElectronico(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
@@ -78,9 +81,9 @@ function Register() {
               <input
                 type="password"
                 name="contrasena"
-                onChange={(e) =>
-                  setValues({ ...values, contrasena: e.target.value })
-                }
+                id="contrasena"
+                value={contrasena}
+                onChange={(e) => setContrasena(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
@@ -93,6 +96,9 @@ function Register() {
                 Crear cuenta
               </button>
             </div>
+            {error && (
+              <div className="text-red-500 text-center mt-4">{error}</div>
+            )}
             <div className="mt-4">
               <p class="text-center text-gray-500 text-xs">
                 ¿Ya estas registrado?
@@ -106,7 +112,6 @@ function Register() {
           </form>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }
