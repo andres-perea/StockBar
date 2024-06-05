@@ -13,30 +13,9 @@ import Menu from "./pages/Menu";
 import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
-import RecuperarContraseña from "./pages/RecuperarContraseña";
+import SolicitarContraseña from "./pages/SolicitarContraseña";
 
 function Routers() {
-  const [messageFromServer, setMessageFromServer] = useState("");
-
-  useEffect(() => {
-    const socket = io("http://localhost:3000");
-    socket.on("connect", () => {
-      console.log("Conexion establecida con el servidor");
-    });
-
-    socket.on("FromAPI", (data) => {
-      console.log("Mensaje del servidor:", data);
-      setMessageFromServer(data);
-    });
-
-    socket.on("disconnect", () => {
-      console.log("Desconectado del servidor");
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
   return (
     <BrowserRouter basename="/">
       <Routes>
@@ -52,7 +31,7 @@ function Routers() {
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/inventario" element={<Inventario />} />
-        <Route path="/recuperar-contraseña" element={<RecuperarContraseña />} />
+        <Route path="/solicitar-cambio-contraseña" element={<SolicitarContraseña />}/>
       </Routes>
     </BrowserRouter>
   );

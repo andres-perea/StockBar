@@ -5,14 +5,17 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "",
-    pass: "",
+    user: "barmanage.contacto@gmail.com",
+    pass: "deph dsxl poic zjof",
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
 const enviarCorreo = (correoElectronico, subject, text, callback) => {
   const mailOptions = {
-    from: "",
+    from: "barmanage.contacto@gmail.com",
     to: correoElectronico,
     subject: subject,
     text: text,

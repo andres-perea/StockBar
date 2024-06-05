@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function RecuperarContraseña() {
+const SolicitarContraseña = () => {
   const [correoElectronico, setCorreoElectronico] = useState("");
   const [message, setMessage] = useState("");
-
-  const handleEmailChange = (event) => {
-    setCorreoElectronico(event.target.value);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/recuperar-contraseña",
+        "http://localhost:3000/api/auth/solicitar-cambio-contrasena",
         { correoElectronico }
       );
       setMessage(response.data);
@@ -23,23 +19,23 @@ function RecuperarContraseña() {
   };
 
   return (
-    <div className="">
-      <h2>Recuperacion de contraseña</h2>
+    <>
+      <h2>Solicitar Cambio de contraseña</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Correo electrónico:
+          Correo electronico:
           <input
             type="email"
             value={correoElectronico}
-            onChange={handleEmailChange}
+            onChange={(e) => setCorreoElectronico(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Recuperar Contraseña</button>
+        <button type="submit">Solicitar</button>
       </form>
       {message && <p>{message}</p>}
-    </div>
+    </>
   );
-}
+};
 
-export default RecuperarContraseña;
+export default SolicitarContraseña;

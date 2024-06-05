@@ -2,9 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Usuario = require("../models/usuarioModel");
 const enviarCorreo = require("./config/emailService");
-const { generarToken, verificarToken } = require("./config/tokenService")
+const { generarToken, verificarToken } = require("./config/tokenService");
 const db = require("../db");
-
 
 exports.registro = (req, res) => {
   const nuevoUsuario = new Usuario(req.body);
@@ -37,29 +36,62 @@ exports.inicioSesion = (req, res) => {
       });
     }
   });
-}
+};
 
 exports.solicitarCambioContraseña = (req, res) => {
   const { correoElectronico } = req.body;
+  console.log('Solicitud de cambio de contraseña para el email:', correoElectronico);
   Usuario.buscarPorEmail(correoElectronico, (err, results) => {
+    if (err) {
+      console.error('Error en buscarPorEmail:', err);
+      return res.status(500).send('Error en la búsqueda del usuario');
+  }
     if (err || results.length === 0) {
+      console.warn('Usuario no encontrado para el email:', correoElectronico);
       return res.status(404).send("Usuario no encontrado");
     }
     const token = generarToken({ correoElectronico });
-    const link = `http://localhost:3000/cambiar-contraseña/${token}`;
+    console.log('Token generado:', token);
+    const link = `http://localhost:5173/cambiar-contrasena/${token}`;
     const mensaje = `Haz clic en el siguiente enlace para cambiar tu contraseña: ${link}`;
 
-    enviarCorreo(correoElectronico, "Cambio de contraseña", mensaje, (error, info) => {
-      if (error) {
-        return res.status(500).send('Error al enviar el correo electrónico');
+    enviarCorreo(
+      correoElectronico,
+      "Cambio de contraseña",
+      mensaje,
+      (error, info) => {
+        if (error) {
+          return res.status(500).send("Error al enviar el correo electrónico");
+        }
+        res.status(200).send("Correo enviado");
       }
-      res.status(200).send('Correo enviado');
-    })
-  })
-}
+    );
+  });
+};
+
+exports.cambiarContraseña = (req, res) => {
+  const { token, nuevaContraseña } = req.body;
+  console.log('Cambio de contraseña con token:', token);
+  verificarToken(token, (err, decoded) => {
+    if (err) {
+      console.error('Error al verificar el token:', err);
+      return res.status(400).send("Token inválido o expirado");
+    }
+    const hashedContraseña = bcrypt.hashSync(nuevaContraseña, 10);
+    Usuario.actualizarContraseña(
+      decoded.correoElectronico,
+      hashedContraseña,
+      (error, results) => {
+        if (error) {
+          console.error('Error al actualizar la contraseña:', error);
+          return res.status(500).send("Error al actualizar la contraseña");
+        }
+        res.status(200).send("Contraseña actualizada");
+      }
+    );
+  });
+};
 
 exports.logout = (req, res) => {
   res.status(200).send({ auth: false, token: null });
 };
-
-

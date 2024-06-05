@@ -82,7 +82,7 @@ function Login() {
             <div class="mt-4">
               <p class="text-center text-gray-500 text-xs">
                 ¿Olvidaste tu contraseña?
-                <Link to="/recuperar-contraseña">
+                <Link to="/solicitar-cambio-contraseña">
                   <a class="text-blue-500 hover:text-blue-800" href="#">
                     Recuperar contraseña
                   </a>
