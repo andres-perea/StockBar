@@ -1,8 +1,10 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const Usuario = require("../models/usuarioModel");
+const enviarCorreo = require("./config/emailService");
+const { generarToken, verificarToken } = require("./config/tokenService")
 const db = require("../db");
+
 
 exports.registro = (req, res) => {
   const nuevoUsuario = new Usuario(req.body);
@@ -35,62 +37,29 @@ exports.inicioSesion = (req, res) => {
       });
     }
   });
-};
+}
+
+exports.solicitarCambioContraseña = (req, res) => {
+  const { correoElectronico } = req.body;
+  Usuario.buscarPorEmail(correoElectronico, (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(404).send("Usuario no encontrado");
+    }
+    const token = generarToken({ correoElectronico });
+    const link = `http://localhost:3000/cambiar-contraseña/${token}`;
+    const mensaje = `Haz clic en el siguiente enlace para cambiar tu contraseña: ${link}`;
+
+    enviarCorreo(correoElectronico, "Cambio de contraseña", mensaje, (error, info) => {
+      if (error) {
+        return res.status(500).send('Error al enviar el correo electrónico');
+      }
+      res.status(200).send('Correo enviado');
+    })
+  })
+}
 
 exports.logout = (req, res) => {
   res.status(200).send({ auth: false, token: null });
 };
 
-const enviarCorreo = (correoElectronico, nuevaContraseña, callback) => {
-  const transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: "zonabar.2024@gmail.com",
-      pass: "ZonaBar2024",
-    },
-  });
 
-  const mailOptions = {
-    from: "zonabar.2024@gmail.com",
-    to: correoElectronico,
-    subject: "Recuperacion de contraseña",
-    text: `tu nueva contraseña es: ${nuevaContraseña}`,
-  };
-  transporter.sendMail(mailOptions, callback);
-};
-
-exports.recuperarContraseña = (req, res) => {
-  const { correoElectronico } = req.body;
-  const nuevaContraseña = Math.random().toString(36).substring(2, 8);
-
-  Usuario.actualizarContraseña(
-    correoElectronico,
-    nuevaContraseña,
-    (err, results) => {
-      if (err) {
-        console.error("Error al actualizar la contraseña: ", err);
-        res.status(500).send("Error al actualizar la contraseña");
-        return;
-      }
-
-      if (results.affectedRows === 0) {
-        res.status(404).send("Usuario no encontrado");
-        return;
-      }
-
-      enviarCorreo(correoElectronico, nuevaContraseña, (error, info) => {
-        if (error) {
-          console.error("Error al enviar correo electrónico: ", error);
-          res.status(500).send("Error al enviar correo electrónico");
-          return;
-        }
-        console.log("Correo electronico enviado", info.response);
-        res
-          .status(200)
-          .send(
-            "Contraseña actualizada. Se ha enviado un correo electrónico con la nueva contraseña."
-          );
-      });
-    }
-  );
-};

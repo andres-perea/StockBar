@@ -1,4 +1,5 @@
 const db = require("../db");
+const bcrypt = require("bcryptjs");
 
 const Usuario = function (usuario) {
   (this.nombreUsuario = usuario.nombreUsuario),
@@ -33,15 +34,19 @@ Usuario.obtenerUsuario = (nombreUsuario, result) => {
   );
 };
 
+Usuario.buscarPorEmail = (correoElectronico, callback) => {
+  const query = "SELECT * FROM usuarios WHERE correoElectronico = ?";
+  db.query(query, [correoElectronico], callback);
+};
+
 Usuario.actualizarContraseña = (
   correoElectronico,
   nuevaContraseña,
   callback
 ) => {
-  const hashedPassword = bcrypt.hashSync(nuevaContraseña, 10);
   const query =
-    "UPDATE usuarios SET contrasena = ? WHERE correoElectronico = ?";
-  db.query(query, [hashedPassword, correoElectronico], callback);
+    "UPDATE usuarios SET contraseña = ? WHERE correoElectronico = ?";
+  db.query(query, [nuevaContraseña, correoElectronico], callback);
 };
 
 module.exports = Usuario;
