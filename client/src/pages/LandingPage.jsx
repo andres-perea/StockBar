@@ -126,11 +126,11 @@ function LandingPage() {
       {/* End TopBar */}
       {/* Header */}
       <header id="header">
-        <nav className="bg-neutral-600 py-6 px-4 md:px-16">
+        <nav className="bg-neutral-600 py-6 px-4 md:px-16 fixed w-full top-0 z-50 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center text-white">
-              <h1 className="text-2xl font-bold font-sans">
-                Zona<span className=" text-zinc-400">BAR.</span>
+              <h1 className="text-3xl font-bold font-sans">
+                B<span className=" text-orange-300">M.</span>
               </h1>
             </div>
             {/* Menú desplegable */}
@@ -188,44 +188,39 @@ function LandingPage() {
               )}
             </div>
             {/* Fin del menú desplegable */}
-            <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-bold text-sm">
+            <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-semibold text-lg ">
               <li>
-                <a href="" className="mx-4  hover:text-white hover:">
+                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="" className="mx-4">
+                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
                   Sobre Nosotros
                 </a>
               </li>
               <li>
-                <a href="" className="mx-4">
+                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
                   Servicios
                 </a>
               </li>
               <li>
-                <a href="" className="mx-4">
-                  Portafolio
-                </a>
-              </li>
-              <li>
-                <a href="" className="mx-2">
-                  Equipo
-                </a>
-              </li>
-              <li>
-                <a href="" className="mx-2">
-                  Contactanos
-                </a>
-              </li>
-              <li>
-                <a href="/Menu" className="mx-2">
+                <a href="/Menu" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
                   Menu
                 </a>
               </li>
               <li>
-                <Link to="/login">Iniciar Sesion</Link>
+                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                  Equipo
+                </a>
+              </li>
+              <li>
+                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                  Contactanos
+                </a>
+              </li>
+              <li>
+                <Link to="/login" className="bg-orange-300 mr-0 lg:mr-2 mb-2 lg:mb-0 py-2 px-6 rounded-lg hover:bg-white hover:text-black text-center">Iniciar Sesion</Link>
               </li>
             </ul>
           </div>
@@ -233,13 +228,13 @@ function LandingPage() {
       </header>
       {/* End Header */}
       {/* Section hero */}
-      <section id="hero" className="bg-neutral-600 py-16">
+      <section id="hero" className="bg-neutral-600 pt-16">
         <div className="container mx-auto relative px-4">
           <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
                 <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
-                  Bienvenido a ZonaBAR
+                  Bienvenido a Bar<span className="text-orange-300 ">Manage</span> 
                 </h2>
                 <p className="text-base text-stone-300 font-sans">
                   Nuestro equipo de profesionales altamente capacitados y
@@ -253,16 +248,9 @@ function LandingPage() {
                 >
                   <a
                     href="/register"
-                    className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-10 text-center"
+                    className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-12 text-center"
                   >
                     <Link to="/register">Empezar</Link>
-                  </a>
-                  <a
-                    href="https://www.youtube.com/watch?v=n1oUspMuUgk"
-                    className="flex items-center justify-center lg:justify-start text-white font-bold hover:text-white duration-200 py-2 px-4"
-                  >
-                    <FaRegPlayCircle className="text-stone-300 text-3xl pr-2" />
-                    <span>Ver video</span>
                   </a>
                 </div>
               </div>
@@ -272,11 +260,11 @@ function LandingPage() {
         <div className="container mx-auto relative py-8 px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
             <div
-              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-400 hover:shadow-lg"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center ">
                 <BsFileCheck className="mb-5 pt-2 text-5xl text-stone-300" />
                 <h4 className="mb-4 text-2xl">Administracion de inventario</h4>
               </div>
@@ -341,7 +329,7 @@ function LandingPage() {
               </h3>
               <img
                 src="./src/img/about.jpg"
-                className="rounded-lg mb-4img-fluid"
+                className="rounded-lg mb-4 img-fluid"
                 alt=""
               />
               <p className="mb-4">
@@ -505,7 +493,7 @@ function LandingPage() {
             <div className="col-span-1 lg:col-span-1 hover:">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
                 <div className="mb-6 ">
-                  <i className="text-6xl font-bold  text-black">
+                  <i className="text-5xl font-bold  text-black">
                     <BsDatabaseUp />
                   </i>
                 </div>
@@ -536,7 +524,7 @@ function LandingPage() {
                     <FaUserFriends />
                   </i>
                 </div>
-                <h3 className="text-xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold mb-5">
                   Integracion de proveedores y clientes
                 </h3>
                 <p className="mt-2">
@@ -559,66 +547,11 @@ function LandingPage() {
             <div className="col-span-1 lg:col-span-1">
               <div className="relative bg-white p-10 rounded-lg shadow-lg">
                 <div className="mb-6">
-                  <i className="text-5xl text-black ">
-                    <FaColumns />
-                  </i>
-                </div>
-                <h3 className="text-xl font-semibold mb-5">
-                  Desarrollo de dashboards personalizados
-                </h3>
-                <p className="mt-2">
-                  Creación de paneles de control personalizados que permitan a
-                  los usuarios visualizar de manera clara y concisa los
-                  indicadores clave de rendimiento relacionados con el
-                  inventario.
-                </p>
-                <a
-                  href="#"
-                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
-                >
-                  Leer más..{" "}
-                  <i className="text-xl">
-                    <FaArrowRight />
-                  </i>
-                </a>
-              </div>
-            </div>
-
-            <div className="col-span-1 lg:col-span-1">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-6">
-                  <i className="text-5xl text-black">
-                    <FaLaptopCode />
-                  </i>
-                </div>
-                <h3 className="text-xl font-semibold mb-5">
-                  Desarrollo de Plataforma de Gestión de Inventario
-                </h3>
-                <p className="mt-2">
-                  Creación y mantenimiento de una plataforma integral para la
-                  gestión eficiente de inventarios, desde la entrada de
-                  productos hasta la venta final.
-                </p>
-                <a
-                  href="#"
-                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
-                >
-                  Leer más..{" "}
-                  <i className="text-xl">
-                    <FaArrowRight />
-                  </i>
-                </a>
-              </div>
-            </div>
-
-            <div className="col-span-1 lg:col-span-1">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-6">
                   <i className="text-5xl text-black">
                     <FaLaptop />
                   </i>
                 </div>
-                <h3 className="text-xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold mb-5">
                   Integración con Tecnologías Emergentes
                 </h3>
                 <p className="mt-2">
@@ -632,34 +565,6 @@ function LandingPage() {
                 >
                   Leer más..{" "}
                   <i className="text-1xl ">
-                    <FaArrowRight />
-                  </i>
-                </a>
-              </div>
-            </div>
-
-            <div className="col-span-1 lg:col-span-1">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-6">
-                  <i className="text-5xl text-black">
-                    <BsArrowDownLeftCircle />
-                  </i>
-                </div>
-                <h3 className="text-xl font-semibold mb-5">
-                  Gestión de Devoluciones Automatizada
-                </h3>
-                <p className="mt-2">
-                  Desarrollo de funciones específicas para gestionar
-                  eficientemente el proceso de devoluciones, minimizando el
-                  impacto en el inventario y mejorando la experiencia del
-                  cliente.
-                </p>
-                <a
-                  href="#"
-                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
-                >
-                  Leer más..{" "}
-                  <i className="text-xl">
                     <FaArrowRight />
                   </i>
                 </a>
