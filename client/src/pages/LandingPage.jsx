@@ -190,37 +190,60 @@ function LandingPage() {
             {/* Fin del menú desplegable */}
             <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-semibold text-lg ">
               <li>
-                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href=""
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href=""
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Sobre Nosotros
                 </a>
               </li>
               <li>
-                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href=""
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Servicios
                 </a>
               </li>
               <li>
-                <a href="/Menu" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href="/Menu"
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Menu
                 </a>
               </li>
               <li>
-                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href=""
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Equipo
                 </a>
               </li>
               <li>
-                <a href="" className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8">
+                <a
+                  href=""
+                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                >
                   Contactanos
                 </a>
               </li>
               <li>
-                <Link to="/login" className="bg-orange-300 mr-0 lg:mr-2 mb-2 lg:mb-0 py-2 px-6 rounded-lg hover:bg-white hover:text-black text-center">Iniciar Sesion</Link>
+                <Link
+                  to="/login"
+                  className="bg-orange-300 mr-0 lg:mr-2 mb-2 lg:mb-0 py-2 px-6 rounded-lg hover:bg-white hover:text-black text-center"
+                >
+                  Iniciar Sesion
+                </Link>
               </li>
             </ul>
           </div>
@@ -234,7 +257,8 @@ function LandingPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
                 <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
-                  Bienvenido a Bar<span className="text-orange-300 ">Manage</span> 
+                  Bienvenido a Bar
+                  <span className="text-orange-300 ">Manage</span>
                 </h2>
                 <p className="text-base text-stone-300 font-sans">
                   Nuestro equipo de profesionales altamente capacitados y
@@ -246,12 +270,12 @@ function LandingPage() {
                   data-aos="fade-up"
                   data-aos-delay="600"
                 >
-                  <a
-                    href="/register"
+                  <Link
+                    to="/register"
                     className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-12 text-center"
                   >
-                    <Link to="/register">Empezar</Link>
-                  </a>
+                    Empezar
+                  </Link>
                 </div>
               </div>
             </div>
@@ -576,7 +600,11 @@ function LandingPage() {
       {/* End Our Services Section */}
       {/*  team Section */}
       <section id="team" className=" py-16">
-        <div className="container mx-auto px-8 place-content-center" data-aos="fade-up" data-aos-delay="600">
+        <div
+          className="container mx-auto px-8 place-content-center"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="text-center mb-10">
             <h2 className="text-4xl font-serif font-bold mb-4 underline underline-offset-8">
               Nuestro Equipo
@@ -870,13 +898,19 @@ function LandingPage() {
       {/* End Portafolio Section */}
       {/*  faQ Section */}
       <section id="faq" className=" bg:gray-100 py-16">
-        <div className="container mx-auto px-4" data-aos="fade-up" data-aos-delay="600">
+        <div
+          className="container mx-auto px-4"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
               <div className="px-2 py-4 lg:px-0">
                 <h2 className="text-5xl font-semibold mb-4">
                   Preguntas más <br />
-                  <span className="text-black-500 font-bold uppercase text-orange-300">Frecuentes</span>
+                  <span className="text-black-500 font-bold uppercase text-orange-300">
+                    Frecuentes
+                  </span>
                 </h2>
                 <p className="text-base text-gray-500 mb-6 ">
                   Muchas veces la gente nos pregunta muchas cosas que a veces es
@@ -887,58 +921,57 @@ function LandingPage() {
               </div>
             </div>
             <div className="lg:col-span-1 my-4">
-              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo ZonaBAR garantiza la continuidad del negocio durante la
                   implementación del software?
                 </h3>
-                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
                   ZonaBAR ofrece servicios de consultoría en gestión de
                   inventario durante la implementación para asegurar una
                   transición sin problemas, junto con programas de capacitación
                   y soporte técnico para garantizar una adopción exitosa.
                 </p>
               </div>
-              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo se adapta ZonaBAR a las necesidades específicas de
                   diferentes tipos de empresas?
                 </h3>
-                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
                   ZonaBAR se destaca por su capacidad de personalización,
                   permitiendo a las empresas adaptar la plataforma a sus flujos
                   de trabajo únicos, ya sea una pequeña tienda boutique o una
                   cadena internacional de suministro.
                 </p>
               </div>
-              <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span class="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 class="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo garantiza ZonaBAR la seguridad de los datos de sus
                   clientes?
                 </h3>
-                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
                   ZonaBAR implementa medidas de seguridad robustas, incluyendo
                   cifrado avanzado y autenticación, para garantizar la
                   confidencialidad e integridad de la información almacenada en
                   la plataforma.
                 </p>
               </div>
-
             </div>
           </div>
         </div>
@@ -1055,15 +1088,18 @@ function LandingPage() {
                   ></textarea>
                 </div>
                 <div className="my-3 text-center">
-                  {status === 'loading' && <div className="loading">Cargando...</div>}
-                  {status === 'error' && (
+                  {status === "loading" && (
+                    <div className="loading">Cargando...</div>
+                  )}
+                  {status === "error" && (
                     <div className="error-message">
-                       No se pudo enviar tu mensaje. Intenta de nuevo
+                      No se pudo enviar tu mensaje. Intenta de nuevo
                     </div>
                   )}
-                  {status === 'sent' && (
+                  {status === "sent" && (
                     <div className="sent-message">
-                      Tu mensaje ha sido enviado. ¡Gracias por confiar en nosotros!
+                      Tu mensaje ha sido enviado. ¡Gracias por confiar en
+                      nosotros!
                     </div>
                   )}
                 </div>

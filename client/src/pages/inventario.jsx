@@ -166,15 +166,13 @@ function Inventario() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
-              <ul>
+            <div className="flex flex-col justify-center p-6 rounded-lg mt-4">
                 {resultados.map((bebida) => (
-                  <li key={bebida.id}>
-                    {" "}
-                    {bebida.nombre} <br /> {bebida.precio}{" "}
-                  </li>
+                  <div className="bg-white shadow-md rounded px-4 pt-6 pb-6 mb-4 my-2">
+                    <h2 className="text-xl font-bold mb-2">Nombre del producto</h2>
+                    <p className="text-lg font-semibold">{bebida.nombre}</p>
+                  </div>
                 ))}
-              </ul>
             </div>
           </div>
         </div>
