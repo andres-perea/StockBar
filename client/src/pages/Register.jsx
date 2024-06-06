@@ -27,7 +27,7 @@ function Register() {
   };
   return (
     <div class="flex items-center justify-center h-screen bg-gray-200">
-      <div class="bg-neutral-50 p-2 rounded-lg shadow-md rounded px-16 pt-6 pb-8 mb-4">
+      <div class="bg-neutral-50 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
         <div class="max-w-xs mx-auto">
           <h2 className="text-3xl text-blue-600 font-bold p-8 items-center uppercase">Registrarse</h2>
           <form action="" onSubmit={handleSubmit} className="formulario">

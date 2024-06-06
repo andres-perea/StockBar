@@ -14,6 +14,7 @@ import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 import SolicitarContraseña from "./pages/SolicitarContraseña";
+import CambiarContraseña from "./pages/CambiarContraseña";
 
 function Routers() {
   return (
@@ -32,6 +33,7 @@ function Routers() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/inventario" element={<Inventario />} />
         <Route path="/solicitar-cambio-contraseña" element={<SolicitarContraseña />}/>
+        <Route path="/cambiar-contrasena/:token" element={<CambiarContraseña />} />
       </Routes>
     </BrowserRouter>
   );

@@ -45,7 +45,7 @@ Usuario.actualizarContraseña = (
   callback
 ) => {
   const query =
-    "UPDATE usuarios SET contraseña = ? WHERE correoElectronico = ?";
+    "UPDATE usuarios SET contrasena = ? WHERE correoElectronico = ?";
   db.query(query, [nuevaContraseña, correoElectronico], callback);
 };
 

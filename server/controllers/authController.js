@@ -70,14 +70,14 @@ exports.solicitarCambioContraseña = (req, res) => {
 };
 
 exports.cambiarContraseña = (req, res) => {
-  const { token, nuevaContraseña } = req.body;
+  const { token, nuevaContrasena } = req.body;
   console.log('Cambio de contraseña con token:', token);
   verificarToken(token, (err, decoded) => {
     if (err) {
       console.error('Error al verificar el token:', err);
       return res.status(400).send("Token inválido o expirado");
     }
-    const hashedContraseña = bcrypt.hashSync(nuevaContraseña, 10);
+    const hashedContraseña = bcrypt.hashSync(nuevaContrasena, 10);
     Usuario.actualizarContraseña(
       decoded.correoElectronico,
       hashedContraseña,
