@@ -42,16 +42,16 @@ function LandingPage() {
 
   const TeamMember = ({ name, role }) => {
     return (
-      <div className="bg-white rounded-lg shadow-lg overflow-hiden">
+      <div className="bg-stone-600 rounded-lg shadow-lg overflow-hiden">
         <div className="p-4">
           <div className="text-center">
-            <h4 className="text-x1 font-semibold mb-4">{name}</h4>
-            <span className="text-sm text-gray-600">{role}</span>
+            <h4 className="text-x1 font-bold text-gray-300 mb-4">{name}</h4>
+            <span className="text-sm text-gray-200 font-semibold">{role}</span>
           </div>
           <div className="flex justify-center mt-4">
             <a
               href=""
-              className=" text-gray-500 rounded-lg place-content-center hover:text-gray-800 mr-4"
+              className=" text-yellow-400 rounded-lg place-content-center hover:text-gray-800 mr-4"
             >
               <i>
                 {" "}
@@ -60,7 +60,7 @@ function LandingPage() {
             </a>
             <a
               href=""
-              className=" text-gray-500 rounded hover:text-gray-800 mr-4"
+              className=" text-yellow-400 rounded hover:text-gray-800 mr-4"
             >
               <i>
                 {" "}
@@ -69,7 +69,7 @@ function LandingPage() {
             </a>
             <a
               href=""
-              className="text-gray-500 rounded  hover:text-gray-800 mr-4"
+              className="text-yellow-400 rounded  hover:text-gray-800 mr-4"
             >
               <i>
                 {" "}
@@ -78,7 +78,7 @@ function LandingPage() {
             </a>
             <a
               href=""
-              className="text-gray-500 rounded hover:text-gray-800 mr-4"
+              className="text-yellow-400 rounded hover:text-gray-800 mr-4"
             >
               <i>
                 {" "}
@@ -94,43 +94,13 @@ function LandingPage() {
   let [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {/* TopBar */}
-      <div className="bg-zinc-800 py-2">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col sm:flex-row items-center font-sans text-stone-300 mb-2 md:mb-0">
-            <div className="mr-4 flex items-center mb-2 sm:mb-0">
-              <FaEnvelope className="mr-1" />
-              <a href="">zonabar.2024@gmail.com</a>
-            </div>
-            <div className="flex items-center">
-              <FaPhone className="mr-1" />
-              <span>310 3892876</span>
-            </div>
-          </div>
-          <div className="flex items-center">
-            <a href="#" className="text-stone-300 mr-2">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaFacebook />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaInstagram />
-            </a>
-            <a href="#" className="text-stone-300 mr-2">
-              <FaTelegram />
-            </a>
-          </div>
-        </div>
-      </div>
-      {/* End TopBar */}
       {/* Header */}
       <header id="header">
-        <nav className="bg-neutral-600 py-6 px-4 md:px-16 fixed w-full top-0 z-50 shadow-lg">
+        <nav className="bg-stone-900 py-6 px-4 md:px-16 fixed w-full top-0 z-50 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center text-white">
               <h1 className="text-3xl font-bold font-sans">
-                B<span className=" text-orange-300">M.</span>
+                B<span className=" text-yellow-300">M.</span>
               </h1>
             </div>
             {/* Menú desplegable */}
@@ -192,7 +162,7 @@ function LandingPage() {
               <li>
                 <a
                   href=""
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Inicio
                 </a>
@@ -200,7 +170,7 @@ function LandingPage() {
               <li>
                 <a
                   href=""
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Sobre Nosotros
                 </a>
@@ -208,7 +178,7 @@ function LandingPage() {
               <li>
                 <a
                   href=""
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Servicios
                 </a>
@@ -216,15 +186,15 @@ function LandingPage() {
               <li>
                 <a
                   href="/Menu"
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Menu
                 </a>
-              </li>
+              </li>          
               <li>
                 <a
                   href=""
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Equipo
                 </a>
@@ -232,7 +202,7 @@ function LandingPage() {
               <li>
                 <a
                   href=""
-                  className="mx-2 hover:text-white duration-500 hover:underline underline-offset-8"
+                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Contactanos
                 </a>
@@ -240,7 +210,7 @@ function LandingPage() {
               <li>
                 <Link
                   to="/login"
-                  className="bg-orange-300 mr-0 lg:mr-2 mb-2 lg:mb-0 py-2 px-6 rounded-lg hover:bg-white hover:text-black text-center"
+                  className="bg-yellow-300 text-black  mr-0 lg:mr-2 mb-2 lg:mb-0 py-2 px-6 rounded-lg hover:bg-white hover:text-black text-center duration-200"
                 >
                   Iniciar Sesion
                 </Link>
@@ -251,16 +221,16 @@ function LandingPage() {
       </header>
       {/* End Header */}
       {/* Section hero */}
-      <section id="hero" className="bg-neutral-600 pt-16">
+      <section id="hero" className="bg-stone-900 mt-6 pt-16">
         <div className="container mx-auto relative px-4">
           <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
                 <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
                   Bienvenido a Bar
-                  <span className="text-orange-300 ">Manage</span>
+                  <span className="text-yellow-300 ">Manage</span>
                 </h2>
-                <p className="text-base text-stone-300 font-sans">
+                <p className="text-base text-stone-200 font-semibold font-sans">
                   Nuestro equipo de profesionales altamente capacitados y
                   comprometidos está siempre listo para brindar asistencia y
                   orientación en cada paso del proceso de inventario.
@@ -284,7 +254,7 @@ function LandingPage() {
         <div className="container mx-auto relative py-8 px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
             <div
-              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-400 hover:shadow-lg"
+              className="relative py-16 px-8 bg-stone-600 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-400 hover:shadow-lg"
               data-aos="fade-up"
               data-aos-delay="300"
             >
@@ -294,7 +264,7 @@ function LandingPage() {
               </div>
             </div>
             <div
-              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              className="relative py-16 px-8 bg-stone-600 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
               data-aos="fade-up"
               data-aos-delay="600"
             >
@@ -304,7 +274,7 @@ function LandingPage() {
               </div>
             </div>
             <div
-              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              className="relative py-16 px-8 bg-stone-600 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
               data-aos="fade-up"
               data-aos-delay="600"
             >
@@ -314,7 +284,7 @@ function LandingPage() {
               </div>
             </div>
             <div
-              className="relative py-16 px-8 bg-zinc-800 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
+              className="relative py-16 px-8 bg-stone-600 rounded-lg font-bold text-center text-white hover:bg-gray-400 hover:text-white duration-200"
               data-aos="fade-up"
               data-aos-delay="600"
             >
@@ -329,17 +299,17 @@ function LandingPage() {
       {/* End section Hero */}
       {/* Main */}
       {/* About Us Section */}
-      <section id="about" className="bg-gray-100 py-16">
+      <section id="about" className="bg-stone-800 py-16">
         <div
           className="container mx-auto px-4"
           data-aos="fade-up"
           data-aos-delay="600"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold mb-4 underline underline-offset-8">
+            <h2 className="text-4xl text-white font-serif font-bold mb-4 underline underline-offset-8">
               Sobre Nosotros
             </h2>
-            <p className="text-base text-gray-500">
+            <p className="text-base text-gray-300 font-semibold" >
               En nuestra empresa de inventarios, combinamos experiencia,
               tecnología avanzada y un enfoque centrado en el cliente para
               brindar soluciones de inventario efectivas y confiables.
@@ -348,7 +318,7 @@ function LandingPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="text-3xl font-semibold mb-4">
+              <h3 className="text-3xl text-white font-bold mb-4">
                 UNA PLATAFORMA QUE SE ADAPTA A LAS NECESIDADES DEL CLIENTE
               </h3>
               <img
@@ -356,7 +326,7 @@ function LandingPage() {
                 className="rounded-lg mb-4 img-fluid"
                 alt=""
               />
-              <p className="mb-4">
+              <p className="mb-4 text-white">
                 Reconocemos la diversidad de las empresas y sus procesos.
                 ZonaBAR se adapta a diferentes sectores y tamaños de negocio,
                 ofreciendo opciones de personalización para satisfacer las
@@ -364,7 +334,7 @@ function LandingPage() {
                 verdadera eficiencia proviene de la adaptabilidad, y nuestro
                 software está diseñado para crecer y evolucionar con su empresa.
               </p>
-              <p className="mb-4">
+              <p className="mb-4 text-white">
                 Lo que distingue a ZonaBAR es su compromiso con la innovación
                 tecnológica. La empresa emplea tecnologías de vanguardia como
                 inteligencia artificial, aprendizaje automático y análisis
@@ -375,7 +345,7 @@ function LandingPage() {
                 estrategias de reabastecimiento, todo en tiempo real.
               </p>
             </div>
-            <div className="col-span-1 lg:col-span-1">
+            <div className="col-span-1 lg:col-span-1 text-white">
               <div className="ps-0 lg:ps-5">
                 <p className="italic mb-4">
                   Con su enfoque innovador y tecnología de vanguardia, ZonaBAR
@@ -453,7 +423,7 @@ function LandingPage() {
       </section>
       {/* End About Us Section */}
       {/* Clients Section*/}
-      <section id="clients" className="bg-gray-100 py-16">
+      <section id="clients" className="bg-stone-800 py-16">
         <div
           className="container mx-auto"
           data-aos="fade-up"
@@ -493,17 +463,17 @@ function LandingPage() {
       </section>
       {/* End Clients Section */}
       {/* Our Services Section */}
-      <section id="services" className=" bg-gray-100 py-16">
+      <section id="services" className=" bg-stone-900 py-16">
         <div
           className="container mx-auto"
           data-aos="fade-up"
           data-aos-delay="600"
         >
           <div className="section-header text-center pb-14">
-            <h2 className=" text-4xl font-bold font-serif mb-4 underline underline-offset-8">
+            <h2 className=" text-4xl font-bold text-white font-serif mb-4 underline underline-offset-8">
               Servicios
             </h2>
-            <p className="text-base text-gray-500">
+            <p className="text-base text-gray-300 font-semibold">
               Nos enfocamos en mejorar el servicio hacia nuestros clientes,
               demostrando que se está capacitado para ejercer todo tipo de
               software que sea solicitado
@@ -515,23 +485,23 @@ function LandingPage() {
             data-aos-delay="100"
           >
             <div className="col-span-1 lg:col-span-1 hover:">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
+              <div className="relative bg-stone-600 p-10 rounded-lg shadow-lg">
                 <div className="mb-6 ">
-                  <i className="text-5xl font-bold  text-black">
+                  <i className="text-5xl font-bold text-white">
                     <BsDatabaseUp />
                   </i>
                 </div>
-                <h3 className="text-2xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold text-white mb-5">
                   Optimizacion del espacio de almacenamiento
                 </h3>
-                <p className="mt-2">
+                <p className="mt-2 text-white font-semibold">
                   Herramientas y algoritmos especializados para maximizar el uso
                   del espacio de almacenamiento, reduciendo costos y mejorando
                   la eficiencia logística.
                 </p>
                 <a
                   href="#"
-                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                  className="readmore mt-4 inline-flex font-semibold text-stone-400 hover:text-yellow-400 duration-300"
                 >
                   Leer más..{" "}
                   <i className="text-xl">
@@ -542,23 +512,23 @@ function LandingPage() {
             </div>
 
             <div className="col-span-1 lg:col-span-1">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
-                <div className="mb-6">
-                  <i className="text-5xl text-black">
+              <div className="relative bg-stone-600 p-10 rounded-lg shadow-lg">
+                <div className="mb-6 ">
+                  <i className="text-5xl font-bold text-white">
                     <FaUserFriends />
                   </i>
                 </div>
-                <h3 className="text-2xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold text-white mb-5">
                   Integracion de proveedores y clientes
                 </h3>
-                <p className="mt-2">
+                <p className="mt-2 text-white font-semibold">
                   Desarrollo de funcionalidades que faciliten la comunicación y
                   colaboración entre la empresa, sus proveedores y clientes,
                   optimizando la cadena de suministro.
                 </p>
                 <a
                   href="#"
-                  className="readmore mt-4 inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                  className="readmore mt-4 inline-flex font-semibold text-stone-400 hover:text-yellow-400 duration-300"
                 >
                   Leer más..{" "}
                   <i className="text-xl">
@@ -569,23 +539,23 @@ function LandingPage() {
             </div>
 
             <div className="col-span-1 lg:col-span-1">
-              <div className="relative bg-white p-10 rounded-lg shadow-lg">
+              <div className="relative bg-stone-600 p-10 rounded-lg shadow-lg">
                 <div className="mb-6">
-                  <i className="text-5xl text-black">
+                  <i className="text-5xl text-white font-bold">
                     <FaLaptop />
                   </i>
                 </div>
-                <h3 className="text-2xl font-semibold mb-5">
+                <h3 className="text-2xl font-semibold text-white mb-5">
                   Integración con Tecnologías Emergentes
                 </h3>
-                <p className="mt-2">
+                <p className="mt-2 font-semibold text-white">
                   Exploración y desarrollo de capacidades de integración con
                   tecnologías emergentes, como IoT y realidad aumentada, para
                   mejorar la monitorización y la eficiencia.
                 </p>
                 <a
                   href="#"
-                  className="readmore mt-4  inline-flex font-semibold text-gray-700 hover:text-gray-500"
+                  className="readmore mt-4  inline-flex font-semibold text-stone-400 hover:text-yellow-400 duration-300"
                 >
                   Leer más..{" "}
                   <i className="text-1xl ">
@@ -599,27 +569,24 @@ function LandingPage() {
       </section>
       {/* End Our Services Section */}
       {/*  team Section */}
-      <section id="team" className=" py-16">
+      <section id="team" className="bg-stone-800 py-16">
         <div
           className="container mx-auto px-8 place-content-center"
           data-aos="fade-up"
           data-aos-delay="600"
         >
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-serif font-bold mb-4 underline underline-offset-8">
+            <h2 className="text-4xl font-serif text-white font-bold mb-4 underline underline-offset-8">
               Nuestro Equipo
             </h2>
-            <p className="text-base text-gray-500">
+            <p className="text-base text-gray-300 font-semibold">
               Nos complace presentar a los que están detrás de este gran
               proceso, dando apoyo óptimo a nuestros clientes y siendo los que
               mantienen a flote esta idea de aportar con nuestro software!
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <TeamMember
-              name="Andres Perea"
-              role="Desarrollo de base de datos"
-            />
+            <TeamMember name="Andres Perea" role="Desarrollo de base de datos" />
             <TeamMember name="Andres Villa" role="Desarrollador Back-end" />
             <TeamMember name="Andres Sanchez" role="Desarrollador Front-end" />
             <TeamMember name="Camilo Espinosa" role="Analista de software" />
@@ -628,17 +595,17 @@ function LandingPage() {
       </section>
       {/* End team section */}
       {/* Portafolio Section */}
-      <section id="portafolio" className="bg-gray-100 py-16">
+      <section id="portafolio" className="bg-stone-900 py-16">
         <div
           className="container mx-auto"
           data-aos="fade-up"
           data-aos-delay="600"
         >
           <div className="section-header text-center">
-            <h2 className=" text-4xl font-serif font-bold mb-4 underline underline-offset-8">
-              Portafolio
+            <h2 className=" text-4xl font-serif font-bold mb-4 text-white underline underline-offset-8">
+              Menu
             </h2>
-            <p className="text-base text-gray-500 mb-6">
+            <p className="text-base text-gray-300 font-semibold mb-6">
               Encontramos algunos productos y/o marcas que estos distribuyen,
               para brindar una mejor asesoría al momento de mostrar sus
               productos
@@ -657,33 +624,33 @@ function LandingPage() {
               <ul className="portfolio-flters flex justify-center mb-8">
                 <li
                   data-filter="*"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2 hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
                 >
                   Todo
                 </li>
                 <li
                   data-filter=".filter-app"
-                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2 hover:border-orange-500/50  transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white  transition duration-300"
                 >
-                  Aplicaciones
+                Cerveceria
                 </li>
                 <li
                   data-filter=".filter-product"
-                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
                 >
-                  Productos
+                  Licores
                 </li>
                 <li
                   data-filter=".filter-branding"
-                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
                 >
-                  Marcas
+                  Comida
                 </li>
                 <li
                   data-filter=".filter-books"
-                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2 hover:border-orange-500/50 transition duration-300"
+                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
                 >
-                  Librería
+                  Internacional
                 </li>
               </ul>
             </div>
@@ -696,23 +663,110 @@ function LandingPage() {
                     className="glightbox"
                   >
                     <img
+                      src="./src/img/menu.png"
+                      className="img-fluid rounded"
+                      alt=""
+                    />
+                  </a>
+                  <div className="container bg-stone-600 pb-6 text-center shadow-lg overflow-hiden ">
+                    <h4>
+                      <a
+                        href="#"
+                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
+                        title="More Details"
+                      >
+                        Cervezas Nacionales
+                      </a>
+                    </h4>
+                    <p className="text-gray-200 font-semibold">
+                      Existe un amplio catalogo de cervezas nacionales
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item filter-app">
+                <div className="portfolio-wrap">
+                  <a
+                    href="./src/img/portfolio/app-1 (2).jpg"
+                    className="glightbox"
+                  >
+                    <img
+                      src="./src/img/menu2.png"
+                      className="img-fluid rounded"
+                      alt=""
+                    />
+                  </a>
+                  <div className="container bg-stone-600 pb-6 text-center shadow-lg overflow-hiden">
+                    <h4>
+                      <a
+                        href="#"
+                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
+                        title="More Details"
+                      >
+                       Licores 
+                      </a>
+                    </h4>
+                    <p className="text-gray-200 font-semibold">
+                      Tendran variedad de licores de buena calidad
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item filter-app">
+                <div className="portfolio-wrap">
+                  <a
+                    href="./src/img/portfolio/app-1 (2).jpg"
+                    className="glightbox"
+                  >
+                    <img
                       src="./img/portfolio/app-1.jpg"
                       className="img-fluid"
                       alt=""
                     />
                   </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
+                  <div className="container bg-stone-600 pb-6 text-center shadow-lg overflow-hiden">
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
+                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
                         title="More Details"
                       >
-                        Dashboards StockApp
+                        Comida de mar
                       </a>
                     </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
+                    <p className="text-gray-200 font-semibold">
+                      Variedad de comidas y entradas maritimas
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item filter-app">
+                <div className="portfolio-wrap">
+                  <a
+                    href="./src/img/portfolio/app-1 (2).jpg"
+                    className="glightbox"
+                  >
+                    <img
+                      src="./img/portfolio/app-1.jpg"
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </a>
+                  <div className="container bg-stone-600 pb-6 text-center shadow-lg overflow-hiden">
+                    <h4>
+                      <a
+                        href="#"
+                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
+                        title="More Details"
+                      >
+                        Entradas
+                      </a>
+                    </h4>
+                    <p className="text-gray-200 font-semibold">
+                      Buenas entradas de cualquier tipo
                     </p>
                   </div>
                 </div>
@@ -734,123 +788,7 @@ function LandingPage() {
                     <h4>
                       <a
                         href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <a
-                    href="./src/img/portfolio/app-1 (2).jpg"
-                    className="glightbox"
-                  >
-                    <img
-                      src="./img/portfolio/app-1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <a
-                    href="./src/img/portfolio/app-1 (2).jpg"
-                    className="glightbox"
-                  >
-                    <img
-                      src="./img/portfolio/app-1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <a
-                    href="./src/img/portfolio/app-1 (2).jpg"
-                    className="glightbox"
-                  >
-                    <img
-                      src="./img/portfolio/app-1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <a
-                    href="./src/img/portfolio/app-1 (2).jpg"
-                    className="glightbox"
-                  >
-                    <img
-                      src="./img/portfolio/app-1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
+                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
                         title="More Details"
                       >
                         Dashboards StockApp

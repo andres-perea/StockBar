@@ -151,7 +151,7 @@ function Pedidos() {
                     </td>
                     <td className="border border-slate-600 p-2 font-bold bg-gray-100 text-gray-600">
                       <div className="flex flex-row justify-center">
-                        <button className="bg-green-600 p-2 hover:bg-green-700 transition-all text-white p-1 text-sm m-1">
+                        <button className="bg-green-600  hover:bg-green-700 transition-all text-white p-1 text-sm m-1">
                           Entrega Realizada
                         </button>
                       </div>
