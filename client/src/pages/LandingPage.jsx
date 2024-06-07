@@ -835,7 +835,7 @@ function LandingPage() {
       </section>
       {/* End Portafolio Section */}
       {/*  faQ Section */}
-      <section id="faq" className=" bg:gray-100 py-16">
+      <section id="faq" className=" bg-stone-800 py-16">
         <div
           className="container mx-auto px-4"
           data-aos="fade-up"
@@ -844,13 +844,13 @@ function LandingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
               <div className="px-2 py-4 lg:px-0">
-                <h2 className="text-5xl font-semibold mb-4">
+                <h2 className="text-5xl font-semibold text-white mb-4">
                   Preguntas más <br />
-                  <span className="text-black-500 font-bold uppercase text-orange-300">
+                  <span className="text-black-500 font-bold uppercase text-yellow-300">
                     Frecuentes
                   </span>
                 </h2>
-                <p className="text-base text-gray-500 mb-6 ">
+                <p className="text-base text-gray-300 mb-6 ">
                   Muchas veces la gente nos pregunta muchas cosas que a veces es
                   complicado responder todas, aquí verán algunas que hemos
                   respondido y han sido relevantes para seguir mejorando como
@@ -859,51 +859,51 @@ function LandingPage() {
               </div>
             </div>
             <div className="lg:col-span-1 my-4">
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-stone-600 dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-yellow-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-gray-200 mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo ZonaBAR garantiza la continuidad del negocio durante la
                   implementación del software?
                 </h3>
-                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-gray-300 mt-2 text-sm">
                   ZonaBAR ofrece servicios de consultoría en gestión de
                   inventario durante la implementación para asegurar una
                   transición sin problemas, junto con programas de capacitación
                   y soporte técnico para garantizar una adopción exitosa.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-stone-600 dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-yellow-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-gray-300 mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo se adapta ZonaBAR a las necesidades específicas de
                   diferentes tipos de empresas?
                 </h3>
-                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-gray-200 mt-2 text-sm">
                   ZonaBAR se destaca por su capacidad de personalización,
                   permitiendo a las empresas adaptar la plataforma a sus flujos
                   de trabajo únicos, ya sea una pequeña tienda boutique o una
                   cadena internacional de suministro.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="bg-stone-600 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span className="inline-flex items-center justify-center p-4 bg-orange-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-yelllow-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
-                <h3 className="text-slate-900 dark:text-white mt-5 text-base font-semibold tracking-tight">
+                <h3 className="text-gray-300 mt-5 text-base font-semibold tracking-tight">
                   ¿Cómo garantiza ZonaBAR la seguridad de los datos de sus
                   clientes?
                 </h3>
-                <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+                <p className="text-gray-200 mt-2 text-sm">
                   ZonaBAR implementa medidas de seguridad robustas, incluyendo
                   cifrado avanzado y autenticación, para garantizar la
                   confidencialidad e integridad de la información almacenada en
@@ -916,17 +916,17 @@ function LandingPage() {
       </section>
       {/* End faQ section */}
       {/*  contact Section */}
-      <section id="contact" className="contact bg-gray-100 py-16">
+      <section id="contact" className="bg-stone-900 py-16">
         <div
           className="container mx-auto"
           data-aos="fade-up"
           data-aos-delay="300"
         >
           <div className="section-header text-center mb-10">
-            <h2 className="text-4xl font-bold font-serif mb-4 underline underline-offset-8">
+            <h2 className="text-4xl font-bold font-serif mb-4 underline text-white underline-offset-8">
               Contacto
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-200">
               ¡Contáctanos o escríbenos un correo y responderemos tus dudas lo
               más rápido posible!
             </p>
@@ -1057,44 +1057,44 @@ function LandingPage() {
       {/* End contact section */}
       {/* End Main */}
       {/* Footer */}
-      <footer id="footer" className="bg-neutral-600 text-white">
+      <footer id="footer" className="bg-gray-200 text-black">
         <div className="container mx-auto py-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="col-span-1">
               <div>
                 <Link to="/" className="flex items-center">
-                  <span className="text-3xl font-bold">ZonaBAR</span>
+                  <span className="text-3xl font-bold text-gray-200">ZonaBAR</span>
                 </Link>
-                <p className="text-sm">Síguenos en nuestras redes</p>
+                <p className="text-sm text-yellow-300">Síguenos en nuestras redes</p>
                 <div className="flex mt-4">
                   <a
                     href="#"
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-yellow-300 text-base mr-2"
                   >
                     <FaTwitter />
                   </a>
                   <a
                     href="#"
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                    className="flex items-center justify-center w-10 h-10 rounded-full text-yellow-300 border border-white text-base mr-2"
                   >
                     <FaFacebook />
                   </a>
                   <a
                     href="#"
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                    className="flex items-center justify-center w-10 h-10 rounded-full border text-yellow-300 border-white text-base mr-2"
                   >
                     <FaInstagram />
                   </a>
                   <a
                     href="#"
-                    className="flex items-center justify-center w-10 h-10 rounded-full border border-white text-base mr-2"
+                    className="flex items-center justify-center w-10 h-10 rounded-full text-yellow border border-white text-base mr-2"
                   >
                     <FaLinkedin />
                   </a>
                 </div>
               </div>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 text-white">
               <div>
                 <h4 className="font-bold pb-2">Redirígete donde desees</h4>
                 <ul>
@@ -1116,7 +1116,7 @@ function LandingPage() {
                 </ul>
               </div>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 text-white">
               <div className="text-left">
                 <h4 className="font-bold">Contactanos</h4>
                 <p>
