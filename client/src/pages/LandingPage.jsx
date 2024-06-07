@@ -251,8 +251,8 @@ function LandingPage() {
       </header>
       {/* End Header */}
       {/* Section hero */}
-      <section id="hero" className="bg-neutral-600 pt-16">
-        <div className="container mx-auto relative px-4">
+      <section id="hero" className="bg-neutral-600 pt-16 my-4">
+        <div className="container mx-auto relative px-4 my-4">
           <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
@@ -271,7 +271,7 @@ function LandingPage() {
                   data-aos-delay="600"
                 >
                   <Link
-                    to="/register"
+                    to="/registro"
                     className="bg-neutral-500 text-white border-zinc-500 hover:border-zinc-200 duration-200 border-2 font-bold rounded-full mr-0 lg:mr-4 mb-4 lg:mb-0 py-4 px-12 text-center"
                   >
                     Empezar

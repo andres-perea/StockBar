@@ -7,7 +7,6 @@ import {
   MdClose,
   MdCheck,
 } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,8 +15,6 @@ function Menu() {
   const [categorias, setCategorias] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [showCartNotification, setShowCartNotification] = useState(false);
-  const [alertaStock, setAlertaStock] = useState(false);
-  const [saldo, setsaldo] = useState(null);
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
 
@@ -75,7 +72,7 @@ function Menu() {
         ? { ...item, cantidad: item.cantidad - 1 }
         : item
     );
-    setCarrito(updatedCarrito.filter((item) => item.codigo !== bebida.codigo));
+    setCarrito(updatedCarrito.filter((item) => item.cantidad > 0));
   };
 
   const toggleCarrito = () => {
@@ -90,13 +87,11 @@ function Menu() {
       return;
     }
 
-    // Calcular el total antes de realizar el pedido
     const pedidoTotal = carrito.reduce(
       (accumulator, item) => accumulator + item.precio * item.cantidad,
       0
     );
 
-    // Crear un objeto con los detalles del pedido
     const pedido = {
       detalles: carrito.map((item) => ({
         codigo_producto: item.codigo,
@@ -109,7 +104,7 @@ function Menu() {
       .post("http://localhost:3000/pedidos", pedido)
       .then((response) => {
         console.log("Pedido realizado con éxito:", response.data);
-        toast.success("Pedido realizado con exito");
+        toast.success("Pedido realizado con éxito");
         setCarrito([]);
         setShowCart(false);
       })
@@ -120,28 +115,23 @@ function Menu() {
 
   return (
     <>
-      <div className="">
+      <div className="min-h-screen flex flex-col">
         <header className="bg-gray-200">
           <div className="container mx-auto flex items-center justify-between p-4">
-            {/* Logo */}
             <div className="text-xl text-black font-bold">
               <a href="/" className="hover:text-gray-900">
                 StockBar
               </a>
             </div>
-            {/* Botón de búsqueda y carrito */}
             <div className="flex space-x-4">
               <div className="relative">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Buscar"
-                    className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"
-                  />
-                  <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none justify-center" />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Buscar"
+                  className="pl-10 pr-4 py-2 border rounded-lg w-full font-bold"
+                />
+                <MdOutlineSearch className="h-7 w-7 absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-800 pointer-events-none" />
               </div>
-
               <button
                 onClick={toggleCarrito}
                 className="text-black hover:scale-110 transition duration-400"
@@ -157,62 +147,50 @@ function Menu() {
             </div>
           </div>
         </header>
-        <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
-          <div className="col-span-6 ">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-2 rounded-lg place-items-center">
-              {bebidas.map((bebida) => (
-                <div
-                  key={bebida.codigo}
-                  className="max-w-xs rounded overflow-hidden shadow-lg g"
-                >
-                  {/* Imagen producto */}
-                  <div className="flex justify-center items-center">
-                    {bebida && bebida.imagen && bebida.nombre && (
-                      <img
-                        className="w-1/2 h-auto"
-                        src={`http://localhost:3000/img/${bebida.imagen}`}
-                        alt={bebida.nombre}
-                      />
-                    )}
-                  </div>
-                  <div className="px-4 py-1">
-                    <div className="font-bold text-xl mb-2">
-                      {bebida.nombre}
-                    </div>
-                  </div>
-                  <div className="px-4 py-1">
-                    <div className="font-semibold text-gray-500 text-base mb-2">
-                      "{bebida.descripcion}"
-                    </div>
-                  </div>
-                  <div className="px-4">
-                    <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-l font-semibold text-gray-600 mr-2">
-                      {categorias.find(
-                        (categoria) => categoria.id === bebida.categoria_id
-                      )?.nombre || "Sin categoria"}
-                    </div>
-                  </div>
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-green-800 text-xl mb-2">
-                      ${bebida.precio}
-                    </div>
-                    <button
-                      onClick={() => agregarAlCarrito(bebida)}
-                      className="w-full bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out flex items-center justify-center space-x-2"
-                    >
-                      <span>Agregar</span> <MdOutlineShoppingCart />
-                    </button>
-                  </div>
+        <main className="flex-grow container mx-auto p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {bebidas.map((bebida) => (
+              <div
+                key={bebida.codigo}
+                className="max-w-xs rounded overflow-hidden shadow-lg"
+              >
+                <div className="flex justify-center items-center">
+                  {bebida.imagen && bebida.nombre && (
+                    <img
+                      className="w-1/2 h-auto"
+                      src={`http://localhost:3000/img/${bebida.imagen}`}
+                      alt={bebida.nombre}
+                    />
+                  )}
                 </div>
-              ))}
-            </div>
+                <div className="px-4 py-2">
+                  <div className="font-bold text-xl mb-2">{bebida.nombre}</div>
+                  <div className="text-gray-700 text-base mb-2">
+                    {bebida.descripcion}
+                  </div>
+                  <div className="text-gray-500 text-base mb-2">
+                    {categorias.find(
+                      (categoria) => categoria.id === bebida.categoria_id
+                    )?.nombre || "Sin categoria"}
+                  </div>
+                  <div className="text-green-800 font-bold text-xl mb-2">
+                    ${bebida.precio}
+                  </div>
+                  <button
+                    onClick={() => agregarAlCarrito(bebida)}
+                    className="w-full bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out flex items-center justify-center space-x-2"
+                  >
+                    <span>Agregar</span> <MdOutlineShoppingCart />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </main>
       </div>
-      {/* Contenedor flotante del carrito */}
       {showCart && (
-        <div className="fixed right-0 top-0 bg-white shadow-lg w-80 mt-16 p-4">
-          <div className="flex justify-between items-center">
+        <div className="fixed right-0 top-0 bg-white shadow-lg w-80 h-full p-4 overflow-y-auto">
+          <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold">Carrito de Compras</h2>
             <button
               onClick={toggleCarrito}
@@ -221,45 +199,39 @@ function Menu() {
               <MdClose />
             </button>
           </div>
-          <div className="mt-4">
-            {carrito.map((item, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-3 gap-4 max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2"
-              >
-                <div className="col-span-2 p-2">
-                  <p className="font-bold">{item.nombre}</p>
-                  <p>${item.precio}</p>
-                </div>
-                <div className="flex items-center mt-2">
-                  <button
-                    onClick={() => agregarAlCarrito(item)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
-                  >
-                    +
-                  </button>
-                  <span className="mx-2">{item.cantidad}</span>
-                  <button
-                    onClick={() => eliminarDelCarrito(item)}
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                  >
-                    -
-                  </button>
-                </div>
+          {carrito.map((item, index) => (
+            <div key={index} className="flex justify-between items-center mb-4">
+              <div>
+                <p className="font-bold">{item.nombre}</p>
+                <p>${item.precio}</p>
               </div>
-            ))}
-            <div className="border-b border-gray-900"></div>
-            <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg p-2 m-2">
-              <p className="font-bold">Total a Pagar: ${total}</p>
+              <div className="flex items-center">
+                <button
+                  onClick={() => agregarAlCarrito(item)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+                >
+                  +
+                </button>
+                <span className="mx-2">{item.cantidad}</span>
+                <button
+                  onClick={() => eliminarDelCarrito(item)}
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                >
+                  -
+                </button>
+              </div>
             </div>
-            <div className="flex justify-center">
-              <button
-                onClick={realizarPedido}
-                className="hover:bg-green-700 hover:scale-110 transition duration-400 bg-green-600 text-white font-bold p-2 m-2 mt-2"
-              >
-                Realizar Pedido
-              </button>
-            </div>
+          ))}
+          <div className="border-t border-gray-300 pt-4 mt-4">
+            <p className="font-bold text-lg">Total a Pagar: ${total}</p>
+          </div>
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={realizarPedido}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-400"
+            >
+              Realizar Pedido
+            </button>
           </div>
           <ToastContainer />
         </div>

@@ -10,6 +10,7 @@ import {
   MdClose,
   MdDelete,
   MdOutlineUpdate,
+  MdInventory2,
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";
@@ -64,7 +65,9 @@ function Bebidas() {
       >
         {/* LOGO */}
         <div className="text-center pt-4 pb-4 focus:outline-none overflow-y-auto">
-          <h1 className="uppercase font-bold tracking-[4px] focus:outline-none overflow-y-auto">StockBar</h1>
+          <h1 className="font-bold tracking-[4px] focus:outline-none overflow-y-auto">
+            BarManage
+          </h1>
         </div>
         <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
           {/* MENU */}
@@ -92,16 +95,31 @@ function Bebidas() {
                   </a>
                 </li>
               </Link>
-              <Link to ="/pedidos">
-              <li>
-                <a
-                  href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
-                >
-                  <MdInbox />
-                  Pedidos
-                </a>
-              </li>
+              <Link to="/inventario">
+                <div className="border-b border-gray-300">
+                  <li>
+                    <a
+                      href=""
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    >
+                      <MdInventory2 />
+                      Historial inventario
+                    </a>
+                  </li>
+                </div>
+              </Link>
+              <Link to="/pedidos">
+                <div className="border-b border-gray-300">
+                  <li>
+                    <a
+                      href=""
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    >
+                      <MdInbox />
+                      Pedidos
+                    </a>
+                  </li>
+                </div>
               </Link>
               <Link to="/categorias">
                 <li>
