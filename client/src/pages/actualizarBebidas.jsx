@@ -119,6 +119,18 @@ function ActualizarBebidas({ id }) {
                     </a>
                   </li>
                 </Link>
+                <Link to="/inventario">
+                  <div className="border-b border-gray-300"></div>
+                  <li>
+                    <a
+                      href=""
+                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    >
+                      <MdInventory2 />
+                      Historial inventario
+                    </a>
+                  </li>
+                </Link>
                 <li>
                   <a
                     href=""

@@ -18,12 +18,17 @@ function Login() {
     axios
       .post("http://localhost:3000/api/auth/login", values)
       .then(function (response) {
-        console.log(response);
         console.log(response.data);
-        navigate("/dashboard");
+        if (response.data && response.data.token) {
+          localStorage.setItem("authToken", response.data.token);
+          navigate("/dashboard");
+        } else {
+          toast.error("Inicio de sesión fallido");
+        }
       })
       .catch(function (error) {
         console.log(error);
+        toast.error("Error en el inicio de sesión");
       });
   };
 
@@ -79,21 +84,21 @@ function Login() {
                 Iniciar Sesión
               </button>
             </div>
-            <div class="mt-4">
-              <p class="text-center text-gray-500 text-xs">
+            <div className="mt-4">
+              <p className="text-center text-gray-500 text-xs">
                 ¿Olvidaste tu contraseña?
                 <Link to="/solicitar-cambio-contraseña">
-                  <a class="text-blue-500 hover:text-blue-800" href="#">
+                  <a className="text-blue-500 hover:text-blue-800" href="#">
                     Recuperar contraseña
                   </a>
                 </Link>
               </p>
             </div>
-            <div class="mt-1">
-              <p class="text-center text-gray-500 text-xs">
+            <div className="mt-1">
+              <p className="text-center text-gray-500 text-xs">
                 ¿No tienes una cuenta?
                 <Link to="/registro">
-                  <a class="text-blue-500 hover:text-blue-800" href="#">
+                  <a className="text-blue-500 hover:text-blue-800" href="#">
                     Regístrate
                   </a>
                 </Link>
