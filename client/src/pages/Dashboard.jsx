@@ -12,7 +12,6 @@ import {
 import { CgDanger } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import GraficoBebidas from "../components/Graficos";
-import Saldos from "../components/Saldos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
 import axios from "axios";
@@ -20,6 +19,7 @@ import axios from "axios";
 function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
   const [bebidas, setBebidas] = useState([]);
+  const [cantidadBebidas, setCantidadBebidas] = useState([]); // Agregado
   const [showNotification, setShowNotification] = useState(false);
   const [saldo, setsaldo] = useState(null);
 
@@ -51,6 +51,7 @@ function Dashboard() {
       try {
         const response = await axios.get("http://localhost:3000/bebidas/");
         setBebidas(response.data);
+        setCantidadBebidas(response.data); // Agregado
         if (response.data.some((bebida) => bebida.cantidad < 5)) {
           setShowNotification(true);
         } else {
@@ -159,6 +160,7 @@ function Dashboard() {
       </div>
       {/* Botón menú */}
       <button
+        aria-label="menu"
         onClick={handleSidebar}
         className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
       >
@@ -172,7 +174,7 @@ function Dashboard() {
           </div>
           <div className="grid grid-cols-4 gap-4">
             <div className="flex flex-col left-0 mt-4">
-              <CantidadBebidas />
+              <CantidadBebidas cantidadBebidas={cantidadBebidas} />
             </div>
             <div className="flex flex-col left-0 mt-4">
               <CantidadBebidasVendidas />
@@ -190,8 +192,8 @@ function Dashboard() {
                       key={bebida.id}
                       className="flex items-center bg-red-600 border px-4 py-2 mb-2 rounded"
                     >
-                      <CgDanger className="text-white text-2xl mr-2" /> Stock bajo del
-                      producto {bebida.nombre}
+                      <CgDanger className="text-white text-2xl mr-2" /> Stock
+                      bajo del producto {bebida.nombre}
                     </p>
                   )
               )}
