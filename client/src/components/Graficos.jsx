@@ -40,7 +40,7 @@ export default function GraficoBebidas() {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Bar type="monotone" dataKey="cantidad" fill="#ef4444" />
+          <Bar type="monotone" dataKey="cantidad" fill="#efb810" />
         </BarChart>
       </div>
     </>

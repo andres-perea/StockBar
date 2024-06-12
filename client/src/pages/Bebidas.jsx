@@ -59,26 +59,26 @@ function Bebidas() {
     <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen">
       {/* Sidebar */}
       <div
-        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
+        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 ${
           sidebar ? "w-64" : "w-0"
         } lg:w-full h-full transition-all border-r p-4`}
       >
         {/* LOGO */}
         <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto text-yellow-300 ">
             BarManage
           </h1>
         </div>
         <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
-            <div className="border-b border-gray-300"></div>
+            <div className="border-b border-yellow-300"></div>
             <ul>
               <Link to="/dashboard">
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -86,11 +86,11 @@ function Bebidas() {
                 </li>
               </Link>
               <Link to="/bebidas">
-                <div className="border-b border-gray-300"></div>
+                <div className="border-b border-yellow-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -98,11 +98,11 @@ function Bebidas() {
                 </li>
               </Link>
               <Link to="/inventario">
-                <div className="border-b border-gray-300"></div>
+                <div className="border-b border-yellow-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdInventory2 />
                     Historial inventario
@@ -110,17 +110,18 @@ function Bebidas() {
                 </li>
               </Link>
               <Link to="/categorias">
-                <div className="border-b border-gray-300"></div>
+                <div className="border-b border-yellow-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
                     Categorías
                   </a>
                 </li>
               </Link>
+              <div className="border-b border-yellow-300"></div>
             </ul>
           </nav>
         </div>
