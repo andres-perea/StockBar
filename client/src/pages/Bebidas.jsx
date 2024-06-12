@@ -64,20 +64,21 @@ function Bebidas() {
         } lg:w-full h-full transition-all border-r p-4`}
       >
         {/* LOGO */}
-        <div className="text-center pt-4 pb-4 focus:outline-none overflow-y-auto">
-          <h1 className="font-bold tracking-[4px] focus:outline-none overflow-y-auto">
+        <div className="text-center p-8">
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
             BarManage
           </h1>
         </div>
-        <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
+        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
+            <div className="border-b border-gray-300"></div>
             <ul>
               <Link to="/dashboard">
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -85,10 +86,11 @@ function Bebidas() {
                 </li>
               </Link>
               <Link to="/bebidas">
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -96,36 +98,23 @@ function Bebidas() {
                 </li>
               </Link>
               <Link to="/inventario">
-                <div className="border-b border-gray-300">
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdInventory2 />
-                      Historial inventario
-                    </a>
-                  </li>
-                </div>
-              </Link>
-              <Link to="/pedidos">
-                <div className="border-b border-gray-300">
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdInbox />
-                      Pedidos
-                    </a>
-                  </li>
-                </div>
-              </Link>
-              <Link to="/categorias">
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto border-b border-gray-300"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdInventory2 />
+                    Historial inventario
+                  </a>
+                </li>
+              </Link>
+              <Link to="/categorias">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -134,8 +123,9 @@ function Bebidas() {
               </Link>
             </ul>
           </nav>
+        </div>
           {/* Cerrar sesión */}
-          <div className="flex flex-col pt-36 gap-4">
+          <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
               className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
@@ -144,7 +134,6 @@ function Bebidas() {
               Cerrar Sesión
             </button>
           </div>
-        </div>
       </div>
       {/* Botón menú */}
       <button

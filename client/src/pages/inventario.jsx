@@ -45,102 +45,90 @@ function Inventario() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
         {/* Sidebar */}
-        <div
-          className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
-            sidebar ? "w-64" : "w-0"
-          } lg:w-full h-full transition-all border-r p-4`}
-        >
-          {/* LOGO */}
-          <div className="text-center p-8">
-            <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
-              StockBar
-            </h1>
-          </div>
-          <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
-            {/* MENU */}
-            <nav>
-              <div className="border-b border-gray-300"></div>
-              <ul>
-                <Link to="/dashboard">
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdOutlineDashboard />
-                      Dashboard
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/bebidas">
-                  <div className="border-b border-gray-300"></div>
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdLocalDrink />
-                      Bebidas
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/inventario">
-                  <div className="border-b border-gray-300"></div>
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdInventory2 />
-                      Historial inventario
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/pedidos">
-                  <div className="border-b border-gray-300"></div>
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdInbox />
-                      Pedidos
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/categorias">
-                  <div className="border-b border-gray-300"></div>
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdOutlineCategory />
-                      Categorías
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </nav>
-            {/* Cerrar sesión */}
-            <div className="flex flex-col pt-36 gap-4">
-              <button
-                onClick={handleLogout}
-                className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-              >
-                <MdOutlineLogout />
-                Cerrar Sesión
-              </button>
-            </div>
-          </div>
+      <div
+        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
+          sidebar ? "w-64" : "w-0"
+        } lg:w-full h-full transition-all border-r p-4`}
+      >
+        {/* LOGO */}
+        <div className="text-center p-8">
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
+            BarManage
+          </h1>
         </div>
-        {/* Botón menú */}
-        <button
-          onClick={handleSidebar}
-          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
-        >
-          {sidebar ? <MdClose /> : <MdOutlineMenu />}
-        </button>
+        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
+          {/* MENU */}
+          <nav>
+            <div className="border-b border-gray-300"></div>
+            <ul>
+              <Link to="/dashboard">
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdOutlineDashboard />
+                    Dashboard
+                  </a>
+                </li>
+              </Link>
+              <Link to="/bebidas">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdLocalDrink />
+                    Bebidas
+                  </a>
+                </li>
+              </Link>
+              <Link to="/inventario">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdInventory2 />
+                    Historial inventario
+                  </a>
+                </li>
+              </Link>
+              <Link to="/categorias">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdOutlineCategory />
+                    Categorías
+                  </a>
+                </li>
+              </Link>
+            </ul>
+          </nav>
+        </div>
+          {/* Cerrar sesión */}
+          <div className="flex flex-col mt-96 gap-4">
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+            >
+              <MdOutlineLogout />
+              Cerrar Sesión
+            </button>
+          </div>
+      </div>
+      {/* Botón menú */}
+      <button
+        onClick={handleSidebar}
+        className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+      >
+        {sidebar ? <MdClose /> : <MdOutlineMenu />}
+      </button>
         {/* Contenido */}
         <div className="col-span-5">
           <div className="p-8 lg:min-h-screen bg-gray-200 pl-10">

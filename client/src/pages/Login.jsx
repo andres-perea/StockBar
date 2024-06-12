@@ -33,17 +33,17 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-200">
-      <div className="bg-neutral-50 p-2 rounded-lg shadow-md  px-8 pt-6 pb-8 mb-4">
+    <div className="flex items-center justify-center h-screen bg-stone-900">
+      <div className="bg-stone-700 p-2 rounded-lg shadow-md  px-8 pt-6 pb-8 mb-4">
         <div className="max-w-xs mx-auto">
-          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center">
+          <h2 className="text-3xl text-yellow-300 font-bold p-8 items-center">
             Iniciar Sesión
           </h2>
           <form action="" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
                 htmlFor="nombreUsuario"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-yellow-300 text-sm font-bold mb-2"
               >
                 Nombre de usuario:
               </label>
@@ -53,14 +53,14 @@ function Login() {
                 onChange={(e) =>
                   setValues({ ...values, nombreUsuario: e.target.value })
                 }
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold leading-tight focus:outline-none focus:shadow-outline"
                 //required
               />
             </div>
             <div className="campo">
               <label
                 htmlFor="contrasena"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-yellow-300 text-sm font-bold mb-2"
               >
                 Contraseña:
               </label>
@@ -79,7 +79,7 @@ function Login() {
             <div className="flex items-center justify-center pt-4">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-yellow-300 hover:bg-stone-900 transition text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Iniciar Sesión
               </button>
@@ -88,7 +88,7 @@ function Login() {
               <p className="text-center text-gray-500 text-xs">
                 ¿Olvidaste tu contraseña?
                 <Link to="/solicitar-cambio-contraseña">
-                  <a className="text-blue-500 hover:text-blue-800" href="#">
+                  <a className="text-yellow-300 hover:text-yellow-400 transition" href="#">
                     Recuperar contraseña
                   </a>
                 </Link>
@@ -98,7 +98,7 @@ function Login() {
               <p className="text-center text-gray-500 text-xs">
                 ¿No tienes una cuenta?
                 <Link to="/registro">
-                  <a className="text-blue-500 hover:text-blue-800" href="#">
+                  <a className="text-yellow-300 hover:text-yellow-400 transition" href="#">
                     Regístrate
                   </a>
                 </Link>

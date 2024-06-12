@@ -26,15 +26,15 @@ function Register() {
       });
   };
   return (
-    <div class="flex items-center justify-center h-screen bg-gray-200">
-      <div class="bg-neutral-50 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
+    <div class="flex items-center justify-center h-screen bg-stone-900">
+      <div class="bg-stone-700 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
         <div class="max-w-xs mx-auto">
-          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center">Registrarse</h2>
+          <h2 className="text-3xl text-yellow-300 font-bold p-8 items-center">Registrarse</h2>
           <form action="" onSubmit={handleSubmit} className="formulario">
             <div className="mb-4">
               <label
                 htmlFor="nombreUsuario"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-yellow-300 text-sm font-bold mb-2"
               >
                 Nombre de usuario:
               </label>
@@ -44,14 +44,14 @@ function Register() {
                 onChange={(e) =>
                   setValues({ ...values, nombreUsuario: e.target.value })
                 }
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
             </div>
             <div className="mb-4">
               <label
                 htmlFor="correoElectronico"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-yellow-300 text-sm font-bold mb-2"
               >
                 Correo Electronico:
               </label>
@@ -71,7 +71,7 @@ function Register() {
             <div className="mb-4">
               <label
                 htmlFor="contrasena"
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-yellow-300 text-sm font-bold mb-2"
               >
                 Contraseña:
               </label>
@@ -81,14 +81,14 @@ function Register() {
                 onChange={(e) =>
                   setValues({ ...values, contrasena: e.target.value })
                 }
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
             </div>
             <div className="flex items-center justify-center pt-4">
               <button
                 type="submit"
-                className="bg-blue-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-yellow-300 hover:bg-stone-900 transition text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Crear cuenta
               </button>
@@ -96,9 +96,9 @@ function Register() {
             <div className="mt-4">
               <p class="text-center text-gray-500 text-xs">
                 ¿Ya estas registrado?
-                <Link to="/">
-                  <a class="text-blue-400 hover:text-blue-800" href="#">
-                    Inicia Sesion
+                <Link to="/login">
+                  <a class="text-yellow-300 hover:text-yellow-400 transition" href="#">
+                    Inicia sesión
                   </a>
                 </Link>
               </p>

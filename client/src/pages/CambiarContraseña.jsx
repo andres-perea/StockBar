@@ -21,15 +21,15 @@ const CambiarContraseña = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-200">
-      <div className="bg-neutral-50 p-2 rounded-lg shadow-md  px-8 pt-6 pb-8 mb-4">
+    <div className="flex items-center justify-center h-screen bg-stone-900">
+      <div className="bg-stone-700 p-2 rounded-lg shadow-md  px-8 pt-6 pb-8 mb-4">
         <div className="max-w-xs mx-auto">
-          <h2 className="text-3xl text-blue-600 font-bold p-8 items-center text-center">
+          <h2 className="text-3xl text-yellow-300 font-bold p-8 items-center text-center">
             Cambiar contraseña
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-yellow-300 text-sm font-bold mb-2">
                 Nueva Contraseña:
                 <input
                   type="password"
@@ -43,7 +43,7 @@ const CambiarContraseña = () => {
             <div className="flex items-center justify-center pt-4">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-yellow-300 hover:bg-stone-900 transition text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Cambiar
               </button>

@@ -322,8 +322,8 @@ function LandingPage() {
                 UNA PLATAFORMA QUE SE ADAPTA A LAS NECESIDADES DEL CLIENTE
               </h3>
               <img
-                src="./src/img/about.jpg"
-                className="rounded-lg mb-4 img-fluid"
+                src="./src/img/bar.jpg"
+                className="rounded-lg mb-4 img-fluid "
                 alt=""
               />
               <p className="mb-4 text-white">
@@ -395,7 +395,7 @@ function LandingPage() {
 
                 <div className="relative">
                   <img
-                    src="./src/img/about-2.jpg"
+                    src="./src/img/bar2.jpg"
                     className="rounded-lg"
                     alt=""
                   />
@@ -429,36 +429,6 @@ function LandingPage() {
           data-aos="fade-up"
           data-aos-delay="600"
         >
-          <div className="flex justify-center">
-            <div className="swiper-container">
-              <div className="swiper-wrapper flex items-center">
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-                <div className="swiper-slide">
-                  <img src="./src/img/about.jpg" className="img-fluid" alt="" />{" "}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       {/* End Clients Section */}
@@ -603,7 +573,7 @@ function LandingPage() {
         >
           <div className="section-header text-center">
             <h2 className=" text-4xl font-serif font-bold mb-4 text-white underline underline-offset-8">
-              Menu
+              menú
             </h2>
             <p className="text-base text-gray-300 font-semibold mb-6">
               Encontramos algunos productos y/o marcas que estos distribuyen,
@@ -639,12 +609,6 @@ function LandingPage() {
                   className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
                 >
                   Licores
-                </li>
-                <li
-                  data-filter=".filter-branding"
-                  className="cursor-pointer px-4 py-2 mx-1  rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white transition duration-300"
-                >
-                  Comida
                 </li>
                 <li
                   data-filter=".filter-books"
@@ -733,40 +697,11 @@ function LandingPage() {
                         className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
                         title="More Details"
                       >
-                        Comida de mar
-                      </a>
-                    </h4>
-                    <p className="text-gray-200 font-semibold">
-                      Variedad de comidas y entradas maritimas
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item filter-app">
-                <div className="portfolio-wrap">
-                  <a
-                    href="./src/img/portfolio/app-1 (2).jpg"
-                    className="glightbox"
-                  >
-                    <img
-                      src="./img/portfolio/app-1.jpg"
-                      className="img-fluid"
-                      alt=""
-                    />
-                  </a>
-                  <div className="container bg-stone-600 pb-6 text-center shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
-                        title="More Details"
-                      >
                         Entradas
                       </a>
                     </h4>
                     <p className="text-gray-200 font-semibold">
-                      Buenas entradas de cualquier tipo
+                    Buenas entradas de cualquier tipo
                     </p>
                   </div>
                 </div>
@@ -784,20 +719,6 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
                 </div>
               </div>
 
@@ -813,20 +734,21 @@ function LandingPage() {
                       alt=""
                     />
                   </a>
-                  <div className="container bg-white pb-6 text-center rounded-lg shadow-lg overflow-hiden">
-                    <h4>
-                      <a
-                        href="#"
-                        className="text-xl font-semibold text-gray-800 hover:text-orange-400 transition duration-300"
-                        title="More Details"
-                      >
-                        Dashboards StockApp
-                      </a>
-                    </h4>
-                    <p className="text-gray-600">
-                      Diseño para ser utilizado en dispositivos móviles
-                    </p>
-                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item filter-app">
+                <div className="portfolio-wrap">
+                  <a
+                    href="./src/img/portfolio/app-1 (2).jpg"
+                    className="glightbox"
+                  >
+                    <img
+                      src="./img/portfolio/app-1.jpg"
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -842,7 +764,7 @@ function LandingPage() {
           data-aos-delay="600"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <div className="grid min-h-full place-items-center bg-stone-900 px-6 py-24 sm:py-32 lg:px-8">
               <div className="px-2 py-4 lg:px-0">
                 <h2 className="text-5xl font-semibold text-white mb-4">
                   Preguntas más <br />
@@ -895,7 +817,7 @@ function LandingPage() {
               </div>
               <div className="bg-stone-600 rounded-lg px-6 py-8 my-4 ring-1 ring-slate-900/5 shadow-xl">
                 <div>
-                  <span className="inline-flex items-center justify-center p-4 bg-yelllow-300 rounded-xl shadow-lg">
+                  <span className="inline-flex items-center justify-center p-4 bg-yellow-300 rounded-xl shadow-lg">
                     <FaCommentAlt />
                   </span>
                 </div>
@@ -937,7 +859,7 @@ function LandingPage() {
               <div className="info-container flex flex-col items-center justify-center bg-zinc-500 rounded-lg p-6 shadow-md ">
                 <div className="info-item flex mb-4">
                   <i className="bi bi-geo-alt text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Ubicación:
                     </h4>
@@ -949,7 +871,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-envelope text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Correo:
                     </h4>
@@ -959,7 +881,7 @@ function LandingPage() {
 
                 <div className="info-item flex mb-4">
                   <i className="bi bi-phone text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">Llama:</h4>
                     <p className="text-white">+1 5589 55488 55</p>
                   </div>
@@ -967,7 +889,7 @@ function LandingPage() {
 
                 <div className="info-item flex">
                   <i className="bi bi-clock text-2xl text-blue-500 flex-shrink-0"></i>
-                  <div className="form-control border border-orange-300 rounded-lg px-20 py-2 w-full bg-orange-300 focus:outline-none focus:border-blue-500 text-center ml-4">
+                  <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
                     <h4 className="text-xl font-semibold text-white">
                       Horario abierto
                     </h4>
@@ -1057,7 +979,7 @@ function LandingPage() {
       {/* End contact section */}
       {/* End Main */}
       {/* Footer */}
-      <footer id="footer" className="bg-gray-200 text-black">
+      <footer id="footer" className="bg-stone-800 text-black">
         <div className="container mx-auto py-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="col-span-1">
@@ -1087,7 +1009,7 @@ function LandingPage() {
                   </a>
                   <a
                     href="#"
-                    className="flex items-center justify-center w-10 h-10 rounded-full text-yellow border border-white text-base mr-2"
+                    className="flex items-center justify-center w-10 h-10 rounded-full text-yellow-300 border border-white text-base mr-2"
                   >
                     <FaLinkedin />
                   </a>

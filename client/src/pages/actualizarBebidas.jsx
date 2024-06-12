@@ -66,137 +66,90 @@ function ActualizarBebidas({ id }) {
     <>
       <div className="min-h-screen grid grid-col-1 lg:grid-cols-6">
         {/* Sidebar */}
-        <div
-          className={`fixed lg:static w-[80%] md:w-[40%] lg:w-full top-0 z-50 bg-white transition-all ${
-            sidebar ? "-left-0" : "-left-full"
-          } w-full h-full col-span-1 p-8 border-r`}
-        >
-          {/* LOGO */}
-          <div className="text-center p-8">
-            <h1 className="font-bold tracking-[4px]">StockBar</h1>
-          </div>
-          <div className="flex flex-col justify-between h-[650px]">
-            {/* MENU */}
-            <nav>
-              <ul>
-                <Link to="/dashboard">
-                  <li>
-                    <a
-                      href=""
-                      className="flex 
-                  items-center 
-                  gap-4 
-                  hover:bg-red-600 
-                  p-4 
-                  text-gray-500 
-                  hover:text-white 
-                  rounded-lg 
-                  transition-colors 
-                  font-semibold"
-                    >
-                      <MdOutlineDashboard />
-                      Dashboard
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/bebidas">
-                  <li>
-                    <a
-                      href=""
-                      className="flex 
-                  items-center 
-                  gap-4
-                  hover:bg-red-600 
-                  p-4 
-                  text-gray-500 
-                  hover:text-white 
-                  rounded-lg 
-                  transition-colors 
-                  font-semibold"
-                    >
-                      <MdLocalDrink />
-                      Bebidas
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/inventario">
-                  <div className="border-b border-gray-300"></div>
-                  <li>
-                    <a
-                      href=""
-                      className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                    >
-                      <MdInventory2 />
-                      Historial inventario
-                    </a>
-                  </li>
-                </Link>
+      <div
+        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
+          sidebar ? "w-64" : "w-0"
+        } lg:w-full h-full transition-all border-r p-4`}
+      >
+        {/* LOGO */}
+        <div className="text-center p-8">
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
+            BarManage
+          </h1>
+        </div>
+        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
+          {/* MENU */}
+          <nav>
+            <div className="border-b border-gray-300"></div>
+            <ul>
+              <Link to="/dashboard">
                 <li>
                   <a
                     href=""
-                    className="flex 
-                  items-center 
-                  gap-4 
-                  hover:bg-red-600 
-                  p-4 
-                  text-gray-500 
-                  hover:text-white 
-                  rounded-lg 
-                  transition-colors 
-                  font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
-                    <MdInbox />
-                    Pedidos
+                    <MdOutlineDashboard />
+                    Dashboard
                   </a>
                 </li>
+              </Link>
+              <Link to="/bebidas">
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
-                    className="flex 
-                  items-center 
-                  gap-4 
-                  hover:bg-red-600 
-                  p-4 
-                  text-gray-500 
-                  hover:text-white 
-                  rounded-lg 
-                  transition-colors 
-                  font-semibold"
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdLocalDrink />
+                    Bebidas
+                  </a>
+                </li>
+              </Link>
+              <Link to="/inventario">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdInventory2 />
+                    Historial inventario
+                  </a>
+                </li>
+              </Link>
+              <Link to="/categorias">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
-                    Categorias
+                    Categorías
                   </a>
                 </li>
-              </ul>
-            </nav>
-            {/* Cerrar sesion */}
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={handleLogout}
-                className="flex 
-                  items-center 
-                  gap-5 
-                  hover:bg-red-600 
-                  p-4 
-                  text-gray-500 
-                  hover:text-white 
-                  rounded-lg 
-                  transition-colors 
-                  font-semibold"
-              >
-                <MdOutlineLogout />
-                Cerrar Sesión
-              </button>
-            </div>
-          </div>
+              </Link>
+            </ul>
+          </nav>
         </div>
-        {/* Boton menu */}
-        <button
-          onClick={handleSidebar}
-          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2x1"
-        >
-          {sidebar ? <MdClose /> : <MdOutlineMenu />}
-        </button>
+          {/* Cerrar sesión */}
+          <div className="flex flex-col mt-96 gap-4">
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+            >
+              <MdOutlineLogout />
+              Cerrar Sesión
+            </button>
+          </div>
+      </div>
+      {/* Botón menú */}
+      <button
+        onClick={handleSidebar}
+        className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+      >
+        {sidebar ? <MdClose /> : <MdOutlineMenu />}
+      </button>
         {/* Content */}
         <div className="col-span-5">
           <div className="p-4 h-full bg-gray-200">

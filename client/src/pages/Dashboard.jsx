@@ -15,6 +15,7 @@ import GraficoBebidas from "../components/Graficos";
 import Saldos from "../components/Saldos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
+import Pedidos from "../components/Pedidos";
 import "../index.css";
 import axios from "axios";
 
@@ -77,10 +78,10 @@ function Dashboard() {
         {/* LOGO */}
         <div className="text-center p-8">
           <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
-            StockBar
+            BarManage
           </h1>
         </div>
-        <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
+        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
             <div className="border-b border-gray-300"></div>
@@ -120,18 +121,6 @@ function Dashboard() {
                   </a>
                 </li>
               </Link>
-              <Link to="/pedidos">
-                <div className="border-b border-gray-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
-                    <MdInbox />
-                    Pedidos
-                  </a>
-                </li>
-              </Link>
               <Link to="/categorias">
                 <div className="border-b border-gray-300"></div>
                 <li>
@@ -146,8 +135,9 @@ function Dashboard() {
               </Link>
             </ul>
           </nav>
+        </div>
           {/* Cerrar sesión */}
-          <div className="flex flex-col pt-36 gap-4">
+          <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
               className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
@@ -156,7 +146,6 @@ function Dashboard() {
               Cerrar Sesión
             </button>
           </div>
-        </div>
       </div>
       {/* Botón menú */}
       <button
@@ -182,6 +171,11 @@ function Dashboard() {
           <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
             <GraficoBebidas />
           </div>
+          <div className="grid grid-cols-3">
+            <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
+              <Pedidos />
+            </div>
+          </div>
           {showNotification && (
             <div className="fixed bottom-10 right-10 text-white font-semibold my-4 px-4 py-2 rounded flex flex-col items-start space-y-2">
               {bebidas.map(
@@ -191,8 +185,8 @@ function Dashboard() {
                       key={bebida.id}
                       className="flex items-center bg-red-600 border px-4 py-2 mb-2 rounded"
                     >
-                      <CgDanger className="text-white text-2xl mr-2" /> Stock bajo del
-                      producto {bebida.nombre}
+                      <CgDanger className="text-white text-2xl mr-2" /> Stock
+                      bajo del producto {bebida.nombre}
                     </p>
                   )
               )}

@@ -9,7 +9,6 @@ import AgregarBebidas from "./pages/agregarBebidas";
 import Categorias from "./pages/Categorias";
 import AgregarCategorias from "./pages/agregarCategorias";
 import Menu from "./pages/Menu";
-import Pedidos from "./pages/Pedidos";
 import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 import SolicitarContraseña from "./pages/SolicitarContraseña";
@@ -29,7 +28,6 @@ function Routers() {
         <Route path="/actualizarBebida/:id" element={<PrivateRoute element={<ActualizarBebidas />} />} />
         <Route path="/categorias" element={<PrivateRoute element={<Categorias />} />} />
         <Route path="/agregarCategoria" element={<PrivateRoute element={<AgregarCategorias />} />} />
-        <Route path="/pedidos" element={<PrivateRoute element={<Pedidos />} />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/inventario" element={<PrivateRoute element={<Inventario />} />} />
         <Route path="/solicitar-cambio-contraseña" element={<SolicitarContraseña />} />

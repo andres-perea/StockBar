@@ -51,11 +51,14 @@ function AgregarCategorias() {
       >
         {/* LOGO */}
         <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto">StockBar</h1>
+          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
+            BarManage
+          </h1>
         </div>
-        <div className="flex flex-col justify-between h-[calc(100vh - 16rem)]">
+        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
           {/* MENU */}
           <nav>
+            <div className="border-b border-gray-300"></div>
             <ul>
               <Link to="/dashboard">
                 <li>
@@ -69,6 +72,7 @@ function AgregarCategorias() {
                 </li>
               </Link>
               <Link to="/bebidas">
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
@@ -79,16 +83,20 @@ function AgregarCategorias() {
                   </a>
                 </li>
               </Link>
-              <li>
-                <a
-                  href=""
-                  className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                >
-                  <MdInbox />
-                  Pedidos
-                </a>
-              </li>
+              <Link to="/inventario">
+                <div className="border-b border-gray-300"></div>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                  >
+                    <MdInventory2 />
+                    Historial inventario
+                  </a>
+                </li>
+              </Link>
               <Link to="/categorias">
+                <div className="border-b border-gray-300"></div>
                 <li>
                   <a
                     href=""
@@ -101,8 +109,9 @@ function AgregarCategorias() {
               </Link>
             </ul>
           </nav>
+        </div>
           {/* Cerrar sesión */}
-          <div className="flex flex-col pt-36 gap-4">
+          <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
               className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
@@ -111,7 +120,6 @@ function AgregarCategorias() {
               Cerrar Sesión
             </button>
           </div>
-        </div>
       </div>
       {/* Botón menú */}
       <button

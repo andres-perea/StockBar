@@ -116,9 +116,9 @@ function Menu() {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <header className="bg-gray-200">
+        <header className="bg-stone-800">
           <div className="container mx-auto flex items-center justify-between p-4">
-            <div className="text-xl text-black font-bold">
+            <div className="text-xl text-yellow-300 font-bold">
               <a href="/" className="hover:text-gray-900">
                 StockBar
               </a>
@@ -134,7 +134,7 @@ function Menu() {
               </div>
               <button
                 onClick={toggleCarrito}
-                className="text-black hover:scale-110 transition duration-400"
+                className="text-yellow-300 hover:scale-110 transition duration-400"
               >
                 <MdShoppingCart className="h-7 w-7" />
               </button>
@@ -178,7 +178,7 @@ function Menu() {
                   </div>
                   <button
                     onClick={() => agregarAlCarrito(bebida)}
-                    className="w-full bg-blue-800 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out flex items-center justify-center space-x-2"
+                    className="w-full bg-yellow-300 hover:bg-stone-800 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out flex items-center justify-center space-x-2"
                   >
                     <span>Agregar</span> <MdOutlineShoppingCart />
                   </button>
