@@ -139,7 +139,7 @@ function Menu() {
                 <MdShoppingCart className="h-7 w-7" />
               </button>
               {showCartNotification && (
-                <div className="fixed bottom-10 right-10 bg-gray-100 text-black px-4 py-2 rounded flex items-center">
+                <div className="fixed bottom-10 right-10 bg-stone-800 text-white px-4 py-2 rounded flex items-center">
                   <MdCheck className="text-green-500 mr-2" />
                   Producto agregado al carrito
                 </div>
@@ -189,9 +189,9 @@ function Menu() {
         </main>
       </div>
       {showCart && (
-        <div className="fixed right-0 top-0 bg-white shadow-lg w-80 h-full p-4 overflow-y-auto">
+        <div className="fixed right-0 top-0 bg-stone-900 shadow-lg w-80 h-full p-4 overflow-y-auto">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold">Carrito de Compras</h2>
+            <h2 className="text-lg font-bold text-yellow-300">Carrito de Compras</h2>
             <button
               onClick={toggleCarrito}
               className="text-red-600 hover:text-red-800"
@@ -202,8 +202,8 @@ function Menu() {
           {carrito.map((item, index) => (
             <div key={index} className="flex justify-between items-center mb-4">
               <div>
-                <p className="font-bold">{item.nombre}</p>
-                <p>${item.precio}</p>
+                <p className="font-bold text-white">{item.nombre}</p>
+                <p className="text-white">${item.precio}</p>
               </div>
               <div className="flex items-center">
                 <button
@@ -223,12 +223,12 @@ function Menu() {
             </div>
           ))}
           <div className="border-t border-gray-300 pt-4 mt-4">
-            <p className="font-bold text-lg">Total a Pagar: ${total}</p>
+            <p className="font-bold text-lg text-yellow-300">Total a Pagar: ${total}</p>
           </div>
           <div className="flex justify-center mt-4">
             <button
               onClick={realizarPedido}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-400"
+              className="bg-yellow-300 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded transition duration-400"
             >
               Realizar Pedido
             </button>
