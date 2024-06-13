@@ -28,7 +28,7 @@ export default function GraficoBebidas() {
 
   return (
     <>
-      <div className="">
+      <div className="bg-white rounded-lg">
         <BarChart
           width={1000}
           height={300}
