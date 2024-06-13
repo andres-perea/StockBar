@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 export default function Pedidos() {
   const [pedidos, setPedidos] = useState([]);
   const [numeroPagina, setNumeroPagina] = useState(0);
-  const pedidosPorPagina = 10;
+  const pedidosPorPagina = 3;
 
   const pageCount = Math.ceil(pedidos.length / pedidosPorPagina);
   const pedidosMostrados = pedidos.slice(
@@ -63,7 +63,7 @@ export default function Pedidos() {
             ))}
           </tbody>
         </table>
-          <ReactPaginate
+          <ReactPaginate className="flex flex-auto p-6 gap-2"
             previousLabel={"Anterior"}
             nextLabel={"Siguiente"}
             breakLabel={"..."}
