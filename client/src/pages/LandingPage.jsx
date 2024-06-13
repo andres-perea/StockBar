@@ -218,7 +218,7 @@ function LandingPage() {
       {/* Section hero */}
       <section id="hero" className="bg-stone-900 mt-6 pt-16">
         <div className="container mx-auto relative px-4 my-4">          
-          <div className="row gy-5" data-aos="fade-up" data-aos-delay="600">
+          <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
                 <h2 className="text-4xl md:text-4xl lg:text-5xl font-bold text-white pb-8">
@@ -298,7 +298,7 @@ function LandingPage() {
         <div
           className="container mx-auto px-4"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl text-white font-serif font-bold mb-4 underline underline-offset-8">
@@ -422,7 +422,7 @@ function LandingPage() {
         <div
           className="container mx-auto"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
         </div>
       </section>
@@ -432,7 +432,7 @@ function LandingPage() {
         <div
           className="container mx-auto"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
           <div className="section-header text-center pb-14">
             <h2 className=" text-4xl font-bold text-white font-serif mb-4 underline underline-offset-8">
@@ -538,7 +538,7 @@ function LandingPage() {
         <div
           className="container mx-auto px-8 place-content-center"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
           <div className="text-center mb-10">
             <h2 className="text-4xl font-serif text-white font-bold mb-4 underline underline-offset-8">
@@ -564,7 +564,7 @@ function LandingPage() {
         <div
           className="container mx-auto"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
           <div className="section-header text-center">
             <h2 className=" text-4xl font-serif font-bold mb-4 text-white underline underline-offset-8">
@@ -756,10 +756,10 @@ function LandingPage() {
         <div
           className="container mx-auto px-4"
           data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos-delay="300"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="grid min-h-full place-items-center bg-stone-900 px-6 py-24 sm:py-32 lg:px-8">
+            <div className="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
               <div className="px-2 py-4 lg:px-0">
                 <h2 className="text-5xl font-semibold text-white mb-4">
                   Preguntas más <br />
