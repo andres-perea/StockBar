@@ -68,10 +68,10 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
+    <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
       {/* Sidebar */}
       <div
-        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 ${
+        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
           sidebar ? "w-64" : "w-0"
         } lg:w-full h-full transition-all border-r p-4`}
       >
@@ -90,7 +90,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto "
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto "
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -102,7 +102,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white  transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -114,7 +114,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdInventory2 />
                     Historial inventario
@@ -126,7 +126,7 @@ function Dashboard() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -141,7 +141,7 @@ function Dashboard() {
           <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+              className="flex items-center gap-5 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
             >
               <MdOutlineLogout />
               Cerrar Sesión
@@ -157,9 +157,9 @@ function Dashboard() {
       </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-8 lg:min-h-screen bg-gray-200 pl-10">
+        <div className="p-8 lg:min-h-screen bg-stone-800 pl-10">
           <div className="">
-            <h1 className="text-4xl lg:text-5xl font-bold">Dashboard</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold text-yellow-300">Dashboard</h1>
           </div>
           <div className="grid grid-cols-4 gap-4">
             <div className="flex flex-col left-0 mt-4">

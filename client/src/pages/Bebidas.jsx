@@ -78,7 +78,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineDashboard />
                     Dashboard
@@ -90,7 +90,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdLocalDrink />
                     Bebidas
@@ -102,7 +102,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdInventory2 />
                     Historial inventario
@@ -114,7 +114,7 @@ function Bebidas() {
                 <li>
                   <a
                     href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
                   >
                     <MdOutlineCategory />
                     Categorías
@@ -129,7 +129,7 @@ function Bebidas() {
           <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+              className="flex items-center gap-5 hover:bg-yellow-300 p-4 text-gray-300 hover:text-white transition-colors font-semibold focus:outline-none overflow-y-auto"
             >
               <MdOutlineLogout />
               Cerrar Sesión
@@ -145,9 +145,9 @@ function Bebidas() {
       </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-gray-200 pl-10">
+        <div className="p-4 lg:min-h-screen bg-stone-800 pl-10">
           <div className="">
-            <h1 className="text-4xl lg:text-5xl p-2 font-semibold">Bebidas</h1>
+            <h1 className="text-4xl lg:text-5xl p-2 font-bold text-yellow-300">Bebidas</h1>
           </div>
           <div className="p-8 flex justify-center overflow-x-auto">
             <table className="border-collapse border border-slate-400 w-full text-center">
