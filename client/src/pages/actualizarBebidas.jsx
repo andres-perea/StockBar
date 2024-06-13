@@ -9,6 +9,7 @@ import {
   MdOutlineCategory,
   MdOutlineMenu,
   MdClose,
+  MdInventory2
 } from "react-icons/md";
 import "../index.css";
 import { Link } from "react-router-dom";

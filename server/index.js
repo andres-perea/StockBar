@@ -10,6 +10,7 @@ const categoriasRouters = require("./routers/categoriasRouters");
 const pedidosRouters = require("./routers/pedidosRouters");
 const saldoRouters = require("./routers/saldoRouters");
 const itemRoutes = require("./routers/itemRoutes");
+const reservasRoutes = require("./routers/reservasRoutes")
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ app.use("/categorias", categoriasRouters);
 app.use("/pedidos", pedidosRouters);
 app.use("/saldo", saldoRouters);
 app.use("/api", itemRoutes);
+app.use("/reservas", reservasRoutes);
 
 app.use("/img", express.static(path.join(__dirname, "controllers/img")));
 

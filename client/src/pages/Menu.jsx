@@ -6,9 +6,11 @@ import {
   MdOutlineShoppingCart,
   MdClose,
   MdCheck,
+  MdNoDrinks,
 } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
   const [bebidas, setBebidas] = useState([]);
@@ -87,6 +89,13 @@ function Menu() {
       return;
     }
 
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+      console.error("No se encontró el token de la reserva.");
+      return;
+    }
+
     const pedidoTotal = carrito.reduce(
       (accumulator, item) => accumulator + item.precio * item.cantidad,
       0
@@ -101,7 +110,11 @@ function Menu() {
     };
 
     axios
-      .post("http://localhost:3000/pedidos", pedido)
+      .post("http://localhost:3000/pedidos", pedido, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log("Pedido realizado con éxito:", response.data);
         toast.success("Pedido realizado con éxito");
@@ -112,6 +125,20 @@ function Menu() {
         console.error("Error al realizar el pedido:", error);
       });
   };
+  const navigate = useNavigate();
+  async function handleDelete(id) {
+    if (typeof id !== "number" || isNaN(id)) {
+      console.error("ID de la reserva invalida");
+      return;
+    }
+
+    try {
+      await axios.delete(`http://localhost:3000/reservas/elimnar/${id}`);
+      navigate("/");
+    } catch (error) {
+      console.error("Error al eliminar la reserva", error);
+    }
+  }
 
   return (
     <>
@@ -144,6 +171,12 @@ function Menu() {
                   Producto agregado al carrito
                 </div>
               )}
+              <button
+                onClick={(e) => handleDelete(id)}
+                className="text-red-500 hover:scale-110 transition duration-300"
+              >
+                <MdNoDrinks className="h-7 w-7 ml-8" />
+              </button>
             </div>
           </div>
         </header>
@@ -191,7 +224,9 @@ function Menu() {
       {showCart && (
         <div className="fixed right-0 top-0 bg-stone-900 shadow-lg w-80 h-full p-4 overflow-y-auto">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-yellow-300">Carrito de Compras</h2>
+            <h2 className="text-lg font-bold text-yellow-300">
+              Carrito de Compras
+            </h2>
             <button
               onClick={toggleCarrito}
               className="text-red-600 hover:text-red-800"
@@ -223,7 +258,9 @@ function Menu() {
             </div>
           ))}
           <div className="border-t border-gray-300 pt-4 mt-4">
-            <p className="font-bold text-lg text-yellow-300">Total a Pagar: ${total}</p>
+            <p className="font-bold text-lg text-yellow-300">
+              Total a Pagar: ${total}
+            </p>
           </div>
           <div className="flex justify-center mt-4">
             <button

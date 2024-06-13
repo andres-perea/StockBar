@@ -13,6 +13,7 @@ import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 import SolicitarContraseña from "./pages/SolicitarContraseña";
 import CambiarContraseña from "./pages/CambiarContraseña";
+import AgregarReservas from "./pages/agregarReserva";
 import PrivateRoute from "./components/RutaPrivada";
 
 function Routers() {
@@ -28,10 +29,11 @@ function Routers() {
         <Route path="/actualizarBebida/:id" element={<PrivateRoute element={<ActualizarBebidas />} />} />
         <Route path="/categorias" element={<PrivateRoute element={<Categorias />} />} />
         <Route path="/agregarCategoria" element={<PrivateRoute element={<AgregarCategorias />} />} />
-        <Route path="/menu" element={<Menu />} />
+        <Route path="/menu" element={<PrivateRoute element={<Menu />} />} />
         <Route path="/inventario" element={<PrivateRoute element={<Inventario />} />} />
         <Route path="/solicitar-cambio-contraseña" element={<SolicitarContraseña />} />
         <Route path="/cambiar-contrasena/:token" element={<CambiarContraseña />} />
+        <Route path="/crear-reserva" element={<AgregarReservas />} />
       </Routes>
     </BrowserRouter>
   );

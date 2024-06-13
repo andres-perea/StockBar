@@ -183,14 +183,9 @@ function LandingPage() {
                   Servicios
                 </a>
               </li>
-              <li>
-                <a
-                  href="/Menu"
-                  className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
-                >
+              <Link to="/crear-reserva" className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8">
                   Menu
-                </a>
-              </li>          
+              </Link>          
               <li>
                 <a
                   href=""

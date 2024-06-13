@@ -15,8 +15,18 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  
+    const values = {
+      nombreUsuario: event.target.nombreUsuario.value,
+      contrasena: event.target.contrasena.value,
+    };
+  
     axios
-      .post("http://localhost:3000/api/auth/login", values)
+      .post("http://localhost:3000/api/auth/login", values, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       .then(function (response) {
         console.log(response.data);
         if (response.data && response.data.token) {
@@ -27,14 +37,22 @@ function Login() {
         }
       })
       .catch(function (error) {
-        console.log(error);
-        toast.error("Error en el inicio de sesión");
+        if (error.response) {
+          console.log('Error response:', error.response.data);
+          toast.error(`${error.response.data.message}`);
+        } else if (error.request) {
+          console.log('Error request:', error.request);
+          toast.error("No se recibió respuesta del servidor");
+        } else {
+          console.log('Error message:', error.message);
+          toast.error("Error en el inicio de sesión");
+        }
       });
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-stone-900">
-      <div className="bg-stone-700 p-2 rounded-lg shadow-md  px-8 pt-6 pb-8 mb-4">
+      <div className="bg-stone-700 p-2 rounded-lg shadow-md px-8 pt-6 pb-8 mb-4">
         <div className="max-w-xs mx-auto">
           <h2 className="text-3xl text-yellow-300 font-bold p-8 items-center">
             Iniciar Sesión
@@ -88,7 +106,10 @@ function Login() {
               <p className="text-center text-gray-500 text-xs">
                 ¿Olvidaste tu contraseña?
                 <Link to="/solicitar-cambio-contraseña">
-                  <a className="text-yellow-300 hover:text-yellow-400 transition" href="#">
+                  <a
+                    className="text-yellow-300 hover:text-yellow-400 transition"
+                    href="#"
+                  >
                     Recuperar contraseña
                   </a>
                 </Link>
@@ -98,7 +119,10 @@ function Login() {
               <p className="text-center text-gray-500 text-xs">
                 ¿No tienes una cuenta?
                 <Link to="/registro">
-                  <a className="text-yellow-300 hover:text-yellow-400 transition" href="#">
+                  <a
+                    className="text-yellow-300 hover:text-yellow-400 transition"
+                    href="#"
+                  >
                     Regístrate
                   </a>
                 </Link>

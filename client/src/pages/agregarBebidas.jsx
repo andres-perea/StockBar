@@ -8,6 +8,7 @@ import {
   MdOutlineCategory,
   MdOutlineMenu,
   MdClose,
+  MdInventory2
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";

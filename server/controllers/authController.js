@@ -19,39 +19,52 @@ exports.registro = (req, res) => {
 
 exports.inicioSesion = (req, res) => {
   const { nombreUsuario, contrasena } = req.body;
+
   Usuario.obtenerUsuario(nombreUsuario, (err, usuario) => {
-    if (err) throw err;
-    if (!usuario) res.status(404).send({ message: "Usuario no encontrado" });
-    else {
-      bcrypt.compare(contrasena, usuario.contrasena, (err, result) => {
-        if (err) throw err;
-        if (result) {
-          const token = jwt.sign({ id: usuario.id }, "a1b2c3", {
-            expiresIn: "24h",
-          });
-          res.send({ auth: true, token: token });
-        } else {
-          res.status(401).send({ message: "contraseña incorrecta" });
-        }
-      });
+    if (err) {
+      console.error("Error al obtener usuario:", err);
+      return res.status(500).send({ message: "Error del servidor" });
     }
+
+    if (!usuario) {
+      return res.status(404).send({ message: "Usuario no encontrado" });
+    }
+
+    bcrypt.compare(contrasena, usuario.contrasena, (err, result) => {
+      if (err) {
+        console.error("Error al comparar contraseñas:", err);
+        return res.status(500).send({ message: "Error del servidor" });
+      }
+
+      if (result) {
+        const token = jwt.sign({ id: usuario.id }, "a1b2c3", {
+          expiresIn: "24h",
+        });
+        return res.send({ auth: true, token: token });
+      } else {
+        return res.status(401).send({ message: "Contraseña incorrecta" });
+      }
+    });
   });
 };
 
 exports.solicitarCambioContraseña = (req, res) => {
   const { correoElectronico } = req.body;
-  console.log('Solicitud de cambio de contraseña para el email:', correoElectronico);
+  console.log(
+    "Solicitud de cambio de contraseña para el email:",
+    correoElectronico
+  );
   Usuario.buscarPorEmail(correoElectronico, (err, results) => {
     if (err) {
-      console.error('Error en buscarPorEmail:', err);
-      return res.status(500).send('Error en la búsqueda del usuario');
-  }
+      console.error("Error en buscarPorEmail:", err);
+      return res.status(500).send("Error en la búsqueda del usuario");
+    }
     if (err || results.length === 0) {
-      console.warn('Usuario no encontrado para el email:', correoElectronico);
+      console.warn("Usuario no encontrado para el email:", correoElectronico);
       return res.status(404).send("Usuario no encontrado");
     }
     const token = generarToken({ correoElectronico });
-    console.log('Token generado:', token);
+    console.log("Token generado:", token);
     const link = `http://localhost:5173/cambiar-contrasena/${token}`;
     const mensaje = `Haz clic en el siguiente enlace para cambiar tu contraseña: ${link}`;
 
@@ -71,10 +84,10 @@ exports.solicitarCambioContraseña = (req, res) => {
 
 exports.cambiarContraseña = (req, res) => {
   const { token, nuevaContrasena } = req.body;
-  console.log('Cambio de contraseña con token:', token);
+  console.log("Cambio de contraseña con token:", token);
   verificarToken(token, (err, decoded) => {
     if (err) {
-      console.error('Error al verificar el token:', err);
+      console.error("Error al verificar el token:", err);
       return res.status(400).send("Token inválido o expirado");
     }
     const hashedContraseña = bcrypt.hashSync(nuevaContrasena, 10);
@@ -83,7 +96,7 @@ exports.cambiarContraseña = (req, res) => {
       hashedContraseña,
       (error, results) => {
         if (error) {
-          console.error('Error al actualizar la contraseña:', error);
+          console.error("Error al actualizar la contraseña:", error);
           return res.status(500).send("Error al actualizar la contraseña");
         }
         res.status(200).send("Contraseña actualizada");
