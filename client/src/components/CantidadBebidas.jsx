@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { MdProductionQuantityLimits } from "react-icons/md";
+
+
 
 export default function CantidadBebidas() {
     const [cantidadBebidas, setCantidadBebidas] = useState([]);
@@ -13,12 +16,16 @@ export default function CantidadBebidas() {
     }, []);
   return (
     <>
-      <div className="bg-stone-600 shadow-md rounded px-4 pt-6 pb-6 mb-4 flex flex-col my-2">
-        <div className="mb-2">
-          <h2 className="text-3xl font-bold mb-2 text-slate-300">Productos en el inventario</h2>
+      <div className="bg-gray-200 shadow-md rounded px-4 pt-6 pb-6 mb-4 flex flex-col my-2">
+        <div className="mb-4">
+          <h2 className="text-3xl font-bold mb-2 text-stone-600">Productos en el inventario</h2>
+          <div className="flex flex-auto p-4 gap-2 justify-between text-center">
           {cantidadBebidas.map((bebidas, index) => (
-            <p key={index} className="text-slate-200 text-4xl mt-4 font-bold"> {bebidas.total_bebidas} </p>
+            <p key={index} className="text-stone-600 text-4xl mt-4 font-bold"> {bebidas.total_bebidas} </p>          
+            
           ))}
+          <MdProductionQuantityLimits className="text-7xl font-bold bg-yellow-300 py-4 px-4 rounded" />
+          </div>
         </div>
       </div>
     </>

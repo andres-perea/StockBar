@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import GraficoBebidas from "../components/Graficos";
 import Saldos from "../components/Saldos";
 import CantidadBebidas from "../components/CantidadBebidas";
+import HistorialInventario from "../components/HistorialInventario";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
 import Pedidos from "../components/Pedidos";
 import "../index.css";
@@ -68,7 +69,8 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
+      <>
+      <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
       {/* Sidebar */}
       <div
         className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
@@ -147,13 +149,13 @@ function Dashboard() {
               Cerrar Sesión
             </button>
           </div>
-      </div>
+      </div> 
+      {/* End Sidebar */}    
       {/* Botón menú */}
       <button
-        onClick={handleSidebar}
-        className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
-      >
-        {sidebar ? <MdClose /> : <MdOutlineMenu />}
+                onClick={handleSidebar}
+                className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl">
+                {sidebar ? <MdClose /> : <MdOutlineMenu />}
       </button>
       {/* Contenido */}
       <div className="col-span-5">
@@ -164,9 +166,13 @@ function Dashboard() {
           <div className="grid grid-cols-4 gap-4">
             <div className="flex flex-col left-0 mt-4">
               <CantidadBebidas />
+
             </div>
             <div className="flex flex-col left-0 mt-4">
               <CantidadBebidasVendidas />
+            </div>
+            <div className="flex flex-col left-0 mt-4">
+              <HistorialInventario />
             </div>
           </div>
           <div className="flex flex-col items-center justify-center bg-white p-6 rounded-lg mt-4">
@@ -195,7 +201,8 @@ function Dashboard() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+      </>
   );
 }
 
