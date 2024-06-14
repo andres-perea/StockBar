@@ -25,12 +25,11 @@ exports.crearReserva = (req, res) => {
     const reservaId = result.insertId;
     const token = jwt.sign(
       { id: reservaId, nombre_cliente: data.nombre_cliente },
-      'holaMundo',
+      'h&gWu$6R4AqfN3!t',
       { expiresIn: '1h' }
     );
 
     res.status(200).json({ message: 'Reserva creada exitosamente', token });
-    res.status(200).json({ message: "Reserva creada exitosamente", result });
   });
 };
 

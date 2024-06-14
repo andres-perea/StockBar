@@ -20,6 +20,7 @@ export default function CantidadBebidasVendidas() {
           <div className="mb-2">
             <h2 className="text-3xl font-bold mb-2 text-stone-600">Productos <br /> vendidos</h2>
             <div className="flex flex-auto p-4 gap-2 justify-between text-center">
+            <h2 className="text-3xl font-bold mb-2 text-slate-300">Productos <br /> vendidos</h2>
             {cantidadBebidasVendidas.map((bebidas, index) => (
               <p key={index} className="text-stone-600 text-4xl mt-4 font-bold"> {bebidas.bebidas_vendidas} </p>
             ))}
