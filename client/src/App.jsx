@@ -14,8 +14,7 @@ import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 import SolicitarContraseña from "./pages/SolicitarContraseña";
 import CambiarContraseña from "./pages/CambiarContraseña";
-import AgregarReservas from "./pages/agregarReserva";
-import PrivateRoute from "./components/RutaPrivada";
+import PrivateRoute from "./components/token/RutaPrivada"
 
 function Routers() {
   const [messageFromServer, setMessageFromServer] = useState("");
@@ -82,7 +81,6 @@ function Routers() {
           path="/cambiar-contrasena/:token"
           element={<CambiarContraseña />}
         />
-        <Route path="/crear-reserva" element={<AgregarReservas />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import "../index.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,6 @@ function Login() {
     nombreUsuario: "",
     contrasena: "",
   });
-
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -22,19 +21,16 @@ function Login() {
     };
   
     axios
-      .post("http://localhost:3000/api/auth/login", values, {
+      .post("/api/auth/login", values, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
-      .then(function (response) {
+      .then((response) => {
+        toast.success('Login successful');
         console.log(response.data);
-        if (response.data && response.data.token) {
-          localStorage.setItem("authToken", response.data.token);
           navigate("/dashboard");
-        } else {
-          toast.error("Inicio de sesión fallido");
-        }
+
       })
       .catch(function (error) {
         if (error.response) {

@@ -10,7 +10,6 @@ import {
 } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 
 function Menu() {
   const [bebidas, setBebidas] = useState([]);
@@ -19,6 +18,14 @@ function Menu() {
   const [showCartNotification, setShowCartNotification] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [total, setTotal] = useState(0);
+  const [nombreCliente, setNombreCliente] = useState("");
+  const [mesaReserva, setMesaReserva] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleConfirm = () => {
+    onSubmit(nombreCliente, mesaReserva);
+    closeModal();
+  };
 
   useEffect(() => {
     axios
@@ -89,13 +96,6 @@ function Menu() {
       return;
     }
 
-    const token = localStorage.getItem("authToken");
-
-    if (!token) {
-      console.error("No se encontró el token de la reserva.");
-      return;
-    }
-
     const pedidoTotal = carrito.reduce(
       (accumulator, item) => accumulator + item.precio * item.cantidad,
       0
@@ -105,16 +105,14 @@ function Menu() {
       detalles: carrito.map((item) => ({
         codigo_producto: item.codigo,
         cantidad: item.cantidad,
+        nombre_cliente: nombreCliente,
+        mesa_reserva: mesaReserva,
       })),
       total: pedidoTotal,
     };
 
     axios
-      .post("http://localhost:3000/pedidos", pedido, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post("http://localhost:3000/pedidos", pedido)
       .then((response) => {
         console.log("Pedido realizado con éxito:", response.data);
         toast.success("Pedido realizado con éxito");
@@ -125,21 +123,82 @@ function Menu() {
         console.error("Error al realizar el pedido:", error);
       });
   };
-  const navigate = useNavigate();
-  async function handleDelete(id) {
-    if (typeof id !== "number" || isNaN(id)) {
-      console.error("ID de la reserva invalida");
-      return;
-    }
 
-    try {
-      await axios.delete(`http://localhost:3000/reservas/elimnar/${id}`);
-      navigate("/");
-    } catch (error) {
-      console.error("Error al eliminar la reserva", error);
-    }
-  }
-
+  const Modal = ({ isOpen, closeModal, onSubmit, nombreCliente, setNombreCliente, mesaReserva, setMesaReserva }) => {
+    return (
+      <>
+        {/* Fondo oscuro para el modal */}
+        <div
+          className={`fixed inset-0 bg-black opacity-50 ${
+            isOpen ? "block" : "hidden"
+          }`}
+          onClick={closeModal}
+        ></div>
+  
+        {/* Contenedor del modal */}
+        <div
+          className={`fixed inset-0 flex items-center justify-center ${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
+          <div className="bg-white rounded-lg p-8 w-1/2">
+            {/* Contenido del modal */}
+            <h2 className="text-xl font-bold mb-4">Confirmar Pedido</h2>
+            {/* Formulario para nombre de cliente y mesa */}
+            <form className="mt-4">
+              <label className="block mb-2">
+                Nombre Cliente:
+                <input
+                  type="text"
+                  value={nombreCliente}
+                  onChange={(e) => setNombreCliente(e.target.value)}
+                  className="border-gray-300 border rounded px-2 py-1 w-full mt-1"
+                  required
+                />
+              </label>
+              <label className="block mb-2">
+                Seleccione la mesa:
+                <select
+                  onChange={(e) => setMesaReserva(e.target.value)}
+                  value={mesaReserva}
+                  className="shadow appearance-none border rounded w-full my-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                >
+                  <option value="0">. . .</option>
+                  <option value="1">Mesa 1</option>
+                  <option value="2">Mesa 2</option>
+                  <option value="3">Mesa 3</option>
+                  <option value="4">Mesa 4</option>
+                  <option value="5">Mesa 5</option>
+                  <option value="6">Mesa 6</option>
+                  <option value="7">Mesa 7</option>
+                  <option value="8">Mesa 8</option>
+                  <option value="9">Mesa 9</option>
+                  <option value="10">Mesa 10</option>
+                </select>
+              </label>
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2"
+                  onClick={closeModal}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  className="bg-yellow-300 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded"
+                  onClick={realizarPedido}
+                >
+                  Confirmar Pedido
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </>
+    );
+  };
+  
   return (
     <>
       <div className="min-h-screen flex flex-col">
@@ -171,12 +230,6 @@ function Menu() {
                   Producto agregado al carrito
                 </div>
               )}
-              <button
-                onClick={(e) => handleDelete(id)}
-                className="text-red-500 hover:scale-110 transition duration-300"
-              >
-                <MdNoDrinks className="h-7 w-7 ml-8" />
-              </button>
             </div>
           </div>
         </header>
@@ -247,7 +300,7 @@ function Menu() {
                 >
                   +
                 </button>
-                <span className="mx-2">{item.cantidad}</span>
+                <span className="mx-2 text-white">{item.cantidad}</span>
                 <button
                   onClick={() => eliminarDelCarrito(item)}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
@@ -264,11 +317,18 @@ function Menu() {
           </div>
           <div className="flex justify-center mt-4">
             <button
-              onClick={realizarPedido}
+              onClick={() => setModalOpen(true)}
               className="bg-yellow-300 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded transition duration-400"
             >
-              Realizar Pedido
+              Continuar
             </button>
+            <Modal isOpen={modalOpen} closeModal={() => setModalOpen(false)} onSubmit={handleConfirm}
+            nombreCliente={nombreCliente}
+            setNombreCliente={setNombreCliente}
+            mesaReserva={mesaReserva}
+            setMesaReserva={setMesaReserva}>
+              <h2 className="text-xl font-bold mb-4">Confirmar Pedido</h2>
+            </Modal>
           </div>
           <ToastContainer />
         </div>
