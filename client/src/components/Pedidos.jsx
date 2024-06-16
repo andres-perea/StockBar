@@ -21,8 +21,7 @@ export default function Pedidos() {
     axios.get("http://localhost:3000/pedidos/").then((response) => {
       setPedidos(response.data);
     });
-  }, []); // Agregué un arreglo vacío como segundo argumento para que el efecto se ejecute solo una vez, al montarse el componente.
-
+  }, []);
   return (
     <div>
       <h2 className="text-2xl font-bold mb-2">Pedidos</h2>

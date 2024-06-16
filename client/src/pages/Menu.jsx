@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import {
   MdOutlineSearch,
@@ -118,13 +118,16 @@ function Menu() {
         toast.success("Pedido realizado con éxito");
         setCarrito([]);
         setShowCart(false);
+        setModalOpen(false);
+        setNombreCliente("");
+        setMesaReserva("");
       })
       .catch((error) => {
         console.error("Error al realizar el pedido:", error);
       });
   };
 
-  const Modal = ({ isOpen, closeModal, onSubmit, nombreCliente, setNombreCliente, mesaReserva, setMesaReserva }) => {
+  const Modal = ({ isOpen, closeModal, nombreCliente, setNombreCliente, mesaReserva, setMesaReserva }) => {
     return (
       <>
         {/* Fondo oscuro para el modal */}
@@ -226,7 +229,7 @@ function Menu() {
               </button>
               {showCartNotification && (
                 <div className="fixed bottom-10 right-10 bg-stone-800 text-white px-4 py-2 rounded flex items-center">
-                  <MdCheck className="text-green-500 mr-2" />
+                  <MdCheck className="text-2xl text-green-500 mr-2" />
                   Producto agregado al carrito
                 </div>
               )}

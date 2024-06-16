@@ -9,18 +9,13 @@ exports.obtenerPedidos = (req, res) => {
 };
 
 exports.crearPedido = (req, res) => {
-  const { detalles, nombreCliente, mesaReserva } = req.body;
+  const { detalles } = req.body;
 
-  Pedidos.CrearPedido(
-    detalles,
-    nombreCliente,
-    mesaReserva,
-    (err, nuevosPedidos) => {
-      if (err) {
-        console.error("Error al crear el pedido:", err);
-        return res.status(500).json({ error: "Error interno del servidor" });
-      }
-      res.json(nuevosPedidos);
+  Pedidos.CrearPedido(detalles, (err, nuevosPedidos) => {
+    if (err) {
+      console.error("Error al crear el pedido:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
-  );
+    res.json(nuevosPedidos);
+  });
 };

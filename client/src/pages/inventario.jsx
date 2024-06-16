@@ -45,97 +45,73 @@ function Inventario() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden ">
         {/* Sidebar */}
-      <div
-        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 ${
-          sidebar ? "w-64" : "w-0"
-        } lg:w-full h-full transition-all border-r p-4`}
-      >
-        {/* LOGO */}
-        <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto text-yellow-300">
-            BarManage
-          </h1>
-        </div>
-        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
-          {/* MENU */}
-          <nav>
-            <div className="border-b border-yellow-300"></div>
+        <div
+          className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
+            sidebar ? "w-64" : "w-0 lg:w-full"
+          } h-full transition-all border-r p-4`}
+        >
+          <div className="text-center p-8">
+            <h1 className="font-bold uppercase tracking-[4px] text-yellow-300">
+              BarManage
+            </h1>
+          </div>
+          <nav className="flex flex-col justify-between h-[calc(100vh-8rem)] pt-10">
             <ul>
               <Link to="/dashboard">
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdOutlineDashboard />
                     Dashboard
                   </a>
                 </li>
               </Link>
               <Link to="/bebidas">
-                <div className="border-b border-yellow-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdLocalDrink />
                     Bebidas
                   </a>
                 </li>
               </Link>
               <Link to="/inventario">
-                <div className="border-b border-yellow-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdInventory2 />
-                    Historial inventario
+                    Historial Inventario
                   </a>
                 </li>
               </Link>
               <Link to="/categorias">
-                <div className="border-b border-yellow-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-yellow-300 p-4 text-white hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdOutlineCategory />
                     Categorías
                   </a>
                 </li>
               </Link>
-              <div className="border-b border-yellow-300"></div>
             </ul>
-          </nav>
-        </div>
-          {/* Cerrar sesión */}
-          <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+              className="flex items-center gap-5 p-4 text-white hover:bg-yellow-300 transition-colors"
             >
               <MdOutlineLogout />
               Cerrar Sesión
             </button>
-          </div>
-      </div>
-      {/* Botón menú */}
-      <button
-        onClick={handleSidebar}
-        className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
-      >
-        {sidebar ? <MdClose /> : <MdOutlineMenu />}
-      </button>
+          </nav>
+        </div>
+        {/* Botón menú */}
+        <button
+          onClick={handleSidebar}
+          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+        >
+          {sidebar ? <MdClose /> : <MdOutlineMenu />}
+        </button>
         {/* Contenido */}
         <div className="col-span-5">
-          <div className="p-8 lg:min-h-screen bg-gray-200 pl-10">
+          <div className="p-8 lg:min-h-screen bg-stone-800 pl-10">
             <div className="">
               <div className="flex justify-between items-center">
-                <h1 className="text-4xl lg:text-5xl font-bold">
+                <h1 className="text-4xl lg:text-5xl font-bold text-yellow-300">
                   Historial inventario
                 </h1>
                 <div className="flex space-x-4">
@@ -156,12 +132,14 @@ function Inventario() {
               </div>
             </div>
             <div className="flex flex-col justify-center p-6 rounded-lg mt-4">
-                {resultados.map((bebida) => (
-                  <div className="bg-white shadow-md rounded px-4 pt-6 pb-6 mb-4 my-2">
-                    <h2 className="text-xl font-bold mb-2">Nombre del producto</h2>
-                    <p className="text-lg font-semibold">{bebida.nombre}</p>
-                  </div>
-                ))}
+              {resultados.map((bebida) => (
+                <div className="bg-white shadow-md rounded px-4 pt-6 pb-6 mb-4 my-2">
+                  <h2 className="text-xl font-bold mb-2">
+                    Nombre del producto
+                  </h2>
+                  <p className="text-lg font-semibold">{bebida.nombre}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

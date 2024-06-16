@@ -77,103 +77,79 @@ function AgregarBebidas() {
     <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen">
       {/* Sidebar */}
       <div
-        className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-white ${
-          sidebar ? "w-64" : "w-0"
-        } lg:w-full h-full transition-all border-r p-4`}
-      >
-        {/* LOGO */}
-        <div className="text-center p-8">
-          <h1 className="font-bold uppercase tracking-[4px] focus:outline-none overflow-y-auto ">
-            BarManage
-          </h1>
-        </div>
-        <div className="flex flex-col justify-between pt-10 h-[calc(100vh - 16rem)]">
-          {/* MENU */}
-          <nav>
-            <div className="border-b border-gray-300"></div>
+          className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
+            sidebar ? "w-64" : "w-0 lg:w-full"
+          } h-full transition-all border-r p-4`}
+        >
+          <div className="text-center p-8">
+            <h1 className="font-bold uppercase tracking-[4px] text-yellow-300">
+              BarManage
+            </h1>
+          </div>
+          <nav className="flex flex-col justify-between h-[calc(100vh-8rem)] pt-10">
             <ul>
               <Link to="/dashboard">
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdOutlineDashboard />
                     Dashboard
                   </a>
                 </li>
               </Link>
               <Link to="/bebidas">
-                <div className="border-b border-gray-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdLocalDrink />
                     Bebidas
                   </a>
                 </li>
               </Link>
               <Link to="/inventario">
-                <div className="border-b border-gray-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdInventory2 />
-                    Historial inventario
+                    Historial Inventario
                   </a>
                 </li>
               </Link>
               <Link to="/categorias">
-                <div className="border-b border-gray-300"></div>
-                <li>
-                  <a
-                    href=""
-                    className="flex items-center gap-4 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
-                  >
+                <li className="border-b border-yellow-300">
+                  <a className="flex items-center gap-4 p-4 text-white hover:bg-yellow-300 transition-colors">
                     <MdOutlineCategory />
                     Categorías
                   </a>
                 </li>
               </Link>
             </ul>
-          </nav>
-        </div>
-          {/* Cerrar sesión */}
-          <div className="flex flex-col mt-96 gap-4">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-5 hover:bg-red-600 p-4 text-gray-500 hover:text-white rounded-lg transition-colors font-semibold focus:outline-none overflow-y-auto"
+              className="flex items-center gap-5 p-4 text-white hover:bg-yellow-300 transition-colors"
             >
               <MdOutlineLogout />
               Cerrar Sesión
             </button>
-          </div>
-      </div>
-      {/* Botón menú */}
-      <button
-        onClick={handleSidebar}
-        className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
-      >
-        {sidebar ? <MdClose /> : <MdOutlineMenu />}
-      </button>
+          </nav>
+        </div>
+        {/* Botón menú */}
+        <button
+          onClick={handleSidebar}
+          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+        >
+          {sidebar ? <MdClose /> : <MdOutlineMenu />}
+        </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-gray-200 pl-10">
+        <div className="p-4 lg:min-h-screen bg-stone-800 pl-10">
           <div className="">
-            <h1 className="text-4xl lg:text-5xl font-semibold">Bebidas</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-yellow-300">Agregar bebida</h1>
           </div>
-          <div className="flex justify-center bg-white p-2 rounded-lg mt-2">
+          <div className="flex justify-center bg-stone-900 p-2 rounded-lg mt-2">
             <div className="w-full max-w-md">
-              <h2 className="text-2xl font-bold mb-4">Agregar bebidas</h2>
               <form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <div className="mb-4">
                   <label
                     htmlFor="nombre"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Nombre:{" "}
                   </label>
@@ -189,7 +165,7 @@ function AgregarBebidas() {
                 <div className="mb-4">
                   <label
                     htmlFor="cantidad"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Cantidad:{" "}
                   </label>
@@ -205,7 +181,7 @@ function AgregarBebidas() {
                 <div className="mb-4">
                   <label
                     htmlFor="precio"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Precio:{" "}
                   </label>
@@ -221,7 +197,7 @@ function AgregarBebidas() {
                 <div className="mb-4">
                   <label
                     htmlFor="descripcion"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Descripción:
                   </label>
@@ -237,13 +213,13 @@ function AgregarBebidas() {
                 <div className="mb-4">
                   <label
                     htmlFor="imagen"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Imagen:
                   </label>
                   <input
                     type="file"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
                     onChange={handleFileChange}
                     name="archivo"
                   />
@@ -251,7 +227,7 @@ function AgregarBebidas() {
                 <div className="mb-4">
                   <label
                     htmlFor="categorias"
-                    className="block text-sm font-bold mb-2"
+                    className="block text-sm font-bold mb-2 text-yellow-300"
                   >
                     Selecciona una categoria:
                   </label>
