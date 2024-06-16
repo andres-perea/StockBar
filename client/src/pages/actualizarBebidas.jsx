@@ -130,18 +130,17 @@ function ActualizarBebidas({ id }) {
         </button>
         {/* Content */}
         <div className="col-span-5">
-          <div className="p-4 h-full bg-gray-200">
+          <div className="p-4 h-full bg-stone-800">
             <div className="">
-              <h1 className="text-5xl font-semibold">Bebidas</h1>
+              <h1 className="text-5xl text-yellow-300 font-bold">Actualizar Bebidas</h1>
             </div>
-            <div className="flex flex-row items-center jutify-center bg-white p-4 rounded-lg mt-2">
-              <div className="w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-4">Actualizar Bebidas</h2>
+            <div className="flex flex-row items-center jutify-center bg-stone-900 p-4 rounded-lg mt-2">
+              <div className="w-full max-w-md"> 
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label
                       htmlFor="nombre"
-                      className="block text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2 text-yellow-300"
                     >
                       Nombre:{" "}
                     </label>
@@ -156,7 +155,7 @@ function ActualizarBebidas({ id }) {
                   <div className="mb-4">
                     <label
                       htmlFor="cantidad"
-                      className="block text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2 text-yellow-300"
                     >
                       Cantidad:{" "}
                     </label>
@@ -171,7 +170,7 @@ function ActualizarBebidas({ id }) {
                   <div className="mb-4">
                     <label
                       htmlFor="precio"
-                      className="block text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2 text-yellow-300"
                     >
                       Precio:{" "}
                     </label>
@@ -186,7 +185,7 @@ function ActualizarBebidas({ id }) {
                   <div className="mb-4">
                     <label
                       htmlFor="precio"
-                      className="block text-sm font-bold mb-2"
+                      className="block text-sm font-bold mb-2 text-yellow-300"
                     >
                       Categoria:{" "}
                     </label>
