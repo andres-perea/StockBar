@@ -69,7 +69,7 @@ function Dashboard() {
           } h-full transition-all border-r p-4`}
         >
           <div className="text-center p-8">
-            <h1 className="font-bold uppercase tracking-[4px] text-yellow-300">
+            <h1 className="font-bold tracking-[4px] text-yellow-300">
               BarManage
             </h1>
           </div>

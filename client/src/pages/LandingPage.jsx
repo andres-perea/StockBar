@@ -36,6 +36,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function LandingPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   useEffect(() => {
     AOS.init();
   }, []);
@@ -91,7 +96,6 @@ function LandingPage() {
     );
   };
 
-  let [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {/* Header */}
@@ -106,51 +110,55 @@ function LandingPage() {
             {/* Menú desplegable */}
             <div className="relative md:hidden md:items-center md:static">
               <FaBars
-                className="cursor-pointer text-white"
+                className="cursor-pointer text-yellow-300 font-bold"
                 size={24}
-                onClick={() => setIsOpen(!isOpen)} // Cambia el estado de isOpen al hacer clic en el icono
+                onClick={toggleMenu}
               />
               {isOpen && (
-                <div className="md:ml-8 text-xl md:my-0 my-7">
+                <div
+                  className={`${
+                    isOpen ? "block" : "hidden"
+                  } md:block absolute md:relative right-0 top-0 h-full bg-white shadow-lg pt-8 md:pt-0 md:mt-0 md:py-2 md:px-4 md:rounded-lg`}
+                >
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Inicio
                   </a>
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Sobre Nosotros
                   </a>
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Servicios
                   </a>
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Portafolio
                   </a>
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Equipo
                   </a>
                   <a
                     href=""
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Contactanos
                   </a>
                   <Link
                     to="/login"
-                    className="text-gray-800 hover:text-gray-400 duration-500"
+                    className="block text-gray-800 hover:text-gray-400 duration-500 py-1"
                   >
                     Iniciar Sesion
                   </Link>
@@ -183,9 +191,12 @@ function LandingPage() {
                   Servicios
                 </a>
               </li>
-              <Link to="/menu" className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8">
-                  Menu
-              </Link>          
+              <Link
+                to="/menu"
+                className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
+              >
+                Menu
+              </Link>
               <li>
                 <a
                   href=""
@@ -217,7 +228,7 @@ function LandingPage() {
       {/* End Header */}
       {/* Section hero */}
       <section id="hero" className="bg-stone-900 mt-6 pt-16">
-        <div className="container mx-auto relative px-4 my-4">          
+        <div className="container mx-auto relative px-4 my-4">
           <div className="row gy-5" data-aos="fade-up" data-aos-delay="300">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
               <div className="order-2 lg:order-1 flex flex-col justify-center text-left lg:px-12">
@@ -304,7 +315,7 @@ function LandingPage() {
             <h2 className="text-4xl text-white font-serif font-bold mb-4 underline underline-offset-8">
               Sobre Nosotros
             </h2>
-            <p className="text-base text-gray-300 font-semibold" >
+            <p className="text-base text-gray-300 font-semibold">
               En nuestra empresa de inventarios, combinamos experiencia,
               tecnología avanzada y un enfoque centrado en el cliente para
               brindar soluciones de inventario efectivas y confiables.
@@ -389,11 +400,7 @@ function LandingPage() {
                 </p>
 
                 <div className="relative">
-                  <img
-                    src="./src/img/bar2.jpg"
-                    className="rounded-lg"
-                    alt=""
-                  />
+                  <img src="./src/img/bar2.jpg" className="rounded-lg" alt="" />
                   <a
                     href="https://www.youtube.com/watch?v=n1oUspMuUgk"
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -423,8 +430,7 @@ function LandingPage() {
           className="container mx-auto"
           data-aos="fade-up"
           data-aos-delay="300"
-        >
-        </div>
+        ></div>
       </section>
       {/* End Clients Section */}
       {/* Our Services Section */}
@@ -551,7 +557,10 @@ function LandingPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <TeamMember name="Andres Perea" role="Desarrollo de base de datos" />
+            <TeamMember
+              name="Andres Perea"
+              role="Desarrollo de base de datos"
+            />
             <TeamMember name="Andres Villa" role="Desarrollador Back-end" />
             <TeamMember name="Andres Sanchez" role="Desarrollador Front-end" />
             <TeamMember name="Camilo Espinosa" role="Analista de software" />
@@ -597,7 +606,7 @@ function LandingPage() {
                   data-filter=".filter-app"
                   className="cursor-pointer px-4 py-2 mx-1 rounded-lg border-2  hover:bg-yellow-400  hover:text-black font-semibold text-white  transition duration-300"
                 >
-                Cerveceria
+                  Cerveceria
                 </li>
                 <li
                   data-filter=".filter-product"
@@ -663,7 +672,7 @@ function LandingPage() {
                         className="text-xl font-bold text-gray-300 hover:text-yellow-400 transition duration-300"
                         title="More Details"
                       >
-                       Licores 
+                        Licores
                       </a>
                     </h4>
                     <p className="text-gray-200 font-semibold">
@@ -696,7 +705,7 @@ function LandingPage() {
                       </a>
                     </h4>
                     <p className="text-gray-200 font-semibold">
-                    Buenas entradas de cualquier tipo
+                      Buenas entradas de cualquier tipo
                     </p>
                   </div>
                 </div>
@@ -980,9 +989,13 @@ function LandingPage() {
             <div className="col-span-1">
               <div>
                 <Link to="/" className="flex items-center">
-                  <span className="text-3xl font-bold text-gray-200">ZonaBAR</span>
+                  <span className="text-3xl font-bold text-gray-200">
+                    ZonaBAR
+                  </span>
                 </Link>
-                <p className="text-sm text-yellow-300">Síguenos en nuestras redes</p>
+                <p className="text-sm text-yellow-300">
+                  Síguenos en nuestras redes
+                </p>
                 <div className="flex mt-4">
                   <a
                     href="#"

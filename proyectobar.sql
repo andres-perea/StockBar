@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2024 a las 16:30:03
+-- Tiempo de generación: 16-06-2024 a las 05:34:29
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -61,7 +61,7 @@ CREATE TABLE `bebidas` (
 --
 
 INSERT INTO `bebidas` (`codigo`, `nombre`, `precio`, `cantidad`, `descripcion`, `imagen`, `fecha_creacion`, `categoria_id`) VALUES
-(845910, 'Cerveza Poker', 3250.00, 15, 'ñ en el inventario', 'cerveza.jpg', '2024-05-29 15:14:25', 10);
+(935695, 'Cerveza Poker', 6350.00, 5, 'hhh', 'cervezaPoker.jfif', '2024-06-16 02:08:41', 10);
 
 --
 -- Disparadores `bebidas`
@@ -155,7 +155,8 @@ CREATE TABLE `entrada_productos` (
 
 INSERT INTO `entrada_productos` (`id_entrada`, `cantidad_entrada`, `fecha_entrada`, `precio_compra`, `producto_codigo`, `historial_id`) VALUES
 (39, 50, '2024-05-29 15:12:05', 4000.00, 944867, NULL),
-(40, 30, '2024-05-29 15:14:25', 3250.00, 845910, NULL);
+(40, 30, '2024-05-29 15:14:25', 3250.00, 845910, NULL),
+(41, 50, '2024-06-16 02:08:41', 6350.00, 935695, NULL);
 
 --
 -- Disparadores `entrada_productos`
@@ -204,7 +205,12 @@ INSERT INTO `historial_movimiento` (`id_historial`, `tipo_movimiento`, `cantidad
 (111, 'Salida del inventario', '10', 40.00, '2024-05-29 10:12:51', 944867),
 (112, 'Entrada al inventario', '30', 30.00, '2024-05-29 10:14:25', 845910),
 (113, 'Salida del inventario', '15', 15.00, '2024-05-29 10:15:04', 845910),
-(114, 'Salida del inventario', '40', 0.00, '2024-06-12 08:35:55', 944867);
+(114, 'Salida del inventario', '40', 0.00, '2024-06-12 08:35:55', 944867),
+(115, 'Salida del inventario', '15', 0.00, '2024-06-12 23:17:43', 845910),
+(116, 'Entrada al inventario', '50', 50.00, '2024-06-15 21:08:41', 935695),
+(117, 'Salida del inventario', '5', 45.00, '2024-06-15 21:32:38', 935695),
+(118, 'Salida del inventario', '10', 35.00, '2024-06-15 21:43:54', 935695),
+(119, 'Salida del inventario', '30', 5.00, '2024-06-15 21:47:15', 935695);
 
 -- --------------------------------------------------------
 
@@ -216,6 +222,8 @@ CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `fecha_pedido` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `nombre_cliente` varchar(100) NOT NULL,
+  `mesa_reserva` enum('1','2','3','4','5','6','7','8','9','10') NOT NULL,
   `codigo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -223,9 +231,12 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `codigo_producto`) VALUES
-(24, 10, '2024-05-29 15:12:51', 944867),
-(25, 15, '2024-05-29 15:15:04', 845910);
+INSERT INTO `pedidos` (`id_pedido`, `cantidad`, `fecha_pedido`, `nombre_cliente`, `mesa_reserva`, `codigo_producto`) VALUES
+(24, 10, '2024-05-29 15:12:51', '', '1', 944867),
+(25, 15, '2024-05-29 15:15:04', '', '1', 845910),
+(26, 5, '2024-06-16 02:32:38', 'g', '8', 935695),
+(27, 10, '2024-06-16 02:43:54', 'Fede', '4', 935695),
+(28, 30, '2024-06-16 02:47:15', 'Oscar', '2', 935695);
 
 --
 -- Disparadores `pedidos`
@@ -257,6 +268,28 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reservas`
+--
+
+CREATE TABLE `reservas` (
+  `id` int(11) NOT NULL,
+  `nombre_cliente` varchar(100) NOT NULL,
+  `numero_mesa` enum('1','2','3','4','5','6','7','8','9','10') NOT NULL,
+  `fecha_hora_reserva` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `nombre_cliente`, `numero_mesa`, `fecha_hora_reserva`) VALUES
+(2, 'Tifanny Lopez', '5', '2024-06-12 22:44:50'),
+(3, 'Tifanny Lopez', '5', '2024-06-12 23:33:40'),
+(4, 'Tifanny Lopez', '5', '2024-06-12 23:35:10');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `salida_productos`
 --
 
@@ -277,7 +310,11 @@ CREATE TABLE `salida_productos` (
 INSERT INTO `salida_productos` (`id_salida`, `fecha_salida`, `cantidad_salida`, `motivo_salida`, `precio_venta`, `producto_codigo`, `historial_id`) VALUES
 (49, '10:12:51', 10, 'Venta realizada', 0, 944867, NULL),
 (50, '10:15:04', 15, 'Venta realizada', 0, 845910, NULL),
-(51, '08:35:55', 40, 'salida', 0, 944867, NULL);
+(51, '08:35:55', 40, 'salida', 0, 944867, NULL),
+(52, '23:17:43', 15, 'salida', 0, 845910, NULL),
+(53, '21:32:38', 5, 'Venta realizada', 0, 935695, NULL),
+(54, '21:43:54', 10, 'Venta realizada', 0, 935695, NULL),
+(55, '21:47:15', 30, 'Venta realizada', 0, 935695, NULL);
 
 --
 -- Disparadores `salida_productos`
@@ -332,13 +369,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombreUsuario`, `correoElectronico`, `contrasena`) VALUES
-(1, 'andresPerea', 'andres@gmail.com', '$2a$10$nyd1wkn56vXGkCGia4/2tOV6XikrcpXjmHVsq6zlbr7Pje99EFpBy'),
 (8, 'andresSanchez', 'andres@gmail.com', '$2a$10$rupwnL1lVHESpW/CHpRLNuwOQ94Aqk4YrrZleWfgTXsQJlgXg10cm'),
 (9, 'andresSanchez', 'andres@gmail.com', '$2a$10$gOH6jX/JQb.GcHu27e7xiubIb3YWdzldyntzKoISSxEU7T7GxoKVK'),
 (10, 'andresSanchez', 'andres@gmail.com', '$2a$10$K3a1on2tSQ05VHPMeoaC0u8Q9FguOfsS5vztSaYK8PiCnm3sAZ52u'),
 (11, 'andresSanchez', 'andres@gmail.com', '$2a$10$kFfRLw13CuufxOyObnEjxuhBehkoISvzVOkaVY3PSkpTaMGD5R0qG'),
 (12, 'andres villa', 'villa@gmail.com', '$2a$10$3nlCP6FdWO4H3IGTPYalJ.v.pIQ8Zg6BlX1t15Nwj5pDXid8TYqJq'),
-(13, 'pereaFelipe', 'andresperea1003@gmail.com', '$2a$10$bcP8VLWFWpYNFx.7KaWK8.rnXXTmKUxfWQvHL5DlccSVuTF3ZP6/C');
+(14, 'andresPerea', 'andresperea1003@gmail.com', '$2a$10$6T3kR/WM2NOXJXnB9h88Iug8IhaiTS2/sRBGKqK9wj/Fb2eEEM6Om');
 
 --
 -- Índices para tablas volcadas
@@ -380,6 +416,12 @@ ALTER TABLE `pedidos`
   ADD KEY `codigo_producto` (`codigo_producto`);
 
 --
+-- Indices de la tabla `reservas`
+--
+ALTER TABLE `reservas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
@@ -407,31 +449,37 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `entrada_productos`
 --
 ALTER TABLE `entrada_productos`
-  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_entrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_movimiento`
 --
 ALTER TABLE `historial_movimiento`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `reservas`
+--
+ALTER TABLE `reservas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `salida_productos`
 --
 ALTER TABLE `salida_productos`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas
