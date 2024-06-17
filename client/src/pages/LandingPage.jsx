@@ -131,31 +131,31 @@ function LandingPage() {
                     Inicio
                   </a>
                   <a
-                    href="#"
+                    href="#about"
                     className="text-yellow-300 hover:text-yellow-400 duration-500 block w-full"
                   >
                     Sobre Nosotros
                   </a>
                   <a
-                    href="#"
+                    href="#services"
                     className="text-yellow-300 hover:text-yellow-400 duration-500 block w-full"
                   >
                     Servicios
                   </a>
                   <a
-                    href="#"
+                    href="#portafolio"
                     className="text-yellow-300 hover:text-yellow-400 duration-500 block w-full"
                   >
                     Portafolio
                   </a>
                   <a
-                    href="#"
+                    href="#team"
                     className="text-yellow-300 hover:text-yellow-400 duration-500 block w-full"
                   >
                     Equipo
                   </a>
                   <a
-                    href="#"
+                    href="#contact"
                     className="text-yellow-300 hover:text-yellow-400 duration-500 block w-full"
                   >
                     Contactanos

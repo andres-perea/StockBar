@@ -14,6 +14,8 @@ import GraficoBebidas from "../components/Graficos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
 import Pedidos from "../components/Pedidos";
+import GraficoCategoriasCircular from "../components/GraficoCircular";
+import CategoriasInventario from "../components/categoriasInvetario";
 import "../index.css";
 import axios from "axios";
 
@@ -66,7 +68,7 @@ function Dashboard() {
         <div
           className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
             sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
-          } h-full transition-all border-r p-4`}
+          } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
         >
           <div className="text-center p-8">
             <h1 className="font-bold tracking-[4px] text-yellow-300">
@@ -117,10 +119,9 @@ function Dashboard() {
             </button>
           </nav>
         </div>
-        {/* Botón menú */}
         <button
           onClick={handleSidebar}
-          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+          className="lg:hidden fixed bottom-4 right-4 bg-stone-900 p-2 text-yellow-300 font-bold rounded-full text-2xl z-50"
         >
           {sidebar ? <MdClose /> : <MdOutlineMenu />}
         </button>
@@ -132,6 +133,7 @@ function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             <CantidadBebidas />
             <CantidadBebidasVendidas />
+            <CategoriasInventario />
           </div>
           <div className="bg-white p-6 rounded-lg mt-4">
             <GraficoBebidas />
@@ -139,6 +141,9 @@ function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
             <div className="bg-white p-6 rounded-lg mt-4">
               <Pedidos />
+            </div>
+            <div className="col-span-2 bg-white p-6 rounded-lg mt-4">
+              <GraficoCategoriasCircular />
             </div>
           </div>
           {showNotification && (

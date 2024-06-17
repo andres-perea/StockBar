@@ -8,6 +8,36 @@ class Categorias {
     });
   }
 
+  static cantidadEnCategorias(callback) {
+    db.query(
+      `SELECT c.nombre AS categoria, SUM(b.cantidad) AS total_cantidad
+    FROM bebidas b
+    JOIN categorias c ON b.categoria_id = c.id
+    GROUP BY c.nombre`,
+      (error, results) => {
+        if (error) {
+          console.error("Error executing query", error);
+          return callback(error, null); // Manejar el error una vez
+        }
+        const data = results.map((row) => ({
+          name: row.categoria,
+          value: row.total_cantidad,
+        }));
+        callback(null, data); // Enviar los datos una vez
+      }
+    );
+  }
+
+  static cantidadCategorias(callback) {
+    db.query(
+      "SELECT COUNT(*) AS total_categorias FROM categorias",
+      (error, results) => {
+        if (error) throw error;
+        callback(results);
+      }
+    );
+  }
+
   static crearCategorias(categoria, result) {
     db.query("INSERT INTO categorias SET ?", categoria, (err, res) => {
       if (err) {

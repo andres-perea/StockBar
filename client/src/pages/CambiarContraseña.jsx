@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const CambiarContraseña = () => {
   const { token } = useParams();
   const [nuevaContrasena, setNuevaContrasena] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,9 +14,9 @@ const CambiarContraseña = () => {
         "http://localhost:3000/api/auth/cambiar-contrasena",
         { token, nuevaContrasena }
       );
-      setMessage(response.data.message);
+      toast.success("Contraseña actualizada correctamente");
     } catch (error) {
-      setMessage("Error al cambiar la contraseña");
+      toast.error("Error al cambiar la contraseña");
     }
   };
 
@@ -49,7 +49,7 @@ const CambiarContraseña = () => {
               </button>
             </div>
           </form>
-          {message && <p>{message}</p>}
+          <ToastContainer />
         </div>
       </div>
     </div>

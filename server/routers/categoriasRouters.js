@@ -4,6 +4,10 @@ const categoriasController = require("../controllers/categoriasController");
 
 router.get("/", categoriasController.MostrarCategoria);
 
+router.get("/bebidas", categoriasController.cantidadEnCategoria);
+
+router.get("/cantidadCategorias", categoriasController.cantidadCategorias);
+
 router.post("/agregarCategorias", categoriasController.crearCategorias);
 
 router.delete("/eliminar/:id", (req, res) => {

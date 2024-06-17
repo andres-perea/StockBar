@@ -69,11 +69,11 @@ function ActualizarBebidas({ id }) {
         {/* Sidebar */}
         <div
           className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
-            sidebar ? "w-64" : "w-0 lg:w-full"
-          } h-full transition-all border-r p-4`}
+            sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
+          } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
         >
           <div className="text-center p-8">
-            <h1 className="font-bold uppercase tracking-[4px] text-yellow-300">
+            <h1 className="font-bold tracking-[4px] text-yellow-300">
               BarManage
             </h1>
           </div>
@@ -121,10 +121,9 @@ function ActualizarBebidas({ id }) {
             </button>
           </nav>
         </div>
-        {/* Botón menú */}
         <button
           onClick={handleSidebar}
-          className="lg:hidden absolute bottom-4 right-4 bg-red-600 p-2 text-white rounded-full text-2xl"
+          className="lg:hidden fixed bottom-4 right-4 bg-stone-900 p-2 text-yellow-300 font-bold rounded-full text-2xl z-50"
         >
           {sidebar ? <MdClose /> : <MdOutlineMenu />}
         </button>

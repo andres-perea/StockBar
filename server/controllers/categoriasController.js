@@ -7,6 +7,24 @@ exports.MostrarCategoria = (req, res) => {
   });
 };
 
+exports.cantidadEnCategoria = (req, res) => {
+  Categorias.cantidadEnCategorias((error, data) => {
+    if (error) {
+      console.error("Error obteniendo categorías de bebidas", error);
+      return res
+        .status(500)
+        .json({ error: "Error obteniendo categorías de bebidas" });
+    }
+    res.json(data);
+  });
+};
+
+exports.cantidadCategorias = (req, res) => {
+  Categorias.cantidadCategorias((cantidad) => {
+    res.json(cantidad);
+  })
+}
+
 exports.crearCategorias = (req, res) => {
   const categoria = req.body;
   Categorias.crearCategorias(categoria, (err, bebidas) => {

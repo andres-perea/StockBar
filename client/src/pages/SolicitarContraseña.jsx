@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const SolicitarContraseña = () => {
   const [correoElectronico, setCorreoElectronico] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,9 +12,9 @@ const SolicitarContraseña = () => {
         "http://localhost:3000/api/auth/solicitar-cambio-contrasena",
         { correoElectronico }
       );
-      setMessage(response.data);
+      toast.success("Correo enviado correctamente");      
     } catch (error) {
-      setMessage("Error al enviar la solicitud");
+      toast.error("Error al enviar la solicitud");
     }
   };
 
@@ -48,7 +48,7 @@ const SolicitarContraseña = () => {
                 </button>
               </div>
             </form>
-            {message && <p>{message}</p>}
+            <ToastContainer />
           </div>
         </div>
       </div>
