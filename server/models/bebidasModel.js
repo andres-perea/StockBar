@@ -16,14 +16,21 @@ class Bebidas {
     });
   }
 
-  static crearBebidas(bebida, result) {
-    db.query("INSERT INTO bebidas SET ?", bebida, (err, res) => {
+  static generarNumeroAleatorio() {
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+
+  static crearBebidaConCodigoAleatorio(bebida, result) {
+    const codigoAleatorio = this.generarNumeroAleatorio();
+    const bebidaConCodigo = { ...bebida, codigo: codigoAleatorio };
+
+    db.query("INSERT INTO bebidas SET ?", bebidaConCodigo, (err, res) => {
       if (err) {
-        console.log("Error:", err);
+        console.log("Error al insertar bebida:", err);
         result(err, null);
       } else {
         console.log("Bebida registrada correctamente");
-        result(null, res.insertId);
+        result(null, { id: res.insertId, codigo: codigoAleatorio });
       }
     });
   }

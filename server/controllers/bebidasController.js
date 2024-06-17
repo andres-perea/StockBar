@@ -24,6 +24,7 @@ exports.crearBebidas = (req, res) => {
   if (!req.file) {
     return res.status(400).send('No se ha seleccionado ningún archivo.');
   }
+
   const uploadDir = path.join(__dirname, "img/");
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
@@ -45,16 +46,14 @@ exports.crearBebidas = (req, res) => {
     imagen: imagePathInDB,
   };
 
-  Bebidas.crearBebidas(bebida, (err, bebidaGuardada) => {
+  Bebidas.crearBebidaConCodigoAleatorio(bebida, (err, bebidaGuardada) => {
     if (err) {
       res.status(500).send({ message: err });
     } else {
-      res
-        .status(201)
-        .send({
-          message: "Bebida registrada correctamente",
-          bebida: bebidaGuardada,
-        });
+      res.status(201).send({
+        message: "Bebida registrada correctamente",
+        bebida: bebidaGuardada,
+      });
     }
   });
 };
