@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2024 a las 11:19:33
+-- Tiempo de generación: 17-06-2024 a las 12:39:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,24 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyectobar`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `nueva_salida_producto` ()   BEGIN
-    DECLARE codigo INT;
-    DECLARE cantidad INT;
-
-    -- Obtener el id de la bebida y la cantidad del nuevo pedido
-    SELECT NEW.codigo, NEW.cantidad INTO codigo, cantidad;
-
-    -- Insertar un registro en la tabla de salida_productos
-    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_id)
-    VALUES (NOW(), cantidad, 'Venta realizada', codigo);
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -56,32 +38,6 @@ CREATE TABLE `bebidas` (
   `categoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Disparadores `bebidas`
---
-DELIMITER $$
-CREATE TRIGGER `eliminar_producto_cantidad_cero` AFTER UPDATE ON `bebidas` FOR EACH ROW BEGIN
-    IF NEW.cantidad = 0 THEN
-        DELETE FROM bebidas WHERE codigo = NEW.codigo;
-    END IF;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `entrada` AFTER INSERT ON `bebidas` FOR EACH ROW BEGIN
-    INSERT INTO entrada_productos (cantidad_entrada, fecha_entrada, precio_compra, producto_codigo)
-    VALUES (NEW.cantidad, CURRENT_TIMESTAMP(), NEW.precio, NEW.codigo);
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `salida` AFTER DELETE ON `bebidas` FOR EACH ROW BEGIN
-    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_codigo)
-    VALUES (CURRENT_TIMESTAMP(), OLD.cantidad, 'salida', OLD.codigo);
-END
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -92,18 +48,6 @@ CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Disparadores `categorias`
---
-DELIMITER $$
-CREATE TRIGGER `after_delete_categoria` AFTER DELETE ON `categorias` FOR EACH ROW BEGIN
-  UPDATE bebidas
-  SET categoria_id = NULL
-  WHERE categoria_id = OLD.id;
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -119,29 +63,6 @@ CREATE TABLE `entrada_productos` (
   `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Disparadores `entrada_productos`
---
-DELIMITER $$
-CREATE TRIGGER `after_insert_entrada_productos` AFTER INSERT ON `entrada_productos` FOR EACH ROW BEGIN
-    INSERT INTO historial_movimiento (
-        tipo_movimiento, 
-        cantidad_movimiento, 
-        saldo, 
-        fecha_movimiento, 
-        producto_codigo
-    ) 
-    VALUES (
-        'Entrada al inventario', 
-        NEW.cantidad_entrada, 
-        NEW.cantidad_entrada, 
-        NEW.fecha_entrada, 
-        NEW.producto_codigo
-    );
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -173,33 +94,6 @@ CREATE TABLE `pedidos` (
   `codigo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Disparadores `pedidos`
---
-DELIMITER $$
-CREATE TRIGGER `after_pedido_insert` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
-    DECLARE codigo_producto INT;
-    DECLARE cantidad INT;
-
-    -- Obtener el id de la bebida y la cantidad del nuevo pedido
-    SELECT NEW.codigo_producto, NEW.cantidad INTO codigo_producto, cantidad;
-
-    -- Insertar un registro en la tabla de salida_productos
-    INSERT INTO salida_productos (fecha_salida, cantidad_salida, motivo_salida, producto_codigo)
-    VALUES (NOW(), cantidad, 'Venta realizada', codigo_producto);
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `restar_cantidad_bebida` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
-    -- Actualizar la cantidad en la tabla de bebidas
-    UPDATE bebidas
-    SET cantidad = cantidad - NEW.cantidad
-    WHERE codigo = NEW.codigo_producto;
-END
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -215,41 +109,6 @@ CREATE TABLE `salida_productos` (
   `producto_codigo` int(11) DEFAULT NULL,
   `historial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Disparadores `salida_productos`
---
-DELIMITER $$
-CREATE TRIGGER `after_salida_productos_insert` AFTER INSERT ON `salida_productos` FOR EACH ROW BEGIN
-    DECLARE new_saldo DECIMAL(10,2);
-
-    -- Obtener el saldo actual del producto
-    SELECT saldo INTO new_saldo
-    FROM historial_movimiento
-    WHERE producto_codigo = NEW.producto_codigo
-    ORDER BY fecha_movimiento DESC
-    LIMIT 1;
-
-    -- Calcular el nuevo saldo después de la salida
-    SET new_saldo = new_saldo - NEW.cantidad_salida;
-
-    -- Insertar el registro en la tabla historial_movimiento
-    INSERT INTO historial_movimiento (
-        tipo_movimiento,
-        cantidad_movimiento,
-        saldo,
-        fecha_movimiento,
-        producto_codigo
-    ) VALUES (
-        'Salida del inventario',
-        NEW.cantidad_salida,
-        new_saldo,
-        NOW(),
-        NEW.producto_codigo
-    );
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 

@@ -50,15 +50,31 @@ class Categorias {
     });
   }
 
-  static eliminarCategoria(id, callback) {
+  static eliminarCategoriaYActualizarBebidas(id, result) {
     db.query("DELETE FROM categorias WHERE id = ?", id, (err, res) => {
       if (err) {
-        console.error("Error al eliminar la categoria:", err);
-        callback(err, null);
-        return;
+        console.log("Error al eliminar categoría:", err);
+        result(err, null);
+      } else {
+        console.log("Categoría eliminada correctamente");
+
+        // Actualizar 'bebidas' donde 'categoria_id' = id
+        db.query(
+          "UPDATE bebidas SET categoria_id = NULL WHERE categoria_id = ?",
+          [id],
+          (err, res) => {
+            if (err) {
+              console.log("Error al actualizar bebidas:", err);
+              result(err, null);
+            } else {
+              console.log("Bebidas actualizadas correctamente");
+              result(null, {
+                mensaje: "Categoría eliminada y bebidas actualizadas",
+              });
+            }
+          }
+        );
       }
-      console.log("Categoria eliminada correctamente:", res);
-      callback(null, res);
     });
   }
 }

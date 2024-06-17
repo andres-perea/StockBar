@@ -46,7 +46,7 @@ exports.crearBebidas = (req, res) => {
     imagen: imagePathInDB,
   };
 
-  Bebidas.crearBebidaConCodigoAleatorio(bebida, (err, bebidaGuardada) => {
+  Bebidas.crearBebidaYRegistrarMovimiento(bebida, (err, bebidaGuardada) => {
     if (err) {
       res.status(500).send({ message: err });
     } else {
@@ -71,7 +71,7 @@ exports.actualizarBebida = (req, res) => {
 };
 
 exports.eliminarBebida = (id, callback) => {
-  Bebidas.eliminarBebida(id, (err, data) => {
+  Bebidas.eliminarBebidaYRegistrarSalida(id, (err, data) => {
     if (err) {
       callback(err, null);
     } else {
