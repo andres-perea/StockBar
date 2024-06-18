@@ -6,6 +6,9 @@ const db = mysql.createConnection({
   user: "admin",
   password: "azxcvmnb",
   database: "barmanage",
+  authPlugins: {
+    mysql_clear_password: () => () => Buffer.from("azxcvmnb"),
+  },
 });
 
 db.connect((err) => {
