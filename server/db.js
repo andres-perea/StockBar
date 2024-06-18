@@ -19,4 +19,6 @@ db.connect((err) => {
   }
 });
 
+db.end();
+
 module.exports = db;
