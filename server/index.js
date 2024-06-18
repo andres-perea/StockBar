@@ -43,6 +43,6 @@ io.on("Conexion", (socket) => {
   })
 })
 
-server.listen(3000, () => {
-  console.log("El servidor está funcionando en el puerto 3000");
+server.listen(5000, () => {
+  console.log("El servidor está funcionando en el puerto 5000");
 });
