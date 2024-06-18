@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
@@ -14,8 +14,8 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3000/api/auth/registro", values)
+    axiosInstance
+      .post("/api/auth/registro", values)
       .then(function (response) {
         console.log(response);
         toast.success("Usuario registrado correctamente");

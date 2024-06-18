@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export default function Saldos() {
   const [bebidasVendidas, setBebidasVendidas] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/bebidas/cantidadBebidasVedidas/")
+    axiosInstance
+      .get("/bebidas/cantidadBebidasVedidas/")
       .then((respone) => {
         setBebidasVendidas(respone.data);
       });

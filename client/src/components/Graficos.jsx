@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import {
   XAxis,
   YAxis,
@@ -20,7 +20,7 @@ export default function GraficoBebidas() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/bebidas");
+      const response = await axiosInstance.get("/bebidas");
       setData(response.data);
     } catch (error) {
       console.error(error);

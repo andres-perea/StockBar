@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -10,8 +10,8 @@ const CambiarContraseña = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/cambiar-contrasena",
+      const response = await axiosInstance.post(
+        "/api/auth/cambiar-contrasena",
         { token, nuevaContrasena }
       );
       toast.success("Contraseña actualizada correctamente");

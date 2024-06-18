@@ -3,7 +3,6 @@ import {
   MdOutlineDashboard,
   MdOutlineLogout,
   MdLocalDrink,
-  MdInbox,
   MdOutlineCategory,
   MdOutlineMenu,
   MdClose,
@@ -13,7 +12,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "../index.css";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
 
 function Categorias() {
@@ -21,7 +20,7 @@ function Categorias() {
   const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/categorias/").then((response) => {
+    axiosInstance.get("/categorias/").then((response) => {
       setCategorias(response.data);
     });
   });
@@ -33,7 +32,7 @@ function Categorias() {
     }
 
     try {
-      await axios.delete(`http://localhost:3000/categorias/eliminar/${id}`);
+      await axiosInstance.delete(`/categorias/eliminar/${id}`);
       toast.success("Categoria eliminada correctamente");
     } catch (error) {
       console.error("Error al eliminar la categoria", error);

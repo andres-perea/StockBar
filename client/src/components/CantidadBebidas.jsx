@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { MdProductionQuantityLimits } from "react-icons/md";
 
 export default function CantidadBebidas() {
@@ -7,15 +7,13 @@ export default function CantidadBebidas() {
   const [cantidadBebidas, setCantidadBebidas] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/bebidas/cantidadBebidas/")
-      .then((response) => {
-        setCantidadBebidas(response.data);
-      });
+    axiosInstance.get("/bebidas/cantidadBebidas/").then((response) => {
+      setCantidadBebidas(response.data);
+    });
 
     const obtenerBebidas = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/bebidas/");
+        const response = await axiosInstance.get("/bebidas/");
         setCantidad(response.data);
       } catch (error) {
         console.error("Error al obtener las bebidas", error);

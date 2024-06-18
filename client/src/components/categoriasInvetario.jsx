@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { MdOutlineCategory } from "react-icons/md";
 
 export default function CategoriasInventario() {
@@ -7,8 +7,8 @@ export default function CategoriasInventario() {
   const [cantidadCategorias, setCantidadCategorias] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/categorias/cantidadCategorias")
+    axiosInstance
+      .get("/categorias/cantidadCategorias")
       .then((response) => {
         setCantidadCategorias(response.data);
       })
@@ -18,7 +18,7 @@ export default function CategoriasInventario() {
 
     const obtenerCategorias = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/categorias/");
+        const response = await axiosInstance.get("/categorias/");
         setCantidad(response.data);
       } catch (error) {
         console.error("Error al obtener las bebidas", error);

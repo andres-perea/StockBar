@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -78,13 +78,13 @@ const renderActiveShape = (props) => {
 export default function GraficoCategoriasCircular() {
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/categorias/bebidas"
+        const response = await axiosInstance.get(
+          "/categorias/bebidas"
         );
         setData(response.data);
       } catch (error) {

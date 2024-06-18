@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
   MdLocalDrink,
-  MdInbox,
   MdOutlineCategory,
   MdOutlineMenu,
   MdClose,
@@ -11,6 +10,7 @@ import {
   MdOutlineSearch,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 function Inventario() {
   const [sidebar, setSidebar] = useState(false);
@@ -29,11 +29,14 @@ function Inventario() {
     if (query.trim() === "") {
       return;
     }
-    const response = await fetch(
-      `http://localhost:3000/api/items?query=${query}`
-    );
-    const data = await response.json();
-    setResultados(data);
+
+    try {
+      const response = await axiosInstance.get(`/api/items?query=${query}`);
+      const data = response.data;
+      setResultados(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const handleLogout = () => {
@@ -132,11 +135,57 @@ function Inventario() {
             </div>
             <div className="flex flex-col justify-center p-6 rounded-lg mt-4">
               {resultados.map((bebida) => (
-                <div className="bg-white shadow-md rounded px-4 pt-6 pb-6 mb-4 my-2">
-                  <h2 className="text-xl font-bold mb-2">
-                    Nombre del producto
-                  </h2>
-                  <p className="text-lg font-semibold">{bebida.nombre}</p>
+                <div key={bebida.id} className="mx-16 my-16">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Nombre del producto:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.nombre_producto}
+                      </p>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Precio:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.precio}
+                      </p>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Descripcion:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.descripcion}
+                      </p>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Cantidad disponible:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.cantidad_inventario}
+                      </p>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Categoría:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.categoria}
+                      </p>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 rounded-lg px-2 py-2">
+                      <h2 className="text-2xl text-yellow-300 font-bold mb-4">
+                        Cantidad Vendida:
+                      </h2>
+                      <p className="text-xl text-yellow-300 font-semibold">
+                        {bebida.cantidad_vendida}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

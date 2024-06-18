@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { toast, ToastContainer } from "react-toastify";
 
 const SolicitarContraseña = () => {
@@ -8,8 +8,8 @@ const SolicitarContraseña = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/solicitar-cambio-contrasena",
+      const response = await axiosInstance.post(
+        "/api/auth/solicitar-cambio-contrasena",
         { correoElectronico }
       );
       toast.success("Correo enviado correctamente");      

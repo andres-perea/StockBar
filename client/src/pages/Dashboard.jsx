@@ -17,7 +17,7 @@ import Pedidos from "../components/Pedidos";
 import GraficoCategoriasCircular from "../components/GraficoCircular";
 import CategoriasInventario from "../components/categoriasInvetario";
 import "../index.css";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
@@ -37,7 +37,7 @@ function Dashboard() {
   useEffect(() => {
     const obtenerSaldo = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/saldo/");
+        const response = await axiosInstance.get("/saldo/");
         setsaldo(response.data.saldo);
         setShowNotification(response.data.saldo < 5);
       } catch (error) {
@@ -47,7 +47,7 @@ function Dashboard() {
 
     const obtenerBebidas = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/bebidas/");
+        const response = await axiosInstance.get("/bebidas/");
         setBebidas(response.data);
         setShowNotification(
           response.data.some((bebida) => bebida.cantidad < 5)
@@ -66,7 +66,7 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
         {/* Sidebar */}
         <div
-          className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${
+          className={`lg:col-span-1 static top-0 z-50 bg-stone-900 shadow-lg ${
             sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
           } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
         >

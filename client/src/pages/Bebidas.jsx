@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import {
   MdOutlineDashboard,
   MdOutlineLogout,
@@ -23,11 +23,11 @@ function Bebidas() {
   const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/bebidas/").then((response) => {
+    axiosInstance.get("/bebidas/").then((response) => {
       setBebidas(response.data);
     });
 
-    axios.get("http://localhost:3000/categorias/").then((response) => {
+    axiosInstance.get("/categorias/").then((response) => {
       setCategorias(response.data);
     });
   }, []);
@@ -39,7 +39,7 @@ function Bebidas() {
     }
 
     try {
-      await axios.delete(`http://localhost:3000/bebidas/eliminar/${codigo}`);
+      await axiosInstance.delete(`/bebidas/eliminar/${codigo}`);
       toast.success("Bebida eliminada correctamente");
     } catch (error) {
       console.error("Error al eliminar la bebida", error);

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useState, useEffect } from "react";
 import {
   MdOutlineDashboard,
@@ -41,8 +41,8 @@ function AgregarBebidas() {
       formData.append("descripcion", values.descripcion);
       formData.append("categoria_id", values.categoria_id);
 
-      const response = await axios.post(
-        "http://localhost:3000/bebidas/agregarBebidas",
+      const response = await axiosInstance.post(
+        "/bebidas/agregarBebidas",
         formData,
         {
           headers: {
@@ -59,7 +59,7 @@ function AgregarBebidas() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/categorias/").then((response) => {
+    axiosInstance.get("/categorias/").then((response) => {
       setCategorias(response.data);
     });
   });

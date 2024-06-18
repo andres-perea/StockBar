@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   MdOutlineDashboard,
@@ -47,8 +47,8 @@ function ActualizarBebidas({ id }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .put("http://localhost:3000/bebidas/editar/" + bebidaId, formData)
+    axiosInstance
+      .put("/bebidas/editar/" + bebidaId, formData)
       .then(() => {
         toast.success("Bebida actualizada correctamente");
       })
@@ -58,7 +58,7 @@ function ActualizarBebidas({ id }) {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/categorias/").then((response) => {
+    axiosInstance.get("/categorias/").then((response) => {
       setCategorias(response.data);
     });
   });

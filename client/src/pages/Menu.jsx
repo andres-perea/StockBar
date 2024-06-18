@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import {
   MdOutlineSearch,
   MdShoppingCart,
   MdOutlineShoppingCart,
   MdClose,
   MdCheck,
-  MdNoDrinks,
 } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,8 +27,8 @@ function Menu() {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/bebidas")
+    axiosInstance
+      .get("/bebidas")
       .then((response) => {
         setBebidas(response.data);
       })
@@ -37,7 +36,7 @@ function Menu() {
         console.error("Error fetching products:", error);
       });
 
-    axios.get("http://localhost:3000/categorias/").then((response) => {
+    axiosInstance.get("/categorias/").then((response) => {
       setCategorias(response.data);
     });
   }, []);
@@ -111,8 +110,8 @@ function Menu() {
       total: pedidoTotal,
     };
 
-    axios
-      .post("http://localhost:3000/pedidos", pedido)
+    axiosInstance
+      .post("/pedidos", pedido)
       .then((response) => {
         console.log("Pedido realizado con éxito:", response.data);
         toast.success("Pedido realizado con éxito");
@@ -247,7 +246,7 @@ function Menu() {
                   {bebida.imagen && bebida.nombre && (
                     <img
                       className="w-1/2 h-auto"
-                      src={`http://localhost:3000/img/${bebida.imagen}`}
+                      src={`http://18.117.161.215:5000/img/${bebida.imagen}`}
                       alt={bebida.nombre}
                     />
                   )}

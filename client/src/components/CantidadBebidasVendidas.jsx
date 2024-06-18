@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import { MdAttachMoney } from "react-icons/md";
 
@@ -7,8 +7,8 @@ export default function CantidadBebidasVendidas() {
     const [cantidadBebidasVendidas, setCantidadBebidasVendidas] = useState([]);
     
     useEffect(() => {
-      axios
-        .get("http://localhost:3000/bebidas/cantidadBebidasVendidas/")
+      axiosInstance
+        .get("/bebidas/cantidadBebidasVendidas/")
         .then((response) => {
           setCantidadBebidasVendidas(response.data);
         });

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
@@ -18,7 +18,7 @@ export default function Pedidos() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/pedidos/").then((response) => {
+    axiosInstance.get("/pedidos/").then((response) => {
       setPedidos(response.data);
     });
   }, []);

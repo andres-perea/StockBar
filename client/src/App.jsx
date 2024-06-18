@@ -20,7 +20,7 @@ function Routers() {
   const [messageFromServer, setMessageFromServer] = useState("");
 
   useEffect(() => {
-    const socket = io("http://localhost:3000");
+    const socket = io("http://18.117.161.215:5000");
     socket.on("connect", () => {
       console.log("Conexion establecida con el servidor");
     });

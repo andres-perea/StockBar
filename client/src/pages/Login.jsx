@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../utils/axiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 import "../index.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +20,7 @@ function Login() {
       contrasena: event.target.contrasena.value,
     };
   
-    axios
+    axiosInstance
       .post("/api/auth/login", values, {
         headers: {
           'Content-Type': 'application/json'

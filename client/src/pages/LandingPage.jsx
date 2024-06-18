@@ -175,7 +175,7 @@ function LandingPage() {
             <ul className="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-stone-300 font-semibold text-lg ">
               <li>
                 <a
-                  href=""
+                  href="#"
                   className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Inicio
@@ -183,7 +183,7 @@ function LandingPage() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#about"
                   className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Sobre Nosotros
@@ -191,7 +191,7 @@ function LandingPage() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#services"
                   className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Servicios
@@ -202,7 +202,7 @@ function LandingPage() {
               </Link>          
               <li>
                 <a
-                  href=""
+                  href="#team"
                   className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Equipo
@@ -210,7 +210,7 @@ function LandingPage() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#contact"
                   className="mx-2 hover:text-yellow-300 duration-500 hover:underline underline-offset-8"
                 >
                   Contactanos

@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "../index.css";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
 
 function AgregarCategorias() {
@@ -22,8 +22,8 @@ function AgregarCategorias() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3000/categorias/agregarCategorias", values)
+    axiosInstance
+      .post("/categorias/agregarCategorias", values)
       .then(function (response) {
         console.log(response);
         toast.success("Categoria registrada correctamente");
