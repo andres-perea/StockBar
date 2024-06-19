@@ -14,7 +14,7 @@ import GraficoBebidas from "../components/Graficos";
 import CantidadBebidas from "../components/CantidadBebidas";
 import CantidadBebidasVendidas from "../components/CantidadBebidasVendidas";
 import Pedidos from "../components/Pedidos";
-import GraficoCategoriasCircular from "../components/GraficoCircular";
+import GraficoCategoriasCircular from "../components/GraficoCircular"
 import CategoriasInventario from "../components/categoriasInvetario";
 import "../index.css";
 import axiosInstance from "../utils/axiosInstance";
@@ -66,9 +66,8 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
         {/* Sidebar */}
         <div
-          className={`lg:col-span-1 static top-0 z-50 bg-stone-900 shadow-lg ${
-            sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
-          } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
+          className={`lg:col-span-1 static top-0 z-50 bg-stone-900 shadow-lg ${sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
+            } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
         >
           <div className="text-center p-8">
             <h1 className="font-bold tracking-[4px] text-yellow-300">

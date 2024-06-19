@@ -246,7 +246,7 @@ function Menu() {
                   {bebida.imagen && bebida.nombre && (
                     <img
                       className="w-1/2 h-auto"
-                      src={`http://18.117.161.215:5000/img/${bebida.imagen}`}
+                      src={`http://localhost:3000/img/${bebida.imagen}`}
                       alt={bebida.nombre}
                     />
                   )}

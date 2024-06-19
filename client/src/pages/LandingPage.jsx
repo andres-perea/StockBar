@@ -337,18 +337,18 @@ function LandingPage() {
               />
               <p className="mb-4 text-white">
                 Reconocemos la diversidad de las empresas y sus procesos.
-                ZonaBAR se adapta a diferentes sectores y tamaños de negocio,
+                BarManage se adapta a diferentes sectores y tamaños de negocio,
                 ofreciendo opciones de personalización para satisfacer las
                 necesidades específicas de cada cliente. Creemos que la
                 verdadera eficiencia proviene de la adaptabilidad, y nuestro
                 software está diseñado para crecer y evolucionar con su empresa.
               </p>
               <p className="mb-4 text-white">
-                Lo que distingue a ZonaBAR es su compromiso con la innovación
+                Lo que distingue a BarManage es su compromiso con la innovación
                 tecnológica. La empresa emplea tecnologías de vanguardia como
                 inteligencia artificial, aprendizaje automático y análisis
                 predictivo para proporcionar a sus clientes insights profundos
-                sobre sus inventarios. El sistema inteligente de ZonaBAR no solo
+                sobre sus inventarios. El sistema inteligente de BarManage no solo
                 rastrea la cantidad de existencias, sino que también analiza
                 patrones de demanda, prevé tendencias del mercado y sugiere
                 estrategias de reabastecimiento, todo en tiempo real.
@@ -357,7 +357,7 @@ function LandingPage() {
             <div className="col-span-1 lg:col-span-1 text-white">
               <div className="ps-0 lg:ps-5">
                 <p className="italic mb-4">
-                  Con su enfoque innovador y tecnología de vanguardia, ZonaBAR
+                  Con su enfoque innovador y tecnología de vanguardia, BarManage
                   está allanando el camino hacia un futuro donde la gestión de
                   inventarios se convierte en un activo estratégico clave para
                   el éxito empresarial.
@@ -397,7 +397,7 @@ function LandingPage() {
                 <p className="mb-4">
                   Nuestra plataforma no solo simplifica la gestión de
                   inventarios, sino que la potencia con inteligencia y visión
-                  estratégica. Al elegir ZonaBAR, las empresas eligen la
+                  estratégica. Al elegir BarManage, las empresas eligen la
                   innovación y la eficiencia en cada nivel de su cadena de
                   suministro.
                 </p>
@@ -797,11 +797,11 @@ function LandingPage() {
                   </span>
                 </div>
                 <h3 className="text-gray-200 mt-5 text-base font-semibold tracking-tight">
-                  ¿Cómo ZonaBAR garantiza la continuidad del negocio durante la
+                  ¿Cómo BarManage garantiza la continuidad del negocio durante la
                   implementación del software?
                 </h3>
                 <p className="text-gray-300 mt-2 text-sm">
-                  ZonaBAR ofrece servicios de consultoría en gestión de
+                  BarManage ofrece servicios de consultoría en gestión de
                   inventario durante la implementación para asegurar una
                   transición sin problemas, junto con programas de capacitación
                   y soporte técnico para garantizar una adopción exitosa.
@@ -814,11 +814,11 @@ function LandingPage() {
                   </span>
                 </div>
                 <h3 className="text-gray-300 mt-5 text-base font-semibold tracking-tight">
-                  ¿Cómo se adapta ZonaBAR a las necesidades específicas de
+                  ¿Cómo se adapta BarManage a las necesidades específicas de
                   diferentes tipos de empresas?
                 </h3>
                 <p className="text-gray-200 mt-2 text-sm">
-                  ZonaBAR se destaca por su capacidad de personalización,
+                  BarManage se destaca por su capacidad de personalización,
                   permitiendo a las empresas adaptar la plataforma a sus flujos
                   de trabajo únicos, ya sea una pequeña tienda boutique o una
                   cadena internacional de suministro.
@@ -831,11 +831,11 @@ function LandingPage() {
                   </span>
                 </div>
                 <h3 className="text-gray-300 mt-5 text-base font-semibold tracking-tight">
-                  ¿Cómo garantiza ZonaBAR la seguridad de los datos de sus
+                  ¿Cómo garantiza BarManage la seguridad de los datos de sus
                   clientes?
                 </h3>
                 <p className="text-gray-200 mt-2 text-sm">
-                  ZonaBAR implementa medidas de seguridad robustas, incluyendo
+                  BarManage implementa medidas de seguridad robustas, incluyendo
                   cifrado avanzado y autenticación, para garantizar la
                   confidencialidad e integridad de la información almacenada en
                   la plataforma.
@@ -853,6 +853,7 @@ function LandingPage() {
           data-aos="fade-up"
           data-aos-delay="300"
         >
+
           <div className="section-header text-center mb-10">
             <h2 className="text-4xl font-bold font-serif mb-4 underline text-white underline-offset-8">
               Contacto
@@ -865,15 +866,15 @@ function LandingPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
             <div className="col-span-1 lg:col-span-1">
-              <div className="info-container flex flex-col items-center justify-center bg-zinc-500 rounded-lg p-6 shadow-md ">
+              <div className="info-container flex flex-col items-center justify-center bg-stone-500 rounded-lg p-6 shadow-md ">
                 <div className="info-item flex mb-4">
                   <i className="bi bi-geo-alt text-2xl text-blue-500 flex-shrink-0"></i>
                   <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
-                    <h4 className="text-xl font-semibold text-white">
+                    <h4 className="text-2xl font-semibold text-white">
                       Ubicación:
                     </h4>
-                    <p className="text-white">
-                      Complejo paloquemao - SENA (Por ahora)
+                    <p className="text-xl text-white">
+                      SENA
                     </p>
                   </div>
                 </div>
@@ -881,10 +882,10 @@ function LandingPage() {
                 <div className="info-item flex mb-4">
                   <i className="bi bi-envelope text-2xl text-blue-500 flex-shrink-0"></i>
                   <div className="form-control border border-yellow-300 rounded-lg px-20 py-2 w-full bg-yellow-300 focus:outline-none focus:border-blue-500 text-center ml-4">
-                    <h4 className="text-xl font-semibold text-white">
+                    <h4 className="text-2xl font-semibold text-white">
                       Correo:
                     </h4>
-                    <p className="text-white">zonabar@gmail.com</p>
+                    <p className="text-xl text-white">BarManage@gmail.com</p>
                   </div>
                 </div>
 
@@ -994,7 +995,7 @@ function LandingPage() {
             <div className="col-span-1">
               <div>
                 <Link to="/" className="flex items-center">
-                  <span className="text-3xl font-bold text-gray-200">ZonaBAR</span>
+                  <span className="text-3xl font-bold text-gray-200">BarManage</span>
                 </Link>
                 <p className="text-sm text-yellow-300">Síguenos en nuestras redes</p>
                 <div className="flex mt-4">

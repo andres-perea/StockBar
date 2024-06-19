@@ -16,28 +16,7 @@ import SolicitarContraseña from "./pages/SolicitarContraseña";
 import CambiarContraseña from "./pages/CambiarContraseña";
 import PrivateRoute from "./components/token/RutaPrivada"
 
-function Routers() {
-  const [messageFromServer, setMessageFromServer] = useState("");
-
-  useEffect(() => {
-    const socket = io("http://ec2-18-117-161-215.us-east-2.compute.amazonaws.com");
-    socket.on("connect", () => {
-      console.log("Conexion establecida con el servidor");
-    });
-
-    socket.on("FromAPI", (data) => {
-      console.log("Mensaje del servidor:", data);
-      setMessageFromServer(data);
-    });
-
-    socket.on("disconnect", () => {
-      console.log("Desconectado del servidor");
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+export default function Routers() {
   return (
     <BrowserRouter basename="/">
       <Routes>
@@ -46,32 +25,32 @@ function Routers() {
         <Route path="/registro" element={<Register />} />
         <Route
           path="/dashboard"
-          element={<PrivateRoute element={<Dashboard />} />}
+          element={<Dashboard />}
         />
         <Route
           path="/bebidas"
-          element={<PrivateRoute element={<Bebidas />} />}
+          element={<Bebidas />}
         />
         <Route
           path="/agregarBebida"
-          element={<PrivateRoute element={<AgregarBebidas />} />}
+          element={<AgregarBebidas />}
         />
         <Route
           path="/actualizarBebida/:id"
-          element={<PrivateRoute element={<ActualizarBebidas />} />}
+          element={<ActualizarBebidas />}
         />
         <Route
           path="/categorias"
-          element={<PrivateRoute element={<Categorias />} />}
+          element={<Categorias />}
         />
         <Route
           path="/agregarCategoria"
-          element={<PrivateRoute element={<AgregarCategorias />} />}
+          element={<AgregarCategorias />}
         />
-        <Route path="/menu" element={<PrivateRoute element={<Menu />} />} />
+        <Route path="/menu" element={<Menu />} />
         <Route
           path="/inventario"
-          element={<PrivateRoute element={<Inventario />} />}
+          element={<Inventario />}
         />
         <Route
           path="/solicitar-cambio-contraseña"
@@ -85,5 +64,3 @@ function Routers() {
     </BrowserRouter>
   );
 }
-
-export default Routers;

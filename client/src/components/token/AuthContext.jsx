@@ -3,17 +3,17 @@ import React, { createContext, useState, useContext } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("authToken") || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [reservationId, setReservationId] = useState(null);
 
   const login = (newToken) => {
     setToken(newToken);
-    localStorage.setItem("authToken", newToken);
+    localStorage.setItem("token", newToken);
   };
 
   const logout = () => {
     setToken("");
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
   };
 
   const setReservaId = (id) => {
