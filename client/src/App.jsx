@@ -20,7 +20,7 @@ function Routers() {
   const [messageFromServer, setMessageFromServer] = useState("");
 
   useEffect(() => {
-    const socket = io("http://18.117.161.215:5000");
+    const socket = io("http://ec2-18-117-161-215.us-east-2.compute.amazonaws.com");
     socket.on("connect", () => {
       console.log("Conexion establecida con el servidor");
     });
