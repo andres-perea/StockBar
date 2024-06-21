@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import io from "socket.io-client";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
@@ -14,7 +13,6 @@ import LandingPage from "./pages/LandingPage";
 import Inventario from "./pages/inventario";
 import SolicitarContraseña from "./pages/SolicitarContraseña";
 import CambiarContraseña from "./pages/CambiarContraseña";
-import PrivateRoute from "./components/token/RutaPrivada"
 
 export default function Routers() {
   return (
@@ -23,35 +21,14 @@ export default function Routers() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/registro" element={<Register />} />
-        <Route
-          path="/dashboard"
-          element={<PrivateRoute element={<Dashboard />} />}
-        />
-        <Route
-          path="/bebidas"
-          element={<PrivateRoute element={<Bebidas />}/>}
-        />
-        <Route
-          path="/agregarBebida"
-          element={<PrivateRoute element={<AgregarBebidas />} />}
-        />
-        <Route
-          path="/actualizarBebida/:id"
-          element={<PrivateRoute element={<ActualizarBebidas />}/>}
-        />
-        <Route
-          path="/categorias"
-          element={<PrivateRoute element={<Categorias />} />}
-        />
-        <Route
-          path="/agregarCategoria"
-          element={<PrivateRoute element={<AgregarCategorias />}/>}
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/bebidas" element={<Bebidas />} />
+        <Route path="/agregarBebida" element={<AgregarBebidas />} />
+        <Route path="/actualizarBebida/:id" element={<ActualizarBebidas />} />
+        <Route path="/categorias" element={<Categorias />} />
+        <Route path="/agregarCategoria" element={<AgregarCategorias />} />
         <Route path="/menu" element={<Menu />} />
-        <Route
-          path="/inventario"
-          element={ <PrivateRoute element={<Inventario />}/>}
-        />
+        <Route path="/inventario" element={<Inventario />} />
         <Route
           path="/solicitar-cambio-contraseña"
           element={<SolicitarContraseña />}

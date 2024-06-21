@@ -26,6 +26,6 @@ app.use("/reservas", reservasRoutes);
 
 app.use("/img", express.static(path.join(__dirname, "controllers/img")));
 
-app.listen(3000, () => {
-  console.log("El servidor está funcionando en el puerto 3000");
+app.listen(5000, () => {
+  console.log("El servidor está funcionando en el puerto 5000");
 });

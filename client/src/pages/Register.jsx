@@ -26,9 +26,9 @@ function Register() {
       });
   };
   return (
-    <div class="flex items-center justify-center h-screen bg-stone-900">
-      <div class="bg-stone-700 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
-        <div class="max-w-xs mx-auto">
+    <div className="flex items-center justify-center h-screen bg-stone-900">
+      <div className="bg-stone-700 p-2 rounded-lg shadow-md px-16 pt-6 pb-8 mb-4">
+        <div className="max-w-xs mx-auto">
           <h2 className="text-3xl text-yellow-300 font-bold p-8 items-center">Registrarse</h2>
           <form action="" onSubmit={handleSubmit} className="formulario">
             <div className="mb-4">
@@ -64,7 +64,7 @@ function Register() {
                     correoElectronico: e.target.value,
                   })
                 }
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
             </div>
@@ -94,10 +94,10 @@ function Register() {
               </button>
             </div>
             <div className="mt-4">
-              <p class="text-center text-gray-500 text-xs">
+              <p className="text-center text-gray-500 text-xs">
                 ¿Ya estas registrado?
                 <Link to="/login">
-                  <a class="text-yellow-300 hover:text-yellow-400 transition" href="#">
+                  <a className="text-yellow-300 hover:text-yellow-400 transition" href="#">
                     Inicia sesión
                   </a>
                 </Link>
