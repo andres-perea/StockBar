@@ -3,8 +3,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
-/*const http = require("http");
-const { Server } = require("socket.io")*/
 
 const authRouters = require("./routers/authRoutes");
 const bebidasRouters = require("./routers/bebidasRouters");
@@ -27,21 +25,6 @@ app.use("/api", itemRoutes);
 app.use("/reservas", reservasRoutes);
 
 app.use("/img", express.static(path.join(__dirname, "controllers/img")));
-
-/*const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-  }
-})
-
-io.on("Conexion", (socket) => {
-  console.log("Cliente conectado");
-  socket.emit("FromAPI", "Hola del servidor");
-  socket.on("desconexion", () => {
-    console.log("Cliente desconectado");
-  })
-})*/
 
 app.listen(3000, () => {
   console.log("El servidor está funcionando en el puerto 3000");
