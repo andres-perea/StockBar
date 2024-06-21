@@ -25,32 +25,32 @@ export default function Routers() {
         <Route path="/registro" element={<Register />} />
         <Route
           path="/dashboard"
-          element={<Dashboard />}
+          element={<PrivateRoute element={<Dashboard />} />}
         />
         <Route
           path="/bebidas"
-          element={<Bebidas />}
+          element={<PrivateRoute element={<Bebidas />}/>}
         />
         <Route
           path="/agregarBebida"
-          element={<AgregarBebidas />}
+          element={<PrivateRoute element={<AgregarBebidas />} />}
         />
         <Route
           path="/actualizarBebida/:id"
-          element={<ActualizarBebidas />}
+          element={<PrivateRoute element={<ActualizarBebidas />}/>}
         />
         <Route
           path="/categorias"
-          element={<Categorias />}
+          element={<PrivateRoute element={<Categorias />} />}
         />
         <Route
           path="/agregarCategoria"
-          element={<AgregarCategorias />}
+          element={<PrivateRoute element={<AgregarCategorias />}/>}
         />
         <Route path="/menu" element={<Menu />} />
         <Route
           path="/inventario"
-          element={<Inventario />}
+          element={ <PrivateRoute element={<Inventario />}/>}
         />
         <Route
           path="/solicitar-cambio-contraseña"
