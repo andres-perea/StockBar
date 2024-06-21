@@ -120,7 +120,7 @@ function Bebidas() {
         </button>
       {/* Contenido */}
       <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-stone-800 pl-10">
+        <div className="lg:min-h-screen bg-stone-800 pl-10">
           <div className="">
             <h1 className="text-4xl lg:text-5xl p-2 font-bold text-yellow-300">
               Bebidas

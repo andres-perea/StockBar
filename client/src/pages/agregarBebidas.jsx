@@ -137,8 +137,8 @@ function AgregarBebidas() {
         {sidebar ? <MdClose /> : <MdOutlineMenu />}
       </button>
       {/* Contenido */}
-      <div className="col-span-5">
-        <div className="p-4 lg:min-h-screen bg-stone-800 pl-10">
+      <div className="flex lg:col-span-5 p-8 fixed ml-5 lg:ml-60 min-h-screen w-full bg-stone-800 pl-8">
+        <div className=" lg:col-span-5 p-8 fixed ml-5 lg:ml-60 lg:min-h-screen bg-stone-800 pl-10">
           <div className="">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-yellow-300">
               Agregar bebida

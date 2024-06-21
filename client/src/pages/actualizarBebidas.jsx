@@ -128,13 +128,13 @@ function ActualizarBebidas({ id }) {
           {sidebar ? <MdClose /> : <MdOutlineMenu />}
         </button>
         {/* Content */}
-        <div className="col-span-5">
+        <div className="flex lg:col-span-5 p-8 fixed ml-5 lg:ml-60 min-h-screen w-full bg-stone-800 pl-8">
           <div className="p-4 h-full bg-stone-800">
             <div className="">
               <h1 className="text-5xl text-yellow-300 font-bold">Actualizar Bebidas</h1>
             </div>
-            <div className="flex flex-row items-center jutify-center bg-stone-900 p-4 rounded-lg mt-2">
-              <div className="w-full max-w-md"> 
+            <div className="bg-stone-900 p-4 rounded-lg mt-6">
+              <div className="w-full items-center max-w-md"> 
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

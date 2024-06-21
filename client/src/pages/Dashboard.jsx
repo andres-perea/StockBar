@@ -66,7 +66,7 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-6 min-h-screen overflow-hidden">
         {/* Sidebar */}
         <div
-          className={`lg:col-span-1 static top-0 z-50 bg-stone-900 shadow-lg ${sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
+          className={`lg:col-span-1 fixed lg:static top-0 z-50 bg-stone-900 shadow-lg ${sidebar ? "w-64 lg:w-full" : "w-0 lg:w-64"
             } h-full transition-all border-r p-4 overflow-hidden lg:overflow-visible`}
         >
           <div className="text-center p-8">
@@ -125,7 +125,7 @@ function Dashboard() {
           {sidebar ? <MdClose /> : <MdOutlineMenu />}
         </button>
         {/* Contenido */}
-        <div className="lg:col-span-5 p-8 lg:min-h-screen bg-stone-800 pl-10">
+        <div className="lg:col-span-5 p-8 fixed ml-5 lg:ml-60 lg:min-h-screen bg-stone-800 pl-8">
           <h1 className="text-4xl lg:text-5xl font-bold text-yellow-300">
             Dashboard
           </h1>
