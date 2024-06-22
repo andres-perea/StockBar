@@ -14,7 +14,11 @@ const reservasRoutes = require("./routers/reservasRoutes");
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://master.dkntup2catk22.amplifyapp.com",
+  })
+);
 
 app.use("/api/auth", authRouters);
 app.use("/bebidas", bebidasRouters);
